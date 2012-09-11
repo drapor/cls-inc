@@ -1,0 +1,138 @@
+﻿body {
+}
+
+.linkHeaderMenuRight
+{
+    float:right;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.linkHeaderMenuLeft
+{
+    float:left;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+
+.iconMaster
+{
+    width:20px;
+    height:20px;
+}
+.page
+{
+    margin-left:auto;
+    margin-right: auto;
+    height:auto;
+}
+
+.ligneHeader
+{
+    width:auto;
+    height:1px;
+    background-color:Black;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+}
+
+.headerMenu
+{
+    width:940px;
+    height: 30px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-top:8px;
+}
+
+.divBanner
+{
+    width:972px;
+    height: 202px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.footer
+{
+    width:940px;
+    height:170px;
+    margin-left:auto;
+    margin-right:auto;
+    background-image: url('../img/texture_retroblue.png');
+    background-repeat:repeat-x repeat-y;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 50px;
+}
+
+
+.menuPadding
+{
+    margin-left:auto;
+    margin-right:auto;
+    width: 940px;
+    border-radius: 5px;
+}
+
+.bannerPadding
+{
+    width:auto;
+    padding-bottom:8px;
+}
+
+.fieldSearch
+{
+    margin-top:5px;
+}
+
+.heroUnitCLS
+{
+    background-color: #eeeeee;
+    padding:0;
+}
+
+.bgMenuCLSColor
+{
+    background-color: #ffbf00;
+}
+
+.buttonCLSColor
+{
+    background-color: #ffbf00;
+}
+
+.buttonCLSColor:hover
+{
+    background-color: #ffcf40;
+}
+
+
+
+.buttonCLS
+{
+    background-image: "../img/button1.png";
+    background-repeat:repeat-y;
+    background-color: #ffbf00;
+    padding:10px 41px;
+    font-size:26px;
+    line-height:normal;
+}
+
+.navbar-search .search-query:focus, .navbar-search .search-query.focused {
+    padding-left: 30px;
+}
+
+.buttonCLS:hover
+{
+background-color: #ffcf40;
+color: #1b1bb3;
+background-image: "../img/button2.png";
+ background-repeat:repeat-y;
+}
+
+.menuButtonCLS
+{
+    width: 920px;
+    height: 30px;
+}
