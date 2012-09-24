@@ -1,0 +1,79 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeFile="Site.Master.vb" Inherits="Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="../../Scripts/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jquery-ui-1.8.23.custom.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <form runat="server">
+    <div class="hero-unit heroUnitCLS">
+    <div id="pageEntire" class="page">
+    <div id="headerMenu" class="headerMenu">
+        <asp:LinkButton ID="lnkAccueil" runat="server" CssClass="linkHeaderMenuLeft" PostBackUrl="~/Page/Default.aspx">Accueil</asp:LinkButton>
+        <asp:LinkButton ID="lnkAPropos" runat="server" CssClass="linkHeaderMenuLeft">À propos</asp:LinkButton>
+        <asp:LinkButton ID="lnkNousJoindre" runat="server" CssClass="linkHeaderMenuLeft">Nous joindre</asp:LinkButton>
+        <asp:LinkButton ID="lnkInscrire" runat="server" CssClass="linkHeaderMenuRight" PostBackUrl="~/Page/login.aspx">Connecter</asp:LinkButton> 
+        <asp:LinkButton ID="lnkConnecter" runat="server" CssClass="linkHeaderMenuRight">S'incrire</asp:LinkButton>
+    </div>
+    <div class="ligneHeader"></div>
+    <div class="divBanner"></div>
+    <div class="menuNavigationCLS">
+       <div class="menuNavigationContainer">
+       <a href="#"><div class="menuBouton"><div class="menuButtonAlign">Culture</div></div></a>
+       <a href="#"><div class="menuBouton"><div class="menuButtonAlign">Loisir</div></div></a>
+       <a href="#"><div class="menuBouton"><div class="menuButtonAlign">Sport</div></div></a>
+       <div class="menuBoutonSearch">
+       <form class="navbar-search fieldSearch">
+                <input type="text" class="search-query span3 fieldSearch" placeholder="Veuillez entrer ce que vous cherchez !"></input>
+       <asp:ImageButton ID="searchButton" runat="server" CssClass="searchButton" Height="28px" Width="28px" />
+       </form>
+       </div>
+       
+       
+       
+       
+       </div>
+    </div>
+
+
+
+<div class="containerContenu">
+<asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</div>
+
+
+<div class="footer">
+    <div class="footerTitleMenu">
+    <div class="footerLiens">
+    <asp:Label CssClass="footerTitle" ID="lblLiensImportants" runat="server" Text="Liens importants"></asp:Label><br /><br />
+        <asp:LinkButton ID="lnkAccueilFooter" runat="server" CssClass="linkFooter" PostBackUrl="~/Page/Default.aspx">Accueil</asp:LinkButton><br />
+        <asp:LinkButton ID="lnkAProposFooter" runat="server" CssClass="linkFooter">À propos</asp:LinkButton><br />
+        <asp:LinkButton ID="lnkNousJoindreFooter" runat="server" CssClass="linkFooter">Nous joindre</asp:LinkButton>
+    </div>
+    <div class="footerMedia">
+    <asp:Label CssClass="footerTitle" ID="lblMediaSociaux" runat="server" Text="Média sociaux"></asp:Label><br /><br />
+        <asp:LinkButton ID="lnkFacebook" runat="server" CssClass="linkFooter" PostBackUrl="http://www.facebook.com">Facebook</asp:LinkButton><br />
+        <asp:LinkButton ID="lnkTwitter" runat="server" CssClass="linkFooter" PostBackUrl="http://www.twitter.com">Twitter</asp:LinkButton><br />
+        <asp:LinkButton ID="lnkYoutube" runat="server" CssClass="linkFooter" PostBackUrl="http://www.youtube.com">Youtube</asp:LinkButton>
+    </div>
+    <div class="footerDroit">
+    <asp:Label CssClass="footerTitle" ID="lblDroitUtilisation" runat="server" Text="Droit d'utilisation"></asp:Label><br /><br />
+        <asp:Label ID="lblclsInc2012" runat="server" CssClass="footerText">© 2012 CLS inc.</asp:Label><br />
+        <asp:Label ID="lblToutDroitReserver" runat="server" CssClass="footerText">Tous droits réservés.</asp:Label><br />
+        <asp:LinkButton ID="lnkContacterWebmester" runat="server" CssClass="linkFooter">Contactez le webmestre</asp:LinkButton>
+    </div>
+    </div>
+</div>
+
+</div>​
+</div>
+
+
+    
+    </form>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="Default.aspx" ressourceKey="Home" title="Accueil"  description="Accueil">
+        <siteMapNode url="about.aspx" ressourceKey="About" title="Propos"  description="À propos" />
+        <siteMapNode url="contact.aspx" ressourceKey="Contact" title="Contact"  description="Contact" />
+        <siteMapNode url="login.aspx" ressourceKey="Login" title="Connection"  description="Connection" />
+        <siteMapNode url="register.aspx" ressourceKey="Register" title="Enregistrer"  description="Enregistrer" />
+        <siteMapNode url="home_member.aspx" ressourceKey="Home_member" title="Membre"  description="Membre">
+            <siteMapNode url="home_member_family.aspx" ressourceKey="Home_member_family" title="Famille"  description="Famille" />
+            <siteMapNode url="home_member_family_add.aspx" ressourceKey="Home_member_family_add" title="Ajouter"  description="Ajouter" />
+            <siteMapNode url="home_member_email.aspx" ressourceKey="Home_member_courriel" title="Courriel"  description="Courriel" />
+            <siteMapNode url="home_member_password.aspx" ressourceKey="Home_member_password" title="Mot_Passe"  description="Mot de passe" />
+            <siteMapNode url="home_member_credit.aspx" ressourceKey="Home_member_credit" title="Credit"  description="Carte credit" />          
+        </siteMapNode>
+        <siteMapNode url="home_employe.aspx" ressourceKey="Employe" title="Employe"  description="Employe">
+            <siteMapNode url="home_employe_client_delete.aspx" ressourceKey="Home_employe_client_delete" title="Supprimer"  description="Supprimer" />
+        </siteMapNode>
+        <siteMapNode url="home_admin.aspx" ressourceKey="Home_admin" title="Administrateur"  description="Administrateur">
+            <siteMapNode url="home_admin_employe_add.aspx" ressourceKey="Home_admin_employe_add" title="Ajouter"  description="Ajouter" />
+            <siteMapNode url="home_admin_employe_modify.aspx" ressourceKey="Home_admin_employe_modify" title="Modifier"  description="Modifier" />
+            <siteMapNode url="home_admin_employe_delete.aspx" ressourceKey="Home_admin_employe_delete" title="Supprimer"  description="Supprimer" />
+            <siteMapNode url="home_admin_group_add.aspx" ressourceKey="Home_admin_group_add" title="Ajouter"  description="Ajouter" />
+            <siteMapNode url="home_admin_group_modify.aspx" ressourceKey="Home_admin_group_modify" title="Modifier"  description="Modifier" />
+            <siteMapNode url="home_admin_group_delete.aspx" ressourceKey="Home_admin_group_delete" title="Supprimer"  description="Supprimer" />
+            <siteMapNode url="home_admin_schedule_add.aspx" ressourceKey="Home_admin_schedule_add" title="Ajouter"  description="Ajouter" />
+            <siteMapNode url="home_admin_schedule_modify.aspx" ressourceKey="Home_admin_schedule_modify" title="Modifier"  description="Modifier" />
+            <siteMapNode url="home_admin_schedule_delete.aspx" ressourceKey="Home_admin_schedule_delete" title="Supprimer"  description="Supprimer" />
+            <siteMapNode url="home_admin_employe_add.aspx" ressourceKey="Home_admin_employe_add" title="Ajouter"  description="Ajouter" />
+            <siteMapNode url="home_admin_employe_modify.aspx" ressourceKey="Home_admin_employe_modify" title="Modifier"  description="Modifier" />
+            <siteMapNode url="home_admin_employe_delete.aspx" ressourceKey="Home_admin_employe_delete" title="Supprimer"  description="Supprimer" />
+            
+        </siteMapNode>
+    </siteMapNode>
+</siteMap>

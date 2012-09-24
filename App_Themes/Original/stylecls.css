@@ -1,0 +1,512 @@
+﻿body 
+{
+    background-image: url('img/cross_scratches.png');
+    background-repeat:repeat-x repeat-y;
+}
+
+.linkHeaderMenuRight
+{
+    float:right;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.linkHeaderMenuLeft
+{
+    float:left;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+
+.iconMaster
+{
+    width:20px;
+    height:20px;
+}
+.page
+{
+    margin-left:auto;
+    margin-right: auto;
+    height:auto;
+}
+
+.ligneHeader
+{
+    width:auto;
+    height:1px;
+    background-color:Black;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+}
+
+.headerMenu
+{
+    width:940px;
+    height: 30px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-top:8px;
+}
+
+.menuNavigationCLS
+{
+    width: 940px;
+    height: 42px;
+    margin-left:auto;
+    margin-right: auto;
+    background-color: #ffbf00;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 5px;
+}
+
+.menuNavigationContainer
+{
+    width:900px;
+    height:42px;
+    margin-left:20px;
+    margin-right:20px;
+    background-color: #ffbf00;
+
+}
+
+.searchButton
+{
+    height:28px;
+    width:28px;
+    background-image: url('img/search.png');
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 6px;
+    
+}
+
+.searchButtonhover
+{
+    height:28px;
+    width:28px;
+    background-image: url('img/search_hover.png');
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 6px;
+    
+}
+
+.menuBouton
+{
+    height:42px;
+    width: 100px;
+    background-color: #ffbf00;
+    text-align:center;
+    float:left;
+    background-image: url('img/button.png');
+    background-repeat:repeat-x repeat-y;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 10px;
+    color:#1b1bb3;
+}
+
+.menuBoutonSearch
+{
+    height:42px;
+    width: 360px;
+    background-color: #ffbf00;
+    text-align:center;
+    float:left;
+    background-image: url('img/button.png');
+    background-repeat:repeat-x repeat-y;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 10px;
+    color:#1b1bb3;
+}
+
+.menuButtonAlign
+{
+    width:100px;
+    height:22px;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-size:18px;
+}
+
+.menuBouton:hover
+{
+    height:42px;
+    width: 100px;
+    background-color: #ffcf40;
+    text-align:center;
+    float:left;
+    background-image: url('img/button_hover.png');
+    background-repeat:repeat-x repeat-y;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 10px;
+    color:White;
+}
+
+
+
+.divBanner
+{
+    width:972px;
+    height: 202px;
+    margin-left:auto;
+    margin-right:auto;
+    background-image: url('img/banner.png');
+}
+
+.footer
+{
+    width:940px;
+    height:150px;
+    margin-left:auto;
+    margin-right:auto;
+    background-image: url('img/footer.png');
+    background-repeat:repeat-x repeat-y;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 50px;
+    float:none;
+}
+
+.footerTitleMenu
+{
+    width:940px;
+    height:20px;
+}
+
+.footerLiens
+{
+    text-align:center;
+    padding-top: 10px;
+    float:left;
+    width:313px;
+    height:120px;
+}
+
+.footerMedia
+{
+    text-align:center;
+    padding-top: 10px;
+    float:left;
+    width:313px;
+    height:120px;
+}
+
+.footerDroit
+{
+    text-align:center;
+    padding-top: 10px;
+    float:left;
+    width:314px;
+    height:120px;
+    
+}
+
+.footerText
+{
+    color:White;
+}
+
+.linkFooter
+{
+    color:White;
+}
+
+.linkFooter:hover
+{
+    color:#ffbf00;
+}
+
+
+.footerTitle
+{
+    color:Black;
+    font-weight:bold;
+}
+
+.menuPadding
+{
+    margin-left:auto;
+    margin-right:auto;
+    width: 940px;
+    border-radius: 5px;
+}
+
+.bannerPadding
+{
+    width:auto;
+    padding-bottom:8px;
+}
+
+.fieldSearch
+{
+    margin-top:5px;
+}
+
+.heroUnitCLS
+{
+    background-color: transparent;
+    padding:0;
+}
+
+.containerContenu
+{
+    margin-top:10px;
+    width:940px;
+    min-height:400px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    height:auto;
+}
+
+.containerZoneTexte
+{
+    width: 695px;
+    margin-right:10px;
+    background-color:White;
+    float:left;
+    height:500px;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 15px;
+    color: #1b1bb3;
+}
+
+.zoneTexteAccueil
+{
+    width:675px;
+    margin:10px;
+    height:auto;
+    text-align:justify;
+}
+
+.containerZoneMenu
+{
+    width: 225px;
+    margin-left:10px;
+    float:left;
+    background-color:transparent;
+    height: 400px;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 15px;
+}
+
+.menuZoneMenu
+{
+    width: 225px;
+    float:left;
+    height:42px;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 15px;
+    background-image: url('img/menuRight.png');
+    color:#ffbf00;
+    font-size:19px;
+    font-weight:bold;
+    
+}
+
+.textZoneMenu
+{
+    width:215px;
+    height:24px;
+    padding-top:9px;
+    padding-bottom:9px;
+    padding-left:10px;
+    text-align:left;
+}
+
+.bgZoneMenu
+{
+    width:225px;
+    height:200px;
+    background-color:#8d8dde;
+    color:White;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 15px;
+}
+
+.bgMenuCLSColor
+{
+    background-color: #ffbf00;
+}
+
+.buttonCLSColor
+{
+    background-color: #ffbf00;
+}
+
+.buttonCLSColor:hover
+{
+    background-color: #ffcf40;
+}
+
+
+
+.buttonCLS
+{
+    background-image: "img/button1.png";
+    background-repeat:repeat-y;
+    background-color: #ffbf00;
+    padding:10px 41px;
+    font-size:26px;
+    line-height:normal;
+}
+
+.navbar-search .search-query:focus, .navbar-search .search-query.focused {
+    padding-left: 30px;
+}
+
+.buttonCLS:hover
+{
+background-color: #ffcf40;
+color: #1b1bb3;
+background-image: "img/button2.png";
+ background-repeat:repeat-y;
+}
+
+.menuButtonCLS
+{
+    width: 920px;
+    height: 30px;
+}
+
+.txtboxRound
+{
+    border-radius:5px;
+}
+
+/*                          Style pour le client                              */
+
+
+.containerContenuClient
+{
+    margin-top:10px;
+    width:920px;
+    height:380px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    background-color: White;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.titleClient
+{
+    color:Black;
+    font-size:19px;
+}
+
+.menuSection
+{
+    background-color: #1b1bb3;
+    width:920px;
+    height: 30px;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 5px; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.textMenuSection
+{
+    width: 900px;
+    height:30px;
+    color: #ffbf00;
+    font-weight:bold;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:4px;
+    font-size: 18px;
+}
+
+.textMenuRight
+{
+    text-align:right;
+    float:right;
+}
+
+
+/*                          Style pour l'admin                              */
+
+
+.containerContenuAdmin
+{
+    margin-top:10px;
+    width:920px;
+    min-height:400px;
+    height:auto;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    background-color: White;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.titleAdmin
+{
+    color:Black;
+    font-size:22px;
+    text-decoration:underline;
+    margin-left:10px;
+    margin-bottom:20px;
+}
+
+.titleAdminNormal
+{
+    color:Black;
+    font-size:22px;
+    margin-left:10px;
+    margin-bottom:20px;
+}
+
+.titleAdmin:hover
+{
+    color:#ffbf00;
+    font-size:22px;
+    text-decoration:underline;
+}
+.menuSectionAdmin
+{
+    background-color: #1b1bb3;
+    width:275px;
+    height: 26px;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 5px; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right:5px;
+    color: #ffbf00;
+    font-weight:bold;
+    font-size: 19px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:3px;
+    text-align:center;
+    float: left;
+}
+
+.contenuAdmin
+{
+    background-color:#eeeeee;
+    width: 273px;
+    height:100px;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-bottom-right-radius: 5px; 
+    border-bottom-left-radius: 5px; 
+    border: 1px solid;
+    margin-top: 0;
+    margin-bottom:5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color:#1b1bb3;
+    font-weight:bold;
+    font-size: 16px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:10px;
+    text-align:left;
+    float: left;
+}
