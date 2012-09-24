@@ -8,7 +8,7 @@
         <siteMapNode url="cart.aspx" ressourceKey="Cart" title="Enregistrer"  description="Enregistrer">
             <siteMapNode url="cart_checkout.aspx" ressourceKey="Cart_checkout" title="Confirmation"  description="Confirmation" />
         </siteMapNode>
-        <siteMapNode url="course_search.aspx" ressourceKey="Course_search" title="Recherche cours"  description="Recherche cours">
+        <siteMapNode url="course_search.aspx" ressourceKey="Course_search" title="Recherche cours"  description="Recherche cours" />
         <siteMapNode url="home_member.aspx" ressourceKey="Home_member" title="Membre"  description="Membre">
             <siteMapNode url="member_family.aspx" ressourceKey="Member_family" title="Famille"  description="Famille" />
             <siteMapNode url="member_family_add.aspx" ressourceKey="Member_family_add" title="Ajouter"  description="Ajouter" />

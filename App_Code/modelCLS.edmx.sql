@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/21/2012 15:08:22
--- Generated from EDMX file: C:\CLS\App_Code\modelCLS.edmx
+-- Date Created: 09/24/2012 13:34:41
+-- Generated from EDMX file: C:\GitHub\cls-inc\App_Code\modelCLS.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -58,6 +58,9 @@ IF OBJECT_ID(N'[dbo].[FK_SpecialiteAnimateur_Animateur]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_RoleMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[MembresJeu] DROP CONSTRAINT [FK_RoleMembres];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AnimateurCours]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CoursJeu] DROP CONSTRAINT [FK_AnimateurCours];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Animateur_inherits_Membres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[MembresJeu_Animateur] DROP CONSTRAINT [FK_Animateur_inherits_Membres];
@@ -141,6 +144,7 @@ CREATE TABLE [dbo].[MembresJeu] (
     [dateInscription] datetime  NOT NULL,
     [dateNaissance] datetime  NOT NULL,
     [courriel] nvarchar(50)  NOT NULL,
+    [codePostal] nvarchar(7)  NOT NULL,
     [Role_idRole] smallint  NOT NULL
 );
 GO

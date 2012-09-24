@@ -16,7 +16,7 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("a7bd49e1-f84c-496e-9b0e-c7cd50941dac")>
+<Assembly: EdmSchemaAttribute("ebd63861-bf98-4e4c-98f4-6bed132dc5e3")>
 #Region "Métadonnées de relation EDM"
 <Assembly: EdmRelationshipAttribute("modelCLS", "CarteCreditMembres", "CarteCredit", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.CarteCredit), "Membres", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.Membres))>
 <Assembly: EdmRelationshipAttribute("modelCLS", "AbonnementMembres", "Abonnement", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.Abonnement), "Membres", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.Membres))>
@@ -512,9 +512,10 @@ Namespace modelCLS
         ''' <param name="dateInscription">Valeur initiale de la propriété dateInscription.</param>
         ''' <param name="dateNaissance">Valeur initiale de la propriété dateNaissance.</param>
         ''' <param name="courriel">Valeur initiale de la propriété courriel.</param>
+        ''' <param name="codePostal">Valeur initiale de la propriété codePostal.</param>
         ''' <param name="idEmploye">Valeur initiale de la propriété idEmploye.</param>
         ''' <param name="idAdmin">Valeur initiale de la propriété idAdmin.</param>
-        Public Shared Function CreateAdmin(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String, idEmploye As Global.System.Int16, idAdmin As Global.System.Int16) As Admin
+        Public Shared Function CreateAdmin(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String, codePostal As Global.System.String, idEmploye As Global.System.Int16, idAdmin As Global.System.Int16) As Admin
             Dim admin as Admin = New Admin
             admin.idMembre = idMembre
             admin.nomMembre = nomMembre
@@ -526,6 +527,7 @@ Namespace modelCLS
             admin.dateInscription = dateInscription
             admin.dateNaissance = dateNaissance
             admin.courriel = courriel
+            admin.codePostal = codePostal
             admin.idEmploye = idEmploye
             admin.idAdmin = idAdmin
             Return admin
@@ -585,8 +587,9 @@ Namespace modelCLS
         ''' <param name="dateInscription">Valeur initiale de la propriété dateInscription.</param>
         ''' <param name="dateNaissance">Valeur initiale de la propriété dateNaissance.</param>
         ''' <param name="courriel">Valeur initiale de la propriété courriel.</param>
+        ''' <param name="codePostal">Valeur initiale de la propriété codePostal.</param>
         ''' <param name="idAnimateur">Valeur initiale de la propriété idAnimateur.</param>
-        Public Shared Function CreateAnimateur(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String, idAnimateur As Global.System.Int16) As Animateur
+        Public Shared Function CreateAnimateur(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String, codePostal As Global.System.String, idAnimateur As Global.System.Int16) As Animateur
             Dim animateur as Animateur = New Animateur
             animateur.idMembre = idMembre
             animateur.nomMembre = nomMembre
@@ -598,6 +601,7 @@ Namespace modelCLS
             animateur.dateInscription = dateInscription
             animateur.dateNaissance = dateNaissance
             animateur.courriel = courriel
+            animateur.codePostal = codePostal
             animateur.idAnimateur = idAnimateur
             Return animateur
         End Function
@@ -1470,8 +1474,9 @@ Namespace modelCLS
         ''' <param name="dateInscription">Valeur initiale de la propriété dateInscription.</param>
         ''' <param name="dateNaissance">Valeur initiale de la propriété dateNaissance.</param>
         ''' <param name="courriel">Valeur initiale de la propriété courriel.</param>
+        ''' <param name="codePostal">Valeur initiale de la propriété codePostal.</param>
         ''' <param name="idEmploye">Valeur initiale de la propriété idEmploye.</param>
-        Public Shared Function CreateEmploye(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String, idEmploye As Global.System.Int16) As Employe
+        Public Shared Function CreateEmploye(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String, codePostal As Global.System.String, idEmploye As Global.System.Int16) As Employe
             Dim employe as Employe = New Employe
             employe.idMembre = idMembre
             employe.nomMembre = nomMembre
@@ -1483,6 +1488,7 @@ Namespace modelCLS
             employe.dateInscription = dateInscription
             employe.dateNaissance = dateNaissance
             employe.courriel = courriel
+            employe.codePostal = codePostal
             employe.idEmploye = idEmploye
             Return employe
         End Function
@@ -2064,7 +2070,8 @@ Namespace modelCLS
         ''' <param name="dateInscription">Valeur initiale de la propriété dateInscription.</param>
         ''' <param name="dateNaissance">Valeur initiale de la propriété dateNaissance.</param>
         ''' <param name="courriel">Valeur initiale de la propriété courriel.</param>
-        Public Shared Function CreateMembres(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String) As Membres
+        ''' <param name="codePostal">Valeur initiale de la propriété codePostal.</param>
+        Public Shared Function CreateMembres(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String, codePostal As Global.System.String) As Membres
             Dim membres as Membres = New Membres
             membres.idMembre = idMembre
             membres.nomMembre = nomMembre
@@ -2076,6 +2083,7 @@ Namespace modelCLS
             membres.dateInscription = dateInscription
             membres.dateNaissance = dateNaissance
             membres.courriel = courriel
+            membres.codePostal = codePostal
             Return membres
         End Function
 
@@ -2332,6 +2340,31 @@ Namespace modelCLS
         End Sub
     
         Private Partial Sub OncourrielChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property codePostal() As Global.System.String
+            Get
+                Return _codePostal
+            End Get
+            Set
+                OncodePostalChanging(value)
+                ReportPropertyChanging("codePostal")
+                _codePostal = StructuralObject.SetValidValue(value, false)
+                ReportPropertyChanged("codePostal")
+                OncodePostalChanged()
+            End Set
+        End Property
+    
+        Private _codePostal As Global.System.String
+        Private Partial Sub OncodePostalChanging(value As Global.System.String)
+        End Sub
+    
+        Private Partial Sub OncodePostalChanged()
         End Sub
 
         #End Region
