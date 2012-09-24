@@ -49,7 +49,7 @@
 </div>
 
 <div class="contenuAdmin">
-    <asp:LinkButton ID="lnkAjouterEmploye" runat="server" PostBackUrl="~/Page/Admin/ajouter_employe.aspx">Ajouter employé</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkAjouterEmploye" runat="server" PostBackUrl="~/Page/Admin/home_admin_employe_add.aspx">Ajouter employé</asp:LinkButton><br/>
     <asp:LinkButton ID="lnkModifierEmploye" runat="server">Modifier employé</asp:LinkButton><br/>
     <asp:LinkButton ID="lnkSupprimerEmploye" runat="server">Supprimer employé</asp:LinkButton><br/>
 </div>
@@ -63,7 +63,7 @@
 
 
 <div class="contenuAdmin">
-    <asp:LinkButton ID="lnkModifierPermission" runat="server">Modifier les permissions</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkModifierPermission" runat="server" PostBackUrl="~/Page/Admin/home_admin_permission.aspx">Modifier les permissions</asp:LinkButton><br/>
 </div>
 
 </div>
