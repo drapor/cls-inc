@@ -16,18 +16,19 @@
             <siteMapNode url="home_employe_client_delete.aspx" ressourceKey="Home_employe_client_delete" title="Supprimer"  description="Supprimer" />
         </siteMapNode>
         <siteMapNode url="home_admin.aspx" ressourceKey="Home_admin" title="Administrateur"  description="Administrateur">
-            <siteMapNode url="home_admin_employe_add.aspx" ressourceKey="Home_admin_employe_add" title="Ajouter"  description="Ajouter" />
-            <siteMapNode url="home_admin_employe_modify.aspx" ressourceKey="Home_admin_employe_modify" title="Modifier"  description="Modifier" />
-            <siteMapNode url="home_admin_employe_delete.aspx" ressourceKey="Home_admin_employe_delete" title="Supprimer"  description="Supprimer" />
-            <siteMapNode url="home_admin_group_add.aspx" ressourceKey="Home_admin_group_add" title="Ajouter"  description="Ajouter" />
-            <siteMapNode url="home_admin_group_modify.aspx" ressourceKey="Home_admin_group_modify" title="Modifier"  description="Modifier" />
-            <siteMapNode url="home_admin_group_delete.aspx" ressourceKey="Home_admin_group_delete" title="Supprimer"  description="Supprimer" />
-            <siteMapNode url="home_admin_schedule_add.aspx" ressourceKey="Home_admin_schedule_add" title="Ajouter"  description="Ajouter" />
-            <siteMapNode url="home_admin_schedule_modify.aspx" ressourceKey="Home_admin_schedule_modify" title="Modifier"  description="Modifier" />
-            <siteMapNode url="home_admin_schedule_delete.aspx" ressourceKey="Home_admin_schedule_delete" title="Supprimer"  description="Supprimer" />
-            <siteMapNode url="home_admin_employe_add.aspx" ressourceKey="Home_admin_employe_add" title="Ajouter"  description="Ajouter" />
-            <siteMapNode url="home_admin_employe_modify.aspx" ressourceKey="Home_admin_employe_modify" title="Modifier"  description="Modifier" />
-            <siteMapNode url="home_admin_employe_delete.aspx" ressourceKey="Home_admin_employe_delete" title="Supprimer"  description="Supprimer" />
+            <siteMapNode url="home_admin_employe_add.aspx" ressourceKey="Home_admin_employe_add" title="Ajouter employé"  description="Ajouter employé" />
+            <siteMapNode url="home_admin_employe_modify.aspx" ressourceKey="Home_admin_employe_modify" title="Modifier employé"  description="Modifier employé" />
+            <siteMapNode url="home_admin_employe_delete.aspx" ressourceKey="Home_admin_employe_delete" title="Supprimer employé"  description="Supprimer employé" />
+            <siteMapNode url="home_admin_group_add.aspx" ressourceKey="Home_admin_group_add" title="Ajouter groupe"  description="Ajouter groupe" />
+            <siteMapNode url="home_admin_group_modify.aspx" ressourceKey="Home_admin_group_modify" title="Modifier groupe"  description="Modifier groupe" />
+            <siteMapNode url="home_admin_group_delete.aspx" ressourceKey="Home_admin_group_delete" title="Supprimer groupe"  description="Supprimer groupe" />
+            <siteMapNode url="home_admin_schedule_add.aspx" ressourceKey="Home_admin_schedule_add" title="Ajouter horaire"  description="Ajouter horaire" />
+            <siteMapNode url="home_admin_schedule_modify.aspx" ressourceKey="Home_admin_schedule_modify" title="Modifier horaire"  description="Modifier horaire" />
+            <siteMapNode url="home_admin_schedule_delete.aspx" ressourceKey="Home_admin_schedule_delete" title="Supprimer horaire"  description="Supprimer horaire" />
+            <siteMapNode url="home_admin_course_add.aspx" ressourceKey="Home_admin_course_add" title="Ajouter cours"  description="Ajouter cours" />
+            <siteMapNode url="home_admin_course_modify.aspx" ressourceKey="Home_admin_course_modify" title="Modifier cours"  description="Modifier cours" />
+            <siteMapNode url="home_admin_course_delete.aspx" ressourceKey="Home_admin_course_delete" title="Supprimer cours"  description="Supprimer cours" />
+            <siteMapNode url="home_admin_autorisation.aspx" ressourceKey="Home_admin_autorisation" title="Changer autorisation"  description="Changer autorisation" />
             
         </siteMapNode>
     </siteMapNode>
