@@ -103,15 +103,13 @@
     <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"></div>
          <div class="elementFormulaire">
-             <asp:Button ID="btnAjouter" runat="server" Text="Ajouter" CssClass="btn btn-primary btn-large btn"/>
+             <asp:Button ID="btnAjouter" runat="server" Text="Ajouter" CssClass="btn btn-primary btn-large btn" OnClick="ajouterEmployeClick"/>
              <asp:Button ID="btnCancel" runat="server" Text="Canceller" CssClass="btn btn-primary btn-large btn" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false"/>
          </div>
     </div>
 
 
 </div>
-
-
 
 <script>
     $(function () {
@@ -126,23 +124,13 @@
     });
 	</script>
 
-
-
-<%--    <asp:EntityDataSource ID="dsEmploye" runat="server"
-     ConnectionString="name=BNCVersion4Entities1"
-     DefaultContainerName="BNCVersion4Entities1" 
-     EntitySetName="Courtiers" EnableFlattening="False"
-     EnableDelete="True" 
-     EnableInsert="False" 
-     EnableUpdate="True" 
-     Where="(@texteRecherche is null or (it.email + it.nom + it.[prenom]) 
-             like '%' + @texteRecherche + '%')"
-     OrderBy="it.email">
-<WhereParameters>
-    <asp:ControlParameter Name="texteRecherche" ControlID="txtCherche" PropertyName="Text"
-        Type="String" ConvertEmptyStringToNull="true" />
-</WhereParameters>
-</asp:EntityDataSource>--%>
+<%--    <asp:EntityDataSource ID="dsEmploye" runat="server" ConnectionString="name=modelCLSContainer"
+            DefaultContainerName="modelCLSContainer"
+            EntitySetName="MembresJeu_Employe"
+            EnableFlattening="false"
+            EnableInsert="true">
+            </asp:EntityDataSource>
+--%>
 
 </div>
 </asp:Content>

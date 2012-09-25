@@ -9,16 +9,18 @@
 '------------------------------------------------------------------------------
 
 Imports System
+Imports System.ComponentModel
+Imports System.Data.EntityClient
 Imports System.Data.Objects
 Imports System.Data.Objects.DataClasses
-Imports System.Data.EntityClient
-Imports System.ComponentModel
-Imports System.Xml.Serialization
+Imports System.Linq
 Imports System.Runtime.Serialization
+Imports System.Xml.Serialization
 
-<Assembly: EdmSchemaAttribute("ebd63861-bf98-4e4c-98f4-6bed132dc5e3")>
+
+<Assembly: EdmSchemaAttribute("7cda7ac1-c741-47db-b7e2-4c489e3d73fe")>
 #Region "Métadonnées de relation EDM"
-<Assembly: EdmRelationshipAttribute("modelCLS", "CarteCreditMembres", "CarteCredit", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.CarteCredit), "Membres", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.Membres))>
+<Assembly: EdmRelationshipAttribute("modelCLS", "CarteCreditMembres", "CarteCredit", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(modelCLS.CarteCredit), "Membres", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.Membres))>
 <Assembly: EdmRelationshipAttribute("modelCLS", "AbonnementMembres", "Abonnement", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.Abonnement), "Membres", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.Membres))>
 <Assembly: EdmRelationshipAttribute("modelCLS", "AbonnementGroupe", "Abonnement", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.Abonnement), "Groupe", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.Groupe))>
 <Assembly: EdmRelationshipAttribute("modelCLS", "CoursCoursComplete", "Cours", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.Cours), "CoursComplete", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.CoursComplete))>
@@ -33,8 +35,9 @@ Imports System.Runtime.Serialization
 <Assembly: EdmRelationshipAttribute("modelCLS", "AnimateurCours", "Animateur", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.Animateur), "Cours", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.Cours))>
 
 #End Region
+
 Namespace modelCLS
-    
+
     #Region "Contextes"
     
     ''' <summary>
@@ -43,14 +46,14 @@ Namespace modelCLS
     Public Partial Class modelCLSContainer
         Inherits ObjectContext
     
-        #Region "Constructors"
+        #Region "Constructeurs"
     
         ''' <summary>
         ''' Initialise un nouvel objet modelCLSContainer à l'aide de la chaîne de connexion trouvée dans la section 'modelCLSContainer' du fichier de configuration d'application.
         ''' </summary>
         Public Sub New()
             MyBase.New("name=modelCLSContainer", "modelCLSContainer")
-        MyBase.ContextOptions.LazyLoadingEnabled = true
+            MyBase.ContextOptions.LazyLoadingEnabled = true
             OnContextCreated()
         End Sub
     
@@ -59,7 +62,7 @@ Namespace modelCLS
         ''' </summary>
         Public Sub New(ByVal connectionString As String)
             MyBase.New(connectionString, "modelCLSContainer")
-        MyBase.ContextOptions.LazyLoadingEnabled = true
+            MyBase.ContextOptions.LazyLoadingEnabled = true
             OnContextCreated()
         End Sub
     
@@ -68,13 +71,13 @@ Namespace modelCLS
         ''' </summary>
         Public Sub New(ByVal connection As EntityConnection)
             MyBase.New(connection, "modelCLSContainer")
-        MyBase.ContextOptions.LazyLoadingEnabled = true
+            MyBase.ContextOptions.LazyLoadingEnabled = true
             OnContextCreated()
         End Sub
     
         #End Region
     
-        #Region "Partial Methods"
+        #Region "Méthodes partielles"
     
         Partial Private Sub OnContextCreated()
         End Sub
@@ -250,8 +253,23 @@ Namespace modelCLS
         End Property
     
         Private _RoleJeu As ObjectSet(Of Role)
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        Public ReadOnly Property sysdiagrams() As ObjectSet(Of sysdiagrams)
+            Get
+                If (_sysdiagrams Is Nothing) Then
+                    _sysdiagrams = MyBase.CreateObjectSet(Of sysdiagrams)("sysdiagrams")
+                End If
+                Return _sysdiagrams
+            End Get
+        End Property
+    
+        Private _sysdiagrams As ObjectSet(Of sysdiagrams)
 
         #End Region
+
         #Region "Méthodes AddTo"
     
         ''' <summary>
@@ -337,11 +355,20 @@ Namespace modelCLS
         Public Sub AddToRoleJeu(ByVal role As Role)
             MyBase.AddObject("RoleJeu", role)
         End Sub
+    
+        ''' <summary>
+        ''' Méthode déconseillée pour ajouter un nouvel objet à l'EntitySet sysdiagrams. Utilisez la méthode .Add de la propriété ObjectSet(Of T) associée à la place.
+        ''' </summary>
+        Public Sub AddTosysdiagrams(ByVal sysdiagrams As sysdiagrams)
+            MyBase.AddObject("sysdiagrams", sysdiagrams)
+        End Sub
 
         #End Region
+
     End Class
 
     #End Region
+
     #Region "Entités"
     
     ''' <summary>
@@ -367,6 +394,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -422,6 +450,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -487,6 +516,7 @@ Namespace modelCLS
         End Property
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -534,6 +564,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -562,6 +593,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -607,6 +639,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -635,6 +668,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -674,6 +708,7 @@ Namespace modelCLS
         End Property
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -707,6 +742,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -862,6 +898,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -896,6 +933,7 @@ Namespace modelCLS
         End Property
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -937,6 +975,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -1242,6 +1281,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -1330,6 +1370,7 @@ Namespace modelCLS
         End Property
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -1353,6 +1394,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -1383,6 +1425,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -1448,6 +1491,7 @@ Namespace modelCLS
         End Property
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -1494,6 +1538,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -1522,6 +1567,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -1549,6 +1595,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -1629,6 +1676,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -1730,6 +1778,7 @@ Namespace modelCLS
         End Property
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -1761,6 +1810,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -1891,6 +1941,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -1925,6 +1976,7 @@ Namespace modelCLS
         End Property
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -1948,6 +2000,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -1978,6 +2031,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -2043,6 +2097,7 @@ Namespace modelCLS
         End Property
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -2088,6 +2143,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -2368,6 +2424,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -2487,6 +2544,7 @@ Namespace modelCLS
         End Property
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -2512,6 +2570,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -2567,6 +2626,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -2588,6 +2648,7 @@ Namespace modelCLS
         End Property
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -2617,6 +2678,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -2722,6 +2784,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -2743,6 +2806,7 @@ Namespace modelCLS
         End Property
 
         #End Region
+
     End Class
     
     ''' <summary>
@@ -2768,6 +2832,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -2823,6 +2888,7 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -2844,6 +2910,166 @@ Namespace modelCLS
         End Property
 
         #End Region
+
+    End Class
+    
+    ''' <summary>
+    ''' Aucune documentation sur les métadonnées n'est disponible.
+    ''' </summary>
+    <EdmEntityTypeAttribute(NamespaceName:="modelCLS", Name:="sysdiagrams")>
+    <Serializable()>
+    <DataContractAttribute(IsReference:=True)>
+    Public Partial Class sysdiagrams
+        Inherits EntityObject
+        #Region "Méthode de fabrique"
+    
+        ''' <summary>
+        ''' Créez un nouvel objet sysdiagrams.
+        ''' </summary>
+        ''' <param name="name">Valeur initiale de la propriété name.</param>
+        ''' <param name="principal_id">Valeur initiale de la propriété principal_id.</param>
+        ''' <param name="diagram_id">Valeur initiale de la propriété diagram_id.</param>
+        Public Shared Function Createsysdiagrams(name As Global.System.String, principal_id As Global.System.Int32, diagram_id As Global.System.Int32) As sysdiagrams
+            Dim sysdiagrams as sysdiagrams = New sysdiagrams
+            sysdiagrams.name = name
+            sysdiagrams.principal_id = principal_id
+            sysdiagrams.diagram_id = diagram_id
+            Return sysdiagrams
+        End Function
+
+        #End Region
+
+        #Region "Propriétés primitives"
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property name() As Global.System.String
+            Get
+                Return _name
+            End Get
+            Set
+                OnnameChanging(value)
+                ReportPropertyChanging("name")
+                _name = StructuralObject.SetValidValue(value, false)
+                ReportPropertyChanged("name")
+                OnnameChanged()
+            End Set
+        End Property
+    
+        Private _name As Global.System.String
+        Private Partial Sub OnnameChanging(value As Global.System.String)
+        End Sub
+    
+        Private Partial Sub OnnameChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property principal_id() As Global.System.Int32
+            Get
+                Return _principal_id
+            End Get
+            Set
+                Onprincipal_idChanging(value)
+                ReportPropertyChanging("principal_id")
+                _principal_id = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("principal_id")
+                Onprincipal_idChanged()
+            End Set
+        End Property
+    
+        Private _principal_id As Global.System.Int32
+        Private Partial Sub Onprincipal_idChanging(value As Global.System.Int32)
+        End Sub
+    
+        Private Partial Sub Onprincipal_idChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property diagram_id() As Global.System.Int32
+            Get
+                Return _diagram_id
+            End Get
+            Set
+                If (_diagram_id <> Value) Then
+                    Ondiagram_idChanging(value)
+                    ReportPropertyChanging("diagram_id")
+                    _diagram_id = StructuralObject.SetValidValue(value)
+                    ReportPropertyChanged("diagram_id")
+                    Ondiagram_idChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _diagram_id As Global.System.Int32
+        Private Partial Sub Ondiagram_idChanging(value As Global.System.Int32)
+        End Sub
+    
+        Private Partial Sub Ondiagram_idChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property version() As Nullable(Of Global.System.Int32)
+            Get
+                Return _version
+            End Get
+            Set
+                OnversionChanging(value)
+                ReportPropertyChanging("version")
+                _version = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("version")
+                OnversionChanged()
+            End Set
+        End Property
+    
+        Private _version As Nullable(Of Global.System.Int32)
+        Private Partial Sub OnversionChanging(value As Nullable(Of Global.System.Int32))
+        End Sub
+    
+        Private Partial Sub OnversionChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property definition() As Global.System.Byte()
+            Get
+                    Return StructuralObject.GetValidValue(_definition)
+            End Get
+            Set
+                OndefinitionChanging(value)
+                ReportPropertyChanging("definition")
+                _definition = StructuralObject.SetValidValue(value, true)
+                ReportPropertyChanged("definition")
+                OndefinitionChanged()
+            End Set
+        End Property
+    
+        Private _definition As Global.System.Byte()
+        Private Partial Sub OndefinitionChanging(value As Global.System.Byte())
+        End Sub
+    
+        Private Partial Sub OndefinitionChanged()
+        End Sub
+
+        #End Region
+
     End Class
     
     ''' <summary>
@@ -2875,6 +3101,7 @@ Namespace modelCLS
         End Function
 
         #End Region
+
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -3005,8 +3232,10 @@ Namespace modelCLS
         End Sub
 
         #End Region
+
     End Class
 
     #End Region
+
     
 End Namespace
