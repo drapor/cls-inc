@@ -9,8 +9,9 @@
 
 <div class="containerFormulaire">
 
+
     <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblCourriel" runat="server" Text="Adresse courriel"></asp:Label></div>
+         <div class="elementFormulaireTexte"><asp:Label ID="lblCourriel" runat="server" Text="E-mail"></asp:Label></div>
          <div class="elementFormulaire"><asp:TextBox ID="txtCourriel" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="50"></asp:TextBox></div>
          <div class="elementFormulaireRequired">
         <asp:RequiredFieldValidator ID="requiredCourriel" runat="server" ErrorMessage="*L'adresse courriel est obligatoire" ControlToValidate="txtCourriel" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -95,8 +96,8 @@
     <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"><asp:Label ID="lblType" runat="server" Text="Type de compte"></asp:Label></div>
          <div class="elementFormulaire"><asp:DropDownList ID="dropDownType" runat="server" SkinID="ddlBlue" AppendDataBoundItems="False" CssClass="search-query">
-             <asp:ListItem Selected="True">Employé</asp:ListItem>
-             <asp:ListItem>Administrateur</asp:ListItem>
+             <asp:ListItem Selected="True" Value="2">Employé</asp:ListItem>
+             <asp:ListItem Value="1">Administrateur</asp:ListItem>
              </asp:DropDownList>
          </div>
     </div>
@@ -105,6 +106,7 @@
          <div class="elementFormulaire">
              <asp:Button ID="btnAjouter" runat="server" Text="Ajouter" CssClass="btn btn-primary btn-large btn" OnClick="ajouterEmployeClick"/>
              <asp:Button ID="btnCancel" runat="server" Text="Canceller" CssClass="btn btn-primary btn-large btn" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false"/>
+             <asp:Label ID="lblTest" runat="server" Text="Label"></asp:Label>
          </div>
     </div>
 
