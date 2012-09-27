@@ -9,19 +9,20 @@
 
 <div class="containerFormulaire">
     <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblNomEmploye" runat="server" Text="Nom de l'employé"></asp:Label></div>
+         <div class="elementFormulaireTexte"><asp:Label ID="lblNomEmploye" runat="server" Text="Choisissez le nom de l'employé"></asp:Label></div>
          <div class="elementFormulaire">
-             <asp:DropDownList ID="dropDownSexe" runat="server" Width="200px" SkinID="ddlBlue">
-                 <asp:ListItem Selected="True">Bob Gratton</asp:ListItem>
-                 <asp:ListItem>Roger Allard</asp:ListItem>
+             <asp:DropDownList ID="lstEmploye" AppendDataBoundItems="true" runat="server" Width="240px" SkinID="ddlBlue" DataSourceID="dsEmploye" DataTextField="FullName" DataValueField="Role_idRole">
+             <asp:ListItem Value="0" Text="--Sélectionnez un employé--"></asp:ListItem>
              </asp:DropDownList>
          </div>
     </div>
     <div class="ligneFormulaire">
+        <asp:Label ID="lblEmployePresentement" runat="server" Text="Cet employé est présentement "></asp:Label>
+        <asp:Label ID="lblEmployePermission" runat="server" Text="Label"></asp:Label>
+    </div> 
+    <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"><asp:Label ID="lblTypePermission" runat="server" Text="Type de permission"></asp:Label></div>
-         <div class="elementFormulaire"><asp:DropDownList ID="dropDownType" runat="server" SkinID="ddlBlue" AppendDataBoundItems="False">
-             <asp:ListItem Selected="True">Employé</asp:ListItem>
-             <asp:ListItem>Administrateur</asp:ListItem>
+         <div class="elementFormulaire"><asp:DropDownList ID="dropDownType" runat="server" SkinID="ddlBlue" AppendDataBoundItems="true" DataSourceID="dsPermission" DataValueField="idRole" DataTextField="nomRole">
              </asp:DropDownList>
          </div>
     </div>
@@ -32,26 +33,32 @@
              <asp:Button ID="btnCancel" runat="server" Text="Canceller" CssClass="btn btn-primary btn-large btn" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false"/>
          </div>
     </div>
-
-
 </div>
 
+<asp:EntityDataSource ID="dsEmploye" runat="server"
+ConnectionString="name=modelCLSContainer"
+DefaultContainerName="modelCLSContainer"
+EnableFlattening="false"
+EnableUpdate="false"
+EnableDelete="false"
+EnableInsert="false"
+EntitySetName="MembresJeu"
+Select="it.idMembre, it.Role_idRole,(it.[prenomMembre]+' '+it.[nomMembre]) as FullName, it.nomMembre, it.prenomMembre"
+OrderBy="it.nomMembre">
+</asp:EntityDataSource>
 
-
-<script>
-    $(function () {
-        $(".datepicker").datepicker({
-            dayNamesMin: ["Di", "Lu", "Ma", "Me", "Je", "ve", "Sa"],
-            monthNamesShort: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
-            yearRange: "c-100:c",
-            changeMonth: true,
-            changeYear: true
-        });
-    });
-	</script>
-
+<asp:EntityDataSource ID="dsPermission" runat="server"
+ConnectionString="name=modelCLSContainer"
+DefaultContainerName="modelCLSContainer"
+EnableFlattening="false"
+EnableUpdate="false"
+EnableDelete="false"
+EnableInsert="false"
+EntitySetName="RoleJeu"
+Select="it.idRole, it.nomRole"
+OrderBy="it.idRole">
+</asp:EntityDataSource>
 
 
 </div>
 </asp:Content>
-
