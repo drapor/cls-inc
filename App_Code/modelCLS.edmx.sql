@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/24/2012 13:34:41
+-- Date Created: 09/25/2012 14:47:00
 -- Generated from EDMX file: C:\GitHub\cls-inc\App_Code\modelCLS.edmx
 -- --------------------------------------------------
 
@@ -56,11 +56,11 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SpecialiteAnimateur_Animateur]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SpecialiteAnimateur] DROP CONSTRAINT [FK_SpecialiteAnimateur_Animateur];
 GO
-IF OBJECT_ID(N'[dbo].[FK_RoleMembres]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembresJeu] DROP CONSTRAINT [FK_RoleMembres];
-GO
 IF OBJECT_ID(N'[dbo].[FK_AnimateurCours]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CoursJeu] DROP CONSTRAINT [FK_AnimateurCours];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RoleMembres]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembresJeu] DROP CONSTRAINT [FK_RoleMembres];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Animateur_inherits_Membres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[MembresJeu_Animateur] DROP CONSTRAINT [FK_Animateur_inherits_Membres];
@@ -76,9 +76,6 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[MembresJeu]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[MembresJeu];
-GO
 IF OBJECT_ID(N'[dbo].[TarifsJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TarifsJeu];
 GO
@@ -112,6 +109,9 @@ GO
 IF OBJECT_ID(N'[dbo].[RoleJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[RoleJeu];
 GO
+IF OBJECT_ID(N'[dbo].[MembresJeu]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MembresJeu];
+GO
 IF OBJECT_ID(N'[dbo].[MembresJeu_Animateur]', 'U') IS NOT NULL
     DROP TABLE [dbo].[MembresJeu_Animateur];
 GO
@@ -131,23 +131,6 @@ GO
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
-
--- Creating table 'MembresJeu'
-CREATE TABLE [dbo].[MembresJeu] (
-    [idMembre] smallint IDENTITY(1,1) NOT NULL,
-    [nomMembre] nvarchar(25)  NOT NULL,
-    [prenomMembre] nvarchar(25)  NOT NULL,
-    [telephoneMembre] nvarchar(13)  NOT NULL,
-    [motPasse] nvarchar(20)  NOT NULL,
-    [adresse] nvarchar(40)  NOT NULL,
-    [ville] nvarchar(25)  NOT NULL,
-    [dateInscription] datetime  NOT NULL,
-    [dateNaissance] datetime  NOT NULL,
-    [courriel] nvarchar(50)  NOT NULL,
-    [codePostal] nvarchar(7)  NOT NULL,
-    [Role_idRole] smallint  NOT NULL
-);
-GO
 
 -- Creating table 'TarifsJeu'
 CREATE TABLE [dbo].[TarifsJeu] (
@@ -257,6 +240,23 @@ CREATE TABLE [dbo].[RoleJeu] (
 );
 GO
 
+-- Creating table 'MembresJeu'
+CREATE TABLE [dbo].[MembresJeu] (
+    [idMembre] smallint IDENTITY(1,1) NOT NULL,
+    [nomMembre] nvarchar(25)  NOT NULL,
+    [prenomMembre] nvarchar(25)  NOT NULL,
+    [telephoneMembre] nvarchar(13)  NOT NULL,
+    [motPasse] nvarchar(20)  NOT NULL,
+    [adresse] nvarchar(40)  NOT NULL,
+    [ville] nvarchar(25)  NOT NULL,
+    [dateInscription] datetime  NOT NULL,
+    [dateNaissance] datetime  NOT NULL,
+    [courriel] nvarchar(50)  NOT NULL,
+    [codePostal] nvarchar(7)  NOT NULL,
+    [Role_idRole] smallint  NOT NULL
+);
+GO
+
 -- Creating table 'MembresJeu_Animateur'
 CREATE TABLE [dbo].[MembresJeu_Animateur] (
     [idAnimateur] smallint IDENTITY(1,1) NOT NULL,
@@ -295,12 +295,6 @@ GO
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
-
--- Creating primary key on [idMembre] in table 'MembresJeu'
-ALTER TABLE [dbo].[MembresJeu]
-ADD CONSTRAINT [PK_MembresJeu]
-    PRIMARY KEY CLUSTERED ([idMembre] ASC);
-GO
 
 -- Creating primary key on [idTarif] in table 'TarifsJeu'
 ALTER TABLE [dbo].[TarifsJeu]
@@ -366,6 +360,12 @@ GO
 ALTER TABLE [dbo].[RoleJeu]
 ADD CONSTRAINT [PK_RoleJeu]
     PRIMARY KEY CLUSTERED ([idRole] ASC);
+GO
+
+-- Creating primary key on [idMembre] in table 'MembresJeu'
+ALTER TABLE [dbo].[MembresJeu]
+ADD CONSTRAINT [PK_MembresJeu]
+    PRIMARY KEY CLUSTERED ([idMembre] ASC);
 GO
 
 -- Creating primary key on [idMembre] in table 'MembresJeu_Animateur'
@@ -574,20 +574,6 @@ ON [dbo].[SpecialiteAnimateur]
     ([Animateur_idMembre]);
 GO
 
--- Creating foreign key on [Role_idRole] in table 'MembresJeu'
-ALTER TABLE [dbo].[MembresJeu]
-ADD CONSTRAINT [FK_RoleMembres]
-    FOREIGN KEY ([Role_idRole])
-    REFERENCES [dbo].[RoleJeu]
-        ([idRole])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RoleMembres'
-CREATE INDEX [IX_FK_RoleMembres]
-ON [dbo].[MembresJeu]
-    ([Role_idRole]);
-GO
-
 -- Creating foreign key on [Animateur_idMembre] in table 'CoursJeu'
 ALTER TABLE [dbo].[CoursJeu]
 ADD CONSTRAINT [FK_AnimateurCours]
@@ -600,6 +586,20 @@ ADD CONSTRAINT [FK_AnimateurCours]
 CREATE INDEX [IX_FK_AnimateurCours]
 ON [dbo].[CoursJeu]
     ([Animateur_idMembre]);
+GO
+
+-- Creating foreign key on [Role_idRole] in table 'MembresJeu'
+ALTER TABLE [dbo].[MembresJeu]
+ADD CONSTRAINT [FK_RoleMembres]
+    FOREIGN KEY ([Role_idRole])
+    REFERENCES [dbo].[RoleJeu]
+        ([idRole])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RoleMembres'
+CREATE INDEX [IX_FK_RoleMembres]
+ON [dbo].[MembresJeu]
+    ([Role_idRole]);
 GO
 
 -- Creating foreign key on [idMembre] in table 'MembresJeu_Animateur'
