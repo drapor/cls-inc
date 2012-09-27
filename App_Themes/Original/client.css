@@ -1,0 +1,139 @@
+﻿.contenuPage
+{
+    width:920px;
+    min-height:400px;
+    background-color:White;
+    box-shadow:0 3px 3px rgba(50,50,50,0.25);
+    height:auto;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:15px;
+    padding:10px;
+}
+
+.separateur
+{
+    width:900px;
+    height:30px;
+    float:left;
+}
+
+.contenuClient
+{
+   width:900px;
+   height:auto;
+   min-height:400px;
+}
+
+.infoClient
+{
+    width:850px;
+    height:120px;
+    float:left;
+}
+
+.clientInfoPartiGauche
+{
+    width:400px;
+    height:120px;
+    float:left;
+    margin-left:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.clientInfoPartiDroite
+{
+    width:400px;
+    height:120px;
+    float:left;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.partiGauche
+{
+    width:140px;
+    float:left;
+    font-size:small;
+    font-weight:bold
+}
+
+.partiDroite
+{
+    width:300px;
+    float:left;
+}
+
+.clientMotPasse
+{
+    width:850px;
+    height:60px;
+    margin-top:10px;
+    float:left;  
+}
+
+.partiGaucheMotPasse
+{
+    width:100px;
+    float:left;
+    font-size:small;
+    font-weight:bold;
+    line-height:25px;
+}
+
+.partiDroiteMotPasse
+{
+    width:340px;
+    float:left;
+    margin-left:10px;
+    line-height:25px;
+}
+
+.famille
+{
+    width:850px;
+    height:40px;
+    margin-left:20px;
+    margin-top:5px;
+    float:left;  
+}
+
+.titreNomFamille
+{
+    width:350px;
+    font-size:20;
+    font-weight:bold;
+    float:left;
+}
+
+.titreStatusFamille
+{
+    width:300px;
+    font-size:20;
+    font-weight:bold;
+    float:left;
+}
+
+.nomFamille
+{
+    width:350px;
+    font-size:16;
+    margin-left:10px;
+    margin-top:5px;
+    float:left;
+}
+
+.statusFamille
+{
+    width:300px;
+    font-size:16;
+    margin-top:5px;
+    float:left;
+}
+
+.abonnement
+{
+    width:880px;
+    height:400px;
+}
