@@ -15,7 +15,7 @@ Partial Class Page_Admin_home_admin_employe_add
             Dim unMembre As MembresJeu = Nothing
             Dim unEmploye As MembresJeu_Employe = Nothing
 
-            unMembre = MembresJeu.CreateMembresJeu(0, txtNom.Text, txtPrenom.Text, txtTelephone.Text, txtMDP.Text, txtAdresse.Text, txtVille.Text, Date.Now.ToShortDateString, txtDate.Text, txtCourriel.Text, txtCodePostal.Text, dropDownType.SelectedValue)
+            unMembre = MembresJeu.CreateMembresJeu(0, txtNom.Text, txtPrenom.Text, txtTelephone.Text, txtMDP.Text, txtAdresse.Text, txtVille.Text, Date.Now.ToShortDateString, txtDate.Text, txtCourriel.Text, txtCodePostal.Text, dropDownType.SelectedValue, 0, dropDownSexe.SelectedItem.Text)
 
             entMembre.MembresJeu.AddObject(unMembre)
             entMembre.SaveChanges()

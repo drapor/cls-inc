@@ -1,22 +1,14 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="register.aspx.vb" Inherits="Page_Autre_register" Theme="Original" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_family_add.aspx.vb" Inherits="Page_Autre_register" Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <div class="containerContenuAdmin">
 
 <div class="titleAdminNormal">
-    <asp:Label ID="lblAjouterEmploye" runat="server" Text="Créé un compte"></asp:Label>
+    <asp:Label ID="lblAjouterEmploye" runat="server" Text="Ajouter un membre de famille"></asp:Label>
 </div>
 
 <div class="containerFormulaire">
 
-    <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblCourriel" runat="server" Text="Adresse courriel"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtCourriel" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="50"></asp:TextBox></div>
-         <div class="elementFormulaireRequired">
-        <asp:RequiredFieldValidator ID="requiredCourriel" runat="server" ErrorMessage="*L'adresse courriel est obligatoire" ControlToValidate="txtCourriel" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="regExCourriel" runat="server" ErrorMessage="*Veuillez entrer une adresse dans le format adresse@courriel.com" ControlToValidate="txtCourriel" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"></asp:RegularExpressionValidator>
-        </div>
-    </div>
     <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"><asp:Label ID="lblPrenom" runat="server" Text="Prénom"></asp:Label></div>
          <div class="elementFormulaire"><asp:TextBox ID="txtPrenom" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="25"></asp:TextBox></div>
@@ -78,20 +70,13 @@
         </div>
     </div>
     <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblMDP" runat="server" Text="Mot de passe"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtMDP" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="20" TextMode="Password"></asp:TextBox></div>
-         <div class="elementFormulaireRequired">
-             <asp:RegularExpressionValidator ID="regExMDP" runat="server" ErrorMessage="*Votre mot de passe doit contenir entre 8 et 20 caractère" ControlToValidate="txtMDP" ForeColor="Red" Display="Dynamic" ValidationExpression="^[A-Za-z0-9]{8,}$"></asp:RegularExpressionValidator>
-        <asp:RequiredFieldValidator ID="requiredMDP" Display="Dynamic" runat="server" ErrorMessage="*Le mot de passe est obligatoire" ControlToValidate="txtMDP" ForeColor="Red"></asp:RequiredFieldValidator>
-        </div>
-    </div>
-    <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblMDPConfirm" runat="server" Text="Confirmation du mot de passe"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtMDPConfirm" runat="server" CssClass="search-query" SkinID="txtBoxBlue" TextMode="Password"></asp:TextBox></div>
-         <div class="elementFormulaireRequired">
-             <asp:CompareValidator ID="compareMDPConfirm" runat="server" ErrorMessage="*Votre mot de passe ne correspond pas" ForeColor="Red" ControlToCompare="txtMDP" ControlToValidate="txtMDPConfirm"></asp:CompareValidator>
-        <asp:RequiredFieldValidator Display="Dynamic" ID="requiredMDPConfirm" runat="server" ErrorMessage="*Veuillez confirmez votre mot de passe" ControlToValidate="txtMDPConfirm" ForeColor="Red"></asp:RequiredFieldValidator>
-        </div>
+         <div class="elementFormulaireTexte"><asp:Label ID="lblType" runat="server" Text="Type de compte:"></asp:Label></div>
+         <div class="elementFormulaire">
+             <asp:DropDownList ID="DropDownList1" runat="server" Width="120px" SkinID="ddlBlue">
+                 <asp:ListItem Selected="True">Conjoint(e)</asp:ListItem>
+                 <asp:ListItem>Enfant</asp:ListItem>
+             </asp:DropDownList>
+         </div>
     </div>
     <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"></div>

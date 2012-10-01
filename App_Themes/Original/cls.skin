@@ -1,2 +1,4 @@
 ﻿<asp:TextBox BorderColor="#1b1bb3" SkinID="txtBoxBlue" runat="server" BorderWidth="2px" BackColor="#ffbf00" ForeColor="#1b1bb3" Font-Bold="true" border-top-left-radius= "20px" border-top-right-radius= "20px" border-bottom-left-radius="20px" border-bottom-right-radius= "20px"></asp:TextBox>
+<asp:TextBox BorderColor="#1b1bb3" SkinID="txtBoxYellow" runat="server" Height="10px" BorderWidth="2px" BackColor="#ffbf00" ForeColor="#1b1bb3" Font-Bold="true" border-top-left-radius= "20px" border-top-right-radius= "20px" border-bottom-left-radius="20px" border-bottom-right-radius= "20px"></asp:TextBox>
 <asp:DropDownList BackColor="#ffbf00" SkinID="ddlBlue" runat="server" ForeColor="#1b1bb3" Font-Bold="true" BorderColor="#1b1bb3" BorderWidth="2px" ></asp:DropDownList>
+<asp:Button BackColor="#ffbf00" SkinID="btnYellow" runat="server" ForeColor="#1b1bb3" Font-Bold="true" BorderColor="#1b1bb3" BorderWidth="2px" ></asp:Button>
