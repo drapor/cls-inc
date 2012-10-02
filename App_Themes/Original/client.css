@@ -1,21 +1,15 @@
 ﻿.contenuPage
 {
+    position:relative;
     width:920px;
+    height:auto;
     min-height:400px;
     background-color:White;
     box-shadow:0 3px 3px rgba(50,50,50,0.25);
-    height:auto;
     margin-left:auto;
     margin-right:auto;
     border-radius:15px;
     padding:10px;
-}
-
-.separateur
-{
-    width:900px;
-    height:30px;
-    float:left;
 }
 
 .contenuClient
@@ -23,37 +17,84 @@
    width:900px;
    height:auto;
    min-height:400px;
+   margin-top:10px;
+   margin-bottom:10px;
+   margin-left:auto;
+   margin-right:auto; 
+   overflow:hidden;
+}
+
+.section
+{
+    background-color:#1b1bb3;
+    width:900px;
+    height:30px;
+    box-shadow:0 3px 3px rgba(50,50,500.25);
+    border-radius:5px;
+    margin-top:5px;
+    margin-bottom:5px;    
+    float:left;
+}
+
+.sectionTitre
+{
+    width:880px;
+    margin-right:10px;
+    margin-left:10px;
+    height:30px;
+    color:#ffbf00;
+    font-weight:bold;
+    font-size:18px;
+    padding-top:4px;
+    
+}
+
+.sectionTitreRight
+{
+    text-align:right;
+    float:right;
 }
 
 .infoClient
 {
-    width:850px;
-    height:120px;
-    float:left;
-}
-
-.clientInfoPartiGauche
-{
-    width:400px;
-    height:120px;
-    float:left;
+    width:860px;
+    height:auto;
     margin-left:20px;
+    margin-right:20px;
     margin-top:10px;
     margin-bottom:10px;
+    float:left;
 }
 
-.clientInfoPartiDroite
+.clientInfoGauche
 {
-    width:400px;
-    height:120px;
+    width:430px;
+    height:auto;
     float:left;
-    margin-top:10px;
-    margin-bottom:10px;
+}
+
+.clientInfoDroite
+{
+    width:430px;
+    height:auto;
+    float:left;
+}
+
+.formatLigne
+{
+    height:10px;
+}
+
+.clientInfoEdit
+{
+    width:860px;
+    height:auto;
+    float:left;
 }
 
 .partiGauche
 {
-    width:140px;
+    width:130px;
     float:left;
     font-size:small;
     font-weight:bold
@@ -67,9 +108,12 @@
 
 .clientMotPasse
 {
-    width:850px;
-    height:60px;
+    width:860px;
+    height:auto;
+    margin-left:20px;
+    margin-right:20px;
     margin-top:10px;
+    margin-bottom:10px;
     float:left;  
 }
 
@@ -92,41 +136,43 @@
 
 .famille
 {
-    width:850px;
-    height:40px;
+    width:860px;
+    height:auto;
     margin-left:20px;
-    margin-top:5px;
+    margin-right:20px;
+    margin-top:10px;
+    margin-bottom:10px;
     float:left;  
 }
 
-.titreNomFamille
+.titreGauche
 {
-    width:350px;
+    width:430px;
     font-size:20;
     font-weight:bold;
     float:left;
 }
 
-.titreStatusFamille
+.titreDroit
 {
-    width:300px;
+    width:430px;
     font-size:20;
     font-weight:bold;
     float:left;
 }
 
-.nomFamille
+.contenuGauche
 {
-    width:350px;
+    width:425px;
     font-size:16;
     margin-left:10px;
     margin-top:5px;
     float:left;
 }
 
-.statusFamille
+.contenuDroit
 {
-    width:300px;
+    width:425px;
     font-size:16;
     margin-top:5px;
     float:left;
@@ -134,6 +180,35 @@
 
 .abonnement
 {
-    width:880px;
-    height:400px;
+    width:860px;
+    height:auto;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+    float:left;
+}
+
+.bouton
+{
+    width: 350px;
+    height: 25px;
+    float: left;
+}
+
+.boutonCouleur
+{
+    background-color:
+}
+
+.boutonTexte
+{
+    width: 210px;
+    height: 25px;
+    float: left;
+}
+
+.formatZone
+{
+    height:10px;
 }

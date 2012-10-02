@@ -125,14 +125,6 @@
     });
 	</script>
 
-<%--    <asp:EntityDataSource ID="dsEmploye" runat="server" ConnectionString="name=modelCLSContainer"
-            DefaultContainerName="modelCLSContainer"
-            EntitySetName="MembresJeu_Employe"
-            EnableFlattening="false"
-            EnableInsert="true">
-            </asp:EntityDataSource>
---%>
-
 </div>
 </asp:Content>
 
