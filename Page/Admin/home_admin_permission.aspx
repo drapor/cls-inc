@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_admin_permission.aspx.vb" Inherits="Page_Admin_home_admin_permission" Theme="Original" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <div class="containerContenuAdmin">
-<asp:ListView ID="lvPermission" runat="server" DataSourceID="dsEmploye" DataKeyNames="idEmploye,idMembre,Role_idRole">
+<asp:ListView ID="lvPermission" runat="server" DataSourceID="dsEmploye" DataKeyNames="idEmploye,idMembre">
 <LayoutTemplate>
 <div class="titleAdminNormal">
     <asp:Label ID="lblPermission" runat="server" Text="Modifier les permissions"></asp:Label>
@@ -23,9 +23,9 @@
 
 <ItemTemplate>
     <div class="ligneFormulaire">
-       <div class="elementFormulaire permissionHeight"><asp:Label ID="lblNomEmploye" runat="server" Font-Size="18px" Font-Bold="true" ForeColor="#1b1bb3" Text='<% # Eval("FullName")%>'></asp:Label></div>
+       <div class="elementFormulaire permissionHeight"><asp:Label ID="lblNomEmploye" runat="server" Font-Size="18px" Font-Bold="true" ForeColor="#1b1bb3" Text='<% # Eval("idEmploye")%>'></asp:Label></div>
        <div class="elementFormulaireTexte permissionHeight">
-           <asp:DropDownList ID="ddlPermission" Width="180" AppendDataBoundItems="true" SkinID="ddlBlue"  runat="server" DataSourceID="dsEmploye" DataTextField="Role_idRole" SelectedValue='<%#Eval ("Role_idRole") %>'>
+           <asp:DropDownList ID="ddlPermission" Width="180" AppendDataBoundItems="true" SkinID="ddlBlue"  runat="server" DataSourceID="dsEmploye" DataTextField="idMembre" SelectedValue='<%#Eval ("idMembre") %>'>
            </asp:DropDownList>
        </div>
        <div class="elementFormulaireRequired permissionHeight">
@@ -35,6 +35,16 @@
 </ItemTemplate>
 </asp:ListView>
 <asp:EntityDataSource ID="dsEmploye" runat="server"
+ConnectionString="name=modelCLSContainer"
+DefaultContainerName="modelCLSContainer"
+EnableFlattening="false"
+EnableUpdate="true"
+EnableDelete="true"
+EnableInsert="true"
+EntitySetName="MembresJeu_Employe">
+</asp:EntityDataSource>
+
+<asp:EntityDataSource ID="EntityDataSource1" runat="server"
 ConnectionString="name=modelCLSContainer"
 DefaultContainerName="modelCLSContainer"
 EnableFlattening="false"

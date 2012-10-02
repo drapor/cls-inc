@@ -1,0 +1,32 @@
+﻿.infoClient
+{
+    width:860px;
+    height:auto;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+    float:left;
+}
+
+.partiGaucheCourriel
+{
+    width:230px;
+    float:left;
+    font-size:small;
+    font-weight:bold
+}
+
+.partiDroiteCourriel
+{
+    width:230px;
+    float:left;
+}
+
+.validation
+{
+    width:auto;
+    padding-top:30px;
+    float:left; 
+    overflow:hidden;
+}

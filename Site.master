@@ -17,7 +17,7 @@
         <asp:LinkButton ID="lnkAPropos" runat="server" CssClass="linkHeaderMenuLeft">À propos</asp:LinkButton>
         <asp:LinkButton ID="lnkNousJoindre" runat="server" CssClass="linkHeaderMenuLeft">Nous joindre</asp:LinkButton>
         <asp:LinkButton ID="lnkInscrire" runat="server" CssClass="linkHeaderMenuRight" PostBackUrl="~/Page/login.aspx">Connecter</asp:LinkButton> 
-        <asp:LinkButton ID="lnkConnecter" runat="server" CssClass="linkHeaderMenuRight">S'incrire</asp:LinkButton>
+        <asp:LinkButton ID="lnkConnecter" runat="server" CssClass="linkHeaderMenuRight" PostBackUrl="~/Page/Autre/register.aspx">S'incrire</asp:LinkButton>
     </div>
     <div class="ligneHeader"></div>
     <div class="divBanner"></div>
