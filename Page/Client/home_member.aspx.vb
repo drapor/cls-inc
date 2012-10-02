@@ -2,11 +2,15 @@
 Partial Class Page_Client_home_member
     Inherits System.Web.UI.Page
 
+
     Protected Sub lvInfoMembre_ItemEditing(sender As Object, e As System.Web.UI.WebControls.ListViewEditEventArgs) Handles lvInfoMembre.ItemEditing
         btnAjouterFamille.Visible = False
         btnHistorique.Visible = False
         btnModifierCourriel.Visible = False
         btnModifierMP.Visible = False
+
+        Dim dateNaissance As String = CType(lvInfoMembre.FindControl("txtDate"), TextBox).ToString
+        CType(dateNaissance, Date).ToShortDateString()
         'Dim item As ListView = sender
         'Dim btnAfficher As LinkButton = item.FindControl("btnAfficherFamille")
         'btnAfficher.Visible = False

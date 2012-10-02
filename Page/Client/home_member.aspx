@@ -7,7 +7,7 @@
 Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></asp:Label>
 <br />
 <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblMembreID" runat="server" Text="Sexe"></asp:Label></div>
+         <div class="elementFormulaireTexte"></div>
          <div class="elementFormulaire">
              <asp:DropDownList ID="dropDownMembre" runat="server" Width="55px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" />
          </div>
@@ -49,7 +49,7 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
                     </br>
                     <asp:Label ID="lblTelephoneClient" runat="server" Text='<%# Eval("telephoneMembre") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblNaissanceClient" runat="server" Text='<%# Eval("dateNaissance") %>'></asp:Label>
+                    <asp:Label ID="lblNaissanceClient" runat="server" Text='<%# (CType(Eval("dateNaissance"),DateTime)).ToShortDateString %>'></asp:Label>
                     </br>
                     <%--<div class="carteCredit">
                         <asp:Label ID="lblCreditClient" runat="server" Text="**** **** **** 7463"></asp:Label>
@@ -78,7 +78,7 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
                     </br>
                     <asp:Label ID="lblPostalClient" runat="server" Text='<%# Eval("codePostal") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblDateInscriptionClient" runat="server" Text='<%# Eval("dateInscription") %>'></asp:Label>
+                    <asp:Label ID="lblDateInscriptionClient" runat="server" Text='<%# (CType(Eval("dateInscription"),DateTime)).ToShortDateString %>'></asp:Label>
                 </div>
                 
             </div>
