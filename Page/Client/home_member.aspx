@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_member.aspx.vb" Inherits="Page_Client_home_member" Theme="Original"%>
+<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_member.aspx.vb" Inherits="Page_Client_home_member" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <div class="contenuPage">
@@ -284,6 +284,7 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
 </div>
 </div>
 
+
     <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
     EnableDelete="true" EnableInsert="false" EnableUpdate="true" orderBy="it.idMembre" 
@@ -299,4 +300,3 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
     </asp:EntityDataSource>
 
 </asp:Content>
-
