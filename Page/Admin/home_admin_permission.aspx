@@ -1,40 +1,39 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_admin_permission.aspx.vb" Inherits="Page_Admin_home_admin_permission" Theme="Original" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <div class="containerContenuAdmin">
-
-
+<asp:ListView ID="lvPermission" runat="server" DataSourceID="dsEmploye" DataKeyNames="idEmploye,idMembre,Role_idRole">
+<LayoutTemplate>
 <div class="titleAdminNormal">
     <asp:Label ID="lblPermission" runat="server" Text="Modifier les permissions"></asp:Label>
-</div>
-
-<div class="containerFormulaire">
-    <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblNomEmploye" runat="server" Text="Choisissez le nom de l'employé"></asp:Label></div>
-         <div class="elementFormulaire">
-             <asp:DropDownList ID="lstEmploye" AppendDataBoundItems="true" runat="server" Width="240px" SkinID="ddlBlue" DataSourceID="dsEmploye" DataTextField="FullName" DataValueField="Role_idRole">
-             <asp:ListItem Value="0" Text="--Sélectionnez un employé--"></asp:ListItem>
-             </asp:DropDownList>
-         </div>
+    <div class="ligneFormulaire permissionTitle">
+         <div class="elementFormulaireTexte"><asp:Label ID="lblNomDeEmploye" runat="server" Text="Nom de l'employé"></asp:Label></div>
+         <div class="elementFormulaire"><asp:Label ID="lblPermissionDeEmploye" runat="server" Text="Permission de l'employé"></asp:Label></div>
     </div>
-    <div class="ligneFormulaire">
-        <asp:Label ID="lblEmployePresentement" runat="server" Text="Cet employé est présentement "></asp:Label>
-        <asp:Label ID="lblEmployePermission" runat="server" Text="Label"></asp:Label>
+    <div class="containerFormulaire">
+        <asp:PlaceHolder runat="server" ID="itemPlaceholder"/>
+        <div class="ligneFormulaire">
+        <div class="elementFormulaire permissionHeight"></div>
+       <div class="elementFormulaireTexte permissionHeight">
+             <asp:Button ID="btnCancel" runat="server" Text="Canceller" CssClass="btn btn-primary btn-large btn" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false" />
+       </div>
+       </div>
     </div> 
-    <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblTypePermission" runat="server" Text="Type de permission"></asp:Label></div>
-         <div class="elementFormulaire"><asp:DropDownList ID="dropDownType" runat="server" SkinID="ddlBlue" AppendDataBoundItems="true" DataSourceID="dsPermission" DataValueField="idRole" DataTextField="nomRole">
-             </asp:DropDownList>
-         </div>
-    </div>
-    <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"></div>
-         <div class="elementFormulaire">
-             <asp:Button ID="btnAjouter" runat="server" Text="Modifier" CssClass="btn btn-primary btn-large btn"/>
-             <asp:Button ID="btnCancel" runat="server" Text="Canceller" CssClass="btn btn-primary btn-large btn" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false"/>
-         </div>
-    </div>
 </div>
+</LayoutTemplate>
 
+<ItemTemplate>
+    <div class="ligneFormulaire">
+       <div class="elementFormulaire permissionHeight"><asp:Label ID="lblNomEmploye" runat="server" Font-Size="18px" Font-Bold="true" ForeColor="#1b1bb3" Text='<% # Eval("FullName")%>'></asp:Label></div>
+       <div class="elementFormulaireTexte permissionHeight">
+           <asp:DropDownList ID="ddlPermission" Width="180" AppendDataBoundItems="true" SkinID="ddlBlue"  runat="server" DataSourceID="dsEmploye" DataTextField="Role_idRole" SelectedValue='<%#Eval ("Role_idRole") %>'>
+           </asp:DropDownList>
+       </div>
+       <div class="elementFormulaireRequired permissionHeight">
+           <asp:Button ID="btnModifier" runat="server" Text="Modifier" CssClass="btn btn-primary btn-primary btn" CommandName="Update" />
+           </div> 
+    </div>
+</ItemTemplate>
+</asp:ListView>
 <asp:EntityDataSource ID="dsEmploye" runat="server"
 ConnectionString="name=modelCLSContainer"
 DefaultContainerName="modelCLSContainer"
@@ -42,22 +41,20 @@ EnableFlattening="false"
 EnableUpdate="false"
 EnableDelete="false"
 EnableInsert="false"
-EntitySetName="MembresJeu"
-Select="it.idMembre, it.Role_idRole,(it.[prenomMembre]+' '+it.[nomMembre]) as FullName, it.nomMembre, it.prenomMembre"
+EntitySetName="MembresJeu_Employe"
+Select="it.idEmploye, it.idMembre,(it.MembresJeu.[prenomMembre]+' '+it.MembresJeu.[nomMembre]) as FullName, it.MembresJeu.nomMembre, it.MembresJeu.prenomMembre, it.MembresJeu.Role_idRole"
 OrderBy="it.nomMembre">
 </asp:EntityDataSource>
 
-<asp:EntityDataSource ID="dsPermission" runat="server"
-ConnectionString="name=modelCLSContainer"
-DefaultContainerName="modelCLSContainer"
-EnableFlattening="false"
-EnableUpdate="false"
-EnableDelete="false"
-EnableInsert="false"
-EntitySetName="RoleJeu"
-Select="it.idRole, it.nomRole"
-OrderBy="it.idRole">
-</asp:EntityDataSource>
+<asp:SqlDataSource id="dsEmployeSQL" runat="server"
+UpdateCommand="UPDATE [MembresJeu_Employe]
+                SET [Role_idRole] = @Role_idRole
+                WHERE [idEmploye]"
+
+
+
+ ></asp:SqlDataSource>
+
 
 
 </div>
