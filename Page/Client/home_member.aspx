@@ -38,8 +38,8 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
                     <asp:Label ID="lblTelephone" runat="server" Text="Téléphone:"></asp:Label>
                     </br>
                     <asp:Label ID="lblNaissance" runat="server" Text="Date de naissance:"></asp:Label>
-                    </br>
-                    <asp:Label ID="lblCredit" runat="server" Text="No carte de crédit:"></asp:Label>
+<%--                    </br>
+                    <asp:Label ID="lblCredit" runat="server" Text="No carte de crédit:"></asp:Label>--%>
                 </div>
                 
                 <div class="partiDroite">
@@ -51,12 +51,12 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
                     </br>
                     <asp:Label ID="lblNaissanceClient" runat="server" Text='<%# Eval("dateNaissance") %>'></asp:Label>
                     </br>
-                    <div class="carteCredit">
+                    <%--<div class="carteCredit">
                         <asp:Label ID="lblCreditClient" runat="server" Text="**** **** **** 7463"></asp:Label>
-                    </div>
-                    <div class="modifierBouton">
+                    </div>--%>
+                    <%--<div class="modifierBouton">
                         <asp:LinkButton ID="btnModifierCredit" runat="server" Text="Modifier"></asp:LinkButton>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
 
@@ -80,11 +80,8 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
                     </br>
                     <asp:Label ID="lblDateInscriptionClient" runat="server" Text='<%# Eval("dateInscription") %>'></asp:Label>
                 </div>
-                <br />
-                <br />
                 
             </div>
-                <div class="boutonTexte"></div>
                 <div class="bouton">
                     <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier les informations" SkinID="btnYellow" CssClass="btn btn-primary btn-small"/>
                 </div>

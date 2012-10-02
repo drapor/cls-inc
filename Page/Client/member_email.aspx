@@ -67,12 +67,12 @@
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:CompareValidator ID="compareCourriel" runat="server" ErrorMessage="*Votre courriel ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauCourriel" ControlToValidate="txtNouveauCourrielEncore"></asp:CompareValidator>
+                        <asp:CompareValidator Display="Dynamic" ID="compareCourriel" runat="server" ErrorMessage="*Votre courriel ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauCourriel" ControlToValidate="txtNouveauCourrielEncore"></asp:CompareValidator>
                         <asp:RequiredFieldValidator Display="Dynamic" ID="requiredCourrielConfirm" runat="server" ErrorMessage="*Veuillez confirmez votre nouveau courriel" ControlToValidate="txtNouveauCourrielEncore" ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
-                <div class="bouton">
+                <div class="boutonCourriel">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" SkinID="btnYellow" CssClass="btn btn-primary btn-small" />
                     <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" SkinID="btnYellow" CssClass="btn btn-primary btn-small" />
                 </div>
