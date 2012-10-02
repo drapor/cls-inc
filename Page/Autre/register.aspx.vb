@@ -1,4 +1,4 @@
-﻿Imports modelCLS
+Imports modelCLS
 Partial Class Page_Autre_register
     Inherits System.Web.UI.Page
 
@@ -21,3 +21,4 @@ Partial Class Page_Autre_register
     End Sub
 
 End Class
+

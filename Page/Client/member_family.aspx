@@ -1,3 +1,4 @@
+
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_family.aspx.vb" Inherits="Page_Client_client_membre_famille" Theme="Original" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <div class="containerContenuClient">
@@ -27,4 +28,3 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Fanny Coté"></a
 </div>
 
 </asp:Content>
-
