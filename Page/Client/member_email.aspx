@@ -50,18 +50,17 @@
 
                 <div class="validation">
                     <div class="formatZone">
-                        <asp:RequiredFieldValidator ID="requiredCourriel" runat="server" ErrorMessage="*Le Courriel est obligatoire" ControlToValidate="txtNouveauCourriel" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                        </br>
                     </div>
                     </br>
                     <div class="formatZone">
                         <asp:CompareValidator Display="Dynamic" ID="compareCourriel" runat="server" ErrorMessage="*Votre courriel ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauCourriel" ControlToValidate="txtNouveauCourrielEncore"></asp:CompareValidator>
-                        <asp:RequiredFieldValidator Display="Dynamic" ID="requiredCourrielConfirm" runat="server" ErrorMessage="*Veuillez confirmez votre nouveau courriel" ControlToValidate="txtNouveauCourrielEncore" ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
                 <div class="boutonCourriel">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/member_email.aspx"/>
+                    <asp:Button ID="btnCancel" runat="server" OnClick="actionCancel" Text="Canceler" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
                 </div>
         </ItemTemplate>
     </asp:ListView>

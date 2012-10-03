@@ -139,7 +139,8 @@
 .modifierBouton
 {
     height:20px;
-    margin-left:10px;
+    margin-top:3px;
+    margin-left:20px;
     font-weight:bolder;
     font-size:14px;
     float:left;
