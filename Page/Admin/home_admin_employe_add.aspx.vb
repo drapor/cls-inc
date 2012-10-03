@@ -1,17 +1,19 @@
 Imports modelCLS
-
 Partial Class Page_Admin_home_admin_employe_add
     Inherits System.Web.UI.Page
 
-
     Private Shared leContext As modelCLSContainer = Nothing
 
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        leContext = New modelCLSContainer
+    End Sub
 
     Sub ajouterEmployeClick(sender As Object, e As EventArgs)
         If Page.IsValid = True Then
             Dim entMembre As New modelCLSContainer
             Dim entEmploye As New modelCLSContainer
             Dim entRole As New Integer
+
             Dim unMembre As MembresJeu = Nothing
             Dim unEmploye As MembresJeu_Employe = Nothing
 
@@ -26,8 +28,6 @@ Partial Class Page_Admin_home_admin_employe_add
         End If
     End Sub
 
-    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        leContext = New modelCLSContainer
-    End Sub
+    
 
 End Class
