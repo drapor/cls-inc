@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_MP.aspx.vb" Inherits="Page_member_MP" Theme="Original"%>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_password.aspx.vb" Inherits="Page_member_password" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <div class="contenuPage">
@@ -17,19 +17,6 @@
     <asp:ListView ID="lvMP" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
         <LayoutTemplate>
             <div class="infoClient">
-                <%--<div class="partiGaucheCourriel">
-                    <div class="formatZone">
-                        <asp:Label ID="lblCourriel" runat="server" Text="Votre présent courriel:"></asp:Label>
-                    </div>
-                    </br>
-                </div>
-                
-                <div class="partiDroiteCourriel">
-                    <div class="formatZone">
-                        <asp:Label ID="lblCourrielPresent" runat="server" Text='<%# Eval("courriel") %>'></asp:Label>
-                    </div>
-                    </br>
-                </div>--%>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </div>
         </LayoutTemplate>
@@ -73,8 +60,8 @@
                 </div>
 
                 <div class="boutonCourriel">
-                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" SkinID="btnYellow" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" SkinID="btnYellow" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
                 </div>
         </ItemTemplate>
     </asp:ListView>
