@@ -4,12 +4,12 @@
 <div class="contenuPage">
 
 <div class="titleClient">
-Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></asp:Label>
+Votre compte!
 <br />
 <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"></div>
          <div class="elementFormulaire">
-             <asp:DropDownList ID="dropDownMembre" runat="server" Width="55px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" />
+             <asp:DropDownList ID="dropDownMembre" runat="server" Width="100px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="prenomMembre" />
          </div>
     </div>
 </div>
@@ -137,7 +137,7 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:MM-dd-yy}") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
@@ -194,29 +194,141 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
     
 
 <div class="section">
-<div class="sectionTitre">
-    <asp:Label ID="lblCourrielMDP" runat="server" Text="Courriel et mot de passe"></asp:Label>
+    <div class="sectionTitre">
+        <asp:Label ID="lblTitreCourriel" runat="server" Text="Courriel"></asp:Label>
+    </div>
 </div>
-</div>
-
-<div class="clientMotPasse">
+<asp:ListView ID="lvCourriel" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+        <LayoutTemplate>
+            <div class="clientMotPasse">
+                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+            </div>
+        </LayoutTemplate>
+        <ItemTemplate>
                 <div class="partiGaucheMotPasse">
-                    <asp:Label ID="lblCourriel" runat="server" Text="Courriel:"></asp:Label>
+                    <asp:Label ID="lblCourriel" runat="server" Text="Votre courriel:" Font-Bold="True"></asp:Label>
                     </br>
-                    <asp:Label ID="lblMotPasse" runat="server" Text="Mot de passe:"></asp:Label>
+                    
                 </div>
                 
                 <div class="partiDroiteMotPasse">
-                    <asp:Label ID="lblCourrielClient" runat="server" Text="gsfad@hotmail.com"></asp:Label>
+                    <asp:Label ID="lblCourrielClient" runat="server" Text='<%# Eval("courriel") %>' ></asp:Label>
                     </br>
-                    <asp:Label ID="lblMotPasseClient" runat="server" Text="************"></asp:Label>
+                    
                 </div>
                 <div class="modifierBouton">
-                    <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier" PostBackUrl="~/Page/Client/member_email.aspx"></asp:LinkButton>
-                    </br>
-                    <asp:LinkButton ID="btnModifierMP" runat="server" Text="Modifier"></asp:LinkButton>
+                    <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier le courriel" commandName="Edit"></asp:LinkButton>
+                    </br>    
                 </div>
-            </div>  
+          </ItemTemplate>
+          <EditItemTemplate>
+          <div class="partiGaucheCourriel">
+                    <div class="formatZone">
+                        <asp:Label ID="lblCourriel" runat="server" Text="Votre présent courriel:"></asp:Label>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:Label ID="lblNouveauCourriel" runat="server" Text="Entrez votre nouveau courriel:" ></asp:Label>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:Label ID="lblNouveauCourrielEncore" runat="server" Text="Retapez votre nouveau courriel:"></asp:Label>
+                    </div>
+                </div>
+                <div class="partiDroiteCourriel">
+                    <div class="formatZone">
+                        <asp:Label ID="lblCourrielPresent" runat="server" Text='<%# Eval("courriel") %>'></asp:Label>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("courriel") %>'></asp:TextBox>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:TextBox ID="txtNouveauCourrielEncore" runat="server" SkinID="txtBoxYellow" Text=""></asp:TextBox>
+                    </div>
+                </div>
+
+                <div class="validation">
+                    <div class="formatZone">
+                        </br>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:CompareValidator Display="Dynamic" ID="compareCourriel" runat="server" ErrorMessage="*Votre courriel ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauCourrielEncore" ControlToValidate="txtNouveauCourriel"></asp:CompareValidator>
+                    </div>
+                </div>
+
+                <div class="boutonCourriel">
+                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
+                </div>
+          </EditItemTemplate>
+</asp:ListView>
+
+<div class="section">
+    <div class="sectionTitre">
+        <asp:Label ID="lblTitreMotPasse" runat="server" Text="Mot de passe"></asp:Label>
+    </div>
+</div>
+
+<asp:ListView ID="lvMotPasse" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+        <LayoutTemplate>
+            <div class="clientMotPasse">
+                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+            </div>
+        </LayoutTemplate>
+        <ItemTemplate>
+                <div class="modifierBouton">
+                    <asp:LinkButton ID="btnModifierMP" runat="server" commandName="Edit" Text="Changer votre mot de passe"></asp:LinkButton>
+                </div>
+        </ItemTemplate>
+        <EditItemTemplate>
+        <div class="partiGaucheCourriel">
+                    <div class="formatZone">
+                        <asp:Label ID="lblMP" runat="server" Text="Présent mot de passe:"></asp:Label>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:Label ID="lblNouveauMP" runat="server" Text="Nouveau mot de passe:" ></asp:Label>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:Label ID="lblNouveauMPEncore" runat="server" Text="Retapez nouveau mot de passe:"></asp:Label>
+                    </div>
+                </div>
+                <div class="partiDroiteCourriel">
+                    <div class="formatZone">
+                        <asp:TextBox ID="txtPresentMP" runat="server" SkinID="txtBoxYellow" Text="" TextMode="Password"></asp:TextBox>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:TextBox ID="txtNouveauMP" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("motPasse") %>' TextMode="Password"></asp:TextBox>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:TextBox ID="txtNouveauMPEncore" runat="server" SkinID="txtBoxYellow" Text="" TextMode="Password"></asp:TextBox>
+                    </div>
+                </div>
+
+                <div class="validation">
+                    <div class="formatZone">
+                        <%--<asp:RequiredFieldValidator ID="requiredMP" runat="server" ErrorMessage="*Le mot de passe est obligatoire" ControlToValidate="txtNouveauMP" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>--%>
+                        </br>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:CompareValidator Display="Dynamic" ID="compareMP" runat="server" ErrorMessage="*Votre Mot de passe ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauMPEncore" ControlToValidate="txtNouveauMP"></asp:CompareValidator>
+                        <%--<asp:RequiredFieldValidator Display="Dynamic" ID="requiredMPConfirm" runat="server" ErrorMessage="*Veuillez confirmez votre nouveau mot de passe" ControlToValidate="txtNouveauMPEncore" ForeColor="Red" SetFocusOnError="False"></asp:RequiredFieldValidator>--%>
+                    </div>
+                </div>
+
+                <div class="boutonCourriel">
+                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                </div>
+        </EditItemTemplate>
+</asp:ListView> 
 
 <div class="section">
 <div class="sectionTitre">

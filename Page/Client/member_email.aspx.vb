@@ -6,4 +6,11 @@ Partial Class Page_Client_member_email
         Dim courriel As TextBox = CType(e.Item.FindControl("txtNouveauCourriel"), TextBox)
         courriel.Text = ""
     End Sub
+
+    Sub actionCancel(sender As Object, e As EventArgs)
+        If Page.IsValid = False Then
+            Response.Redirect("~/Page/Client/home_member.aspx")
+        End If
+    End Sub
+
 End Class

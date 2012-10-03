@@ -7,8 +7,6 @@ Partial Class Page_Client_home_member
         If e.CommandName = "Edit" Then
             btnAjouterFamille.Visible = False
             btnHistorique.Visible = False
-            btnModifierCourriel.Visible = False
-            btnModifierMP.Visible = False
 
             'Dim dateNaissance As String = CType(e.Item.FindControl("txtDate"), TextBox).ToShortDateString()
             'dateNaissance.ToShortDateString()
@@ -21,10 +19,12 @@ Partial Class Page_Client_home_member
         Else
             btnAjouterFamille.Visible = True
             btnHistorique.Visible = True
-            btnModifierCourriel.Visible = True
-            btnModifierMP.Visible = True
         End If
 
     End Sub
 
+    'Protected Sub lvCourriel_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvCourriel.ItemDataBound
+    '    Dim courriel As TextBox = CType(e.Item.FindControl("txtNouveauCourriel"), TextBox)
+    '    courriel.Text = ""
+    'End Sub
 End Class
