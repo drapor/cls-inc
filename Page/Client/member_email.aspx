@@ -17,19 +17,6 @@
     <asp:ListView ID="lvCourriel" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
         <LayoutTemplate>
             <div class="infoClient">
-                <%--<div class="partiGaucheCourriel">
-                    <div class="formatZone">
-                        <asp:Label ID="lblCourriel" runat="server" Text="Votre présent courriel:"></asp:Label>
-                    </div>
-                    </br>
-                </div>
-                
-                <div class="partiDroiteCourriel">
-                    <div class="formatZone">
-                        <asp:Label ID="lblCourrielPresent" runat="server" Text='<%# Eval("courriel") %>'></asp:Label>
-                    </div>
-                    </br>
-                </div>--%>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </div>
         </LayoutTemplate>
@@ -73,8 +60,8 @@
                 </div>
 
                 <div class="boutonCourriel">
-                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" SkinID="btnYellow" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" SkinID="btnYellow" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/member_email.aspx"/>
                 </div>
         </ItemTemplate>
     </asp:ListView>

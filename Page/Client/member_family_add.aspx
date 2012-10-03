@@ -27,7 +27,7 @@
     <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"><asp:Label ID="lblSexe" runat="server" Text="Sexe"></asp:Label></div>
          <div class="elementFormulaire">
-             <asp:DropDownList ID="dropDownSexe" runat="server" Width="55px" SkinID="ddlBlue">
+             <asp:DropDownList ID="dropDownSexe" runat="server" Width="60px" SkinID="ddlBlue">
                  <asp:ListItem Selected="True">H</asp:ListItem>
                  <asp:ListItem>F</asp:ListItem>
              </asp:DropDownList>
@@ -73,7 +73,7 @@
     <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"><asp:Label ID="lblType" runat="server" Text="Type de compte:"></asp:Label></div>
          <div class="elementFormulaire">
-             <asp:DropDownList ID="DropDownList1" runat="server" Width="120px" SkinID="ddlBlue">
+             <asp:DropDownList ID="DropDownList1" runat="server" Width="130px" SkinID="ddlBlue">
                  <asp:ListItem Selected="True">Conjoint(e)</asp:ListItem>
                  <asp:ListItem>Enfant</asp:ListItem>
              </asp:DropDownList>

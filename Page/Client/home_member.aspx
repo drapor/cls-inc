@@ -83,7 +83,7 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
                 
             </div>
                 <div class="bouton">
-                    <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier les informations" SkinID="btnYellow" CssClass="btn btn-primary btn-small"/>
+                    <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier les informations" CssClass="btn btn-primary"/>
                 </div>
         </ItemTemplate>
 
@@ -185,8 +185,8 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
             </div>
 
                 <div class="bouton">
-                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" SkinID="btnYellow" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" SkinID="btnYellow" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
                 </div>
            </div>
         </EditItemTemplate>
@@ -212,7 +212,7 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
                     <asp:Label ID="lblMotPasseClient" runat="server" Text="************"></asp:Label>
                 </div>
                 <div class="modifierBouton">
-                    <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier"></asp:LinkButton>
+                    <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier" PostBackUrl="~/Page/Client/member_email.aspx"></asp:LinkButton>
                     </br>
                     <asp:LinkButton ID="btnModifierMP" runat="server" Text="Modifier"></asp:LinkButton>
                 </div>
@@ -304,7 +304,7 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
 
     <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="true" EnableInsert="false" EnableUpdate="true" orderBy="it.idMembre" 
+    EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre" 
     where="(@MembreID = it.idMembre)">
     <WhereParameters>
         <asp:ControlParameter Name="MembreID" ControlID="dropDownMembre" PropertyName="SelectedValue" Type="Int32" />
