@@ -1,5 +1,5 @@
 Imports modelCLS
-Partial Class Page_Admin_home_admin_employe_add
+Partial Class Page_Admin_admin_employe_add
     Inherits System.Web.UI.Page
 
     Private Shared leContext As modelCLSContainer = Nothing
@@ -28,6 +28,6 @@ Partial Class Page_Admin_home_admin_employe_add
         End If
     End Sub
 
-    
+
 
 End Class

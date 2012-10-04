@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_admin_employe_add.aspx.vb" Inherits="Page_Admin_home_admin_employe_add" Theme="Original" %>
+<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_employe_add.aspx.vb" Inherits="Page_Admin_admin_employe_add" Theme="Original" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <div class="containerContenuAdmin">
 

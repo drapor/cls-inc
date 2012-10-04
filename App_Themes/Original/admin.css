@@ -57,3 +57,10 @@
     font-size: 18px;
     font-weight:bold;
 }
+
+.supprimerBoutonEmploye
+{
+    height: 28px;
+    margin-top: 5px;
+    margin-bottom:5px;
+}

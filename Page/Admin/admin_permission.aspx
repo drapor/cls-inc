@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_admin_permission.aspx.vb" Inherits="Page_Admin_home_admin_permission" Theme="Original" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_permission.aspx.vb" Inherits="Page_Admin_admin_permission" Theme="Original" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <div class="containerContenuAdmin">
 <asp:ListView ID="lvPermission" runat="server" DataSourceID="dsEmploye" DataKeyNames="idEmploye,idMembre">
