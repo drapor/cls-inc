@@ -4,7 +4,7 @@
 <div class="contenuPage">
 
 <div class="titleClient">
-Votre compte!
+<h3>Votre compte</h3>
 <br />
 <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"></div>
@@ -137,7 +137,7 @@ Votre compte!
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:MM-dd-yy}") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
@@ -169,8 +169,8 @@ Votre compte!
                         </br>
                         <div class="formatZone">
                             <asp:RequiredFieldValidator ID="requiredDate" runat="server" ErrorMessage="*La date de naissance est obligatoire" ControlToValidate="txtDate" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="regExDate" runat="server" ErrorMessage="*Votre date n'est pas dans le format mm/jj/aaaa" 
-                            ValidationExpression="^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[13-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" Display="Dynamic" ControlToValidate="txtDate" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="regExDate" runat="server" ErrorMessage="*Votre date n'est pas dans le format aaaa/mm/jj" 
+                            ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$" Display="Dynamic" ControlToValidate="txtDate" ForeColor="Red"></asp:RegularExpressionValidator>
                         </div>
                         </br>
                         <div class="formatZone">
@@ -334,7 +334,7 @@ Votre compte!
 <div class="sectionTitre">
     <asp:Label ID="lblMembreFamille" runat="server" Text="Membre(s) de la famille"></asp:Label>
     <div class="sectionTitreRight">
-        <asp:LinkButton ID="btnAjouterFamille" runat="server" Text="Ajouter membre"></asp:LinkButton>
+        <asp:LinkButton ID="btnAjouterFamille" runat="server" Text="Ajouter membre" PostBackUrl="~/Page/Client/member_family_add.aspx"></asp:LinkButton>
     </div>
 </div>
 </div> 
@@ -359,7 +359,7 @@ Votre compte!
                 <asp:Label ID="lblStatusFamille" runat="server" Text="Enfant"></asp:Label>
             </div>
             <div class="afficherFamille">
-                    <asp:LinkButton ID="btnAfficherFamille" runat="server" Text="Afficher"></asp:LinkButton>
+                    <asp:LinkButton ID="btnAfficherFamille" runat="server" Text="Afficher" PostBackUrl="~/Page/Client/member_family.aspx"></asp:LinkButton>
             </div>
             <div class="supprimerFamille">
                     <asp:LinkButton ID="btnSupprimerFamille" runat="server" Text="Supprimer"></asp:LinkButton>
@@ -371,7 +371,7 @@ Votre compte!
 <div class="sectionTitre">
     <asp:Label ID="lblHistoriqueAbonnement" runat="server" Text="Historique des abonnements (5 derniers)"></asp:Label>
     <div class="sectionTitreRight">
-        <asp:LinkButton ID="btnHistorique" runat="server" Text="Afficher l'historique"></asp:LinkButton>
+        <asp:LinkButton ID="btnHistorique" runat="server" Text="Afficher l'historique" PostBackUrl="~/Page/Client/member_historique.aspx"></asp:LinkButton>
     </div>
 </div>
 </div>  
@@ -406,7 +406,7 @@ Votre compte!
             yearRange: "c-100:c",
             changeMonth: true,
             changeYear: true,
-            dateFormat: "mm/dd/yy"
+            dateFormat: "yy/mm/dd"
         });
     });
 </script>

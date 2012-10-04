@@ -5,7 +5,7 @@
     <div class="containerContenuAdmin">
 
 <div class="titleAdminNormal">
-    <asp:Label ID="lblAjouterEmploye" runat="server" Text="Ajouter un membre de famille"></asp:Label>
+    <h3><asp:Label ID="lblAjouterEmploye" runat="server" Text="Ajouter un membre de famille"></asp:Label></h3>
 </div>
 
 <div class="containerFormulaire">
@@ -82,8 +82,8 @@
     <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"></div>
          <div class="elementFormulaire">
-             <asp:Button ID="btnAjouter" runat="server" onClick="actionAjout" Text="Ajouter" CssClass="btn btn-primary btn-large btn"/>
-             <asp:Button ID="btnCancel" runat="server" Text="Canceller" CssClass="btn btn-primary btn-large btn" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false"/>
+             <asp:Button ID="btnAjouter" runat="server" onClick="actionAjout" Text="Ajouter" CssClass="btn btn-primary btn-large btn" PostBackUrl="~/Page/Client/home_member.aspx" />
+             <asp:Button ID="btnCancel" runat="server" Text="Canceller" CssClass="btn btn-primary btn-large btn" PostBackUrl="~/Page/Client/home_member.aspx" CausesValidation="false"/>
          </div>
     </div>
 

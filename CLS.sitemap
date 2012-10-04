@@ -14,7 +14,8 @@
             <siteMapNode url="member_family_add.aspx" ressourceKey="Member_family_add" title="Ajouter"  description="Ajouter" />
             <siteMapNode url="member_email.aspx" ressourceKey="Member_courriel" title="Courriel"  description="Courriel" />
             <siteMapNode url="member_password.aspx" ressourceKey="Member_password" title="Mot de Passe"  description="Mot de passe" />
-            <siteMapNode url="member_credit.aspx" ressourceKey="Member_credit" title="Caret de credit"  description="Carte de credit" />          
+            <siteMapNode url="member_credit.aspx" ressourceKey="Member_credit" title="Carte de credit"  description="Carte de credit" />
+            <siteMapNode url="member_historique.aspx" ressourceKey="Member_historique" title="Historique"  description="Historique" />
         </siteMapNode>
         <siteMapNode url="home_employe.aspx" ressourceKey="Employe" title="Employe"  description="Employe">
             <siteMapNode url="employe_client_modify.aspx" ressourceKey="Employe_client_modify" title="Modifier"  description="Modifier" />
