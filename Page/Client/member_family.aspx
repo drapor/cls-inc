@@ -4,7 +4,7 @@
 <div class="contenuPage">
 
 <div class="titleClient">
-Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></asp:Label>
+<h3>Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></asp:Label></h3>
 <br />
 <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"></div>
@@ -128,7 +128,7 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
@@ -161,7 +161,7 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
                         <div class="formatZone">
                             <asp:RequiredFieldValidator ID="requiredDate" runat="server" ErrorMessage="*La date de naissance est obligatoire" ControlToValidate="txtDate" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="regExDate" runat="server" ErrorMessage="*Votre date n'est pas dans le format mm/jj/aaaa" 
-                            ValidationExpression="^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[13-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" Display="Dynamic" ControlToValidate="txtDate" ForeColor="Red"></asp:RegularExpressionValidator>
+                            ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$" Display="Dynamic" ControlToValidate="txtDate" ForeColor="Red"></asp:RegularExpressionValidator>
                         </div>
                         </br>
                         <div class="formatZone">
@@ -187,7 +187,7 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
 <div class="sectionTitre">
     <asp:Label ID="lblHistoriqueAbonnement" runat="server" Text="Historique des abonnements (5 derniers)"></asp:Label>
     <div class="sectionTitreRight">
-        <asp:LinkButton ID="btnHistorique" runat="server" Text="Afficher l'historique"></asp:LinkButton>
+        <asp:LinkButton ID="btnHistorique" runat="server" Text="Afficher l'historique" PostBackUrl="~/Page/Client/member_historique.aspx"></asp:LinkButton>
     </div>
 </div>
 </div>  
@@ -222,7 +222,7 @@ Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></a
             yearRange: "c-100:c",
             changeMonth: true,
             changeYear: true,
-            dateFormat: "mm/dd/yy"
+            dateFormat: "yy/mm/dd"
         });
     });
 </script>
