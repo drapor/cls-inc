@@ -4,12 +4,12 @@
 <div class="contenuPage">
 
 <div class="titleClient">
-<h3>Votre compte employé</h3>
+<h3>Compte employé</h3>
 
 <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"></div>
          <div class="elementFormulaire">
-             <asp:DropDownList ID="dropDownMembre" runat="server" Width="100px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="prenomMembre" />
+             <asp:DropDownList ID="dropDownMembre" runat="server" Width="100px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="FullName" />
          </div>
     </div>
 </div>
@@ -379,7 +379,8 @@
 
     <asp:EntityDataSource ID="dsMember" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="true" EnableInsert="false" EnableUpdate="true" orderBy="it.idMembre">
+    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idMembre" 
+    Select="it.idMembre,it.nomMembre,it.prenomMembre,(it.[prenomMembre]+' '+it.[nomMembre]) as FullName, it.adresse, it.ville, it.dateNaissance, it.telephoneMembre, it.codePostal, it.courriel, it.motPasse, it.dateInscription">
     </asp:EntityDataSource>
 
 </asp:Content>
