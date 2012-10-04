@@ -25,6 +25,11 @@ Partial Class Page_Admin_admin_employe_add
             unEmploye = MembresJeu_Employe.CreateMembresJeu_Employe(0, unMembre.idMembre)
             entEmploye.MembresJeu_Employe.AddObject(unEmploye)
             entEmploye.SaveChanges()
+            lblFelicitation.Visible = True
+            checkImage.Visible = True
+        Else
+            lblFelicitation.Visible = False
+            checkImage.Visible = False
         End If
     End Sub
 

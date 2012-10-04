@@ -85,7 +85,7 @@
         <asp:RequiredFieldValidator ID="requiredMDP" Display="Dynamic" runat="server" ErrorMessage="*Le mot de passe est obligatoire" ControlToValidate="txtMDP" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
     </div>
-    <div class="ligneFormulaire">
+    <div class="ligneFormulaire">   
          <div class="elementFormulaireTexte"><asp:Label ID="lblMDPConfirm" runat="server" Text="Confirmation du mot de passe"></asp:Label></div>
          <div class="elementFormulaire"><asp:TextBox ID="txtMDPConfirm" runat="server" CssClass="search-query" SkinID="txtBoxBlue" TextMode="Password"></asp:TextBox></div>
          <div class="elementFormulaireRequired">
@@ -107,6 +107,14 @@
              <asp:Button ID="btnAjouter" runat="server" Text="Ajouter" CssClass="btn btn-primary btn-large btn" OnClick="ajouterEmployeClick"/>
              <asp:Button ID="btnCancel" runat="server" Text="Canceller" CssClass="btn btn-primary btn-large btn" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false"/>
          </div>
+    </div>
+
+    <div class="ligneFormulaire">
+        <div class="elementFormulaireTexte"></div>
+        <div class="elementFormulaire">
+            <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png" Visible="false" Height="20px" Width="20px" />
+            <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="L'employé a été ajouter avec succès !" Visible="false"></asp:Label>
+        </div>
     </div>
 
 

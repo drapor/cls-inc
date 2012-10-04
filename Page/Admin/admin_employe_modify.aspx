@@ -19,7 +19,7 @@
 
 <div class="section">
 <div class="sectionTitre">
-    <asp:Label ID="infoPersonnel" runat="server" Text="Informations personnels"></asp:Label>
+    <asp:Label ID="infoPersonnel" runat="server" Text="nIformations personnels"></asp:Label>
 </div>
 </div>  
 
@@ -262,7 +262,7 @@
 
                 <div class="boutonCourriel">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CausesValidation="false" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
                 </div>
           </EditItemTemplate>
 </asp:ListView>
