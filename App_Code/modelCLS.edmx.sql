@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/04/2012 11:29:26
+-- Date Created: 10/04/2012 14:31:53
 -- Generated from EDMX file: C:\GitHub\cls-inc\App_Code\modelCLS.edmx
 -- --------------------------------------------------
 
@@ -23,6 +23,15 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_AbonnementMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[AbonnementJeu] DROP CONSTRAINT [FK_AbonnementMembres];
 GO
+IF OBJECT_ID(N'[dbo].[FK_Admin_inherits_Employe]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembresJeu_Admin] DROP CONSTRAINT [FK_Admin_inherits_Employe];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Animateur_inherits_Membres]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembresJeu_Animateur] DROP CONSTRAINT [FK_Animateur_inherits_Membres];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AnimateurCours]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CoursJeu] DROP CONSTRAINT [FK_AnimateurCours];
+GO
 IF OBJECT_ID(N'[dbo].[FK_CarteCreditMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CarteCreditJeu] DROP CONSTRAINT [FK_CarteCreditMembres];
 GO
@@ -32,14 +41,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_CoursCoursComplete]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CoursCompleteJeu] DROP CONSTRAINT [FK_CoursCoursComplete];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AnimateurCours]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CoursJeu] DROP CONSTRAINT [FK_AnimateurCours];
-GO
 IF OBJECT_ID(N'[dbo].[FK_CoursGroupe]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[GroupeJeu] DROP CONSTRAINT [FK_CoursGroupe];
 GO
 IF OBJECT_ID(N'[dbo].[FK_CoursListeAttente]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ListeAttenteJeu] DROP CONSTRAINT [FK_CoursListeAttente];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Employe_inherits_Membres]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembresJeu_Employe] DROP CONSTRAINT [FK_Employe_inherits_Membres];
 GO
 IF OBJECT_ID(N'[dbo].[FK_HoraireGroupe]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HoraireJeu] DROP CONSTRAINT [FK_HoraireGroupe];
@@ -47,17 +56,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ListeAttenteMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ListeAttenteJeu] DROP CONSTRAINT [FK_ListeAttenteMembres];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Animateur_inherits_Membres]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembresJeu_Animateur] DROP CONSTRAINT [FK_Animateur_inherits_Membres];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Employe_inherits_Membres]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembresJeu_Employe] DROP CONSTRAINT [FK_Employe_inherits_Membres];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RoleMembres]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembresJeu] DROP CONSTRAINT [FK_RoleMembres];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Admin_inherits_Employe]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembresJeu_Admin] DROP CONSTRAINT [FK_Admin_inherits_Employe];
+IF OBJECT_ID(N'[dbo].[FK_RoleJeuMembresJeu]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembresJeu] DROP CONSTRAINT [FK_RoleJeuMembresJeu];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SessionGroupe_GroupeJeu]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SessionGroupe] DROP CONSTRAINT [FK_SessionGroupe_GroupeJeu];
@@ -112,8 +112,14 @@ GO
 IF OBJECT_ID(N'[dbo].[RoleJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[RoleJeu];
 GO
+IF OBJECT_ID(N'[dbo].[SessionGroupe]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SessionGroupe];
+GO
 IF OBJECT_ID(N'[dbo].[SessionJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SessionJeu];
+GO
+IF OBJECT_ID(N'[dbo].[SpecialiteAnimateur]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SpecialiteAnimateur];
 GO
 IF OBJECT_ID(N'[dbo].[SpecialiteJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SpecialiteJeu];
@@ -123,12 +129,6 @@ IF OBJECT_ID(N'[dbo].[sysdiagrams]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[TarifsJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TarifsJeu];
-GO
-IF OBJECT_ID(N'[dbo].[SessionGroupe]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SessionGroupe];
-GO
-IF OBJECT_ID(N'[dbo].[SpecialiteAnimateur]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SpecialiteAnimateur];
 GO
 
 -- --------------------------------------------------

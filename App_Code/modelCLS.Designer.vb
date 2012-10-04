@@ -16,7 +16,7 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("23577806-47ee-4933-8674-cd43b5042d7a")>
+<Assembly: EdmSchemaAttribute("727b0f49-9db7-4cda-8bb2-2facbf79a26a")>
 #Region "Métadonnées de relation EDM"
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
@@ -30,10 +30,10 @@ Imports System.Runtime.Serialization
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_ListeAttenteMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "ListeAttenteJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.ListeAttenteJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_Animateur_inherits_Membres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "MembresJeu_Animateur", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(modelCLS.MembresJeu_Animateur), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_Employe_inherits_Membres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "MembresJeu_Employe", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(modelCLS.MembresJeu_Employe), True)>
-<Assembly: EdmRelationshipAttribute("modelCLS", "FK_RoleMembres", "RoleJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.RoleJeu), "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.MembresJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_Admin_inherits_Employe", "MembresJeu_Employe", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu_Employe), "MembresJeu_Admin", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(modelCLS.MembresJeu_Admin), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "SessionGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.GroupeJeu), "SessionJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.SessionJeu))>
 <Assembly: EdmRelationshipAttribute("modelCLS", "SpecialiteAnimateur", "MembresJeu_Animateur", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.MembresJeu_Animateur), "SpecialiteJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.SpecialiteJeu))>
+<Assembly: EdmRelationshipAttribute("modelCLS", "FK_RoleJeuMembresJeu", "RoleJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.RoleJeu), "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.MembresJeu), True)>
 
 #End Region
 Namespace modelCLS
@@ -2152,10 +2152,10 @@ Namespace modelCLS
         ''' <param name="dateNaissance">Valeur initiale de la propriété dateNaissance.</param>
         ''' <param name="courriel">Valeur initiale de la propriété courriel.</param>
         ''' <param name="codePostal">Valeur initiale de la propriété codePostal.</param>
-        ''' <param name="role_idRole">Valeur initiale de la propriété Role_idRole.</param>
         ''' <param name="familleID">Valeur initiale de la propriété familleID.</param>
         ''' <param name="sexe">Valeur initiale de la propriété sexe.</param>
-        Public Shared Function CreateMembresJeu(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String, codePostal As Global.System.String, role_idRole As Global.System.Int16, familleID As Global.System.Int16, sexe As Global.System.String) As MembresJeu
+        ''' <param name="roleJeu_idRole">Valeur initiale de la propriété RoleJeu_idRole.</param>
+        Public Shared Function CreateMembresJeu(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String, codePostal As Global.System.String, familleID As Global.System.Int16, sexe As Global.System.String, roleJeu_idRole As Global.System.Int16) As MembresJeu
             Dim membresJeu as MembresJeu = New MembresJeu
             membresJeu.idMembre = idMembre
             membresJeu.nomMembre = nomMembre
@@ -2168,9 +2168,9 @@ Namespace modelCLS
             membresJeu.dateNaissance = dateNaissance
             membresJeu.courriel = courriel
             membresJeu.codePostal = codePostal
-            membresJeu.Role_idRole = role_idRole
             membresJeu.familleID = familleID
             membresJeu.sexe = sexe
+            membresJeu.RoleJeu_idRole = roleJeu_idRole
             Return membresJeu
         End Function
 
@@ -2459,31 +2459,6 @@ Namespace modelCLS
         ''' </summary>
         <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
         <DataMemberAttribute()>
-        Public Property Role_idRole() As Global.System.Int16
-            Get
-                Return _Role_idRole
-            End Get
-            Set
-                OnRole_idRoleChanging(value)
-                ReportPropertyChanging("Role_idRole")
-                _Role_idRole = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("Role_idRole")
-                OnRole_idRoleChanged()
-            End Set
-        End Property
-    
-        Private _Role_idRole As Global.System.Int16
-        Private Partial Sub OnRole_idRoleChanging(value As Global.System.Int16)
-        End Sub
-    
-        Private Partial Sub OnRole_idRoleChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
         Public Property familleID() As Global.System.Int16
             Get
                 Return _familleID
@@ -2527,6 +2502,31 @@ Namespace modelCLS
         End Sub
     
         Private Partial Sub OnsexeChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property RoleJeu_idRole() As Global.System.Int16
+            Get
+                Return _RoleJeu_idRole
+            End Get
+            Set
+                OnRoleJeu_idRoleChanging(value)
+                ReportPropertyChanging("RoleJeu_idRole")
+                _RoleJeu_idRole = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("RoleJeu_idRole")
+                OnRoleJeu_idRoleChanged()
+            End Set
+        End Property
+    
+        Private _RoleJeu_idRole As Global.System.Int16
+        Private Partial Sub OnRoleJeu_idRoleChanging(value As Global.System.Int16)
+        End Sub
+    
+        Private Partial Sub OnRoleJeu_idRoleChanged()
         End Sub
 
         #End Region
@@ -2672,13 +2672,13 @@ Namespace modelCLS
         <XmlIgnoreAttribute()>
         <SoapIgnoreAttribute()>
         <DataMemberAttribute()>
-        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "FK_RoleMembres", "RoleJeu")>
-        Public Property RoleJeu() As RoleJeu
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "FK_RoleJeuMembresJeu", "RoleJeu")>
+        Public Property RoleJeu_1() As RoleJeu
             Get
-                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of RoleJeu)("modelCLS.FK_RoleMembres", "RoleJeu").Value
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of RoleJeu)("modelCLS.FK_RoleJeuMembresJeu", "RoleJeu").Value
             End Get
             Set
-                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of RoleJeu)("modelCLS.FK_RoleMembres", "RoleJeu").Value = value
+                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of RoleJeu)("modelCLS.FK_RoleJeuMembresJeu", "RoleJeu").Value = value
             End Set
         End Property
         ''' <summary>
@@ -2686,13 +2686,13 @@ Namespace modelCLS
         ''' </summary>
         <BrowsableAttribute(False)>
         <DataMemberAttribute()>
-        Public Property RoleJeuReference() As EntityReference(Of RoleJeu)
+        Public Property RoleJeu_1Reference() As EntityReference(Of RoleJeu)
             Get
-                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of RoleJeu)("modelCLS.FK_RoleMembres", "RoleJeu")
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of RoleJeu)("modelCLS.FK_RoleJeuMembresJeu", "RoleJeu")
             End Get
             Set
                 If (Not value Is Nothing)
-                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of RoleJeu)("modelCLS.FK_RoleMembres", "RoleJeu", value)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of RoleJeu)("modelCLS.FK_RoleJeuMembresJeu", "RoleJeu", value)
                 End If
             End Set
         End Property
@@ -3195,14 +3195,14 @@ Namespace modelCLS
         <XmlIgnoreAttribute()>
         <SoapIgnoreAttribute()>
         <DataMemberAttribute()>
-        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "FK_RoleMembres", "MembresJeu")>
-         Public Property MembresJeu() As EntityCollection(Of MembresJeu)
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "FK_RoleJeuMembresJeu", "MembresJeu")>
+         Public Property MembresJeu_1() As EntityCollection(Of MembresJeu)
             Get
-                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of MembresJeu)("modelCLS.FK_RoleMembres", "MembresJeu")
+                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of MembresJeu)("modelCLS.FK_RoleJeuMembresJeu", "MembresJeu")
             End Get
             Set
                 If (Not value Is Nothing)
-                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of MembresJeu)("modelCLS.FK_RoleMembres", "MembresJeu", value)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of MembresJeu)("modelCLS.FK_RoleJeuMembresJeu", "MembresJeu", value)
                 End If
             End Set
         End Property
