@@ -147,6 +147,16 @@
     color:#1b1bb3;
 }
 
+.modifierBoutonMotPasse
+{
+    height:20px;
+    margin-top:3px;
+    font-weight:bolder;
+    font-size:14px;
+    float:left;
+    color:#1b1bb3;
+}
+
 .modifierBouton a:hover
 {
     color:#ffbf00;

@@ -1,14 +1,15 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_family.aspx.vb" Inherits="Page_Client_client_membre_famille" Theme="Original" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_employe.aspx.vb" Inherits="Page_Employe_home_employe" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <div class="contenuPage">
 
 <div class="titleClient">
-<h3>Bonjour, <asp:Label ID="lblNomUtilisateur" runat="server" Text="Roger Coté"></asp:Label></h3>
+<h3>Votre compte employé</h3>
+
 <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"></div>
          <div class="elementFormulaire">
-             <asp:DropDownList ID="dropDownMembre" runat="server" Width="55px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" />
+             <asp:DropDownList ID="dropDownMembre" runat="server" Width="100px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="prenomMembre" />
          </div>
     </div>
 </div>
@@ -37,6 +38,8 @@
                     <asp:Label ID="lblTelephone" runat="server" Text="Téléphone:"></asp:Label>
                     </br>
                     <asp:Label ID="lblNaissance" runat="server" Text="Date de naissance:"></asp:Label>
+<%--                    </br>
+                    <asp:Label ID="lblCredit" runat="server" Text="No carte de crédit:"></asp:Label>--%>
                 </div>
                 
                 <div class="partiDroite">
@@ -47,6 +50,13 @@
                     <asp:Label ID="lblTelephoneClient" runat="server" Text='<%# Eval("telephoneMembre") %>'></asp:Label>
                     </br>
                     <asp:Label ID="lblNaissanceClient" runat="server" Text='<%# (CType(Eval("dateNaissance"),DateTime)).ToShortDateString %>'></asp:Label>
+                    </br>
+                    <%--<div class="carteCredit">
+                        <asp:Label ID="lblCreditClient" runat="server" Text="**** **** **** 7463"></asp:Label>
+                    </div>--%>
+                    <%--<div class="modifierBouton">
+                        <asp:LinkButton ID="btnModifierCredit" runat="server" Text="Modifier"></asp:LinkButton>
+                    </div>--%>
                 </div>
             </div>
 
@@ -73,7 +83,7 @@
                 
             </div>
                 <div class="bouton">
-                    <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier les informations" CssClass="btn btn-primary btn-small"/>
+                    <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier les informations" CssClass="btn btn-primary"/>
                 </div>
         </ItemTemplate>
 
@@ -111,31 +121,31 @@
                 
                 <div class="partiDroite" >
                     <div class="formatZone">
-                        <asp:TextBox ID="txtPrenomClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("prenomMembre") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtPrenomClient" SkinID="txtBoxYellow" runat="server" CssClass="search-query" Text='<%# Bind("prenomMembre") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNomClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("nomMembre") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtNomClient" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("nomMembre") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtAdresseClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("adresse") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtAdresseClient" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("adresse") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                    <asp:TextBox ID="txtVilleClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("ville") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtVilleClient" SkinID="txtBoxYellow" runat="server" CssClass="search-query" Text='<%# Bind("ville") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker search-query" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtTelephoneClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("telephoneMembre") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtTelephoneClient" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("telephoneMembre") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                    <asp:TextBox ID="txtPostalClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("codePostal") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtPostalClient" SkinID="txtBoxYellow" runat="server" CssClass="search-query" Text='<%# Bind("codePostal") %>'></asp:TextBox>
                     </div>
                     </br>
             </div>
@@ -159,7 +169,7 @@
                         </br>
                         <div class="formatZone">
                             <asp:RequiredFieldValidator ID="requiredDate" runat="server" ErrorMessage="*La date de naissance est obligatoire" ControlToValidate="txtDate" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="regExDate" runat="server" ErrorMessage="*Votre date n'est pas dans le format mm/jj/aaaa" 
+                            <asp:RegularExpressionValidator ID="regExDate" runat="server" ErrorMessage="*Votre date n'est pas dans le format aaaa/mm/jj" 
                             ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$" Display="Dynamic" ControlToValidate="txtDate" ForeColor="Red"></asp:RegularExpressionValidator>
                         </div>
                         </br>
@@ -181,37 +191,166 @@
            </div>
         </EditItemTemplate>
     </asp:ListView>
+    
 
 <div class="section">
-<div class="sectionTitre">
-    <asp:Label ID="lblHistoriqueAbonnement" runat="server" Text="Historique des abonnements (5 derniers)"></asp:Label>
-    <div class="sectionTitreRight">
-        <asp:LinkButton ID="btnHistorique" runat="server" Text="Afficher l'historique" PostBackUrl="~/Page/Client/member_historique.aspx"></asp:LinkButton>
+    <div class="sectionTitre">
+        <asp:Label ID="lblTitreCourriel" runat="server" Text="Courriel"></asp:Label>
     </div>
 </div>
-</div>  
-
-<asp:ListView ID="lvAbonnement" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+<asp:ListView ID="lvCourriel" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
         <LayoutTemplate>
-            <div class="abonnement">
-                <div class="titreGauche">
-                    <asp:Label ID="lblTitreActivite" runat="server" Text="Nom de l'activité:"></asp:Label>
-                </div>
-                <div class="titreDroit">
-                    <asp:Label ID="lblTitreAbonnement" runat="server" Text="Date d'abonnement:"></asp:Label>
-                </div>
+            <div class="clientMotPasse">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </div>
         </LayoutTemplate>
         <ItemTemplate>
-            <div class="contenuGauche">
-                <asp:Label ID="lblActivite" runat="server" Text="Tennis"></asp:Label>
-            </div>
-            <div class="contenuDroit">
-                <asp:Label ID="lblAbonnement" runat="server" Text="08/07/2011"></asp:Label>
-            </div>
-        </ItemTemplate>
+                <div class="partiGaucheMotPasse">
+                    <asp:Label ID="lblCourriel" runat="server" Text="Votre courriel:" Font-Bold="True"></asp:Label>
+                    </br>
+                    
+                </div>
+                
+                <div class="partiDroiteMotPasse">
+                    <asp:Label ID="lblCourrielClient" runat="server" Text='<%# Eval("courriel") %>' ></asp:Label>
+                    </br>
+                    
+                </div>
+                <div class="modifierBouton">
+                    <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier le courriel" commandName="Edit"></asp:LinkButton>
+                    </br>    
+                </div>
+          </ItemTemplate>
+          <EditItemTemplate>
+            <div class="partiGaucheCourriel">
+                    <div class="formatZone">
+                        <asp:Label ID="lblCourriel" runat="server" Text="Votre présent courriel:"></asp:Label>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:Label ID="lblNouveauCourriel" runat="server" Text="Entrez votre nouveau courriel:" ></asp:Label>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:Label ID="lblNouveauCourrielEncore" runat="server" Text="Retapez votre nouveau courriel:"></asp:Label>
+                    </div>
+                </div>
+                <div class="partiDroiteCourriel">
+                    <div class="formatZone">
+                        <asp:Label ID="lblCourrielPresent" runat="server" Text='<%# Eval("courriel") %>'></asp:Label>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("courriel") %>'></asp:TextBox>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:TextBox ID="txtNouveauCourrielEncore" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text=""></asp:TextBox>
+                    </div>
+                </div>
+
+                <div class="validation">
+                    <div class="formatZone">
+                        </br>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:CompareValidator Display="Dynamic" ID="compareCourriel" runat="server" ErrorMessage="*Votre courriel ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauCourrielEncore" ControlToValidate="txtNouveauCourriel"></asp:CompareValidator>
+                    </div>
+                </div>
+
+                <div class="boutonCourriel">
+                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                </div>
+          </EditItemTemplate>
 </asp:ListView>
+
+<div class="section">
+    <div class="sectionTitre">
+        <asp:Label ID="lblTitreMotPasse" runat="server" Text="Mot de passe"></asp:Label>
+    </div>
+</div>
+
+<asp:ListView ID="lvMotPasse" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+        <LayoutTemplate>
+            <div class="clientMotPasse">
+                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+            </div>
+        </LayoutTemplate>
+        <ItemTemplate>
+                <div class="modifierBoutonMotPasse">
+                    <asp:LinkButton ID="btnModifierMP" runat="server" commandName="Edit" Text="Changer votre mot de passe"></asp:LinkButton>
+                </div>
+        </ItemTemplate>
+        <EditItemTemplate>
+        <div class="partiGaucheCourriel">
+                    <div class="formatZone">
+                        <asp:Label ID="lblMP" runat="server" Text="Présent mot de passe:"></asp:Label>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:Label ID="lblNouveauMP" runat="server" Text="Nouveau mot de passe:" ></asp:Label>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:Label ID="lblNouveauMPEncore" runat="server" Text="Retapez nouveau mot de passe:"></asp:Label>
+                    </div>
+                </div>
+                <div class="partiDroiteCourriel">
+                    <div class="formatZone">
+                        <asp:TextBox ID="txtPresentMP" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text="" TextMode="Password"></asp:TextBox>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:TextBox ID="txtNouveauMP" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("motPasse") %>' TextMode="Password"></asp:TextBox>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:TextBox ID="txtNouveauMPEncore" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text="" TextMode="Password"></asp:TextBox>
+                    </div>
+                </div>
+
+                <div class="validation">
+                    <div class="formatZone">
+                        <%--<asp:RequiredFieldValidator ID="requiredMP" runat="server" ErrorMessage="*Le mot de passe est obligatoire" ControlToValidate="txtNouveauMP" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>--%>
+                        </br>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:CompareValidator Display="Dynamic" ID="compareMP" runat="server" ErrorMessage="*Votre Mot de passe ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauMPEncore" ControlToValidate="txtNouveauMP"></asp:CompareValidator>
+                        <%--<asp:RequiredFieldValidator Display="Dynamic" ID="requiredMPConfirm" runat="server" ErrorMessage="*Veuillez confirmez votre nouveau mot de passe" ControlToValidate="txtNouveauMPEncore" ForeColor="Red" SetFocusOnError="False"></asp:RequiredFieldValidator>--%>
+                    </div>
+                </div>
+
+                <div class="boutonCourriel">
+                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                </div>
+        </EditItemTemplate>
+</asp:ListView> 
+
+<div class="section">
+    <div class="sectionTitre">
+        <asp:Label ID="lblOperations" runat="server" Text="Opérations sur un membre"></asp:Label>
+    </div>
+</div> 
+ 
+ <div class="operationEmploye">
+    <div class="titreGauche">
+        Veuillez choisir une des opérations suivantes:
+        </br>
+        </br>
+        <div class="contenuOperation">
+            <asp:LinkButton ID="LinkButton1" runat="server" Text="Ajouter un membre" PostBackUrl="~/Page/Autre/register.aspx"></asp:LinkButton>
+            </br>
+            <asp:LinkButton ID="LinkButton2" runat="server" Text="Modifier un membre" PostBackUrl="~/Page/Employe/employe_client_modify.aspx"></asp:LinkButton>
+            </br>
+            <asp:LinkButton ID="LinkButton3" runat="server" Text="Supprimer un membre" PostBackUrl="~/Page/Employe/employe_client_delete.aspx"></asp:LinkButton>
+        </div>
+    </div>
+</div>
+
 
 <script>
     $(function () {
@@ -231,7 +370,7 @@
 
     <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="true" EnableInsert="false" EnableUpdate="true" orderBy="it.idMembre" 
+    EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre" 
     where="(@MembreID = it.idMembre)">
     <WhereParameters>
         <asp:ControlParameter Name="MembreID" ControlID="dropDownMembre" PropertyName="SelectedValue" Type="Int32" />
@@ -244,4 +383,3 @@
     </asp:EntityDataSource>
 
 </asp:Content>
-

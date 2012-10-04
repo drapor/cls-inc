@@ -4,8 +4,7 @@
 <div class="contenuPage">
 
 <div class="titleClient">
-<h3>Votre compte</h3>
-<br />
+<h3>Votre compte client</h3>
 <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"></div>
          <div class="elementFormulaire">
@@ -121,33 +120,36 @@
                 
                 <div class="partiDroite" >
                     <div class="formatZone">
-                        <asp:TextBox ID="txtPrenomClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("prenomMembre") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtPrenomClient" SkinID="txtBoxYellow" runat="server" CssClass="search-query" Text='<%# Bind("prenomMembre") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNomClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("nomMembre") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtNomClient" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("nomMembre") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtAdresseClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("adresse") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtAdresseClient" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("adresse") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                    <asp:TextBox ID="txtVilleClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("ville") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtVilleClient" SkinID="txtBoxYellow" runat="server" CssClass="search-query" Text='<%# Bind("ville") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker search-query" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtTelephoneClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("telephoneMembre") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtTelephoneClient" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("telephoneMembre") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                    <asp:TextBox ID="txtPostalClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("codePostal") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtPostalClient" SkinID="txtBoxYellow" runat="server" CssClass="search-query" Text='<%# Bind("codePostal") %>'></asp:TextBox>
                     </div>
-                    </br>
+                    <div class="bouton">
+                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                </div>
             </div>
 
             <div class="clientValidation">
@@ -184,10 +186,7 @@
                         </div>
             </div>
 
-                <div class="bouton">
-                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
-                </div>
+                
            </div>
         </EditItemTemplate>
     </asp:ListView>
@@ -237,16 +236,20 @@
                 </div>
                 <div class="partiDroiteCourriel">
                     <div class="formatZone">
-                        <asp:Label ID="lblCourrielPresent" runat="server" Text='<%# Eval("courriel") %>'></asp:Label>
+                        <asp:Label ID="lblCourrielPresent" runat="server" CssClass="search-query" Text='<%# Eval("courriel") %>'></asp:Label>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("courriel") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("courriel") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauCourrielEncore" runat="server" SkinID="txtBoxYellow" Text=""></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauCourrielEncore" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text=""></asp:TextBox>
                     </div>
+                    <div class="boutonCourriel">
+                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                </div>
                 </div>
 
                 <div class="validation">
@@ -259,10 +262,6 @@
                     </div>
                 </div>
 
-                <div class="boutonCourriel">
-                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
-                </div>
           </EditItemTemplate>
 </asp:ListView>
 
@@ -279,7 +278,7 @@
             </div>
         </LayoutTemplate>
         <ItemTemplate>
-                <div class="modifierBouton">
+                <div class="modifierBoutonMotPasse">
                     <asp:LinkButton ID="btnModifierMP" runat="server" commandName="Edit" Text="Changer votre mot de passe"></asp:LinkButton>
                 </div>
         </ItemTemplate>
@@ -299,16 +298,20 @@
                 </div>
                 <div class="partiDroiteCourriel">
                     <div class="formatZone">
-                        <asp:TextBox ID="txtPresentMP" runat="server" SkinID="txtBoxYellow" Text="" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="txtPresentMP" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text="" TextMode="Password"></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauMP" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("motPasse") %>' TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauMP" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("motPasse") %>' TextMode="Password"></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauMPEncore" runat="server" SkinID="txtBoxYellow" Text="" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauMPEncore" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text="" TextMode="Password"></asp:TextBox>
                     </div>
+                    <div class="boutonCourriel">
+                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                </div>
                 </div>
 
                 <div class="validation">
@@ -322,11 +325,7 @@
                         <%--<asp:RequiredFieldValidator Display="Dynamic" ID="requiredMPConfirm" runat="server" ErrorMessage="*Veuillez confirmez votre nouveau mot de passe" ControlToValidate="txtNouveauMPEncore" ForeColor="Red" SetFocusOnError="False"></asp:RequiredFieldValidator>--%>
                     </div>
                 </div>
-
-                <div class="boutonCourriel">
-                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
-                </div>
+ 
         </EditItemTemplate>
 </asp:ListView> 
 

@@ -23,8 +23,6 @@ Partial Class Page_Client_home_member
 
     End Sub
 
-    'Protected Sub lvCourriel_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvCourriel.ItemDataBound
-    '    Dim courriel As TextBox = CType(e.Item.FindControl("txtNouveauCourriel"), TextBox)
-    '    courriel.Text = ""
-    'End Sub
+    Protected Sub lvCourriel_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvCourriel.ItemDataBound
+    End Sub
 End Class
