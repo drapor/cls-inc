@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/04/2012 14:31:53
+-- Date Created: 10/04/2012 15:29:55
 -- Generated from EDMX file: C:\GitHub\cls-inc\App_Code\modelCLS.edmx
 -- --------------------------------------------------
 
@@ -23,15 +23,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_AbonnementMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[AbonnementJeu] DROP CONSTRAINT [FK_AbonnementMembres];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Admin_inherits_Employe]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembresJeu_Admin] DROP CONSTRAINT [FK_Admin_inherits_Employe];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Animateur_inherits_Membres]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembresJeu_Animateur] DROP CONSTRAINT [FK_Animateur_inherits_Membres];
-GO
-IF OBJECT_ID(N'[dbo].[FK_AnimateurCours]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CoursJeu] DROP CONSTRAINT [FK_AnimateurCours];
-GO
 IF OBJECT_ID(N'[dbo].[FK_CarteCreditMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CarteCreditJeu] DROP CONSTRAINT [FK_CarteCreditMembres];
 GO
@@ -41,14 +32,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_CoursCoursComplete]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CoursCompleteJeu] DROP CONSTRAINT [FK_CoursCoursComplete];
 GO
+IF OBJECT_ID(N'[dbo].[FK_AnimateurCours]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CoursJeu] DROP CONSTRAINT [FK_AnimateurCours];
+GO
 IF OBJECT_ID(N'[dbo].[FK_CoursGroupe]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[GroupeJeu] DROP CONSTRAINT [FK_CoursGroupe];
 GO
 IF OBJECT_ID(N'[dbo].[FK_CoursListeAttente]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ListeAttenteJeu] DROP CONSTRAINT [FK_CoursListeAttente];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Employe_inherits_Membres]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembresJeu_Employe] DROP CONSTRAINT [FK_Employe_inherits_Membres];
 GO
 IF OBJECT_ID(N'[dbo].[FK_HoraireGroupe]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HoraireJeu] DROP CONSTRAINT [FK_HoraireGroupe];
@@ -56,8 +47,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ListeAttenteMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ListeAttenteJeu] DROP CONSTRAINT [FK_ListeAttenteMembres];
 GO
-IF OBJECT_ID(N'[dbo].[FK_RoleJeuMembresJeu]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembresJeu] DROP CONSTRAINT [FK_RoleJeuMembresJeu];
+IF OBJECT_ID(N'[dbo].[FK_Animateur_inherits_Membres]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembresJeu_Animateur] DROP CONSTRAINT [FK_Animateur_inherits_Membres];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Employe_inherits_Membres]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembresJeu_Employe] DROP CONSTRAINT [FK_Employe_inherits_Membres];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Admin_inherits_Employe]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembresJeu_Admin] DROP CONSTRAINT [FK_Admin_inherits_Employe];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SessionGroupe_GroupeJeu]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SessionGroupe] DROP CONSTRAINT [FK_SessionGroupe_GroupeJeu];
@@ -70,6 +67,9 @@ IF OBJECT_ID(N'[dbo].[FK_SpecialiteAnimateur_MembresJeu_Animateur]', 'F') IS NOT
 GO
 IF OBJECT_ID(N'[dbo].[FK_SpecialiteAnimateur_SpecialiteJeu]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SpecialiteAnimateur] DROP CONSTRAINT [FK_SpecialiteAnimateur_SpecialiteJeu];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RoleJeuMembresJeu]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembresJeu] DROP CONSTRAINT [FK_RoleJeuMembresJeu];
 GO
 
 -- --------------------------------------------------
@@ -112,14 +112,8 @@ GO
 IF OBJECT_ID(N'[dbo].[RoleJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[RoleJeu];
 GO
-IF OBJECT_ID(N'[dbo].[SessionGroupe]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SessionGroupe];
-GO
 IF OBJECT_ID(N'[dbo].[SessionJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SessionJeu];
-GO
-IF OBJECT_ID(N'[dbo].[SpecialiteAnimateur]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SpecialiteAnimateur];
 GO
 IF OBJECT_ID(N'[dbo].[SpecialiteJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SpecialiteJeu];
@@ -129,6 +123,12 @@ IF OBJECT_ID(N'[dbo].[sysdiagrams]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[TarifsJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TarifsJeu];
+GO
+IF OBJECT_ID(N'[dbo].[SessionGroupe]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SessionGroupe];
+GO
+IF OBJECT_ID(N'[dbo].[SpecialiteAnimateur]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SpecialiteAnimateur];
 GO
 
 -- --------------------------------------------------
@@ -229,23 +229,9 @@ CREATE TABLE [dbo].[MembresJeu] (
 );
 GO
 
--- Creating table 'MembresJeu_Admin'
-CREATE TABLE [dbo].[MembresJeu_Admin] (
-    [idAdmin] smallint IDENTITY(1,1) NOT NULL,
-    [idMembre] smallint  NOT NULL
-);
-GO
-
 -- Creating table 'MembresJeu_Animateur'
 CREATE TABLE [dbo].[MembresJeu_Animateur] (
     [idAnimateur] smallint IDENTITY(1,1) NOT NULL,
-    [idMembre] smallint  NOT NULL
-);
-GO
-
--- Creating table 'MembresJeu_Employe'
-CREATE TABLE [dbo].[MembresJeu_Employe] (
-    [idEmploye] smallint IDENTITY(1,1) NOT NULL,
     [idMembre] smallint  NOT NULL
 );
 GO
@@ -290,6 +276,20 @@ CREATE TABLE [dbo].[TarifsJeu] (
     [rabais2Enfant] decimal(18,0)  NOT NULL,
     [rabais3Enfant] decimal(18,0)  NOT NULL,
     [idTarif] smallint  NOT NULL
+);
+GO
+
+-- Creating table 'MembresJeu_MembresJeu_Employe'
+CREATE TABLE [dbo].[MembresJeu_MembresJeu_Employe] (
+    [idEmploye] smallint IDENTITY(1,1) NOT NULL,
+    [idMembre] smallint  NOT NULL
+);
+GO
+
+-- Creating table 'MembresJeu_MembresJeu_Admin'
+CREATE TABLE [dbo].[MembresJeu_MembresJeu_Admin] (
+    [idAdmin] smallint IDENTITY(1,1) NOT NULL,
+    [idMembre] smallint  NOT NULL
 );
 GO
 
@@ -359,21 +359,9 @@ ADD CONSTRAINT [PK_MembresJeu]
     PRIMARY KEY CLUSTERED ([idMembre] ASC);
 GO
 
--- Creating primary key on [idMembre] in table 'MembresJeu_Admin'
-ALTER TABLE [dbo].[MembresJeu_Admin]
-ADD CONSTRAINT [PK_MembresJeu_Admin]
-    PRIMARY KEY CLUSTERED ([idMembre] ASC);
-GO
-
 -- Creating primary key on [idMembre] in table 'MembresJeu_Animateur'
 ALTER TABLE [dbo].[MembresJeu_Animateur]
 ADD CONSTRAINT [PK_MembresJeu_Animateur]
-    PRIMARY KEY CLUSTERED ([idMembre] ASC);
-GO
-
--- Creating primary key on [idMembre] in table 'MembresJeu_Employe'
-ALTER TABLE [dbo].[MembresJeu_Employe]
-ADD CONSTRAINT [PK_MembresJeu_Employe]
     PRIMARY KEY CLUSTERED ([idMembre] ASC);
 GO
 
@@ -405,6 +393,18 @@ GO
 ALTER TABLE [dbo].[TarifsJeu]
 ADD CONSTRAINT [PK_TarifsJeu]
     PRIMARY KEY CLUSTERED ([idTarif] ASC);
+GO
+
+-- Creating primary key on [idMembre] in table 'MembresJeu_MembresJeu_Employe'
+ALTER TABLE [dbo].[MembresJeu_MembresJeu_Employe]
+ADD CONSTRAINT [PK_MembresJeu_MembresJeu_Employe]
+    PRIMARY KEY CLUSTERED ([idMembre] ASC);
+GO
+
+-- Creating primary key on [idMembre] in table 'MembresJeu_MembresJeu_Admin'
+ALTER TABLE [dbo].[MembresJeu_MembresJeu_Admin]
+ADD CONSTRAINT [PK_MembresJeu_MembresJeu_Admin]
+    PRIMARY KEY CLUSTERED ([idMembre] ASC);
 GO
 
 -- Creating primary key on [GroupeJeu_idGroupe], [SessionJeu_idSession] in table 'SessionGroupe'
@@ -572,24 +572,6 @@ ADD CONSTRAINT [FK_Animateur_inherits_Membres]
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [idMembre] in table 'MembresJeu_Employe'
-ALTER TABLE [dbo].[MembresJeu_Employe]
-ADD CONSTRAINT [FK_Employe_inherits_Membres]
-    FOREIGN KEY ([idMembre])
-    REFERENCES [dbo].[MembresJeu]
-        ([idMembre])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [idMembre] in table 'MembresJeu_Admin'
-ALTER TABLE [dbo].[MembresJeu_Admin]
-ADD CONSTRAINT [FK_Admin_inherits_Employe]
-    FOREIGN KEY ([idMembre])
-    REFERENCES [dbo].[MembresJeu_Employe]
-        ([idMembre])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
 -- Creating foreign key on [GroupeJeu_idGroupe] in table 'SessionGroupe'
 ALTER TABLE [dbo].[SessionGroupe]
 ADD CONSTRAINT [FK_SessionGroupe_GroupeJeu]
@@ -648,6 +630,24 @@ ADD CONSTRAINT [FK_RoleJeuMembresJeu]
 CREATE INDEX [IX_FK_RoleJeuMembresJeu]
 ON [dbo].[MembresJeu]
     ([RoleJeu_idRole]);
+GO
+
+-- Creating foreign key on [idMembre] in table 'MembresJeu_MembresJeu_Employe'
+ALTER TABLE [dbo].[MembresJeu_MembresJeu_Employe]
+ADD CONSTRAINT [FK_MembresJeu_Employe_inherits_MembresJeu]
+    FOREIGN KEY ([idMembre])
+    REFERENCES [dbo].[MembresJeu]
+        ([idMembre])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [idMembre] in table 'MembresJeu_MembresJeu_Admin'
+ALTER TABLE [dbo].[MembresJeu_MembresJeu_Admin]
+ADD CONSTRAINT [FK_MembresJeu_Admin_inherits_MembresJeu_Employe]
+    FOREIGN KEY ([idMembre])
+    REFERENCES [dbo].[MembresJeu_MembresJeu_Employe]
+        ([idMembre])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- --------------------------------------------------
