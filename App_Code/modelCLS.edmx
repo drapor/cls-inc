@@ -14,14 +14,14 @@
     <EntitySet Name="HoraireJeu" EntityType="modelCLS.Store.HoraireJeu" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ListeAttenteJeu" EntityType="modelCLS.Store.ListeAttenteJeu" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MembresJeu" EntityType="modelCLS.Store.MembresJeu" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="MembresJeu_Admin" EntityType="modelCLS.Store.MembresJeu_Admin" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MembresJeu_Animateur" EntityType="modelCLS.Store.MembresJeu_Animateur" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="MembresJeu_Employe" EntityType="modelCLS.Store.MembresJeu_Employe" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="RoleJeu" EntityType="modelCLS.Store.RoleJeu" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SessionJeu" EntityType="modelCLS.Store.SessionJeu" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SpecialiteJeu" EntityType="modelCLS.Store.SpecialiteJeu" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="sysdiagrams" EntityType="modelCLS.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TarifsJeu" EntityType="modelCLS.Store.TarifsJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MembresJeu_MembresJeu_Employe" EntityType="modelCLS.Store.MembresJeu_MembresJeu_Employe" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MembresJeu_MembresJeu_Admin" EntityType="modelCLS.Store.MembresJeu_MembresJeu_Admin" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SessionGroupe" EntityType="modelCLS.Store.SessionGroupe" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SpecialiteAnimateur" EntityType="modelCLS.Store.SpecialiteAnimateur" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_AbonnementGroupe" Association="modelCLS.Store.FK_AbonnementGroupe">
@@ -68,14 +68,6 @@
       <End Role="MembresJeu" EntitySet="MembresJeu" />
       <End Role="MembresJeu_Animateur" EntitySet="MembresJeu_Animateur" />
     </AssociationSet>
-    <AssociationSet Name="FK_Employe_inherits_Membres" Association="modelCLS.Store.FK_Employe_inherits_Membres">
-      <End Role="MembresJeu" EntitySet="MembresJeu" />
-      <End Role="MembresJeu_Employe" EntitySet="MembresJeu_Employe" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Admin_inherits_Employe" Association="modelCLS.Store.FK_Admin_inherits_Employe">
-      <End Role="MembresJeu_Employe" EntitySet="MembresJeu_Employe" />
-      <End Role="MembresJeu_Admin" EntitySet="MembresJeu_Admin" />
-    </AssociationSet>
     <AssociationSet Name="FK_SessionGroupe_GroupeJeu" Association="modelCLS.Store.FK_SessionGroupe_GroupeJeu">
       <End Role="GroupeJeu" EntitySet="GroupeJeu" />
       <End Role="SessionGroupe" EntitySet="SessionGroupe" />
@@ -95,6 +87,14 @@
     <AssociationSet Name="FK_RoleJeuMembresJeu" Association="modelCLS.Store.FK_RoleJeuMembresJeu">
       <End Role="RoleJeu" EntitySet="RoleJeu" />
       <End Role="MembresJeu" EntitySet="MembresJeu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MembresJeu_Employe_inherits_MembresJeu" Association="modelCLS.Store.FK_MembresJeu_Employe_inherits_MembresJeu">
+      <End Role="MembresJeu" EntitySet="MembresJeu" />
+      <End Role="MembresJeu_Employe" EntitySet="MembresJeu_MembresJeu_Employe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MembresJeu_Admin_inherits_MembresJeu_Employe" Association="modelCLS.Store.FK_MembresJeu_Admin_inherits_MembresJeu_Employe">
+      <End Role="MembresJeu_Employe" EntitySet="MembresJeu_MembresJeu_Employe" />
+      <End Role="MembresJeu_Admin" EntitySet="MembresJeu_MembresJeu_Admin" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="AbonnementJeu">
@@ -191,25 +191,11 @@
     <Property Name="sexe" Type="nvarchar" Nullable="false" MaxLength="1" />
     <Property Name="RoleJeu_idRole" Type="smallint" Nullable="false" />
   </EntityType>
-  <EntityType Name="MembresJeu_Admin">
-    <Key>
-      <PropertyRef Name="idMembre" />
-    </Key>
-    <Property Name="idAdmin" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idMembre" Type="smallint" Nullable="false" />
-  </EntityType>
   <EntityType Name="MembresJeu_Animateur">
     <Key>
       <PropertyRef Name="idMembre" />
     </Key>
     <Property Name="idAnimateur" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idMembre" Type="smallint" Nullable="false" />
-  </EntityType>
-  <EntityType Name="MembresJeu_Employe">
-    <Key>
-      <PropertyRef Name="idMembre" />
-    </Key>
-    <Property Name="idEmploye" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idMembre" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="RoleJeu">
@@ -254,6 +240,20 @@
     <Property Name="rabais2Enfant" Type="decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="rabais3Enfant" Type="decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="idTarif" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MembresJeu_MembresJeu_Employe">
+    <Key>
+      <PropertyRef Name="idMembre" />
+    </Key>
+    <Property Name="idEmploye" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idMembre" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MembresJeu_MembresJeu_Admin">
+    <Key>
+      <PropertyRef Name="idMembre" />
+    </Key>
+    <Property Name="idAdmin" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idMembre" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="SessionGroupe">
     <Key>
@@ -403,30 +403,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Employe_inherits_Membres">
-    <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="1" />
-    <End Role="MembresJeu_Employe" Type="modelCLS.Store.MembresJeu_Employe" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="MembresJeu">
-        <PropertyRef Name="idMembre" />
-      </Principal>
-      <Dependent Role="MembresJeu_Employe">
-        <PropertyRef Name="idMembre" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Admin_inherits_Employe">
-    <End Role="MembresJeu_Employe" Type="modelCLS.Store.MembresJeu_Employe" Multiplicity="1" />
-    <End Role="MembresJeu_Admin" Type="modelCLS.Store.MembresJeu_Admin" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="MembresJeu_Employe">
-        <PropertyRef Name="idMembre" />
-      </Principal>
-      <Dependent Role="MembresJeu_Admin">
-        <PropertyRef Name="idMembre" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_RoleJeuMembresJeu">
     <End Role="RoleJeu" Type="modelCLS.Store.RoleJeu" Multiplicity="1" />
     <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="*" />
@@ -487,6 +463,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_MembresJeu_Employe_inherits_MembresJeu">
+    <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="1" />
+    <End Role="MembresJeu_Employe" Type="modelCLS.Store.MembresJeu_MembresJeu_Employe" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MembresJeu">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="MembresJeu_Employe">
+        <PropertyRef Name="idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MembresJeu_Admin_inherits_MembresJeu_Employe">
+    <End Role="MembresJeu_Employe" Type="modelCLS.Store.MembresJeu_MembresJeu_Employe" Multiplicity="1" />
+    <End Role="MembresJeu_Admin" Type="modelCLS.Store.MembresJeu_MembresJeu_Admin" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MembresJeu_Employe">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="MembresJeu_Admin">
+        <PropertyRef Name="idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -500,9 +500,7 @@
           <EntitySet Name="HoraireJeu" EntityType="modelCLS.HoraireJeu" />
           <EntitySet Name="ListeAttenteJeu" EntityType="modelCLS.ListeAttenteJeu" />
           <EntitySet Name="MembresJeu" EntityType="modelCLS.MembresJeu" />
-          <EntitySet Name="MembresJeu_Admin" EntityType="modelCLS.MembresJeu_Admin" />
           <EntitySet Name="MembresJeu_Animateur" EntityType="modelCLS.MembresJeu_Animateur" />
-          <EntitySet Name="MembresJeu_Employe" EntityType="modelCLS.MembresJeu_Employe" />
           <EntitySet Name="RoleJeu" EntityType="modelCLS.RoleJeu" />
           <EntitySet Name="SessionJeu" EntityType="modelCLS.SessionJeu" />
           <EntitySet Name="SpecialiteJeu" EntityType="modelCLS.SpecialiteJeu" />
@@ -551,14 +549,6 @@
           <AssociationSet Name="FK_Animateur_inherits_Membres" Association="modelCLS.FK_Animateur_inherits_Membres">
             <End Role="MembresJeu" EntitySet="MembresJeu" />
             <End Role="MembresJeu_Animateur" EntitySet="MembresJeu_Animateur" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employe_inherits_Membres" Association="modelCLS.FK_Employe_inherits_Membres">
-            <End Role="MembresJeu" EntitySet="MembresJeu" />
-            <End Role="MembresJeu_Employe" EntitySet="MembresJeu_Employe" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Admin_inherits_Employe" Association="modelCLS.FK_Admin_inherits_Employe">
-            <End Role="MembresJeu_Employe" EntitySet="MembresJeu_Employe" />
-            <End Role="MembresJeu_Admin" EntitySet="MembresJeu_Admin" />
           </AssociationSet>
           <AssociationSet Name="SessionGroupe" Association="modelCLS.SessionGroupe">
             <End Role="GroupeJeu" EntitySet="GroupeJeu" />
@@ -684,19 +674,13 @@
           <NavigationProperty Name="CoursCompleteJeu" Relationship="modelCLS.FK_CoursCompleteMembres" FromRole="MembresJeu" ToRole="CoursCompleteJeu" />
           <NavigationProperty Name="ListeAttenteJeu" Relationship="modelCLS.FK_ListeAttenteMembres" FromRole="MembresJeu" ToRole="ListeAttenteJeu" />
           <NavigationProperty Name="MembresJeu_Animateur" Relationship="modelCLS.FK_Animateur_inherits_Membres" FromRole="MembresJeu" ToRole="MembresJeu_Animateur" />
-          <NavigationProperty Name="MembresJeu_Employe" Relationship="modelCLS.FK_Employe_inherits_Membres" FromRole="MembresJeu" ToRole="MembresJeu_Employe" />
           <Property Type="Int16" Name="familleID" Nullable="false" />
           <Property Type="String" Name="sexe" Nullable="false" MaxLength="1" />
           <Property Type="Int16" Name="RoleJeu_idRole" Nullable="false" />
           <NavigationProperty Name="RoleJeu_1" Relationship="modelCLS.FK_RoleJeuMembresJeu" FromRole="MembresJeu" ToRole="RoleJeu" />
         </EntityType>
-        <EntityType Name="MembresJeu_Admin">
-          <Key>
-            <PropertyRef Name="idMembre" />
-          </Key>
+        <EntityType Name="MembresJeu_Admin" BaseType="modelCLS.MembresJeu_Employe">
           <Property Type="Int16" Name="idAdmin" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int16" Name="idMembre" Nullable="false" />
-          <NavigationProperty Name="MembresJeu_Employe" Relationship="modelCLS.FK_Admin_inherits_Employe" FromRole="MembresJeu_Admin" ToRole="MembresJeu_Employe" />
         </EntityType>
         <EntityType Name="MembresJeu_Animateur">
           <Key>
@@ -708,14 +692,8 @@
           <NavigationProperty Name="MembresJeu" Relationship="modelCLS.FK_Animateur_inherits_Membres" FromRole="MembresJeu_Animateur" ToRole="MembresJeu" />
           <NavigationProperty Name="SpecialiteJeu" Relationship="modelCLS.SpecialiteAnimateur" FromRole="MembresJeu_Animateur" ToRole="SpecialiteJeu" />
         </EntityType>
-        <EntityType Name="MembresJeu_Employe">
-          <Key>
-            <PropertyRef Name="idMembre" />
-          </Key>
+        <EntityType Name="MembresJeu_Employe" BaseType="modelCLS.MembresJeu">
           <Property Type="Int16" Name="idEmploye" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int16" Name="idMembre" Nullable="false" />
-          <NavigationProperty Name="MembresJeu" Relationship="modelCLS.FK_Employe_inherits_Membres" FromRole="MembresJeu_Employe" ToRole="MembresJeu" />
-          <NavigationProperty Name="MembresJeu_Admin" Relationship="modelCLS.FK_Admin_inherits_Employe" FromRole="MembresJeu_Employe" ToRole="MembresJeu_Admin" />
         </EntityType>
         <EntityType Name="RoleJeu">
           <Key>
@@ -895,30 +873,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employe_inherits_Membres">
-          <End Type="modelCLS.MembresJeu" Role="MembresJeu" Multiplicity="1" />
-          <End Type="modelCLS.MembresJeu_Employe" Role="MembresJeu_Employe" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="MembresJeu">
-              <PropertyRef Name="idMembre" />
-            </Principal>
-            <Dependent Role="MembresJeu_Employe">
-              <PropertyRef Name="idMembre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Admin_inherits_Employe">
-          <End Type="modelCLS.MembresJeu_Employe" Role="MembresJeu_Employe" Multiplicity="1" />
-          <End Type="modelCLS.MembresJeu_Admin" Role="MembresJeu_Admin" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="MembresJeu_Employe">
-              <PropertyRef Name="idMembre" />
-            </Principal>
-            <Dependent Role="MembresJeu_Admin">
-              <PropertyRef Name="idMembre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="SessionGroupe">
           <End Type="modelCLS.GroupeJeu" Role="GroupeJeu" Multiplicity="*" />
           <End Type="modelCLS.SessionJeu" Role="SessionJeu" Multiplicity="*" />
@@ -1046,10 +1000,14 @@
           <ScalarProperty Name="RoleJeu_idRole" ColumnName="RoleJeu_idRole" />
         </MappingFragment>
       </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MembresJeu_Admin">
+      <EntityTypeMapping TypeName="IsTypeOf(modelCLS.MembresJeu_Employe)">
+        <MappingFragment StoreEntitySet="MembresJeu_MembresJeu_Employe">
+          <ScalarProperty Name="idMembre" ColumnName="idMembre" />
+          <ScalarProperty Name="idEmploye" ColumnName="idEmploye" />
+        </MappingFragment>
+      </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(modelCLS.MembresJeu_Admin)">
-        <MappingFragment StoreEntitySet="MembresJeu_Admin">
+        <MappingFragment StoreEntitySet="MembresJeu_MembresJeu_Admin">
           <ScalarProperty Name="idMembre" ColumnName="idMembre" />
           <ScalarProperty Name="idAdmin" ColumnName="idAdmin" />
         </MappingFragment>
@@ -1060,14 +1018,6 @@
         <MappingFragment StoreEntitySet="MembresJeu_Animateur">
           <ScalarProperty Name="idMembre" ColumnName="idMembre" />
           <ScalarProperty Name="idAnimateur" ColumnName="idAnimateur" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MembresJeu_Employe">
-      <EntityTypeMapping TypeName="IsTypeOf(modelCLS.MembresJeu_Employe)">
-        <MappingFragment StoreEntitySet="MembresJeu_Employe">
-          <ScalarProperty Name="idMembre" ColumnName="idMembre" />
-          <ScalarProperty Name="idEmploye" ColumnName="idEmploye" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1154,7 +1104,7 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="modelCLS" ZoomLevel="93" >
+      <Diagram Name="modelCLS" ZoomLevel="60" >
         <EntityTypeShape EntityType="modelCLS.AbonnementJeu" Width="1.5" PointX="3.5" PointY="14.25" Height="2.172587890624996" />
         <EntityTypeShape EntityType="modelCLS.CarteCreditJeu" Width="1.5" PointX="0.625" PointY="16.125" Height="2.5571907552083388" />
         <EntityTypeShape EntityType="modelCLS.CoursCompleteJeu" Width="1.75" PointX="7" PointY="13.125" Height="1.9802864583333388" />
@@ -1163,9 +1113,9 @@
         <EntityTypeShape EntityType="modelCLS.HoraireJeu" Width="1.5" PointX="9.375" PointY="16.125" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="modelCLS.ListeAttenteJeu" Width="1.5" PointX="7" PointY="8.5" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="modelCLS.MembresJeu" Width="1.5" PointX="1.125" PointY="10.125" Height="5.2494108072916656" />
-        <EntityTypeShape EntityType="modelCLS.MembresJeu_Admin" Width="1.75" PointX="8.875" PointY="6.875" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="modelCLS.MembresJeu_Admin" Width="1.75" PointX="8.875" PointY="6.875" Height="1.2110807291666674" />
         <EntityTypeShape EntityType="modelCLS.MembresJeu_Animateur" Width="2" PointX="3.375" PointY="10.5" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="modelCLS.MembresJeu_Employe" Width="1.875" PointX="4.75" PointY="6.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="modelCLS.MembresJeu_Employe" Width="1.875" PointX="4.75" PointY="6.75" Height="1.2110807291666665" />
         <EntityTypeShape EntityType="modelCLS.RoleJeu" Width="1.5" PointX="0.5" PointY="7" Height="1.595683593749996" />
         <EntityTypeShape EntityType="modelCLS.SessionJeu" Width="1.5" PointX="7.125" PointY="18.875" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="modelCLS.SpecialiteJeu" Width="1.5" PointX="6.875" PointY="11.25" Height="1.595683593749996" />
@@ -1216,15 +1166,6 @@
           <ConnectorPoint PointX="2.625" PointY="11.490143229166662" />
           <ConnectorPoint PointX="3.375" PointY="11.490143229166662" />
         </AssociationConnector>
-        <AssociationConnector Association="modelCLS.FK_Employe_inherits_Membres" >
-          <ConnectorPoint PointX="2.34375" PointY="10.125" />
-          <ConnectorPoint PointX="2.34375" PointY="6.84375" />
-          <ConnectorPoint PointX="4.75" PointY="6.84375" />
-        </AssociationConnector>
-        <AssociationConnector Association="modelCLS.FK_Admin_inherits_Employe" >
-          <ConnectorPoint PointX="6.625" PointY="7.672841796874998" />
-          <ConnectorPoint PointX="8.875" PointY="7.672841796874998" />
-        </AssociationConnector>
         <AssociationConnector Association="modelCLS.SessionGroupe" >
           <ConnectorPoint PointX="7.9375" PointY="18.057190755208332" />
           <ConnectorPoint PointX="7.9375" PointY="18.875" />
@@ -1237,6 +1178,16 @@
           <ConnectorPoint PointX="1.7734375" PointY="8.7879850260416674" />
           <ConnectorPoint PointX="1.7734375" PointY="10.125" />
         </AssociationConnector>
+        <InheritanceConnector EntityType="modelCLS.MembresJeu_Employe">
+          <ConnectorPoint PointX="1.875" PointY="10.125" />
+          <ConnectorPoint PointX="1.875" PointY="9.75" />
+          <ConnectorPoint PointX="5.6875" PointY="9.75" />
+          <ConnectorPoint PointX="5.6875" PointY="7.9610807291666665" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="modelCLS.MembresJeu_Admin">
+          <ConnectorPoint PointX="6.625" PointY="7.4180403645833337" />
+          <ConnectorPoint PointX="8.875" PointY="7.4180403645833337" />
+        </InheritanceConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
