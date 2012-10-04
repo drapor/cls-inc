@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Default.aspx.vb" Inherits="Page_Default" Theme="Original" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<div class="containerAccueil">
+
 <div class="containerZoneTexte">
 
 <div id="slideshow">
@@ -41,9 +43,7 @@ Profitez de nos nombreux tarifs familiales qui vous avantageront. Notre nouveau 
 
 
 </div>
-
-
-
+</div> 
 
 
 </asp:Content>
