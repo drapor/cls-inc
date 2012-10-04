@@ -4,11 +4,12 @@
 <div class="contenuPage">
 
 <div class="titleClient">
-<h3>Votre compte client</h3>
+<h3>Compte client</h3>
 <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"></div>
+         <div class="elementFormulaireTexte">
+         Choisissez un membre</div>
          <div class="elementFormulaire">
-             <asp:DropDownList ID="dropDownMembre" runat="server" Width="100px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="prenomMembre" />
+             <asp:DropDownList ID="dropDownMembre" runat="server" Width="200px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="FullName" />
          </div>
     </div>
 </div>
@@ -240,7 +241,7 @@
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("courriel") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text=""></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
@@ -248,7 +249,7 @@
                     </div>
                     <div class="boutonCourriel">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Canceler" CssClass="btn btn-primary btn-small" />
                 </div>
                 </div>
 
@@ -424,7 +425,8 @@
 
     <asp:EntityDataSource ID="dsMember" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="true" EnableInsert="false" EnableUpdate="true" orderBy="it.idMembre">
+    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idMembre" 
+    Select="it.idMembre,it.nomMembre,it.prenomMembre,(it.[prenomMembre]+' '+it.[nomMembre]) as FullName, it.adresse, it.ville, it.dateNaissance, it.telephoneMembre, it.codePostal, it.courriel, it.motPasse, it.dateInscription">
     </asp:EntityDataSource>
 
 </asp:Content>
