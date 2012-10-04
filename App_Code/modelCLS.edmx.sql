@@ -1,9 +1,8 @@
 
-
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/27/2012 13:44:28
+-- Date Created: 10/04/2012 11:29:26
 -- Generated from EDMX file: C:\GitHub\cls-inc\App_Code\modelCLS.edmx
 -- --------------------------------------------------
 
@@ -224,9 +223,9 @@ CREATE TABLE [dbo].[MembresJeu] (
     [dateNaissance] datetime  NOT NULL,
     [courriel] nvarchar(50)  NOT NULL,
     [codePostal] nvarchar(7)  NOT NULL,
-    [Role_idRole] smallint  NOT NULL,
     [familleID] smallint  NOT NULL,
-    [sexe] nvarchar(1)  NOT NULL
+    [sexe] nvarchar(1)  NOT NULL,
+    [RoleJeu_idRole] smallint  NOT NULL
 );
 GO
 
@@ -582,20 +581,6 @@ ADD CONSTRAINT [FK_Employe_inherits_Membres]
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [Role_idRole] in table 'MembresJeu'
-ALTER TABLE [dbo].[MembresJeu]
-ADD CONSTRAINT [FK_RoleMembres]
-    FOREIGN KEY ([Role_idRole])
-    REFERENCES [dbo].[RoleJeu]
-        ([idRole])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RoleMembres'
-CREATE INDEX [IX_FK_RoleMembres]
-ON [dbo].[MembresJeu]
-    ([Role_idRole]);
-GO
-
 -- Creating foreign key on [idMembre] in table 'MembresJeu_Admin'
 ALTER TABLE [dbo].[MembresJeu_Admin]
 ADD CONSTRAINT [FK_Admin_inherits_Employe]
@@ -651,5 +636,20 @@ ON [dbo].[SpecialiteAnimateur]
     ([SpecialiteJeu_idSpacialite]);
 GO
 
+-- Creating foreign key on [RoleJeu_idRole] in table 'MembresJeu'
+ALTER TABLE [dbo].[MembresJeu]
+ADD CONSTRAINT [FK_RoleJeuMembresJeu]
+    FOREIGN KEY ([RoleJeu_idRole])
+    REFERENCES [dbo].[RoleJeu]
+        ([idRole])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RoleJeuMembresJeu'
+CREATE INDEX [IX_FK_RoleJeuMembresJeu]
+ON [dbo].[MembresJeu]
+    ([RoleJeu_idRole]);
+GO
+
 -- --------------------------------------------------
 -- Script has ended
+-- --------------------------------------------------
