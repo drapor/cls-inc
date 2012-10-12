@@ -10,7 +10,7 @@
          <div class="elementFormulaireTexte">
              <asp:Label ID="lblChoisirEmploye" runat="server" Text="Choisissez l'employé"></asp:Label></div>
          <div class="elementFormulaire">
-             <asp:DropDownList ID="dropDownEmploye" runat="server" Width="250px" SkinID="ddlBlue" DataSourceId="dsEmploye" DataValueField="idEmploye" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="FullName" />
+             <asp:DropDownList ID="dropDownEmploye" runat="server" Width="250px" SkinID="ddlBlue" DataSourceId="dsDropDownEmploye" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="prenomMembre" />
          </div>
     </div>
 </div>
@@ -19,11 +19,11 @@
 
 <div class="section">
 <div class="sectionTitre">
-    <asp:Label ID="infoPersonnel" runat="server" Text="nIformations personnels"></asp:Label>
+    <asp:Label ID="infoPersonnel" runat="server" Text="Informations personnels"></asp:Label>
 </div>
 </div>  
 
-    <asp:ListView ID="lvInfoMembre" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idEmploye">
+    <asp:ListView ID="lvInfoMembre" runat="server" DataSourceID="dsEmploye" DataKeyNames="idMembre">
         <LayoutTemplate>
             <div class="infoClient">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -39,8 +39,6 @@
                     <asp:Label ID="lblTelephone" runat="server" Text="Téléphone:"></asp:Label>
                     </br>
                     <asp:Label ID="lblNaissance" runat="server" Text="Date de naissance:"></asp:Label>
-<%--                    </br>
-                    <asp:Label ID="lblCredit" runat="server" Text="No carte de crédit:"></asp:Label>--%>
                 </div>
                 
                 <div class="partiDroite">
@@ -52,12 +50,6 @@
                     </br>
                     <asp:Label ID="lblNaissanceClient" runat="server" Text='<%# (CType(Eval("dateNaissance"),DateTime)).ToShortDateString %>'></asp:Label>
                     </br>
-                    <%--<div class="carteCredit">
-                        <asp:Label ID="lblCreditClient" runat="server" Text="**** **** **** 7463"></asp:Label>
-                    </div>--%>
-                    <%--<div class="modifierBouton">
-                        <asp:LinkButton ID="btnModifierCredit" runat="server" Text="Modifier"></asp:LinkButton>
-                    </div>--%>
                 </div>
             </div>
 
@@ -199,7 +191,7 @@
         <asp:Label ID="lblTitreCourriel" runat="server" Text="Courriel"></asp:Label>
     </div>
 </div>
-<asp:ListView ID="lvCourriel" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+<asp:ListView ID="lvCourriel" runat="server" DataSourceID="dsEmploye" DataKeyNames="idMembre">
         <LayoutTemplate>
             <div class="clientMotPasse">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -273,7 +265,7 @@
     </div>
 </div>
 
-<asp:ListView ID="lvMotPasse" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+<asp:ListView ID="lvMotPasse" runat="server" DataSourceID="dsEmploye" DataKeyNames="idMembre">
         <LayoutTemplate>
             <div class="clientMotPasse">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -349,20 +341,31 @@
 </div>
 </div>
 
-    <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=modelCLSContainer"
-    DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu_Employe" EnableFlattening="False"
-    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idEmploye" 
-    where="(@EmployeID = it.idEmploye)"
-    Select="it.idEmploye, it.idMembre,it.MembresJeu.nomMembre,it.MembresJeu.prenomMembre,(it.MembresJeu.[prenomMembre]+' '+it.MembresJeu.[nomMembre]) as FullName, it.MembresJeu.adresse, it.MembresJeu.ville, it.MembresJeu.dateNaissance, it.MembresJeu.telephoneMembre, it.MembresJeu.codePostal, it.MembresJeu.courriel, it.MembresJeu.motPasse, it.MembresJeu.dateInscription" >
+    <asp:EntityDataSource ID="dsEmploye" runat="server" 
+    ConnectionString="name=modelCLSContainer"
+    DefaultContainerName="modelCLSContainer" 
+    EntitySetName="MembresJeu" EnableFlattening="False"
+    EnableDelete="true" EnableInsert="true" 
+    EnableUpdate="true"
+    orderBy="it.idMembre" 
+    Where="(@MembreID = it.idMembre)"
+    EntityTypeFilter="MembresJeu">
     <WhereParameters>
-        <asp:ControlParameter Name="EmployeID" ControlID="dropDownEmploye" PropertyName="SelectedValue" Type="Int32" />
+        <asp:ControlParameter Name="MembreID" ControlID="dropDownEmploye" PropertyName="SelectedValue" Type="Int32" DefaultValue="9" />
     </WhereParameters>
     </asp:EntityDataSource>
 
-    <asp:EntityDataSource ID="dsEmploye" runat="server" ConnectionString="name=modelCLSContainer"
-    DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu_Employe" EnableFlattening="False"
-    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idEmploye"
-    Select="it.idEmploye, it.idMembre,it.MembresJeu.nomMembre, it.MembresJeu.prenomMembre,(it.MembresJeu.[prenomMembre]+' '+it.MembresJeu.[nomMembre]) as FullName, it.MembresJeu.adresse, it.MembresJeu.ville, it.MembresJeu.dateNaissance, it.MembresJeu.telephoneMembre, it.MembresJeu.codePostal, it.MembresJeu.courriel, it.MembresJeu.motPasse, it.MembresJeu.dateInscription">
+
+    <asp:EntityDataSource ID="dsDropDownEmploye" runat="server"
+    ConnectionString="name=modelCLSContainer"
+    DefaultContainerName="modelCLSContainer"
+    EntitySetName="MembresJeu"
+    EnableFlattening="false"
+    EnableDelete="true" EnableInsert="true" 
+    EnableUpdate="true"
+    EntityTypeFilter="MembresJeu"
+    Include="MembresJeu_Employe"
+    Where="(it.RoleJeu_idRole = 1 OR it.RoleJeu_idRole = 2)">
     </asp:EntityDataSource>
 
 </asp:Content>

@@ -1,11 +1,16 @@
-﻿
+﻿Imports modelCLS
 Partial Class Page_Admin_admin_employe_modify
     Inherits System.Web.UI.Page
 
 
+    Private Shared leContext As modelCLSContainer = Nothing
+    
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        Dim entEmploye As New modelCLSContainer
+        leContext = New modelCLSContainer
+        Dim dropDownNouvelEmploye As New ListItem
+        dropDownEmploye.Items.Add(dropDownNouvelEmploye)
 
-    'Protected Sub lvCourriel_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvCourriel.ItemDataBound
-    '    Dim courriel As TextBox = CType(e.Item.FindControl("txtNouveauCourriel"), TextBox)
-    '    courriel.Text = ""
-    'End Sub
+
+    End Sub
 End Class
