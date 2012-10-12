@@ -1,36 +1,35 @@
-<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_employe_add.aspx.vb" Inherits="Page_Admin_admin_employe_add" Theme="Original" %>
+<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_course_add.aspx.vb" Inherits="Page_Admin_admin_course_add" Theme="Original" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <div class="containerContenuAdmin">
 
 
 <div class="titleAdminNormal">
-    <asp:Label ID="lblAjouterEmploye" runat="server" Text="Ajouter un employé"></asp:Label>
+    <asp:Label ID="lblAjouterCours" runat="server" Text="Ajouter un cours"></asp:Label>
 </div>
 
 <div class="containerFormulaire">
 
 
     <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblCourriel" runat="server" Text="E-mail"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtCourriel" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="50"></asp:TextBox></div>
+         <div class="elementFormulaireTexte"><asp:Label ID="lblNomCours" runat="server" Text="Nom du cours"></asp:Label></div>
+         <div class="elementFormulaire"><asp:TextBox ID="txtCours" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="50"></asp:TextBox></div>
          <div class="elementFormulaireRequired">
-        <asp:RequiredFieldValidator ID="requiredCourriel" runat="server" ErrorMessage="*L'adresse courriel est obligatoire" ControlToValidate="txtCourriel" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="regExCourriel" runat="server" ErrorMessage="*Veuillez entrer une adresse dans le format adresse@courriel.com" ControlToValidate="txtCourriel" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"></asp:RegularExpressionValidator>
-        <asp:Label ID="lblErreurEmail" runat="server" Text="L'adresse courriel existe déjà" ForeColor="Red" Visible="false" ></asp:Label>
+        <asp:RequiredFieldValidator ID="requiredCours" runat="server" ErrorMessage="*Le nom du cours est obligatoire" ControlToValidate="txtCours" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+        <asp:Label ID="lblErreurCorus" runat="server" Text="Le cours existe déjà" ForeColor="Red" Visible="false" ></asp:Label>
         </div>
     </div>
     <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblPrenom" runat="server" Text="Prénom"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtPrenom" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="25"></asp:TextBox></div>
+         <div class="elementFormulaireTexte"><asp:Label ID="lblDescription" runat="server" Text="Description du cours"></asp:Label></div>
+         <div class="elementFormulaire"><asp:TextBox ID="txtDescription" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="400" Height="60px" TextMode="MultiLine" Width="350px"></asp:TextBox></div>
          <div class="elementFormulaireRequired">
-        <asp:RequiredFieldValidator ID="requiredPrenom" runat="server" ErrorMessage="*Le prénom est obligatoire" ControlToValidate="txtPrenom" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="requiredDescription" runat="server" ErrorMessage="*La description est obligatoire" ControlToValidate="txtDescription" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         </div>
     </div>
     <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblNom" runat="server" Text="Nom"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtNom" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="25"></asp:TextBox></div>
+         <div class="elementFormulaireTexte"><asp:Label ID="lblPrerequis" runat="server" Text="Prérequis"></asp:Label></div>
+         <div class="elementFormulaire"><asp:TextBox ID="txtPrerequis" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="25"></asp:TextBox></div>
          <div class="elementFormulaireRequired">
-        <asp:RequiredFieldValidator ID="requiredNom" runat="server" ErrorMessage="*Le nom est obligatoire" ControlToValidate="txtNom" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="requiredPrerequis" runat="server" ErrorMessage="*Le prérequis est obligatoire" ControlToValidate="txtPrerequis" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         </div>
     </div>
     <div class="ligneFormulaire">
