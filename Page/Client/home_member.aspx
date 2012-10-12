@@ -217,7 +217,7 @@
                     
                 </div>
                 <div class="modifierBouton">
-                    <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier le courriel" commandName="Edit"></asp:LinkButton>
+                    <asp:LinkButton ID="btnModifierCourriel" runat="server" onclick="actionModifie" Text="Modifier le courriel" commandName="Edit"></asp:LinkButton>
                     </br>    
                 </div>
           </ItemTemplate>
@@ -241,14 +241,14 @@
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text=""></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("courriel") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
                         <asp:TextBox ID="txtNouveauCourrielEncore" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text=""></asp:TextBox>
                     </div>
                     <div class="boutonCourriel">
-                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" OnClick="actionAccept" Text="Accepter" CssClass="btn btn-primary btn-small" />
                     <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Canceler" CssClass="btn btn-primary btn-small" />
                 </div>
                 </div>
@@ -260,6 +260,7 @@
                     </br>
                     <div class="formatZone">
                         <asp:CompareValidator Display="Dynamic" ID="compareCourriel" runat="server" ErrorMessage="*Votre courriel ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauCourrielEncore" ControlToValidate="txtNouveauCourriel"></asp:CompareValidator>
+                        <%--<asp:CustomValidator ID="verifieCourriel" ClientValidationFunction="courrielValidate" runat="server" ErrorMessage="Ce courriel est déjà associé à un client"></asp:CustomValidator>--%>
                     </div>
                 </div>
 
@@ -411,12 +412,22 @@
     });
 </script>
 
+<%--<script>
+    function courrielValidate(sender, args) {
+        if (args.value ==  )
+        args.IsValid = false
+        else
+        args.IsValid = true
+    }
+</script>--%>
+
 </div>
 </div>
 
     <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre" 
+    EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre"
+    EntityTypeFilter="MembresJeu" 
     where="(@MembreID = it.idMembre)">
     <WhereParameters>
         <asp:ControlParameter Name="MembreID" ControlID="dropDownMembre" PropertyName="SelectedValue" Type="Int32" />
@@ -425,7 +436,8 @@
 
     <asp:EntityDataSource ID="dsMember" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idMembre" 
+    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idMembre"
+    EntityTypeFilter="MembresJeu" 
     Select="it.idMembre,it.nomMembre,it.prenomMembre,(it.[prenomMembre]+' '+it.[nomMembre]) as FullName, it.adresse, it.ville, it.dateNaissance, it.telephoneMembre, it.codePostal, it.courriel, it.motPasse, it.dateInscription">
     </asp:EntityDataSource>
 

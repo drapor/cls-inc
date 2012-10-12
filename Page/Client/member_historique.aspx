@@ -33,7 +33,8 @@
 
 <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre">
+    EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre"
+    EntityTypeFilter="MembresJeu" >
 </asp:EntityDataSource>
 
 </asp:Content>

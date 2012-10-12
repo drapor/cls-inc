@@ -232,7 +232,8 @@
 
     <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="true" EnableInsert="false" EnableUpdate="true" orderBy="it.idMembre" 
+    EnableDelete="true" EnableInsert="false" EnableUpdate="true" orderBy="it.idMembre"
+    EntityTypeFilter="MembresJeu"  
     where="(@MembreID = it.idMembre)">
     <WhereParameters>
         <asp:ControlParameter Name="MembreID" ControlID="dropDownMembre" PropertyName="SelectedValue" Type="Int32" />
@@ -241,7 +242,8 @@
 
     <asp:EntityDataSource ID="dsMember" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idMembre" 
+    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idMembre"
+    EntityTypeFilter="MembresJeu"  
     Select="it.idMembre,it.nomMembre,it.prenomMembre,(it.[prenomMembre]+' '+it.[nomMembre]) as FullName, it.adresse, it.ville, it.dateNaissance, it.telephoneMembre, it.codePostal, it.courriel, it.motPasse, it.dateInscription">
     </asp:EntityDataSource>
 

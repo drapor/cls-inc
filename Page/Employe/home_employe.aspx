@@ -17,6 +17,31 @@
 <div class="contenuClient">
 
 <div class="section">
+    <div class="sectionTitre">
+        <asp:Label ID="lblOperations" runat="server" Text="Opérations sur un membre"></asp:Label>
+    </div>
+</div> 
+ 
+ <div class="operationEmploye">
+    <div class="contenuOperationEmplpoye">
+        Veuillez choisir une des opérations suivantes:
+        </br>
+        </br>
+        <div class="contenuOperation">
+            <div class="contenuBouton">
+                <asp:Button ID="btnAjouterMembre" runat="server" Text="Ajouter un membre" CssClass="btn btn-primary btn-large" Width="200px" PostBackUrl="~/Page/Autre/register.aspx"></asp:Button>
+            </div>
+            <div class="contenuBouton">
+                <asp:Button ID="btnModifierMembre" runat="server" Text="Modifier un membre" CssClass="btn btn-primary btn-large" Width="200px" PostBackUrl="~/Page/Employe/employe_client_modify.aspx"></asp:Button>
+            </div>
+            <div class="contenuBouton">
+                <asp:Button ID="btnSupprimerMembre" runat="server" Text="Supprimer un membre" CssClass="btn btn-primary btn-large" Width="200px" PostBackUrl="~/Page/Employe/employe_client_delete.aspx"></asp:Button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
 <div class="sectionTitre">
     <asp:Label ID="infoPersonnel" runat="server" Text="Informations personnels"></asp:Label>
 </div>
@@ -330,27 +355,6 @@
         </EditItemTemplate>
 </asp:ListView> 
 
-<div class="section">
-    <div class="sectionTitre">
-        <asp:Label ID="lblOperations" runat="server" Text="Opérations sur un membre"></asp:Label>
-    </div>
-</div> 
- 
- <div class="operationEmploye">
-    <div class="titreGauche">
-        Veuillez choisir une des opérations suivantes:
-        </br>
-        </br>
-        <div class="contenuOperation">
-            <asp:LinkButton ID="LinkButton1" runat="server" Text="Ajouter un membre" PostBackUrl="~/Page/Autre/register.aspx"></asp:LinkButton>
-            </br>
-            <asp:LinkButton ID="LinkButton2" runat="server" Text="Modifier un membre" PostBackUrl="~/Page/Employe/employe_client_modify.aspx"></asp:LinkButton>
-            </br>
-            <asp:LinkButton ID="LinkButton3" runat="server" Text="Supprimer un membre" PostBackUrl="~/Page/Employe/employe_client_delete.aspx"></asp:LinkButton>
-        </div>
-    </div>
-</div>
-
 
 <script>
     $(function () {
@@ -370,7 +374,8 @@
 
     <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre" 
+    EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre"
+    EntityTypeFilter="MembresJeu"  
     where="(@MembreID = it.idMembre)">
     <WhereParameters>
         <asp:ControlParameter Name="MembreID" ControlID="dropDownMembre" PropertyName="SelectedValue" Type="Int32" />
@@ -379,7 +384,8 @@
 
     <asp:EntityDataSource ID="dsMember" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idMembre" 
+    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idMembre"
+    EntityTypeFilter="MembresJeu"  
     Select="it.idMembre,it.nomMembre,it.prenomMembre,(it.[prenomMembre]+' '+it.[nomMembre]) as FullName, it.adresse, it.ville, it.dateNaissance, it.telephoneMembre, it.codePostal, it.courriel, it.motPasse, it.dateInscription">
     </asp:EntityDataSource>
 

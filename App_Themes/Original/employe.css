@@ -1,7 +1,7 @@
 ﻿.operationEmploye
 {
     width:860px;
-    height:auto;
+    height:90px;
     margin-left:20px;
     margin-right:20px;
     margin-top:10px;
@@ -9,7 +9,23 @@
     float:left;
 }
 
+.contenuOperationEmploye
+{
+    font-size:20;
+    font-weight:bold;
+    float:left;
+}
+
 .contenuOperation
 {
     margin-left:20px;
 }
+
+.contenuBouton
+{
+    width:270px;
+    float:left;
+    text-align:center;
+}
+
+
