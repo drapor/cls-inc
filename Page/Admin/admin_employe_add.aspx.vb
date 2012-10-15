@@ -14,6 +14,9 @@ Partial Class Page_Admin_admin_employe_add
             Dim entAdmin As New modelCLSContainer
             Dim unEmploye As MembresJeu_Employe = Nothing
             Dim unAdmin As MembresJeu_Admin = Nothing
+            Dim unAnim As MembresJeu_Animateur = Nothing
+
+
 
             Dim email As String = txtCourriel.Text
 
