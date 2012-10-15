@@ -217,7 +217,7 @@
                     
                 </div>
                 <div class="modifierBouton">
-                    <asp:LinkButton ID="btnModifierCourriel" runat="server" onclick="actionModifie" Text="Modifier le courriel" commandName="Edit"></asp:LinkButton>
+                    <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier le courriel" commandName="Edit"></asp:LinkButton>
                     </br>    
                 </div>
           </ItemTemplate>

@@ -16,11 +16,10 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("14587d5d-9103-4a69-93d5-4be0a0fb188c")>
+<Assembly: EdmSchemaAttribute("b98dd903-e01a-4113-abbb-3f6f441d8c6a")>
 #Region "Métadonnées de relation EDM"
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
-<Assembly: EdmRelationshipAttribute("modelCLS", "FK_CarteCreditMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "CarteCreditJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.CarteCreditJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_CoursCompleteMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "CoursCompleteJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.CoursCompleteJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_CoursCoursComplete", "CoursJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.CoursJeu), "CoursCompleteJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.CoursCompleteJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AnimateurCours", "MembresJeu_Animateur", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu_Animateur), "CoursJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.CoursJeu), True)>
@@ -97,20 +96,6 @@ Namespace modelCLS
         End Property
     
         Private _AbonnementJeu As ObjectSet(Of AbonnementJeu)
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        Public ReadOnly Property CarteCreditJeu() As ObjectSet(Of CarteCreditJeu)
-            Get
-                If (_CarteCreditJeu Is Nothing) Then
-                    _CarteCreditJeu = MyBase.CreateObjectSet(Of CarteCreditJeu)("CarteCreditJeu")
-                End If
-                Return _CarteCreditJeu
-            End Get
-        End Property
-    
-        Private _CarteCreditJeu As ObjectSet(Of CarteCreditJeu)
     
         ''' <summary>
         ''' Aucune documentation sur les métadonnées n'est disponible.
@@ -288,13 +273,6 @@ Namespace modelCLS
         ''' </summary>
         Public Sub AddToAbonnementJeu(ByVal abonnementJeu As AbonnementJeu)
             MyBase.AddObject("AbonnementJeu", abonnementJeu)
-        End Sub
-    
-        ''' <summary>
-        ''' Méthode déconseillée pour ajouter un nouvel objet à l'EntitySet CarteCreditJeu. Utilisez la méthode .Add de la propriété ObjectSet(Of T) associée à la place.
-        ''' </summary>
-        Public Sub AddToCarteCreditJeu(ByVal carteCreditJeu As CarteCreditJeu)
-            MyBase.AddObject("CarteCreditJeu", carteCreditJeu)
         End Sub
     
         ''' <summary>
@@ -579,255 +557,6 @@ Namespace modelCLS
             Set
                 If (Not value Is Nothing)
                     CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of MembresJeu)("modelCLS.FK_AbonnementMembres", "MembresJeu", value)
-                End If
-            End Set
-        End Property
-
-        #End Region
-    End Class
-    
-    ''' <summary>
-    ''' Aucune documentation sur les métadonnées n'est disponible.
-    ''' </summary>
-    <EdmEntityTypeAttribute(NamespaceName:="modelCLS", Name:="CarteCreditJeu")>
-    <Serializable()>
-    <DataContractAttribute(IsReference:=True)>
-    Public Partial Class CarteCreditJeu
-        Inherits EntityObject
-        #Region "Méthode de fabrique"
-    
-        ''' <summary>
-        ''' Créez un nouvel objet CarteCreditJeu.
-        ''' </summary>
-        ''' <param name="noCarte">Valeur initiale de la propriété noCarte.</param>
-        ''' <param name="cvv">Valeur initiale de la propriété cvv.</param>
-        ''' <param name="type">Valeur initiale de la propriété type.</param>
-        ''' <param name="moisExpiration">Valeur initiale de la propriété moisExpiration.</param>
-        ''' <param name="anneeExpiration">Valeur initiale de la propriété anneeExpiration.</param>
-        ''' <param name="nomTitulaire">Valeur initiale de la propriété nomTitulaire.</param>
-        ''' <param name="membres_idMembre">Valeur initiale de la propriété Membres_idMembre.</param>
-        Public Shared Function CreateCarteCreditJeu(noCarte As Global.System.Int32, cvv As Global.System.Int16, type As Global.System.String, moisExpiration As Global.System.Int16, anneeExpiration As Global.System.Int16, nomTitulaire As Global.System.String, membres_idMembre As Global.System.Int16) As CarteCreditJeu
-            Dim carteCreditJeu as CarteCreditJeu = New CarteCreditJeu
-            carteCreditJeu.noCarte = noCarte
-            carteCreditJeu.cvv = cvv
-            carteCreditJeu.type = type
-            carteCreditJeu.moisExpiration = moisExpiration
-            carteCreditJeu.anneeExpiration = anneeExpiration
-            carteCreditJeu.nomTitulaire = nomTitulaire
-            carteCreditJeu.Membres_idMembre = membres_idMembre
-            Return carteCreditJeu
-        End Function
-
-        #End Region
-        #Region "Propriétés primitives"
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property noCarte() As Global.System.Int32
-            Get
-                Return _noCarte
-            End Get
-            Set
-                If (_noCarte <> Value) Then
-                    OnnoCarteChanging(value)
-                    ReportPropertyChanging("noCarte")
-                    _noCarte = StructuralObject.SetValidValue(value)
-                    ReportPropertyChanged("noCarte")
-                    OnnoCarteChanged()
-                End If
-            End Set
-        End Property
-    
-        Private _noCarte As Global.System.Int32
-        Private Partial Sub OnnoCarteChanging(value As Global.System.Int32)
-        End Sub
-    
-        Private Partial Sub OnnoCarteChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property cvv() As Global.System.Int16
-            Get
-                Return _cvv
-            End Get
-            Set
-                OncvvChanging(value)
-                ReportPropertyChanging("cvv")
-                _cvv = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("cvv")
-                OncvvChanged()
-            End Set
-        End Property
-    
-        Private _cvv As Global.System.Int16
-        Private Partial Sub OncvvChanging(value As Global.System.Int16)
-        End Sub
-    
-        Private Partial Sub OncvvChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property type() As Global.System.String
-            Get
-                Return _type
-            End Get
-            Set
-                OntypeChanging(value)
-                ReportPropertyChanging("type")
-                _type = StructuralObject.SetValidValue(value, false)
-                ReportPropertyChanged("type")
-                OntypeChanged()
-            End Set
-        End Property
-    
-        Private _type As Global.System.String
-        Private Partial Sub OntypeChanging(value As Global.System.String)
-        End Sub
-    
-        Private Partial Sub OntypeChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property moisExpiration() As Global.System.Int16
-            Get
-                Return _moisExpiration
-            End Get
-            Set
-                OnmoisExpirationChanging(value)
-                ReportPropertyChanging("moisExpiration")
-                _moisExpiration = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("moisExpiration")
-                OnmoisExpirationChanged()
-            End Set
-        End Property
-    
-        Private _moisExpiration As Global.System.Int16
-        Private Partial Sub OnmoisExpirationChanging(value As Global.System.Int16)
-        End Sub
-    
-        Private Partial Sub OnmoisExpirationChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property anneeExpiration() As Global.System.Int16
-            Get
-                Return _anneeExpiration
-            End Get
-            Set
-                OnanneeExpirationChanging(value)
-                ReportPropertyChanging("anneeExpiration")
-                _anneeExpiration = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("anneeExpiration")
-                OnanneeExpirationChanged()
-            End Set
-        End Property
-    
-        Private _anneeExpiration As Global.System.Int16
-        Private Partial Sub OnanneeExpirationChanging(value As Global.System.Int16)
-        End Sub
-    
-        Private Partial Sub OnanneeExpirationChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property nomTitulaire() As Global.System.String
-            Get
-                Return _nomTitulaire
-            End Get
-            Set
-                OnnomTitulaireChanging(value)
-                ReportPropertyChanging("nomTitulaire")
-                _nomTitulaire = StructuralObject.SetValidValue(value, false)
-                ReportPropertyChanged("nomTitulaire")
-                OnnomTitulaireChanged()
-            End Set
-        End Property
-    
-        Private _nomTitulaire As Global.System.String
-        Private Partial Sub OnnomTitulaireChanging(value As Global.System.String)
-        End Sub
-    
-        Private Partial Sub OnnomTitulaireChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property Membres_idMembre() As Global.System.Int16
-            Get
-                Return _Membres_idMembre
-            End Get
-            Set
-                OnMembres_idMembreChanging(value)
-                ReportPropertyChanging("Membres_idMembre")
-                _Membres_idMembre = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("Membres_idMembre")
-                OnMembres_idMembreChanged()
-            End Set
-        End Property
-    
-        Private _Membres_idMembre As Global.System.Int16
-        Private Partial Sub OnMembres_idMembreChanging(value As Global.System.Int16)
-        End Sub
-    
-        Private Partial Sub OnMembres_idMembreChanged()
-        End Sub
-
-        #End Region
-        #Region "Propriétés de navigation"
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <XmlIgnoreAttribute()>
-        <SoapIgnoreAttribute()>
-        <DataMemberAttribute()>
-        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "FK_CarteCreditMembres", "MembresJeu")>
-        Public Property MembresJeu() As MembresJeu
-            Get
-                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of MembresJeu)("modelCLS.FK_CarteCreditMembres", "MembresJeu").Value
-            End Get
-            Set
-                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of MembresJeu)("modelCLS.FK_CarteCreditMembres", "MembresJeu").Value = value
-            End Set
-        End Property
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <BrowsableAttribute(False)>
-        <DataMemberAttribute()>
-        Public Property MembresJeuReference() As EntityReference(Of MembresJeu)
-            Get
-                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of MembresJeu)("modelCLS.FK_CarteCreditMembres", "MembresJeu")
-            End Get
-            Set
-                If (Not value Is Nothing)
-                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of MembresJeu)("modelCLS.FK_CarteCreditMembres", "MembresJeu", value)
                 End If
             End Set
         End Property
@@ -2090,7 +1819,6 @@ Namespace modelCLS
     <EdmEntityTypeAttribute(NamespaceName:="modelCLS", Name:="MembresJeu")>
     <Serializable()>
     <DataContractAttribute(IsReference:=True)>
-    <KnownTypeAttribute(GetType(MembresJeu_Employe))>
     Public Partial Class MembresJeu
         Inherits EntityObject
         #Region "Méthode de fabrique"
@@ -2513,24 +2241,6 @@ Namespace modelCLS
         <XmlIgnoreAttribute()>
         <SoapIgnoreAttribute()>
         <DataMemberAttribute()>
-        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "FK_CarteCreditMembres", "CarteCreditJeu")>
-         Public Property CarteCreditJeu() As EntityCollection(Of CarteCreditJeu)
-            Get
-                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of CarteCreditJeu)("modelCLS.FK_CarteCreditMembres", "CarteCreditJeu")
-            End Get
-            Set
-                If (Not value Is Nothing)
-                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of CarteCreditJeu)("modelCLS.FK_CarteCreditMembres", "CarteCreditJeu", value)
-                End If
-            End Set
-        End Property
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <XmlIgnoreAttribute()>
-        <SoapIgnoreAttribute()>
-        <DataMemberAttribute()>
         <EdmRelationshipNavigationPropertyAttribute("modelCLS", "FK_CoursCompleteMembres", "CoursCompleteJeu")>
          Public Property CoursCompleteJeu() As EntityCollection(Of CoursCompleteJeu)
             Get
@@ -2622,87 +2332,6 @@ Namespace modelCLS
                 End If
             End Set
         End Property
-
-        #End Region
-    End Class
-    
-    ''' <summary>
-    ''' Aucune documentation sur les métadonnées n'est disponible.
-    ''' </summary>
-    <EdmEntityTypeAttribute(NamespaceName:="modelCLS", Name:="MembresJeu_Admin")>
-    <Serializable()>
-    <DataContractAttribute(IsReference:=True)>
-    Public Partial Class MembresJeu_Admin
-        Inherits MembresJeu_Employe
-        #Region "Méthode de fabrique"
-    
-        ''' <summary>
-        ''' Créez un nouvel objet MembresJeu_Admin.
-        ''' </summary>
-        ''' <param name="idMembre">Valeur initiale de la propriété idMembre.</param>
-        ''' <param name="nomMembre">Valeur initiale de la propriété nomMembre.</param>
-        ''' <param name="prenomMembre">Valeur initiale de la propriété prenomMembre.</param>
-        ''' <param name="telephoneMembre">Valeur initiale de la propriété telephoneMembre.</param>
-        ''' <param name="motPasse">Valeur initiale de la propriété motPasse.</param>
-        ''' <param name="adresse">Valeur initiale de la propriété adresse.</param>
-        ''' <param name="ville">Valeur initiale de la propriété ville.</param>
-        ''' <param name="dateInscription">Valeur initiale de la propriété dateInscription.</param>
-        ''' <param name="dateNaissance">Valeur initiale de la propriété dateNaissance.</param>
-        ''' <param name="courriel">Valeur initiale de la propriété courriel.</param>
-        ''' <param name="codePostal">Valeur initiale de la propriété codePostal.</param>
-        ''' <param name="familleID">Valeur initiale de la propriété familleID.</param>
-        ''' <param name="sexe">Valeur initiale de la propriété sexe.</param>
-        ''' <param name="roleJeu_idRole">Valeur initiale de la propriété RoleJeu_idRole.</param>
-        ''' <param name="idEmploye">Valeur initiale de la propriété idEmploye.</param>
-        ''' <param name="idAdmin">Valeur initiale de la propriété idAdmin.</param>
-        Public Shared Function CreateMembresJeu_Admin(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String, codePostal As Global.System.String, familleID As Global.System.Int16, sexe As Global.System.String, roleJeu_idRole As Global.System.Int16, idEmploye As Global.System.Int16, idAdmin As Global.System.Int16) As MembresJeu_Admin
-            Dim membresJeu_Admin as MembresJeu_Admin = New MembresJeu_Admin
-            membresJeu_Admin.idMembre = idMembre
-            membresJeu_Admin.nomMembre = nomMembre
-            membresJeu_Admin.prenomMembre = prenomMembre
-            membresJeu_Admin.telephoneMembre = telephoneMembre
-            membresJeu_Admin.motPasse = motPasse
-            membresJeu_Admin.adresse = adresse
-            membresJeu_Admin.ville = ville
-            membresJeu_Admin.dateInscription = dateInscription
-            membresJeu_Admin.dateNaissance = dateNaissance
-            membresJeu_Admin.courriel = courriel
-            membresJeu_Admin.codePostal = codePostal
-            membresJeu_Admin.familleID = familleID
-            membresJeu_Admin.sexe = sexe
-            membresJeu_Admin.RoleJeu_idRole = roleJeu_idRole
-            membresJeu_Admin.idEmploye = idEmploye
-            membresJeu_Admin.idAdmin = idAdmin
-            Return membresJeu_Admin
-        End Function
-
-        #End Region
-        #Region "Propriétés primitives"
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property idAdmin() As Global.System.Int16
-            Get
-                Return _idAdmin
-            End Get
-            Set
-                OnidAdminChanging(value)
-                ReportPropertyChanging("idAdmin")
-                _idAdmin = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("idAdmin")
-                OnidAdminChanged()
-            End Set
-        End Property
-    
-        Private _idAdmin As Global.System.Int16
-        Private Partial Sub OnidAdminChanging(value As Global.System.Int16)
-        End Sub
-    
-        Private Partial Sub OnidAdminChanged()
-        End Sub
 
         #End Region
     End Class
@@ -2853,86 +2482,6 @@ Namespace modelCLS
                 End If
             End Set
         End Property
-
-        #End Region
-    End Class
-    
-    ''' <summary>
-    ''' Aucune documentation sur les métadonnées n'est disponible.
-    ''' </summary>
-    <EdmEntityTypeAttribute(NamespaceName:="modelCLS", Name:="MembresJeu_Employe")>
-    <Serializable()>
-    <DataContractAttribute(IsReference:=True)>
-    <KnownTypeAttribute(GetType(MembresJeu_Admin))>
-    Public Partial Class MembresJeu_Employe
-        Inherits MembresJeu
-        #Region "Méthode de fabrique"
-    
-        ''' <summary>
-        ''' Créez un nouvel objet MembresJeu_Employe.
-        ''' </summary>
-        ''' <param name="idMembre">Valeur initiale de la propriété idMembre.</param>
-        ''' <param name="nomMembre">Valeur initiale de la propriété nomMembre.</param>
-        ''' <param name="prenomMembre">Valeur initiale de la propriété prenomMembre.</param>
-        ''' <param name="telephoneMembre">Valeur initiale de la propriété telephoneMembre.</param>
-        ''' <param name="motPasse">Valeur initiale de la propriété motPasse.</param>
-        ''' <param name="adresse">Valeur initiale de la propriété adresse.</param>
-        ''' <param name="ville">Valeur initiale de la propriété ville.</param>
-        ''' <param name="dateInscription">Valeur initiale de la propriété dateInscription.</param>
-        ''' <param name="dateNaissance">Valeur initiale de la propriété dateNaissance.</param>
-        ''' <param name="courriel">Valeur initiale de la propriété courriel.</param>
-        ''' <param name="codePostal">Valeur initiale de la propriété codePostal.</param>
-        ''' <param name="familleID">Valeur initiale de la propriété familleID.</param>
-        ''' <param name="sexe">Valeur initiale de la propriété sexe.</param>
-        ''' <param name="roleJeu_idRole">Valeur initiale de la propriété RoleJeu_idRole.</param>
-        ''' <param name="idEmploye">Valeur initiale de la propriété idEmploye.</param>
-        Public Shared Function CreateMembresJeu_Employe(idMembre As Global.System.Int16, nomMembre As Global.System.String, prenomMembre As Global.System.String, telephoneMembre As Global.System.String, motPasse As Global.System.String, adresse As Global.System.String, ville As Global.System.String, dateInscription As Global.System.DateTime, dateNaissance As Global.System.DateTime, courriel As Global.System.String, codePostal As Global.System.String, familleID As Global.System.Int16, sexe As Global.System.String, roleJeu_idRole As Global.System.Int16, idEmploye As Global.System.Int16) As MembresJeu_Employe
-            Dim membresJeu_Employe as MembresJeu_Employe = New MembresJeu_Employe
-            membresJeu_Employe.idMembre = idMembre
-            membresJeu_Employe.nomMembre = nomMembre
-            membresJeu_Employe.prenomMembre = prenomMembre
-            membresJeu_Employe.telephoneMembre = telephoneMembre
-            membresJeu_Employe.motPasse = motPasse
-            membresJeu_Employe.adresse = adresse
-            membresJeu_Employe.ville = ville
-            membresJeu_Employe.dateInscription = dateInscription
-            membresJeu_Employe.dateNaissance = dateNaissance
-            membresJeu_Employe.courriel = courriel
-            membresJeu_Employe.codePostal = codePostal
-            membresJeu_Employe.familleID = familleID
-            membresJeu_Employe.sexe = sexe
-            membresJeu_Employe.RoleJeu_idRole = roleJeu_idRole
-            membresJeu_Employe.idEmploye = idEmploye
-            Return membresJeu_Employe
-        End Function
-
-        #End Region
-        #Region "Propriétés primitives"
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property idEmploye() As Global.System.Int16
-            Get
-                Return _idEmploye
-            End Get
-            Set
-                OnidEmployeChanging(value)
-                ReportPropertyChanging("idEmploye")
-                _idEmploye = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("idEmploye")
-                OnidEmployeChanged()
-            End Set
-        End Property
-    
-        Private _idEmploye As Global.System.Int16
-        Private Partial Sub OnidEmployeChanging(value As Global.System.Int16)
-        End Sub
-    
-        Private Partial Sub OnidEmployeChanged()
-        End Sub
 
         #End Region
     End Class
@@ -3206,11 +2755,11 @@ Namespace modelCLS
         ''' <summary>
         ''' Créez un nouvel objet SpecialiteJeu.
         ''' </summary>
-        ''' <param name="idSpacialite">Valeur initiale de la propriété idSpacialite.</param>
+        ''' <param name="idSpecialite">Valeur initiale de la propriété idSpecialite.</param>
         ''' <param name="nomSpecialite">Valeur initiale de la propriété nomSpecialite.</param>
-        Public Shared Function CreateSpecialiteJeu(idSpacialite As Global.System.Int16, nomSpecialite As Global.System.String) As SpecialiteJeu
+        Public Shared Function CreateSpecialiteJeu(idSpecialite As Global.System.Int16, nomSpecialite As Global.System.String) As SpecialiteJeu
             Dim specialiteJeu as SpecialiteJeu = New SpecialiteJeu
-            specialiteJeu.idSpacialite = idSpacialite
+            specialiteJeu.idSpecialite = idSpecialite
             specialiteJeu.nomSpecialite = nomSpecialite
             Return specialiteJeu
         End Function
@@ -3223,26 +2772,26 @@ Namespace modelCLS
         ''' </summary>
         <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
         <DataMemberAttribute()>
-        Public Property idSpacialite() As Global.System.Int16
+        Public Property idSpecialite() As Global.System.Int16
             Get
-                Return _idSpacialite
+                Return _idSpecialite
             End Get
             Set
-                If (_idSpacialite <> Value) Then
-                    OnidSpacialiteChanging(value)
-                    ReportPropertyChanging("idSpacialite")
-                    _idSpacialite = StructuralObject.SetValidValue(value)
-                    ReportPropertyChanged("idSpacialite")
-                    OnidSpacialiteChanged()
+                If (_idSpecialite <> Value) Then
+                    OnidSpecialiteChanging(value)
+                    ReportPropertyChanging("idSpecialite")
+                    _idSpecialite = StructuralObject.SetValidValue(value)
+                    ReportPropertyChanged("idSpecialite")
+                    OnidSpecialiteChanged()
                 End If
             End Set
         End Property
     
-        Private _idSpacialite As Global.System.Int16
-        Private Partial Sub OnidSpacialiteChanging(value As Global.System.Int16)
+        Private _idSpecialite As Global.System.Int16
+        Private Partial Sub OnidSpecialiteChanging(value As Global.System.Int16)
         End Sub
     
-        Private Partial Sub OnidSpacialiteChanged()
+        Private Partial Sub OnidSpecialiteChanged()
         End Sub
     
         ''' <summary>
