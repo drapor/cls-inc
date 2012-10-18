@@ -194,7 +194,7 @@
 
 <asp:ListView ID="lvAbonnement" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
         <LayoutTemplate>
-            <div class="abonnement">
+            <div class="infoClient">
                 <div class="titreGauche">
                     <asp:Label ID="lblTitreActivite" runat="server" Text="Nom de l'activité:"></asp:Label>
                 </div>

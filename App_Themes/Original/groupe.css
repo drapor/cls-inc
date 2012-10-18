@@ -1,0 +1,23 @@
+﻿.boutonGroupeRetour
+{
+    width: 120px;
+    height: 25px;
+    margin-top:30px;
+    text-align:right;
+    float: left;
+}
+
+.boutonGroupeAjout
+{
+    width: 120px;
+    height: 25px;
+    margin-top:30px;
+    margin-left:20px;
+    float: left;
+}
+
+.groupeBouton
+{
+    width:860px;
+    float:left;
+}

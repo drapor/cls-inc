@@ -23,7 +23,7 @@
 </div> 
  
  <div class="operationEmploye">
-    <div class="contenuOperationEmplpoye">
+    <div class="contenuOperationEmploye">
         Veuillez choisir une des opérations suivantes:
         </br>
         </br>
@@ -47,7 +47,7 @@
 </div>
 </div>  
 
-    <asp:ListView ID="lvInfoMembre" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+    <asp:ListView ID="lvInfoMembre" runat="server" DataSourceID="dsListView" DataKeyNames="idMembre">
         <LayoutTemplate>
             <div class="infoClient">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -63,8 +63,6 @@
                     <asp:Label ID="lblTelephone" runat="server" Text="Téléphone:"></asp:Label>
                     </br>
                     <asp:Label ID="lblNaissance" runat="server" Text="Date de naissance:"></asp:Label>
-<%--                    </br>
-                    <asp:Label ID="lblCredit" runat="server" Text="No carte de crédit:"></asp:Label>--%>
                 </div>
                 
                 <div class="partiDroite">
@@ -76,12 +74,6 @@
                     </br>
                     <asp:Label ID="lblNaissanceClient" runat="server" Text='<%# (CType(Eval("dateNaissance"),DateTime)).ToShortDateString %>'></asp:Label>
                     </br>
-                    <%--<div class="carteCredit">
-                        <asp:Label ID="lblCreditClient" runat="server" Text="**** **** **** 7463"></asp:Label>
-                    </div>--%>
-                    <%--<div class="modifierBouton">
-                        <asp:LinkButton ID="btnModifierCredit" runat="server" Text="Modifier"></asp:LinkButton>
-                    </div>--%>
                 </div>
             </div>
 
@@ -223,20 +215,20 @@
         <asp:Label ID="lblTitreCourriel" runat="server" Text="Courriel"></asp:Label>
     </div>
 </div>
-<asp:ListView ID="lvCourriel" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+<asp:ListView ID="lvCourriel" runat="server" DataSourceID="dsListView" DataKeyNames="idMembre">
         <LayoutTemplate>
-            <div class="clientMotPasse">
+            <div class="infoClient">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </div>
         </LayoutTemplate>
         <ItemTemplate>
-                <div class="partiGaucheMotPasse">
+                <div class="partiGaucheCourriel">
                     <asp:Label ID="lblCourriel" runat="server" Text="Votre courriel:" Font-Bold="True"></asp:Label>
                     </br>
                     
                 </div>
                 
-                <div class="partiDroiteMotPasse">
+                <div class="partiDroiteCourriel">
                     <asp:Label ID="lblCourrielClient" runat="server" Text='<%# Eval("courriel") %>' ></asp:Label>
                     </br>
                     
@@ -247,7 +239,7 @@
                 </div>
           </ItemTemplate>
           <EditItemTemplate>
-            <div class="partiGaucheCourriel">
+            <div class="partiGaucheCourrielEdit">
                     <div class="formatZone">
                         <asp:Label ID="lblCourriel" runat="server" Text="Votre présent courriel:"></asp:Label>
                     </div>
@@ -260,13 +252,13 @@
                         <asp:Label ID="lblNouveauCourrielEncore" runat="server" Text="Retapez votre nouveau courriel:"></asp:Label>
                     </div>
                 </div>
-                <div class="partiDroiteCourriel">
+                <div class="partiDroiteCourrielEdit">
                     <div class="formatZone">
                         <asp:Label ID="lblCourrielPresent" runat="server" Text='<%# Eval("courriel") %>'></asp:Label>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("courriel") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text=""></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
@@ -274,7 +266,7 @@
                     </div>
                 </div>
 
-                <div class="validation">
+                <div class="validationCourriel">
                     <div class="formatZone">
                         </br>
                     </div>
@@ -297,9 +289,9 @@
     </div>
 </div>
 
-<asp:ListView ID="lvMotPasse" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+<asp:ListView ID="lvMotPasse" runat="server" DataSourceID="dsListView" DataKeyNames="idMembre">
         <LayoutTemplate>
-            <div class="clientMotPasse">
+            <div class="infoClient">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </div>
         </LayoutTemplate>
@@ -309,7 +301,7 @@
                 </div>
         </ItemTemplate>
         <EditItemTemplate>
-        <div class="partiGaucheCourriel">
+        <div class="partiGaucheMotPasse">
                     <div class="formatZone">
                         <asp:Label ID="lblMP" runat="server" Text="Présent mot de passe:"></asp:Label>
                     </div>
@@ -322,7 +314,7 @@
                         <asp:Label ID="lblNouveauMPEncore" runat="server" Text="Retapez nouveau mot de passe:"></asp:Label>
                     </div>
                 </div>
-                <div class="partiDroiteCourriel">
+                <div class="partiDroiteMotPasse">
                     <div class="formatZone">
                         <asp:TextBox ID="txtPresentMP" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text="" TextMode="Password"></asp:TextBox>
                     </div>
@@ -336,7 +328,7 @@
                     </div>
                 </div>
 
-                <div class="validation">
+                <div class="validationMotPasse">
                     <div class="formatZone">
                         <%--<asp:RequiredFieldValidator ID="requiredMP" runat="server" ErrorMessage="*Le mot de passe est obligatoire" ControlToValidate="txtNouveauMP" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>--%>
                         </br>
@@ -372,7 +364,7 @@
 </div>
 </div>
 
-    <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=modelCLSContainer"
+    <asp:EntityDataSource ID="dsListView" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
     EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre"
     EntityTypeFilter="MembresJeu"  

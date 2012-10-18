@@ -6,28 +6,46 @@
             <h3>Supprimer un membre</h3>
             </br>
         </div>
-                <div class="partiGaucheCourriel">
+        <div class="partiGaucheCourrielEdit">
                     <div class="formatZone">
                         <asp:Label ID="lblCourriel" runat="server" Text="Entrez le courriel du membre:"></asp:Label>
                     </div>
-                    </br>
+                    <%--</br>
                     <div class="formatZone">
                         <asp:Label ID="lblNouveauCourriel" runat="server" Text="Voici le membre à supprimer:" ></asp:Label>
-                    </div>
+                    </div>--%>
                 </div>
-                <div class="partiDroiteCourriel">
+                <div class="partiDroiteCourrielEdit">
                     <div class="formatZone">
-                        <asp:TextBox ID="txtCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("courriel") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text=""></asp:TextBox>
                     </div>
-                    </br>
+                    <%--</br>
                     <div class="formatZone">
                         <asp:Label ID="lblMembre" runat="server" Text='<%# Eval("prenomMembre" + " " + "nomMembre") %>'></asp:Label>
-                    </div>
-                    <div class="bouton">
-                        <asp:Button ID="btnAccepter" runat="server" Text="Supprimer" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx" />
-                        <asp:Button ID="btnCancel" runat="server" Text="Canceler" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Employe/home_employe.aspx" />
-                    </div>
+                    </div>--%>
                 </div>
-                
+        <div class="bouton">
+                        <asp:Button ID="btnAccepter" runat="server" Text="Supprimer" onClick="actionDelete" CssClass="btn btn-primary btn-small" />
+                        <asp:Button ID="btnCancel" runat="server" Text="Annuler" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Employe/home_employe.aspx" />
+                    </div>
+
+        <asp:ListView ID="lvMembre" runat="server" DataSourceID="dsListView" DataKeyNames="idMembre">
+            <LayoutTemplate>
+                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+            </LayoutTemplate>
+            <ItemTemplate>  
+            </ItemTemplate>
+        </asp:ListView>
    </div>
+
+   <asp:EntityDataSource ID="dsListView" runat="server" ConnectionString="name=modelCLSContainer"
+    DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
+    EnableDelete="True" EnableInsert="false" EnableUpdate="True"
+    EntityTypeFilter="MembresJeu" 
+    where="(@courriel = it.courriel)">
+    <WhereParameters>
+        <asp:Parameter Name="courriel" Type="String" defaultValue=""/>
+    </WhereParameters>
+    </asp:EntityDataSource>
+
 </asp:Content>
