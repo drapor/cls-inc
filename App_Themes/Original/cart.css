@@ -4,7 +4,7 @@
     font-size:19px;
 }
 
-.contenuPanier
+.contenuStandard
 {
    width:900px;
    height:auto;
@@ -16,11 +16,46 @@
    overflow:hidden;
 }
 
+.panierNomTitre
+{
+    margin-bottom:20px;
+    width:250px;
+    font-size:24px;
+    font-weight:bolder;
+    float:left;
+}
+
+.panierGroupeTitre
+{
+    margin-bottom:20px;
+    width:180px;
+    font-size:24px;
+    font-weight:bold;
+    float:left;
+}
+
+.panierAbonneTitre
+{
+    margin-bottom:20px;
+    width:250px;
+    font-size:24px;
+    font-weight:bold;
+    float:left;
+}
+
+.panierPrixTitre
+{
+    margin-bottom:20px;
+    width:80px;
+    font-size:24px;
+    font-weight:bold;
+    float:left;
+}
+
 .panierNom
 {
     width:250px;
     font-size:18px;
-    font-weight:bolder;
     float:left;
 }
 
@@ -28,7 +63,6 @@
 {
     width:180px;
     font-size:18px;
-    font-weight:bold;
     float:left;
 }
 
@@ -36,7 +70,6 @@
 {
     width:250px;
     font-size:18px;
-    font-weight:bold;
     float:left;
 }
 
@@ -44,13 +77,13 @@
 {
     width:80px;
     font-size:18px;
-    font-weight:bold;
     float:left;
 }
 
 .panierSupprime
 {
-   float:left; 
+    margin-left:10px;
+    float:left; 
 }
 
 .panier
@@ -64,8 +97,93 @@
     float:left;
 }
 
+.panierItem
+{
+    height:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
 .separateur
 {
+    width:790px;
     clear:both;
 }
+
+.labelTotal
+{
+    width:640px;
+    margin-top:30px;
+    margin-right:20px;
+    font-weight:900;
+    font-size:22px;
+    text-align:right;
+    float:left;
+}
+
+.total
+{
+    margin-top:30px;
+    width:100px;
+    font-weight:500;
+    font-size:18px;
+    text-align:right;
+    float:left;
+}
+
+.boutonPanierRetour
+{
+    width: 620px;
+    height: 25px;
+    margin-top:30px;
+    text-align:right;
+    float: left;
+}
+
+.boutonPanierConfirme
+{
+    width: 120px;
+    height: 25px;
+    margin-top:30px;
+    margin-left:20px;
+    float: left;
+}
+
+.formatZoneDDL
+{
+    margin-right:10px;
+    float:left;
+}
+
+.formatZoneDate
+{
+    font-weight:bold;
+    margin-right:10px;
+    margin-top:5px;
+    float:left;
+}
+
+.sectionConfirme
+{
+    width:860px;
+    margin-top:40px;
+    float:left;
+}
+
+.montantTotal
+{
+    width:140px;
+    text-align:center;
+    font-size:18px;
+    font-weight:bolder;
+    float:left;
+}
+
+.confirmeAchat
+{
+    
+}
+
+
+
 

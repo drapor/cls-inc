@@ -13,7 +13,7 @@ Partial Class Page_Autre_register
             Dim entMembre As New modelCLSContainer
             Dim unMembre As MembresJeu = Nothing
 
-            unMembre = MembresJeu.CreateMembresJeu(0, txtNom.Text, txtPrenom.Text, txtTelephone.Text, txtMDP.Text, txtAdresse.Text, txtVille.Text, Date.Now.ToShortDateString, txtDate.Text, txtCourriel.Text, txtCodePostal.Text, 3, 0, dropDownSexe.SelectedItem.Text)
+            unMembre = MembresJeu.CreateMembresJeu(0, txtNom.Text, txtPrenom.Text, txtTelephone.Text, txtMDP.Text, txtAdresse.Text, txtVille.Text, Date.Now.ToShortDateString, txtDate.Text, txtCourriel.Text, txtCodePostal.Text, 0, dropDownSexe.SelectedItem.Text, 3)
             entMembre.MembresJeu.AddObject(unMembre)
             entMembre.SaveChanges()
 

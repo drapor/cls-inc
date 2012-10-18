@@ -24,6 +24,21 @@
    overflow:hidden;
 }
 
+.contenuFamille
+{
+    margin-top:10px;
+    width:920px;
+    min-height:400px;
+    height:auto;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    background-color: White;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 15px;
+    padding: 10px;
+}
+
 .section
 {
     background-color:#1b1bb3;
@@ -59,6 +74,13 @@
     color:#ffbf00;
 }
 
+.titleFamille
+{
+    color:Black;
+    font-size:22px;
+    margin-left:10px;
+    margin-bottom:20px;
+}
 
 .sectionTitreRight a:hover
 {
@@ -101,7 +123,7 @@
 .clientValidation
 {
     float:left; 
-    width:500px;
+    width:450px;
     padding-bottom:20px;
 }
 
@@ -119,7 +141,7 @@
 
 .partiGauche
 {
-    width:130px;
+    width:150px;
     float:left;
     font-size:small;
     font-weight:bold
@@ -127,7 +149,7 @@
 
 .partiDroite
 {
-    width:230px;
+    margin-left:10px;
     float:left;
 }
 
@@ -163,20 +185,9 @@
     text-decoration:none;
 }
 
-.clientMotPasse
-{
-    width:860px;
-    height:auto;
-    margin-left:20px;
-    margin-right:20px;
-    margin-top:10px;
-    margin-bottom:10px;
-    float:left;  
-}
-
 .partiGaucheMotPasse
 {
-    width:100px;
+    width:240px;
     float:left;
     font-size:small;
     font-weight:bold;
@@ -186,19 +197,9 @@
 .partiDroiteMotPasse
 {
     float:left;
+    width:250px;
     margin-left:10px;
     line-height:25px;
-}
-
-.famille
-{
-    width:860px;
-    height:auto;
-    margin-left:20px;
-    margin-right:20px;
-    margin-top:10px;
-    margin-bottom:10px;
-    float:left;  
 }
 
 .afficherFamille
@@ -264,20 +265,9 @@
     float:left;
 }
 
-.abonnement
-{
-    width:860px;
-    height:auto;
-    margin-left:20px;
-    margin-right:20px;
-    margin-top:10px;
-    margin-bottom:10px;
-    float:left;
-}
-
 .bouton
 {
-    width: 350px;
+    width: 250px;
     height: 25px;
     margin-top:20px;
     float: left;
@@ -292,5 +282,71 @@
 
 .formatZone
 {
+    margin-bottom:5px;
     height:10px;
+    font-size:16px;
+    font-weight:bolder;
+}
+
+.partiGaucheCourriel
+{
+    width:120px;
+    float:left;
+    font-size:16px;
+    font-weight:bolder;
+    line-height:25px;
+}
+
+.partiDroiteCourriel
+{
+    float:left;
+    font-size:16px;
+    font-weight:bolder;
+    margin-left:10px;
+    line-height:25px;
+}
+
+.partiGaucheCourrielEdit
+{
+    width:250px;
+    float:left;
+    font-size:small;
+    font-weight:bold
+}
+
+.partiDroiteCourrielEdit
+{
+    width:230px;
+    float:left;
+}
+
+.validationCourriel
+{
+    width:auto;
+    padding-top:20px;
+    margin-left:15px;
+    float:left; 
+}
+
+.validationMotPasse
+{
+    width:auto;
+    padding-top:5px;
+    float:left; 
+}
+
+.boutonCourriel
+{
+    width: 860px;
+    height: 25px;
+    margin-top:20px;
+    float: left;
+}
+
+.boutonMotPasse
+{
+    width: 860px;
+    height: 25px;
+    margin-top:20px;
+    float: left;
 }

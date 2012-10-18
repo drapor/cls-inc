@@ -62,4 +62,12 @@ Partial Class Page_Employe_home_employe
             btnHideCourriel.Visible = True
         End If
     End Sub
+
+
+    Protected Sub dsListView_Updating(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangingEventArgs) Handles dsListView.Updating
+        Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
+        Dim txtMotPasse As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "lblMP")
+
+        e.Entity.courriel = txtCourriel.Text
+    End Sub
 End Class

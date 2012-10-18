@@ -1,12 +1,11 @@
 <%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_family_add.aspx.vb" Inherits="Page_Autre_register" Theme="Original" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <div class="containerContenuAdmin">
+<div class="contenuFamille">
 
-<div class="titleAdminNormal">
-    <h3><asp:Label ID="lblAjouterEmploye" runat="server" Text="Ajouter un membre de famille"></asp:Label></h3>
-</div>
+    <div class="titleFamille">
+        <h3><asp:Label ID="lblAjouterFamille" runat="server" Text="Ajouter un membre de famille"></asp:Label></h3>
+    </div>
 
 <div class="containerFormulaire">
 

@@ -5,8 +5,8 @@
         <siteMapNode url="contact.aspx" ressourceKey="Contact" title="Contact"  description="Contact" />
         <siteMapNode url="login.aspx" ressourceKey="Login" title="Connection"  description="Connection" />
         <siteMapNode url="register.aspx" ressourceKey="Register" title="Enregistrer"  description="Enregistrer" />
-        <siteMapNode url="cart.aspx" ressourceKey="Cart" title="Enregistrer"  description="Enregistrer">
-            <siteMapNode url="cart_checkout.aspx" ressourceKey="Cart_checkout" title="Confirmation"  description="Confirmation" />
+        <siteMapNode url="cart.aspx" ressourceKey="Cart" title="Panier"  description="Panier">
+          <siteMapNode url="cart_paiement.aspx" ressourceKey="Paiement" title="Paiement" description="Paiement" />
         </siteMapNode>
         <siteMapNode url="course_search.aspx" ressourceKey="Course_search" title="Recherche cours"  description="Recherche cours" />
         <siteMapNode url="home_member.aspx" ressourceKey="Home_member" title="Membre"  description="Membre">

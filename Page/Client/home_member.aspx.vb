@@ -99,15 +99,18 @@ Partial Class Page_Client_home_member
         End If
     End Sub
 
-    Sub actionAccept(sender As Object, e As EventArgs)
-        Dim entEmploye As New modelCLSContainer
-        Dim email As String = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel").Text
+    Protected Sub dsListView_Updating(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangingEventArgs) Handles dsListView.Updating
 
-        Dim utilisateur = (From A In entEmploye.MembresJeu Where (A.courriel = email) Select A).Any
+        Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
+        Dim txtMotPasse As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "lblMP")
+
+        'Dim lblErreur As Label = FindChildControl(Of Label)(lvMotPasse, "lblErreurMotPasse")
+
+        'If (txtMotPasse.Text <> e.Entity.motPasse) Then
+        '    lblErreur.Text = "Le mot de passe est incorrect!"
+        'End If
+
+        e.Entity.courriel = txtCourriel.Text
+
     End Sub
-
-    'Sub courrielValidate(ByVal source As System.Object, ByVal args As System.Web.UI.WebControls.ServerValidateEventArgs) Handles verifieCourriel.ServerValidate
-    '    args.IsValid = (args.Value.Length >= 8)
-    'End Sub
-
 End Class
