@@ -8,8 +8,6 @@ Partial Class Page_Admin_admin_employe_modify
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim entEmploye As New modelCLSContainer
         leContext = New modelCLSContainer
-        Dim dropDownNouvelEmploye As New ListItem
-        dropDownEmploye.Items.Add(dropDownNouvelEmploye)
 
 
     End Sub

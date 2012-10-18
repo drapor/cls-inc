@@ -965,7 +965,7 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="modelCLS" ZoomLevel="68" >
+      <Diagram Name="modelCLS" ZoomLevel="175" >
         <EntityTypeShape EntityType="modelCLS.AbonnementJeu" Width="1.5" PointX="3.5" PointY="14.25" Height="2.172587890624996" />
         <EntityTypeShape EntityType="modelCLS.CoursCompleteJeu" Width="1.75" PointX="7" PointY="13.125" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="modelCLS.CoursJeu" Width="1.5" PointX="10.5" PointY="9.875" Height="4.2879036458333317" />

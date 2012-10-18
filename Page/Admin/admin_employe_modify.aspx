@@ -10,7 +10,7 @@
          <div class="elementFormulaireTexte">
              <asp:Label ID="lblChoisirEmploye" runat="server" Text="Choisissez l'employé"></asp:Label></div>
          <div class="elementFormulaire">
-             <asp:DropDownList ID="dropDownEmploye" runat="server" Width="250px" SkinID="ddlBlue" DataSourceId="dsDropDownEmploye" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="prenomMembre" />
+             <asp:DropDownList ID="dropDownEmploye" runat="server" Width="250px" SkinID="ddlBlue" DataSourceId="dsDropDownEmploye" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="FullName" />
          </div>
     </div>
 </div>
@@ -275,6 +275,10 @@
                 <div class="modifierBouton">
                     <asp:LinkButton ID="btnModifierMP" runat="server" commandName="Edit" Text="Changer votre mot de passe"></asp:LinkButton>
                 </div>
+                <div class="boutonAdminRetour">
+                    <asp:Button ID="btnRetour" runat="server" PostBackUrl="~/Page/Admin/home_admin.aspx" Text="Retour" CssClass="btn btn-primary"/>
+                </div>
+                
         </ItemTemplate>
         <EditItemTemplate>
         <div class="partiGaucheCourriel">
@@ -310,7 +314,7 @@
                         </br>
                     </div>
                     </br>
-                    <div class="formatZone">
+                    <div class="formatZone">    
                         <asp:CompareValidator Display="Dynamic" ID="compareMP" runat="server" ErrorMessage="*Votre Mot de passe ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauMPEncore" ControlToValidate="txtNouveauMP"></asp:CompareValidator>
                         <%--<asp:RequiredFieldValidator Display="Dynamic" ID="requiredMPConfirm" runat="server" ErrorMessage="*Veuillez confirmez votre nouveau mot de passe" ControlToValidate="txtNouveauMPEncore" ForeColor="Red" SetFocusOnError="False"></asp:RequiredFieldValidator>--%>
                     </div>
@@ -361,11 +365,13 @@
     DefaultContainerName="modelCLSContainer"
     EntitySetName="MembresJeu"
     EnableFlattening="false"
-    EnableDelete="true" EnableInsert="true" 
-    EnableUpdate="true"
+    EnableDelete="false" EnableInsert="false" 
+    EnableUpdate="false"
     EntityTypeFilter="MembresJeu"
-    Include="MembresJeu_Employe"
-    Where="(it.RoleJeu_idRole = 1 OR it.RoleJeu_idRole = 2)">
+    Where="(it.RoleJeu_idRole = 1 OR it.RoleJeu_idRole = 2)"
+    Select="it.idMembre, it.RoleJeu_idRole,it.prenomMembre,(it.[prenomMembre]+' '+it.[nomMembre]) as FullName"
+    OrderBy="it.prenomMembre"
+    >
     </asp:EntityDataSource>
 
 </asp:Content>

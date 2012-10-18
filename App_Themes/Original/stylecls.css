@@ -55,7 +55,7 @@
     height: 42px;
     margin-left:auto;
     margin-right: auto;
-    background-color: #ffbf00;
+    background-color: #5d5de2;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
     border-radius: 5px;
@@ -67,7 +67,7 @@
     height:42px;
     margin-left:20px;
     margin-right:20px;
-    background-color: #ffbf00;
+    background-color: #5d5de2;
 
 }
 
@@ -449,7 +449,7 @@ background-image: "img/button2.png";
 {
     margin-top:10px;
     width:920px;
-    min-height:400px;
+    min-height:500px;
     height:auto;
     margin-left:auto;
     margin-right:auto;
@@ -503,6 +503,22 @@ background-image: "img/button2.png";
     text-align:center;
     float: left;
 }
+
+.menuSectionAdminInvisible
+{
+    background-color: White;
+    width:275px;
+    height: 26px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right:5px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:3px;
+    float: left;
+}
+
 
 .contenuAdmin
 {

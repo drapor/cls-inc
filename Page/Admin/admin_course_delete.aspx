@@ -1,21 +1,21 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_employe_delete.aspx.vb" Inherits="Page_Admin_admin_employe_delete" Theme="Original"%>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_course_delete.aspx.vb" Inherits="Page_Admin_admin_course_delete" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <div class="contenuPage">
 
 <div class="titleClient">
-<h3>Supprimer des employés</h3>
+<h3>Supprimer des cours</h3>
 </div>
 
 <div class="contenuClient">
 
 <div class="section">
 <div class="sectionTitre">
-    <asp:Label ID="listeEmploye" runat="server" Text="Liste des employés"></asp:Label>
+    <asp:Label ID="listeCours" runat="server" Text="Liste des cours"></asp:Label>
 </div>
 </div>  
 
-    <asp:ListView ID="lvEmploye" runat="server" DataSourceID="dsEmploye" DataKeyNames="idMembre">
+    <asp:ListView ID="lvCours" runat="server" DataSourceID="dsCours" DataKeyNames="idCours">
         <LayoutTemplate>
             <div class="infoClient">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -24,8 +24,7 @@
         <ItemTemplate>
             <div class="clientInfoGauche supprimerBoutonEmploye">
                 <div class="partiGauche supprimerBoutonEmploye">
-                <asp:Label ID="lblprenomEmploye" runat="server" Text='<%# Eval("prenomMembre ") %>'></asp:Label>
-                <asp:Label ID="lblNomEmploye" runat="server" Text='<%# Eval("nomMembre ") %>'></asp:Label>
+                <asp:Label ID="lblNomCours" runat="server" Text='<%# Eval("nomCours") %>'></asp:Label>
                 </div>
                 
                 <div class="partiDroite supprimerBoutonEmploye">
@@ -41,16 +40,15 @@
 </div>
 </div>
 
-    <asp:EntityDataSource ID="dsEmploye" runat="server"
+    <asp:EntityDataSource ID="dsCours" runat="server"
     ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer"
-    EntitySetName="MembresJeu"
+    EntitySetName="CoursJeu"
     EnableFlattening="false"
     EnableDelete="true" EnableInsert="false" 
     EnableUpdate="true"
-    EntityTypeFilter="MembresJeu"
-    Where="(it.RoleJeu_idRole = 1 OR it.RoleJeu_idRole = 2)"
-    OrderBy="it.prenomMembre">
+    EntityTypeFilter="CoursJeu"
+    OrderBy="it.nomCours">
     </asp:EntityDataSource> 
 
 

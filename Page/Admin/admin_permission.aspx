@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_permission.aspx.vb" Inherits="Page_Admin_admin_permission" Theme="Original" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <div class="containerContenuAdmin">
-<asp:ListView ID="lvPermission" runat="server" DataSourceID="dsEmploye" DataKeyNames="idEmploye,idMembre">
+<asp:ListView ID="lvPermission" runat="server" DataSourceID="dsEmploye" DataKeyNames="idMembre">
 <LayoutTemplate>
 <div class="titleAdminNormal">
     <asp:Label ID="lblPermission" runat="server" Text="Modifier les permissions"></asp:Label>
@@ -23,9 +23,11 @@
 
 <ItemTemplate>
     <div class="ligneFormulaire">
-       <div class="elementFormulaire permissionHeight"><asp:Label ID="lblNomEmploye" runat="server" Font-Size="18px" Font-Bold="true" ForeColor="#1b1bb3" Text='<% # Eval("idEmploye")%>'></asp:Label></div>
+       <div class="elementFormulaire permissionHeight"><asp:Label ID="lblPrenomEmploye" runat="server" Font-Size="18px" Font-Bold="true" ForeColor="#1b1bb3" Text='<% # Eval("prenomMembre")%>'></asp:Label> 
+       <asp:Label ID="lblNomEmploye" runat="server" Font-Size="18px" Font-Bold="true" ForeColor="#1b1bb3" Text='<% # Eval("nomMembre")%>'>
+       </asp:Label></div>
        <div class="elementFormulaireTexte permissionHeight">
-           <asp:DropDownList ID="ddlPermission" Width="180" AppendDataBoundItems="true" SkinID="ddlBlue"  runat="server" DataSourceID="dsEmploye" DataTextField="idMembre" SelectedValue='<%#Eval ("idMembre") %>'>
+           <asp:DropDownList ID="ddlPermission" Width="180" AppendDataBoundItems="true" SkinID="ddlBlue"  runat="server" DataSourceID="dsRole" DataValueField="idRole" DataTextField="nomRole" SelectedValue='<%#Bind ("RoleJeu_idRole") %>'>
            </asp:DropDownList>
        </div>
        <div class="elementFormulaireRequired permissionHeight">
@@ -34,38 +36,24 @@
     </div>
 </ItemTemplate>
 </asp:ListView>
+
 <asp:EntityDataSource ID="dsEmploye" runat="server"
-ConnectionString="name=modelCLSContainer"
-DefaultContainerName="modelCLSContainer"
-EnableFlattening="false"
-EnableUpdate="true"
-EnableDelete="true"
-EnableInsert="true"
-EntitySetName="MembresJeu_Employe">
-</asp:EntityDataSource>
+    ConnectionString="name=modelCLSContainer"
+    DefaultContainerName="modelCLSContainer"
+    EntitySetName="MembresJeu"
+    EnableFlattening="false"
+    EnableDelete="false" EnableInsert="false" 
+    EnableUpdate="true"
+    EntityTypeFilter="MembresJeu"
+    Where="(it.RoleJeu_idRole = 1 OR it.RoleJeu_idRole = 2)"
+    OrderBy="it.prenomMembre">
+    </asp:EntityDataSource> 
 
-<asp:EntityDataSource ID="EntityDataSource1" runat="server"
-ConnectionString="name=modelCLSContainer"
-DefaultContainerName="modelCLSContainer"
-EnableFlattening="false"
-EnableUpdate="false"
-EnableDelete="false"
-EnableInsert="false"
-EntitySetName="MembresJeu_Employe"
-Select="it.idEmploye, it.idMembre,(it.MembresJeu.[prenomMembre]+' '+it.MembresJeu.[nomMembre]) as FullName, it.MembresJeu.nomMembre, it.MembresJeu.prenomMembre, it.MembresJeu.Role_idRole"
-OrderBy="it.nomMembre">
-</asp:EntityDataSource>
-
-<asp:SqlDataSource id="dsEmployeSQL" runat="server"
-UpdateCommand="UPDATE [MembresJeu_Employe]
-                SET [Role_idRole] = @Role_idRole
-                WHERE [idEmploye]"
-
-
-
- ></asp:SqlDataSource>
-
-
+<asp:EntityDataSource ID="dsRole" runat="server" ConnectionString="name=modelCLSContainer" 
+    DefaultContainerName="modelCLSContainer" EntitySetName="RoleJeu" EnableFlattening="false"
+    EnableDelete="false" EnableInsert="false" EnableUpdate="true"
+    Where="(it.idRole = 1 OR it.idRole = 2)">
+</asp:EntityDataSource> 
 
 </div>
 </asp:Content>

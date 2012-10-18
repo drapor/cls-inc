@@ -1,5 +1,5 @@
 Imports modelCLS
-Partial Class Page_Admin_admin_employe_add
+Partial Class Page_Admin_admin_teacher_add
     Inherits System.Web.UI.Page
 
     Private Shared leContext As modelCLSContainer = Nothing
@@ -10,26 +10,25 @@ Partial Class Page_Admin_admin_employe_add
 
     Sub ajouterEmployeClick(sender As Object, e As EventArgs)
         If Page.IsValid = True Then
-            Dim entEmploye As New modelCLSContainer
-            Dim unEmploye As MembresJeu = Nothing
-
+            Dim entMembre As New modelCLSContainer
+            Dim unAnim As MembresJeu_Animateur = Nothing
+            Dim unMembre As MembresJeu = Nothing
 
 
             Dim email As String = txtCourriel.Text
 
-            Dim utilisateur = (From A In entEmploye.MembresJeu Where (A.courriel = email) Select A).Any
+            Dim utilisateur = (From A In entMembre.MembresJeu Where (A.courriel = email) Select A).Any
 
             If utilisateur = Nothing Then
 
-                unEmploye = MembresJeu.CreateMembresJeu(0, txtNom.Text, txtPrenom.Text, txtTelephone.Text, txtMDP.Text, txtAdresse.Text, txtVille.Text, Date.Now.ToShortDateString, txtDate.Text, txtCourriel.Text, txtCodePostal.Text, 0, rdbtnSexe.SelectedItem.Value, dropDownType.SelectedItem.Value)
-                entEmploye.MembresJeu.AddObject(unEmploye)
-                entEmploye.SaveChanges()
 
-                If dropDownType.SelectedValue = 1 Then
-                    lblFelicitation.Text = "L'administrateur a &eacute;t&eacute; ajout&eacute; avec succ&egrave;s !"
-                Else
-                    lblFelicitation.Text = "L'employ&eacute; a &eacute;t&eacute; ajout&eacute; avec succ&egrave;s !"
-                End If
+                unMembre = MembresJeu.CreateMembresJeu(0, txtNom.Text, txtPrenom.Text, txtTelephone.Text, txtMDP.Text, txtAdresse.Text, txtVille.Text, Date.Now.ToShortDateString, txtDate.Text, txtCourriel.Text, txtCodePostal.Text, 0, rdbtnSexe.SelectedItem.Value, 3)
+                unAnim = MembresJeu_Animateur.CreateMembresJeu_Animateur(0, unMembre.idMembre)
+                entMembre.MembresJeu.AddObject(unMembre)
+                entMembre.MembresJeu_Animateur.AddObject(unAnim)
+                entMembre.SaveChanges()
+                lblFelicitation.Text = "L'animateur a &eacute;t&eacute; ajout&eacute; avec succ&egrave;s !"
+                
 
                 lblFelicitation.Visible = True
                 checkImage.Visible = True
