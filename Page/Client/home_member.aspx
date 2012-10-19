@@ -5,13 +5,13 @@
 
 <div class="titleClient">
 <h3>Compte client</h3>
-<div class="ligneFormulaire">
+<%--<div class="ligneFormulaire">
          <div class="elementFormulaireTexte">
          Choisissez un membre</div>
          <div class="elementFormulaire">
              <asp:DropDownList ID="dropDownMembre" runat="server" Width="200px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="FullName" />
          </div>
-    </div>
+    </div>--%>
 </div>
 
 <div class="contenuClient">
@@ -415,9 +415,9 @@
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
     EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre"
     EntityTypeFilter="MembresJeu" 
-    where="(@MembreID = it.idMembre)">
+    where="(@membreID = it.idMembre)">
     <WhereParameters>
-        <asp:ControlParameter Name="MembreID" ControlID="dropDownMembre" PropertyName="SelectedValue" Type="Int32" />
+        <asp:Parameter Name="membreID" Type="Int32" DefaultValue="0"/>
     </WhereParameters>
     </asp:EntityDataSource>
 
