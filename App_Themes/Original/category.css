@@ -1,0 +1,65 @@
+﻿
+.enteteCategory
+{
+    height:60px;
+    width: 900px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.enteteTexteBlock
+{
+    width:300px;
+    height:60px;
+    float:left;
+}
+
+.enteteBanner
+{
+    width:600px;
+    height:60px;
+    float:right;
+}
+
+.blockCours
+{
+    width: 900px;
+    height:195px;
+    float:left;
+}
+
+.blockNormal
+{
+    width:225px;
+    height:60px;
+    float: left;
+    text-align:center;
+    
+}
+
+btnPadding
+{
+    padding-bottom:auto;
+    margin-top:5px;
+}
+
+.blockTarif
+{
+    width: 150px;
+    height:45px;
+    float:left;
+}
+.blockJeMinscris
+{
+    width:150px;
+    height:45px;
+    float:left;
+}
+
+.blockDescription
+{
+    width:450px;
+    height: 150px;
+    float:left;
+}
+

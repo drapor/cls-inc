@@ -542,3 +542,18 @@ background-image: "img/button2.png";
     text-align:left;
     float: left;
 }
+
+.containerContenuCategory
+{
+    margin-top:10px;
+    width:920px;
+    min-height:500px;
+    height:auto;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    background-color: White;
+    box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
+    border-radius: 15px;
+    padding: 10px;
+}

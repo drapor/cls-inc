@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="category.aspx.vb" Inherits="Page_Autre_category" Theme="Original"%>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="description.aspx.vb" Inherits="Page_Autre_description" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <div class="containerContenuAdmin">
 
 <div class="enteteCategory">
 <div class="enteteTexteBlock">
-    <h3><asp:Label ID="lblCategorie" runat="server" Text=""></asp:Label></h3>
+    <h3><asp:Label ID="lblNomCours" runat="server" Text=""></asp:Label></h3>
 </div>
 <div class="enteteBanner">
     <asp:Image ID="imgCategory" runat="server" />
@@ -19,7 +19,7 @@
 </div>
 <br />
 <br />
-    <asp:ListView ID="lvCours" runat="server" DataSourceID="dsCategorie" DataKeyNames="idCours">
+    <asp:ListView ID="lvCours" runat="server" DataSourceID="dsCours" DataKeyNames="idCours">
         <LayoutTemplate>  
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
         </LayoutTemplate>
@@ -27,16 +27,17 @@
                                 <div class="blockNormal">
                                     <asp:Button ID="btnSport" runat="server" CommandName="selection" Text='<%# Eval("nomCours") %>' CssClass="btn btn-primary btnPadding" />
                                 </div>
+                                <asp:Label ID="lblNomCoursHide" Value='<%# Eval("nomCours") %>' runat="server" Visible="false"></asp:Label>
         </ItemTemplate>
     </asp:ListView>
 
 
-    <asp:EntityDataSource ID="dsCategorie" runat="server" ConnectionString="name=modelCLSContainer"
+    <asp:EntityDataSource ID="dsCours" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="CoursJeu" EnableFlattening="False"
-    EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.nomCours"
-    where="(it.categorie = @categorie)">
+    EnableDelete="True" EnableInsert="false" EnableUpdate="True"
+    where="(it.idCours = @cours)">
     <WhereParameters>
-        <asp:Parameter Name="categorie" DbType="String" DefaultValue="Nothing"  />
+        <asp:Parameter Name="cours" DbType="Int16" DefaultValue="Nothing"  />
     </WhereParameters>
     </asp:EntityDataSource>
 </div>

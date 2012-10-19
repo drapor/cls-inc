@@ -1,6 +1,11 @@
-﻿
+﻿Imports System.Web.Services
+Imports System.Configuration
+Imports modelCLS
+
+
 Partial Class Site
     Inherits System.Web.UI.MasterPage
+
 
     Dim categorie As String = Nothing
     Dim url As String
@@ -22,5 +27,16 @@ Partial Class Site
         url = "../Autre/category.aspx?categorie=" & categorie
         Response.Redirect(url)
     End Sub
+
+    <System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>
+    Public Shared Function GetCompletionList(ByVal prefixText As String, ByVal count As Integer) As String()
+
+        Dim entCours As modelCLSContainer = New modelCLSContainer
+
+        Return entCours.CoursJeu.Where(Function(n) n.nomCours.StartsWith(prefixText)).OrderBy(Function(n) n.nomCours).[Select](Function(n) n.nomCours).Take(count).ToArray()
+
+    End Function
+
+
 End Class
 
