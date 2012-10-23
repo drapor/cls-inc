@@ -31,7 +31,16 @@
 .blockNormal
 {
     width:225px;
-    height:60px;
+    height:25px;
+    float: left;
+    text-align:center;
+    
+}
+
+.blockDate
+{
+    width:225px;
+    height:40px;
     float: left;
     text-align:center;
     
@@ -45,15 +54,16 @@ btnPadding
 
 .blockTarif
 {
-    width: 150px;
+    width: 112px;
     height:45px;
     float:left;
 }
 .blockJeMinscris
 {
-    width:150px;
+    width:226px;
     height:45px;
     float:left;
+    text-align:center;
 }
 
 .blockDescription
@@ -63,3 +73,35 @@ btnPadding
     float:left;
 }
 
+.blockInfos
+{
+    width: 880px;
+    height: 230px;
+    float: left;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:20px;
+}
+.blockCout
+{
+    width: 880px;
+    height: 35px;
+    float: left;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:20px;
+}
+
+.blockTarif
+{
+    height: 30px;
+    width: 150px;
+    float:left;
+}
+
+.blockBoutonInscription
+{
+    height: 30px;
+    width: 580px;
+    float:left; 
+}

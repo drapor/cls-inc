@@ -1,6 +1,6 @@
 Imports modelCLS
 Partial Class Page_Admin_admin_course_add
-    Inherits System.Web.UI.Page
+    Inherits masterPage
 
     Private Shared leContext As modelCLSContainer = Nothing
 
@@ -22,12 +22,5 @@ Partial Class Page_Admin_admin_course_add
                 End Select
             End If
         Next c
-    End Sub
-
-
-
-
-    Protected Sub lvCourseAdd_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvCourseAdd.ItemInserting
-
     End Sub
 End Class

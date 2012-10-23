@@ -39,9 +39,10 @@
 
     <div class="ligneFormulaireDescription">
          <div class="elementFormulaireTexte"><asp:Label ID="lblDescription" runat="server" Text="Description du cours"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtDescription" runat="server" CssClass="search-query" Font-Bold="false"  SkinID="txtBoxDescription"  MaxLength="20" Height="120px" TextMode="MultiLine" Width="320px" style="resize:none;" Text='<%#Bind("description") %>' ></asp:TextBox></div>
+         <div class="elementFormulaire"><asp:TextBox ID="txtDescription" runat="server" CssClass="search-query" Font-Bold="false"  SkinID="txtBoxDescription"  MaxLength="20" Height="120px" TextMode="MultiLine" Width="320px" style="resize:none;" Text='<%#Bind("description") %>'></asp:TextBox></div>
          <div class="elementFormulaireRequired">
         <asp:RequiredFieldValidator ID="requiredDescription" runat="server" ErrorMessage="*La description est obligatoire" ControlToValidate="txtDescription" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="regExDescription" runat="server" ErrorMessage="*La description ne doit pas contenir plus de 400 caractère." ValidationExpression="[\s\S]{0,500}" ForeColor="Red" ControlToValidate="txtDescription"></asp:RegularExpressionValidator>
         </div>
     </div> <%--Description--%>
 
@@ -160,7 +161,24 @@ Select="it.idAnimateur, it.idMembre,(it.MembresJeu.[prenomMembre]+' '+it.Membres
             dateFormat: "dd/mm/yy"
         });
     });
- 
+
+    function MaxLength(maxLength) {
+
+        text = document.getElementById('txtDescription');
+
+        if (text.value.length > maxLength) {
+
+            alert("only max " + maxLength + " characters are allowed");
+
+            //this limits the textbox with only 5 characters as lenght is given as 5.
+
+            text.value = text.value.substring(0, maxLength);
+
+        }
+
+    }
+
+
 	</script> <%--Date Picker--%>
 
 </div>
