@@ -87,8 +87,8 @@
 
 <div class="contenuAdmin">
     <asp:LinkButton ID="lnkAjouterAnimateur" runat="server" PostBackUrl="~/Page/Admin/admin_teacher_add.aspx">Ajouter un animateur</asp:LinkButton><br/>
-    <asp:LinkButton ID="lnkModifierAnimateur" runat="server">Modifier un animateur</asp:LinkButton><br/>
-    <asp:LinkButton ID="lnkSupprimerAnimateur" runat="server">Supprimer un animateur</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkModifierAnimateur" runat="server" PostBackUrl="~/Page/Admin/admin_teacher_modify.aspx" >Modifier un animateur</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkSupprimerAnimateur" runat="server" PostBackUrl="~/Page/Admin/admin_teacher_delete.aspx">Supprimer un animateur</asp:LinkButton><br/>
 </div>
 
 </div>

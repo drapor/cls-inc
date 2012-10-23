@@ -13,6 +13,7 @@ Partial Class Page_Autre_description
         ElseIf categorie = "Culture" Then
             imgCategory.ImageUrl = "~/App_Themes/Original/img/culture_banner.png"
         End If
+        lblNomCours.Text = FindChildControl(Of HiddenField)(lvCours, "hiddenNomCours").Value.ToString
 
     End Sub
 
@@ -41,11 +42,10 @@ Partial Class Page_Autre_description
     '    End If
 
     'End Sub
-
-
-    
-    Protected Sub Page_LoadComplete(sender As Object, e As System.EventArgs) Handles Me.LoadComplete
-        Dim lblNomCoursHid As Label = FindChildControl(Of Label)(lvCours, "lblNomCoursHide")
-        lblNomCours.Text = lblNomCoursHid.Text
+    Sub retourCategorie(sender As Object, e As EventArgs)
+        Dim categorie As String = Request.QueryString("categorie")
+        Dim url As String
+        url = "../Autre/category.aspx?categorie=" & categorie
+        Response.Redirect(url)
     End Sub
 End Class

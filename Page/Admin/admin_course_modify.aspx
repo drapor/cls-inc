@@ -62,7 +62,8 @@
                     <asp:Label ID="lblGroupeAgeCours" runat="server" Text='<%# Eval("groupeAge") %>'></asp:Label>
                     </div>
                     <div class="ligneCoursNormal">
-                    <asp:Label ID="lblAnimateurCours" runat="server" Text='<%# Eval("Animateur_idMembre") %>'></asp:Label>
+                    <asp:Label ID="lblAnimateurPrenomCours" runat="server" Text='<%# Eval("MembresJeu_Animateur.MembresJeu.prenomMembre ") %>'></asp:Label>
+                    <asp:Label ID="lblAnimateurNomCours" runat="server" Text='<%# Eval("MembresJeu_Animateur.MembresJeu.nomMembre") %>'></asp:Label>
                     </div>
                 </div>
             </div>
@@ -168,28 +169,28 @@
 
     <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"><asp:Label ID="lblDateDebutInscription" runat="server" Text="Date début des inscriptions"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtDateDebutInscription" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateDebutInscription", "{0:yyyy-MM-dd}") %>'></asp:TextBox></div>
+         <div class="elementFormulaire"><asp:TextBox ID="txtDateDebutInscription" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateDebutInscription", "{0:dd/MM/yyyy}") %>'></asp:TextBox></div>
         <asp:RequiredFieldValidator ID="requiredDateDebutInscription" runat="server" ErrorMessage="*La date de début des inscriptions est obligatoire" ControlToValidate="txtDateDebutInscription" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="regExDateDebutInscription" runat="server" ErrorMessage="*La date n'est pas dans le format jj/mm/aaaa" ValidationExpression="^(((((0[1-9])|(1\d)|(2[0-8]))\/((0[1-9])|(1[0-2])))|((31\/((0[13578])|(1[02])))|((29|30)\/((0[1,3-9])|(1[0-2])))))\/((20[0-9][0-9])|(19[0-9][0-9])))|((29\/02\/(19|20)(([02468][048])|([13579][26]))))$  " Display="Dynamic" ControlToValidate="txtDateDebutInscription" ForeColor="Red"></asp:RegularExpressionValidator>
     </div> <%--Date début des inscriptions--%>
 
     <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"><asp:Label ID="lblDateFinInscription" runat="server" Text="Date fin des inscriptions"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtDateFinInscription" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateFinInscription", "{0:yyyy-MM-dd}") %>'></asp:TextBox></div>
+         <div class="elementFormulaire"><asp:TextBox ID="txtDateFinInscription" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateFinInscription", "{0:dd/MM/yyyy}") %>'></asp:TextBox></div>
         <asp:RequiredFieldValidator ID="requiredDateFinInscription" runat="server" ErrorMessage="*La date de fin des inscriptions est obligatoire" ControlToValidate="txtDateFinInscription" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="regExDateFinInscription" runat="server" ErrorMessage="*La date n'est pas dans le format jj/mm/aaaa" ValidationExpression="^(((((0[1-9])|(1\d)|(2[0-8]))\/((0[1-9])|(1[0-2])))|((31\/((0[13578])|(1[02])))|((29|30)\/((0[1,3-9])|(1[0-2])))))\/((20[0-9][0-9])|(19[0-9][0-9])))|((29\/02\/(19|20)(([02468][048])|([13579][26]))))$  " Display="Dynamic" ControlToValidate="txtDateFinInscription" ForeColor="Red"></asp:RegularExpressionValidator>
     </div> <%--Date fin des inscriptions--%>
 
     <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"><asp:Label ID="lblDateDebutCours" runat="server" Text="Date début des cours"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtDateDebutCours" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateDebutCours", "{0:yyyy-MM-dd}") %>'></asp:TextBox></div>
+         <div class="elementFormulaire"><asp:TextBox ID="txtDateDebutCours" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateDebutCours", "{0:dd/MM/yyyy}") %>'></asp:TextBox></div>
         <asp:RequiredFieldValidator ID="requiredDateDebutCours" runat="server" ErrorMessage="*La date de début des cours est obligatoire" ControlToValidate="txtDateDebutCours" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="regExDateDebutCours" runat="server" ErrorMessage="*La date n'est pas dans le format jj/mm/aaaa" ValidationExpression="^(((((0[1-9])|(1\d)|(2[0-8]))\/((0[1-9])|(1[0-2])))|((31\/((0[13578])|(1[02])))|((29|30)\/((0[1,3-9])|(1[0-2])))))\/((20[0-9][0-9])|(19[0-9][0-9])))|((29\/02\/(19|20)(([02468][048])|([13579][26]))))$  " Display="Dynamic" ControlToValidate="txtDateDebutCours" ForeColor="Red"></asp:RegularExpressionValidator>
     </div> <%--Date début des cours--%>
 
     <div class="ligneFormulaire">
          <div class="elementFormulaireTexte"><asp:Label ID="lblDateFinCours" runat="server" Text="Date fin des cours"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtDateFinCours" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateFinCours", "{0:yyyy-MM-dd}") %>'></asp:TextBox></div>
+         <div class="elementFormulaire"><asp:TextBox ID="txtDateFinCours" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateFinCours", "{0:dd/MM/yyyy}") %>'></asp:TextBox></div>
         <asp:RequiredFieldValidator ID="requiredDateFinCours" runat="server" ErrorMessage="*La date de fin des cours est obligatoire" ControlToValidate="txtDateFinCours" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="regExDateFinCours" runat="server" ErrorMessage="*La date n'est pas dans le format jj/mm/aaaa" ValidationExpression="^(((((0[1-9])|(1\d)|(2[0-8]))\/((0[1-9])|(1[0-2])))|((31\/((0[13578])|(1[02])))|((29|30)\/((0[1,3-9])|(1[0-2])))))\/((20[0-9][0-9])|(19[0-9][0-9])))|((29\/02\/(19|20)(([02468][048])|([13579][26]))))$  " Display="Dynamic" ControlToValidate="txtDateFinCours" ForeColor="Red"></asp:RegularExpressionValidator>
     </div> <%--Date fin des cours--%>
@@ -239,6 +240,7 @@ EnableDelete="true" EnableInsert="true" EnableUpdate="true">
 <asp:EntityDataSource ID="dsModifyCourse" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="CoursJeu" EnableFlattening="False"
     EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.nomCours"
+    Include="MembresJeu_Animateur, MembresJeu_Animateur.MembresJeu"
     where="(@CoursID = it.idCours)">
     <WhereParameters>
         <asp:ControlParameter Name="CoursID" ControlID="ddlCours" PropertyName="SelectedValue" Type="Int32" />
