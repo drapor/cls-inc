@@ -1,13 +1,44 @@
 ﻿<%@ Master Language="VB" AutoEventWireup="false" CodeFile="Site.Master.vb" Inherits="Site" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
 <script type="text/javascript" src="../../Scripts/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="../../Scripts/jquery-ui-1.8.23.custom.min.js"></script>
+
+<%--<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script> --%>
+
+<%--<script type="text/javascript">
+    $(function () {
+        $("#txtSearch").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: "listeCours.asmx/GetCompletionList",
+                    data: "{'prefixText':'" + request.term + "'}",
+                    dataType: "json",
+                    success: function (data) {
+                        response($.map(data.d, function(item) {
+                        return {
+                            value: item.nomCours
+                        }
+                    }))
+
+                    },
+                    error: function (result) {
+                        alert("Error Occurred");
+                    }
+                });
+            },
+            minLength: 1
+        });
+    }
+</script>--%>
     <title></title>
 </head>
 <body>
@@ -29,18 +60,11 @@
            <asp:Button ID="btnCulture" runat="server" Text="Culture" CssClass="btn btn-custom btn-large boutonMaster" />
            <asp:Button ID="btnLoisir" runat="server" Text="Loisir" CssClass="btn btn-custom btn-large boutonMaster"/>
            <asp:Button ID="btnSport" runat="server" Text="Sport" CssClass="btn btn-custom btn-large boutonMaster"/>
-
-
-
         
        <div class="menuBoutonSearch">
-       <form class="navbar-search fieldSearch">
-       <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-       </asp:ToolkitScriptManager>
-                <asp:TextBox ID="txtSearch" runat="server" CssClass="search-query span3 fieldSearch"></asp:TextBox>
-                <asp:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" MinimumPrefixLength="2" ServiceMethod="GetCompletionList" TargetControlID="txtSearch" >
-           </asp:AutoCompleteExtender>
-       <asp:ImageButton ID="searchButton" runat="server" CssClass="searchButton" Height="28px" Width="28px" />
+       <form class="navbar-search fieldSearch">  
+            <asp:TextBox ID="txtSearch" runat="server" CssClass="search-query span3 fieldSearch"></asp:TextBox>
+            <asp:ImageButton ID="searchButton" runat="server" CssClass="searchButton" Height="28px" Width="28px" />
        </form>
        </div>
        

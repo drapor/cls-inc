@@ -290,7 +290,7 @@
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauMP" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("motPasse") %>' TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauMP" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text="" TextMode="Password"></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
@@ -327,7 +327,7 @@
 </div>
 </div> 
 
-<asp:ListView ID="lvFamille" runat="server" DataSourceID="dsListView" DataKeyNames="idMembre">
+<asp:ListView ID="lvFamille" runat="server" DataSourceID="dsFamille" DataKeyNames="idMembre">
         <LayoutTemplate>
             <div class="infoClient">
                 <div class="titreGauche">
@@ -341,16 +341,16 @@
         </LayoutTemplate>
         <ItemTemplate>
             <div class="contenuGauche">
-                <asp:Label ID="lblNomFamille" runat="server" Text="Michel Griggs"></asp:Label>
+                <asp:Label ID="lblNomFamille" runat="server" Text='<%# Eval("prenomMembre") + " " + Eval("nomMembre") %>'></asp:Label>
             </div>
             <div class="contenuDroit">
-                <asp:Label ID="lblStatusFamille" runat="server" Text="Enfant"></asp:Label>
+                <asp:Label ID="lblStatusFamille" runat="server" Text='<%# Eval("RoleJeu_1.nomRole") %>'></asp:Label>
             </div>
             <div class="afficherFamille">
-                    <asp:LinkButton ID="btnAfficherFamille" runat="server" Text="Afficher" PostBackUrl="~/Page/Client/member_family.aspx"></asp:LinkButton>
+                    <asp:LinkButton ID="btnAfficherFamille" runat="server" Text="Afficher" commandName="afficher"></asp:LinkButton>
             </div>
             <div class="supprimerFamille">
-                    <asp:LinkButton ID="btnSupprimerFamille" runat="server" Text="Supprimer"></asp:LinkButton>
+                    <asp:LinkButton ID="btnSupprimerFamille" runat="server" Text="Supprimer" CommandName="delete"></asp:LinkButton>
             </div>
         </ItemTemplate>
 </asp:ListView>
@@ -426,6 +426,16 @@
     EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idMembre"
     EntityTypeFilter="MembresJeu" 
     Select="it.idMembre,it.nomMembre,it.prenomMembre,(it.[prenomMembre]+' '+it.[nomMembre]) as FullName, it.adresse, it.ville, it.dateNaissance, it.telephoneMembre, it.codePostal, it.courriel, it.motPasse, it.dateInscription">
+    </asp:EntityDataSource>
+
+    <asp:EntityDataSource ID="dsFamille" runat="server" ConnectionString="name=modelCLSContainer"
+    DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" Include="RoleJeu_1"
+    EnableFlattening="False" EnableDelete="True" EnableInsert="false" EnableUpdate="True" 
+    orderBy="it.idMembre"
+    where="(@idFamille = it.familleID and (it.RoleJeu_idRole = 4 or it.RoleJeu_idRole = 5))">
+    <WhereParameters>
+        <asp:Parameter Name="idFamille" Type="Int32" DefaultValue="0"/>
+    </WhereParameters>
     </asp:EntityDataSource>
 
 </asp:Content>

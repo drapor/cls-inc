@@ -9,16 +9,14 @@
 '------------------------------------------------------------------------------
 
 Imports System
-Imports System.ComponentModel
-Imports System.Data.EntityClient
 Imports System.Data.Objects
 Imports System.Data.Objects.DataClasses
-Imports System.Linq
-Imports System.Runtime.Serialization
+Imports System.Data.EntityClient
+Imports System.ComponentModel
 Imports System.Xml.Serialization
+Imports System.Runtime.Serialization
 
-
-<Assembly: EdmSchemaAttribute("6460ca85-8122-4372-b2e0-f934b1aa4d1c")>
+<Assembly: EdmSchemaAttribute("93493b75-d887-42cd-bd42-3abfa31977c1")>
 #Region "Métadonnées de relation EDM"
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
@@ -35,9 +33,8 @@ Imports System.Xml.Serialization
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_RoleJeuMembresJeu", "RoleJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.RoleJeu), "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.MembresJeu), True)>
 
 #End Region
-
 Namespace modelCLS
-
+    
     #Region "Contextes"
     
     ''' <summary>
@@ -46,14 +43,14 @@ Namespace modelCLS
     Public Partial Class modelCLSContainer
         Inherits ObjectContext
     
-        #Region "Constructeurs"
+        #Region "Constructors"
     
         ''' <summary>
         ''' Initialise un nouvel objet modelCLSContainer à l'aide de la chaîne de connexion trouvée dans la section 'modelCLSContainer' du fichier de configuration d'application.
         ''' </summary>
         Public Sub New()
             MyBase.New("name=modelCLSContainer", "modelCLSContainer")
-            MyBase.ContextOptions.LazyLoadingEnabled = true
+        MyBase.ContextOptions.LazyLoadingEnabled = true
             OnContextCreated()
         End Sub
     
@@ -62,7 +59,7 @@ Namespace modelCLS
         ''' </summary>
         Public Sub New(ByVal connectionString As String)
             MyBase.New(connectionString, "modelCLSContainer")
-            MyBase.ContextOptions.LazyLoadingEnabled = true
+        MyBase.ContextOptions.LazyLoadingEnabled = true
             OnContextCreated()
         End Sub
     
@@ -71,13 +68,13 @@ Namespace modelCLS
         ''' </summary>
         Public Sub New(ByVal connection As EntityConnection)
             MyBase.New(connection, "modelCLSContainer")
-            MyBase.ContextOptions.LazyLoadingEnabled = true
+        MyBase.ContextOptions.LazyLoadingEnabled = true
             OnContextCreated()
         End Sub
     
         #End Region
     
-        #Region "Méthodes partielles"
+        #Region "Partial Methods"
     
         Partial Private Sub OnContextCreated()
         End Sub
@@ -269,7 +266,6 @@ Namespace modelCLS
         Private _TarifsJeu As ObjectSet(Of TarifsJeu)
 
         #End Region
-
         #Region "Méthodes AddTo"
     
         ''' <summary>
@@ -364,11 +360,9 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
     End Class
 
     #End Region
-
     #Region "Entités"
     
     ''' <summary>
@@ -398,7 +392,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -504,7 +497,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -570,7 +562,6 @@ Namespace modelCLS
         End Property
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -598,7 +589,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -679,7 +669,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -745,7 +734,6 @@ Namespace modelCLS
         End Property
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -789,7 +777,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -1120,7 +1107,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -1209,7 +1195,6 @@ Namespace modelCLS
         End Property
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -1239,7 +1224,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -1345,7 +1329,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -1434,7 +1417,6 @@ Namespace modelCLS
         End Property
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -1468,7 +1450,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -1624,7 +1605,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -1659,7 +1639,6 @@ Namespace modelCLS
         End Property
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -1687,7 +1666,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -1768,7 +1746,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -1834,7 +1811,6 @@ Namespace modelCLS
         End Property
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -1884,7 +1860,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -2240,7 +2215,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -2360,7 +2334,6 @@ Namespace modelCLS
         End Property
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -2386,7 +2359,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -2442,7 +2414,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -2513,7 +2484,6 @@ Namespace modelCLS
         End Property
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -2539,7 +2509,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -2595,7 +2564,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -2617,7 +2585,6 @@ Namespace modelCLS
         End Property
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -2647,7 +2614,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -2753,7 +2719,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -2775,7 +2740,6 @@ Namespace modelCLS
         End Property
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -2801,7 +2765,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -2857,7 +2820,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
         #Region "Propriétés de navigation"
     
         ''' <summary>
@@ -2879,7 +2841,6 @@ Namespace modelCLS
         End Property
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -2907,7 +2868,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -3038,7 +2998,6 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
     End Class
     
     ''' <summary>
@@ -3070,7 +3029,6 @@ Namespace modelCLS
         End Function
 
         #End Region
-
         #Region "Propriétés primitives"
     
         ''' <summary>
@@ -3201,10 +3159,8 @@ Namespace modelCLS
         End Sub
 
         #End Region
-
     End Class
 
     #End Region
-
     
 End Namespace

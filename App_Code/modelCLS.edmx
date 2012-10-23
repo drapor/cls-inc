@@ -965,7 +965,7 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="modelCLS" ZoomLevel="175" >
+      <Diagram Name="modelCLS" ZoomLevel="82" >
         <EntityTypeShape EntityType="modelCLS.AbonnementJeu" Width="1.5" PointX="3.5" PointY="14.25" Height="2.172587890624996" />
         <EntityTypeShape EntityType="modelCLS.CoursCompleteJeu" Width="1.75" PointX="7" PointY="13.125" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="modelCLS.CoursJeu" Width="1.5" PointX="10.5" PointY="9.875" Height="4.2879036458333317" />
@@ -976,7 +976,7 @@
         <EntityTypeShape EntityType="modelCLS.MembresJeu_Animateur" Width="2" PointX="3.375" PointY="10.5" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="modelCLS.RoleJeu" Width="1.5" PointX="0.5" PointY="7" Height="1.595683593749996" />
         <EntityTypeShape EntityType="modelCLS.SessionJeu" Width="1.5" PointX="7.125" PointY="18.875" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="modelCLS.SpecialiteJeu" Width="1.5" PointX="6.875" PointY="11.25" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="modelCLS.SpecialiteJeu" Width="2" PointX="6.875" PointY="11.25" Height="1.595683593749996" />
         <EntityTypeShape EntityType="modelCLS.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.5" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="modelCLS.TarifsJeu" Width="1.5" PointX="4.25" PointY="6.625" Height="1.9802864583333246" />
         <AssociationConnector Association="modelCLS.FK_AbonnementGroupe" >

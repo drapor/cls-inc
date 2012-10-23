@@ -5,8 +5,21 @@ Partial Class Page_Client_home_member
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+
+        Dim entClient As modelCLSContainer = New modelCLSContainer
+
         Dim idClient As Integer = CType(Request.QueryString("idMembre"), Integer)
+        Dim idFamille As String = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).First
+
+        Session("membrePrincipalId") = Request.QueryString("idMembre")
+        Session("membrePrincipalCourriel") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.courriel).First
+        Session("membrePrincipalMotPasse") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.motPasse).First
+        Session("membrePrincipalIdFamille") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).First
+
         dsListView.WhereParameters("membreID").DefaultValue = idClient
+
+        dsFamille.WhereParameters("idFamille").DefaultValue = idFamille
+
     End Sub
 
     Protected Sub lvInfoMembre_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvInfoMembre.ItemCommand
@@ -22,8 +35,8 @@ Partial Class Page_Client_home_member
             btnHideCourriel.Visible = False
             btnHideMP.Visible = False
             btnAjouterFamille.Visible = False
-            btnHideAfficherFamille.Visible = False
-            btnHideSupprimerFamille.Visible = False
+            'btnHideAfficherFamille.Visible = False
+            'btnHideSupprimerFamille.Visible = False
 
         Else
             btnAjouterFamille.Visible = True
@@ -31,8 +44,8 @@ Partial Class Page_Client_home_member
             btnHideCourriel.Visible = True
             btnHideMP.Visible = True
             btnAjouterFamille.Visible = True
-            btnHideAfficherFamille.Visible = True
-            btnHideSupprimerFamille.Visible = True
+            'btnHideAfficherFamille.Visible = True
+            'btnHideSupprimerFamille.Visible = True
         End If
     End Sub
 
@@ -49,8 +62,8 @@ Partial Class Page_Client_home_member
             btnHideInfo.Visible = False
             btnHideMP.Visible = False
             btnAjouterFamille.Visible = False
-            btnHideAfficherFamille.Visible = False
-            btnHideSupprimerFamille.Visible = False
+            'btnHideAfficherFamille.Visible = False
+            'btnHideSupprimerFamille.Visible = False
 
 
         Else
@@ -59,11 +72,10 @@ Partial Class Page_Client_home_member
             btnHideInfo.Visible = True
             btnHideMP.Visible = True
             btnAjouterFamille.Visible = True
-            btnHideAfficherFamille.Visible = True
-            btnHideSupprimerFamille.Visible = True
+            'btnHideAfficherFamille.Visible = True
+            'btnHideSupprimerFamille.Visible = True
         End If
     End Sub
-
 
     Protected Sub lvMotPasse_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMotPasse.ItemCommand
         Dim btnHideInfo As Button = FindChildControl(Of Button)(lvInfoMembre, "btnModifier")
@@ -77,8 +89,8 @@ Partial Class Page_Client_home_member
             btnHideInfo.Visible = False
             btnHideCourriel.Visible = False
             btnAjouterFamille.Visible = False
-            btnHideAfficherFamille.Visible = False
-            btnHideSupprimerFamille.Visible = False
+            'btnHideAfficherFamille.Visible = False
+            'btnHideSupprimerFamille.Visible = False
 
         Else
             btnAjouterFamille.Visible = True
@@ -86,24 +98,38 @@ Partial Class Page_Client_home_member
             btnHideInfo.Visible = True
             btnHideCourriel.Visible = True
             btnAjouterFamille.Visible = True
-            btnHideAfficherFamille.Visible = True
-            btnHideSupprimerFamille.Visible = True
+            'btnHideAfficherFamille.Visible = True
+            'btnHideSupprimerFamille.Visible = True
         End If
     End Sub
 
-    Protected Sub dsListView_Updating(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangingEventArgs) Handles dsListView.Updating
+    Protected Sub lvFamille_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvFamille.ItemCommand
+        Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
+        Dim idMembre As Integer = lvFamille.DataKeys(dataItem.DisplayIndex).Value.ToString()
 
-        Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
-        Dim txtMotPasse As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "lblMP")
-
-        'Dim lblErreur As Label = FindChildControl(Of Label)(lvMotPasse, "lblErreurMotPasse")
-
-        'If (txtMotPasse.Text <> e.Entity.motPasse) Then
-        '    lblErreur.Text = "Le mot de passe est incorrect!"
-        'End If
-
-        e.Entity.courriel = txtCourriel.Text
+        If e.CommandName = "afficher" Then
+            Dim url As String
+            url = "../Client/member_family.aspx?idMembre=" & idMembre
+            Response.Redirect(url)
+        End If
 
     End Sub
 
+    Protected Sub lvCourriel_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvCourriel.ItemUpdating
+        Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
+
+        e.NewValues("courriel") = txtCourriel.Text
+    End Sub
+
+
+    Protected Sub lvMotPasse_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvMotPasse.ItemUpdating
+
+        Dim txtVieuxMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtPresentMP")
+        Dim txtMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtNouveauMP")
+
+        If Session("membrePrincipalMotPasse") = txtVieuxMP.Text Then
+            e.NewValues("motPasse") = txtMP.Text
+        End If
+
+    End Sub
 End Class

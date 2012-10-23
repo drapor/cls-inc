@@ -17,8 +17,6 @@ Partial Class Page_Employe_employe_client_modify
     Dim ds As New DataSet
     Dim dt As New DataTable
 
-
-
     Sub actionRecherche(sender As Object, e As EventArgs)
 
         dsListView.WhereParameters("courriel").DefaultValue = txtCourriel.Text
@@ -41,7 +39,7 @@ Partial Class Page_Employe_employe_client_modify
 
         Dim entClient As modelCLSContainer = New modelCLSContainer
 
-        Return entClient.MembresJeu.Where(Function(n) n.courriel.StartsWith(prefixText)).OrderBy(Function(n) n.courriel).[Select](Function(n) n.courriel).Take(count).ToArray()
+        Return entClient.MembresJeu.Where(Function(n) n.courriel.StartsWith(prefixText) And n.RoleJeu_idRole = 3).OrderBy(Function(n) n.courriel).[Select](Function(n) n.courriel).Take(count).ToArray()
 
     End Function
 

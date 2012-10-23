@@ -39,7 +39,7 @@
             <div class="infoClient">
                 <div class="partiGaucheCourrielEdit">
                     <div class="formatZone">
-                        <asp:Label ID="lblNouveauCourriel" runat="server" Text="Voici le membre à supprimer:" ></asp:Label>
+                        <asp:Label ID="lblNouveauCourriel" runat="server" Text="Voici le membre à modifier:" ></asp:Label>
                     </div>
                 </div>
                 <div class="partiDroiteCourrielEdit">

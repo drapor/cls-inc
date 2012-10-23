@@ -5,13 +5,6 @@
 
 <div class="titleClient">
 <h3><asp:Label ID="lblNomUtilisateur" runat="server" Text="Compte membre famille"></asp:Label></h3>
-<div class="ligneFormulaire">
-         <div class="elementFormulaireTexte">
-         Choisissez un membre de la famille</div>
-         <div class="elementFormulaire">
-             <asp:DropDownList ID="dropDownMembre" runat="server" Width="200px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="FullName"/>
-         </div>
-    </div>
 </div>
 
 <div class="contenuClient">
@@ -22,7 +15,7 @@
 </div>
 </div>  
 
-    <asp:ListView ID="lvInfoMembre" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+    <asp:ListView ID="lvInfoMembre" runat="server" DataSourceID="dsFamille" DataKeyNames="idMembre">
         <LayoutTemplate>
             <div class="infoClient">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -192,7 +185,7 @@
 </div>
 </div>  
 
-<asp:ListView ID="lvAbonnement" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+<asp:ListView ID="lvAbonnement" runat="server" DataSourceID="dsFamille" DataKeyNames="idMembre">
         <LayoutTemplate>
             <div class="infoClient">
                 <div class="titreGauche">
@@ -213,7 +206,9 @@
             </div>
         </ItemTemplate>
 </asp:ListView>
-
+<div class="bouton">
+    <asp:Button ID="btnRetour" runat="server" OnClick="actionRetour" Text="Retour" CssClass="btn btn-primary btn-small" />
+</div>
 <script>
     $(function () {
         $(".datepicker").datepicker({
@@ -230,21 +225,14 @@
 </div>
 </div>
 
-    <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=modelCLSContainer"
+    <asp:EntityDataSource ID="dsFamille" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
     EnableDelete="true" EnableInsert="false" EnableUpdate="true" orderBy="it.idMembre"
     EntityTypeFilter="MembresJeu"  
     where="(@MembreID = it.idMembre)">
     <WhereParameters>
-        <asp:ControlParameter Name="MembreID" ControlID="dropDownMembre" PropertyName="SelectedValue" Type="Int32" />
+        <asp:Parameter Name="MembreID" Type="Int32" DefaultValue="0"/>
     </WhereParameters>
-    </asp:EntityDataSource>
-
-    <asp:EntityDataSource ID="dsMember" runat="server" ConnectionString="name=modelCLSContainer"
-    DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idMembre"
-    EntityTypeFilter="MembresJeu"  
-    Select="it.idMembre,it.nomMembre,it.prenomMembre,(it.[prenomMembre]+' '+it.[nomMembre]) as FullName, it.adresse, it.ville, it.dateNaissance, it.telephoneMembre, it.codePostal, it.courriel, it.motPasse, it.dateInscription">
     </asp:EntityDataSource>
 
 </asp:Content>

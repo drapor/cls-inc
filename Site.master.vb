@@ -28,14 +28,14 @@ Partial Class Site
         Response.Redirect(url)
     End Sub
 
-    <System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>
-    Public Shared Function GetCompletionList(ByVal prefixText As String, ByVal count As Integer) As String()
+    '<System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>
+    'Public Shared Function GetCompletionList(ByVal prefixText As String, ByVal count As Integer) As String()
 
-        Dim entCours As modelCLSContainer = New modelCLSContainer
+    '    Dim entCours As modelCLSContainer = New modelCLSContainer
 
-        Return entCours.CoursJeu.Where(Function(n) n.nomCours.StartsWith(prefixText)).OrderBy(Function(n) n.nomCours).[Select](Function(n) n.nomCours).Take(count).ToArray()
+    '    Return entCours.CoursJeu.Where(Function(n) n.nomCours.StartsWith(prefixText)).OrderBy(Function(n) n.nomCours).[Select](Function(n) n.nomCours).Take(count).ToArray()
 
-    End Function
+    'End Function
 
 
 End Class
