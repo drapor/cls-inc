@@ -1,10 +1,12 @@
 ﻿
 Partial Class Page_Autre_description
-    Inherits System.Web.UI.Page
+    Inherits masterPage
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim cours As Integer = Session("idCours")
         dsCours.WhereParameters("cours").DefaultValue = cours
+        dsGroupes.WhereParameters("coursID").DefaultValue = cours
+
         Dim categorie As String = Request.QueryString("categorie")
         If categorie = "Sport" Then
             imgCategory.ImageUrl = "~/App_Themes/Original/img/sports_banner.png"
@@ -16,21 +18,6 @@ Partial Class Page_Autre_description
         lblNomCours.Text = FindChildControl(Of HiddenField)(lvCours, "hiddenNomCours").Value.ToString
 
     End Sub
-
-    Public Shared Function FindChildControl(Of T As Control)(ByVal startingControl As Control, ByVal id As String) As T
-        Dim found As T = Nothing
-        For Each activeControl As Control In startingControl.Controls
-            found = TryCast(activeControl, T)
-            If found Is Nothing OrElse (String.Compare(id, found.ID, True) <> 0) Then
-                found = FindChildControl(Of T)(activeControl, id)
-            End If
-            If found IsNot Nothing Then
-                Exit For
-            End If
-        Next
-        Return found
-    End Function
-
 
     'Protected Sub lvCours_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvCours.ItemCommand
 
