@@ -26,13 +26,13 @@
 </div>
 
 <div class="contenuAdmin">
-    <asp:LinkButton ID="lnkAjouterGroupe" runat="server">Ajouter un groupe</asp:LinkButton><br/>
-    <asp:LinkButton ID="lnkModifierGroupe" runat="server">Modifier un groupe</asp:LinkButton><br/>
-    <asp:LinkButton ID="lnkSupprimerGroupe" runat="server">Supprimer un groupe</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkAjouterGroupe" runat="server" PostBackUrl="~/Page/Admin/admin_group_add.aspx" >Ajouter un groupe</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkModifierGroupe" runat="server" PostBackUrl="~/Page/Admin/admin_group_modify.aspx" >Modifier un groupe</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkSupprimerGroupe" runat="server" PostBackUrl="~/Page/Admin/admin_group_delete.aspx" >Supprimer un groupe</asp:LinkButton><br/>
 </div>
 
 <div class="contenuAdmin">
-    <asp:LinkButton ID="lblTarif" runat="server">Modifier les tarifs</asp:LinkButton><br/>
+    <asp:LinkButton ID="lblTarif" runat="server" PostBackUrl="~/Page/Admin/admin_tarif.aspx" >Modifier les tarifs</asp:LinkButton><br/>
 </div>
 
 <div class="menuSectionAdmin">

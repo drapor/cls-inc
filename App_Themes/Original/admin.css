@@ -148,3 +148,10 @@
     width:100px;
 }
 
+.ligneRabaisEnfant
+{
+    width: 880px;
+    height:35px;
+    padding-top:4px;
+    float:left;
+}

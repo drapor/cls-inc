@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="description.aspx.vb" Inherits="Page_Autre_description" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-<div class="containerContenuAdmin">
+<div class="contenuPage">
 
 <div class="enteteCategory">
 <div class="enteteTexteBlock">
@@ -20,8 +20,10 @@
 <br />
 <br />
     <asp:ListView ID="lvCours" runat="server" DataSourceID="dsCours" DataKeyNames="idCours">
-        <LayoutTemplate>  
+        <LayoutTemplate>
+            <div class="infoCours">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+             </div>
         </LayoutTemplate>
         <ItemTemplate>
         <div class="blockInfos">
@@ -39,37 +41,62 @@
             <asp:Label ID="lblNomAnimateur" runat="server" Text='<%# Eval("MembresJeu_Animateur.MembresJeu.nomMembre") %>'></asp:Label><br />
             <asp:Label ID="lblDescription" Text='<%# Eval("description") %>' runat="server"></asp:Label>
         </div>
-        <asp:HiddenField ID="hiddenNomCours" Value='<%# Eval("nomCours") %>' runat="server" />
-
+        <asp:HiddenField ID="hiddenNomCours" Value='<%# Eval("nomCours") %>' runat="server" />   
         <div class="section">
             <div class="sectionTitre">
             <asp:Label ID="lblDescriptionCouts" runat="server" Text="Description des coûts"></asp:Label>
             </div>
         </div>
-
         <div class="blockCout">
         <div class="blockTarif">
         <asp:Label ID="lblTarifAdulteTexte" SkinID="lblInfos" runat="server" Text="Tarif Adulte: "></asp:Label>
-        <asp:Label ID="lblTarifAdulte" runat="server" Text='<%# Eval("tarifAdulte") %>'></asp:Label><br />
+        <asp:Label ID="lblTarifAdulte" runat="server" Text='<%#Eval ("tarifAdulte")&"$" %>'></asp:Label><br />
         </div>
         <div class="blockTarif">
         <asp:Label ID="lblTarifEnfantTexte" SkinID="lblInfos" runat="server" Text="Tarif Enfant: "></asp:Label>
-        <asp:Label ID="lblTarifEnfant" runat="server" Text='<%# Eval("tarifEnfant") %>'></asp:Label>
+        <asp:Label ID="lblTarifEnfant" runat="server" Text='<%#Eval ("tarifEnfant")&"$" %>'></asp:Label>
         </div>
-        <div class="blockBoutonInscription">
-        <asp:Button ID="btnJeMinscris" runat="server" Text="Je m'inscris !" CssClass="btn btn-primary" />  
-        </div> 
-        </div>            
+        </div>          
         </ItemTemplate>
     </asp:ListView>
 
-<div class="section">
-<div class="sectionTitre">
-    <asp:Label ID="lblHoraire" runat="server" Text="Horaires et places disponibles"></asp:Label>
+    <asp:ListView ID="lvGroupes" runat="server" DataSourceID="dsGroupes" DataKeyNames="idGroupe">
+    <LayoutTemplate>
+    <div class="infoCours">
+    <div class="section">
+        <div class="sectionTitre">
+        <asp:Label ID="lblHoraire" runat="server" Text="Horaires et places disponibles"></asp:Label>
+    </div>
+    </div>
+        <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+    </div>
+    </LayoutTemplate>
+    <ItemTemplate>
+    <div class="blockGroupeLigne">
+    <div class="blockGroupe">
+         <asp:Label ID="lblNomGroupe" SkinID="lblInfos" runat="server" Text='<%#Eval ("nomGroupe")+": " %>'></asp:Label>
+    </div>
+    <div class="blockGroupe">
+         <asp:Label ID="lblHoraire" runat="server" Text="Lundi 19h30 à 20h30"></asp:Label>
+    </div>
+    <div class="blockGroupe">
+         <asp:Label ID="lblLocal"  runat="server" Text="Local A-236"></asp:Label>
+    </div>
+    <div class="blockGroupe">
+         <asp:Label ID="lblPlaceRestante"  runat="server" Text="Place restante: 5"></asp:Label>
+    </div>
+    <div class="blockGroupe">
+         <asp:Button ID="btnJeMinscris" runat="server" Text="Je m'inscris !" CssClass="btn btn-small btn-primary" />  
+    </div>
+    </div>
+    </ItemTemplate>
+    </asp:ListView>
+        
+
+      <asp:Button ID="btnRetour" runat="server"  Text="Retour" CssClass="btn btn-primary btnPadding" OnClick="retourCategorie" /> 
 </div>
-</div>
-      <asp:Button ID="btnRetour" runat="server"  Text="Retour" CssClass="btn btn-primary btnPadding" OnClick="retourCategorie" />
-    <asp:EntityDataSource ID="dsCours" runat="server" ConnectionString="name=modelCLSContainer"
+
+<asp:EntityDataSource ID="dsCours" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="CoursJeu" EnableFlattening="False"
     EnableDelete="True" EnableInsert="false" EnableUpdate="True"
     Include="MembresJeu_Animateur, MembresJeu_Animateur.MembresJeu"
@@ -77,8 +104,17 @@
     <WhereParameters>
         <asp:Parameter Name="cours" DbType="Int16" DefaultValue="Nothing"  />
     </WhereParameters>
-    </asp:EntityDataSource>
-</div>
+</asp:EntityDataSource>
+
+<asp:EntityDataSource ID="dsGroupes" runat="server" ConnectionString="name=modelCLSContainer"
+    DefaultContainerName="modelCLSContainer" EntitySetName="GroupeJeu" EnableFlattening="False"
+    EnableDelete="false" EnableInsert="false" EnableUpdate="false"
+    Where="it.Cours_idCours = @coursID">
+    <WhereParameters>
+        <asp:Parameter Name="coursID" DbType="Int16" DefaultValue="Nothing"  />
+    </WhereParameters>
+</asp:EntityDataSource>
+
 
 </asp:Content>
 
