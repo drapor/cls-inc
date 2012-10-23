@@ -89,7 +89,7 @@
             <div class="elementFormulaireTexte"></div>
                 <div class="elementFormulaire">
                     <asp:Button ID="btnAjouter" runat="server" CommandName="Insert" Text="Ajouter" CssClass="btn btn-primary btn-large btn" />
-                    <asp:Button ID="btnCancel" runat="server" Text="Canceller" CssClass="btn btn-primary btn-large btn" CausesValidation="false"/>
+                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary btn-large btn" CausesValidation="false"/>
                 </div>
         </div>
     </div>

@@ -16,7 +16,7 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("93493b75-d887-42cd-bd42-3abfa31977c1")>
+<Assembly: EdmSchemaAttribute("ed4d8a5b-ce14-4ccf-a482-60e75e5b750b")>
 #Region "Métadonnées de relation EDM"
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
@@ -254,16 +254,16 @@ Namespace modelCLS
         ''' <summary>
         ''' Aucune documentation sur les métadonnées n'est disponible.
         ''' </summary>
-        Public ReadOnly Property TarifsJeu() As ObjectSet(Of TarifsJeu)
+        Public ReadOnly Property TarifsJeu() As ObjectSet(Of Tarifs)
             Get
                 If (_TarifsJeu Is Nothing) Then
-                    _TarifsJeu = MyBase.CreateObjectSet(Of TarifsJeu)("TarifsJeu")
+                    _TarifsJeu = MyBase.CreateObjectSet(Of Tarifs)("TarifsJeu")
                 End If
                 Return _TarifsJeu
             End Get
         End Property
     
-        Private _TarifsJeu As ObjectSet(Of TarifsJeu)
+        Private _TarifsJeu As ObjectSet(Of Tarifs)
 
         #End Region
         #Region "Méthodes AddTo"
@@ -355,8 +355,8 @@ Namespace modelCLS
         ''' <summary>
         ''' Méthode déconseillée pour ajouter un nouvel objet à l'EntitySet TarifsJeu. Utilisez la méthode .Add de la propriété ObjectSet(Of T) associée à la place.
         ''' </summary>
-        Public Sub AddToTarifsJeu(ByVal tarifsJeu As TarifsJeu)
-            MyBase.AddObject("TarifsJeu", tarifsJeu)
+        Public Sub AddToTarifsJeu(ByVal tarifs As Tarifs)
+            MyBase.AddObject("TarifsJeu", tarifs)
         End Sub
 
         #End Region
@@ -754,25 +754,29 @@ Namespace modelCLS
         ''' <param name="categorie">Valeur initiale de la propriété categorie.</param>
         ''' <param name="tarifAdulte">Valeur initiale de la propriété tarifAdulte.</param>
         ''' <param name="tarifEnfant">Valeur initiale de la propriété tarifEnfant.</param>
-        ''' <param name="groupeAge">Valeur initiale de la propriété groupeAge.</param>
         ''' <param name="dateDebutInscription">Valeur initiale de la propriété dateDebutInscription.</param>
         ''' <param name="dateFinInscription">Valeur initiale de la propriété dateFinInscription.</param>
         ''' <param name="dateDebutCours">Valeur initiale de la propriété dateDebutCours.</param>
         ''' <param name="dateFinCours">Valeur initiale de la propriété dateFinCours.</param>
         ''' <param name="animateur_idMembre">Valeur initiale de la propriété Animateur_idMembre.</param>
-        Public Shared Function CreateCoursJeu(idCours As Global.System.Int16, nomCours As Global.System.String, categorie As Global.System.String, tarifAdulte As Global.System.Decimal, tarifEnfant As Global.System.Decimal, groupeAge As Global.System.String, dateDebutInscription As Global.System.DateTime, dateFinInscription As Global.System.DateTime, dateDebutCours As Global.System.DateTime, dateFinCours As Global.System.DateTime, animateur_idMembre As Global.System.Int16) As CoursJeu
+        ''' <param name="groupeAgeMin">Valeur initiale de la propriété groupeAgeMin.</param>
+        ''' <param name="groupeAgeMax">Valeur initiale de la propriété groupeAgeMax.</param>
+        ''' <param name="groupeAgeMod">Valeur initiale de la propriété groupeAgeMod.</param>
+        Public Shared Function CreateCoursJeu(idCours As Global.System.Int16, nomCours As Global.System.String, categorie As Global.System.String, tarifAdulte As Global.System.Decimal, tarifEnfant As Global.System.Decimal, dateDebutInscription As Global.System.DateTime, dateFinInscription As Global.System.DateTime, dateDebutCours As Global.System.DateTime, dateFinCours As Global.System.DateTime, animateur_idMembre As Global.System.Int16, groupeAgeMin As Global.System.Int16, groupeAgeMax As Global.System.Int16, groupeAgeMod As Global.System.String) As CoursJeu
             Dim coursJeu as CoursJeu = New CoursJeu
             coursJeu.idCours = idCours
             coursJeu.nomCours = nomCours
             coursJeu.categorie = categorie
             coursJeu.tarifAdulte = tarifAdulte
             coursJeu.tarifEnfant = tarifEnfant
-            coursJeu.groupeAge = groupeAge
             coursJeu.dateDebutInscription = dateDebutInscription
             coursJeu.dateFinInscription = dateFinInscription
             coursJeu.dateDebutCours = dateDebutCours
             coursJeu.dateFinCours = dateFinCours
             coursJeu.Animateur_idMembre = animateur_idMembre
+            coursJeu.groupeAgeMin = groupeAgeMin
+            coursJeu.groupeAgeMax = groupeAgeMax
+            coursJeu.groupeAgeMod = groupeAgeMod
             Return coursJeu
         End Function
 
@@ -961,31 +965,6 @@ Namespace modelCLS
         ''' </summary>
         <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
         <DataMemberAttribute()>
-        Public Property groupeAge() As Global.System.String
-            Get
-                Return _groupeAge
-            End Get
-            Set
-                OngroupeAgeChanging(value)
-                ReportPropertyChanging("groupeAge")
-                _groupeAge = StructuralObject.SetValidValue(value, false)
-                ReportPropertyChanged("groupeAge")
-                OngroupeAgeChanged()
-            End Set
-        End Property
-    
-        Private _groupeAge As Global.System.String
-        Private Partial Sub OngroupeAgeChanging(value As Global.System.String)
-        End Sub
-    
-        Private Partial Sub OngroupeAgeChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
         Public Property dateDebutInscription() As Global.System.DateTime
             Get
                 Return _dateDebutInscription
@@ -1105,6 +1084,81 @@ Namespace modelCLS
     
         Private Partial Sub OnAnimateur_idMembreChanged()
         End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property groupeAgeMin() As Global.System.Int16
+            Get
+                Return _groupeAgeMin
+            End Get
+            Set
+                OngroupeAgeMinChanging(value)
+                ReportPropertyChanging("groupeAgeMin")
+                _groupeAgeMin = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("groupeAgeMin")
+                OngroupeAgeMinChanged()
+            End Set
+        End Property
+    
+        Private _groupeAgeMin As Global.System.Int16
+        Private Partial Sub OngroupeAgeMinChanging(value As Global.System.Int16)
+        End Sub
+    
+        Private Partial Sub OngroupeAgeMinChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property groupeAgeMax() As Global.System.Int16
+            Get
+                Return _groupeAgeMax
+            End Get
+            Set
+                OngroupeAgeMaxChanging(value)
+                ReportPropertyChanging("groupeAgeMax")
+                _groupeAgeMax = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("groupeAgeMax")
+                OngroupeAgeMaxChanged()
+            End Set
+        End Property
+    
+        Private _groupeAgeMax As Global.System.Int16
+        Private Partial Sub OngroupeAgeMaxChanging(value As Global.System.Int16)
+        End Sub
+    
+        Private Partial Sub OngroupeAgeMaxChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property groupeAgeMod() As Global.System.String
+            Get
+                Return _groupeAgeMod
+            End Get
+            Set
+                OngroupeAgeModChanging(value)
+                ReportPropertyChanging("groupeAgeMod")
+                _groupeAgeMod = StructuralObject.SetValidValue(value, false)
+                ReportPropertyChanged("groupeAgeMod")
+                OngroupeAgeModChanged()
+            End Set
+        End Property
+    
+        Private _groupeAgeMod As Global.System.String
+        Private Partial Sub OngroupeAgeModChanging(value As Global.System.String)
+        End Sub
+    
+        Private Partial Sub OngroupeAgeModChanged()
+        End Sub
 
         #End Region
         #Region "Propriétés de navigation"
@@ -1214,12 +1268,14 @@ Namespace modelCLS
         ''' <param name="nomGroupe">Valeur initiale de la propriété nomGroupe.</param>
         ''' <param name="nbMax">Valeur initiale de la propriété nbMax.</param>
         ''' <param name="cours_idCours">Valeur initiale de la propriété Cours_idCours.</param>
-        Public Shared Function CreateGroupeJeu(idGroupe As Global.System.Int16, nomGroupe As Global.System.String, nbMax As Global.System.Int16, cours_idCours As Global.System.Int16) As GroupeJeu
+        ''' <param name="noGroupe">Valeur initiale de la propriété noGroupe.</param>
+        Public Shared Function CreateGroupeJeu(idGroupe As Global.System.Int16, nomGroupe As Global.System.String, nbMax As Global.System.Int16, cours_idCours As Global.System.Int16, noGroupe As Global.System.Int16) As GroupeJeu
             Dim groupeJeu as GroupeJeu = New GroupeJeu
             groupeJeu.idGroupe = idGroupe
             groupeJeu.nomGroupe = nomGroupe
             groupeJeu.nbMax = nbMax
             groupeJeu.Cours_idCours = cours_idCours
+            groupeJeu.noGroupe = noGroupe
             Return groupeJeu
         End Function
 
@@ -1326,6 +1382,31 @@ Namespace modelCLS
         End Sub
     
         Private Partial Sub OnCours_idCoursChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property noGroupe() As Global.System.Int16
+            Get
+                Return _noGroupe
+            End Get
+            Set
+                OnnoGroupeChanging(value)
+                ReportPropertyChanging("noGroupe")
+                _noGroupe = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("noGroupe")
+                OnnoGroupeChanged()
+            End Set
+        End Property
+    
+        Private _noGroupe As Global.System.Int16
+        Private Partial Sub OnnoGroupeChanging(value As Global.System.Int16)
+        End Sub
+    
+        Private Partial Sub OnnoGroupeChanged()
         End Sub
 
         #End Region
@@ -3003,33 +3084,60 @@ Namespace modelCLS
     ''' <summary>
     ''' Aucune documentation sur les métadonnées n'est disponible.
     ''' </summary>
-    <EdmEntityTypeAttribute(NamespaceName:="modelCLS", Name:="TarifsJeu")>
+    <EdmEntityTypeAttribute(NamespaceName:="modelCLS", Name:="Tarifs")>
     <Serializable()>
     <DataContractAttribute(IsReference:=True)>
-    Public Partial Class TarifsJeu
+    Public Partial Class Tarifs
         Inherits EntityObject
         #Region "Méthode de fabrique"
     
         ''' <summary>
-        ''' Créez un nouvel objet TarifsJeu.
+        ''' Créez un nouvel objet Tarifs.
         ''' </summary>
+        ''' <param name="idTarif">Valeur initiale de la propriété idTarif.</param>
         ''' <param name="tarifNouveauMembre">Valeur initiale de la propriété tarifNouveauMembre.</param>
         ''' <param name="rabais1Enfant">Valeur initiale de la propriété rabais1Enfant.</param>
         ''' <param name="rabais2Enfant">Valeur initiale de la propriété rabais2Enfant.</param>
         ''' <param name="rabais3Enfant">Valeur initiale de la propriété rabais3Enfant.</param>
-        ''' <param name="idTarif">Valeur initiale de la propriété idTarif.</param>
-        Public Shared Function CreateTarifsJeu(tarifNouveauMembre As Global.System.Decimal, rabais1Enfant As Global.System.Decimal, rabais2Enfant As Global.System.Decimal, rabais3Enfant As Global.System.Decimal, idTarif As Global.System.Int16) As TarifsJeu
-            Dim tarifsJeu as TarifsJeu = New TarifsJeu
-            tarifsJeu.tarifNouveauMembre = tarifNouveauMembre
-            tarifsJeu.rabais1Enfant = rabais1Enfant
-            tarifsJeu.rabais2Enfant = rabais2Enfant
-            tarifsJeu.rabais3Enfant = rabais3Enfant
-            tarifsJeu.idTarif = idTarif
-            Return tarifsJeu
+        Public Shared Function CreateTarifs(idTarif As Global.System.Int32, tarifNouveauMembre As Global.System.Decimal, rabais1Enfant As Global.System.Int16, rabais2Enfant As Global.System.Int16, rabais3Enfant As Global.System.Int16) As Tarifs
+            Dim tarifs as Tarifs = New Tarifs
+            tarifs.idTarif = idTarif
+            tarifs.tarifNouveauMembre = tarifNouveauMembre
+            tarifs.rabais1Enfant = rabais1Enfant
+            tarifs.rabais2Enfant = rabais2Enfant
+            tarifs.rabais3Enfant = rabais3Enfant
+            Return tarifs
         End Function
 
         #End Region
         #Region "Propriétés primitives"
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property idTarif() As Global.System.Int32
+            Get
+                Return _idTarif
+            End Get
+            Set
+                If (_idTarif <> Value) Then
+                    OnidTarifChanging(value)
+                    ReportPropertyChanging("idTarif")
+                    _idTarif = StructuralObject.SetValidValue(value)
+                    ReportPropertyChanged("idTarif")
+                    OnidTarifChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _idTarif As Global.System.Int32
+        Private Partial Sub OnidTarifChanging(value As Global.System.Int32)
+        End Sub
+    
+        Private Partial Sub OnidTarifChanged()
+        End Sub
     
         ''' <summary>
         ''' Aucune documentation sur les métadonnées n'est disponible.
@@ -3061,7 +3169,7 @@ Namespace modelCLS
         ''' </summary>
         <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
         <DataMemberAttribute()>
-        Public Property rabais1Enfant() As Global.System.Decimal
+        Public Property rabais1Enfant() As Global.System.Int16
             Get
                 Return _rabais1Enfant
             End Get
@@ -3074,8 +3182,8 @@ Namespace modelCLS
             End Set
         End Property
     
-        Private _rabais1Enfant As Global.System.Decimal
-        Private Partial Sub Onrabais1EnfantChanging(value As Global.System.Decimal)
+        Private _rabais1Enfant As Global.System.Int16
+        Private Partial Sub Onrabais1EnfantChanging(value As Global.System.Int16)
         End Sub
     
         Private Partial Sub Onrabais1EnfantChanged()
@@ -3086,7 +3194,7 @@ Namespace modelCLS
         ''' </summary>
         <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
         <DataMemberAttribute()>
-        Public Property rabais2Enfant() As Global.System.Decimal
+        Public Property rabais2Enfant() As Global.System.Int16
             Get
                 Return _rabais2Enfant
             End Get
@@ -3099,8 +3207,8 @@ Namespace modelCLS
             End Set
         End Property
     
-        Private _rabais2Enfant As Global.System.Decimal
-        Private Partial Sub Onrabais2EnfantChanging(value As Global.System.Decimal)
+        Private _rabais2Enfant As Global.System.Int16
+        Private Partial Sub Onrabais2EnfantChanging(value As Global.System.Int16)
         End Sub
     
         Private Partial Sub Onrabais2EnfantChanged()
@@ -3111,7 +3219,7 @@ Namespace modelCLS
         ''' </summary>
         <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
         <DataMemberAttribute()>
-        Public Property rabais3Enfant() As Global.System.Decimal
+        Public Property rabais3Enfant() As Global.System.Int16
             Get
                 Return _rabais3Enfant
             End Get
@@ -3124,38 +3232,11 @@ Namespace modelCLS
             End Set
         End Property
     
-        Private _rabais3Enfant As Global.System.Decimal
-        Private Partial Sub Onrabais3EnfantChanging(value As Global.System.Decimal)
+        Private _rabais3Enfant As Global.System.Int16
+        Private Partial Sub Onrabais3EnfantChanging(value As Global.System.Int16)
         End Sub
     
         Private Partial Sub Onrabais3EnfantChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property idTarif() As Global.System.Int16
-            Get
-                Return _idTarif
-            End Get
-            Set
-                If (_idTarif <> Value) Then
-                    OnidTarifChanging(value)
-                    ReportPropertyChanging("idTarif")
-                    _idTarif = StructuralObject.SetValidValue(value)
-                    ReportPropertyChanged("idTarif")
-                    OnidTarifChanged()
-                End If
-            End Set
-        End Property
-    
-        Private _idTarif As Global.System.Int16
-        Private Partial Sub OnidTarifChanging(value As Global.System.Int16)
-        End Sub
-    
-        Private Partial Sub OnidTarifChanged()
         End Sub
 
         #End Region

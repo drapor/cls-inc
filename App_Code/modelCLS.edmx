@@ -110,12 +110,14 @@
     <Property Name="prerequis" Type="nvarchar" Nullable="true" MaxLength="50" />
     <Property Name="tarifAdulte" Type="decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="tarifEnfant" Type="decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="groupeAge" Type="nvarchar" Nullable="false" MaxLength="4" />
     <Property Name="dateDebutInscription" Type="datetime" Nullable="false" />
     <Property Name="dateFinInscription" Type="datetime" Nullable="false" />
     <Property Name="dateDebutCours" Type="datetime" Nullable="false" />
     <Property Name="dateFinCours" Type="datetime" Nullable="false" />
     <Property Name="Animateur_idMembre" Type="smallint" Nullable="false" />
+    <Property Name="groupeAgeMin" Type="smallint" Nullable="false" />
+    <Property Name="groupeAgeMax" Type="smallint" Nullable="false" />
+    <Property Name="groupeAgeMod" Type="nvarchar" Nullable="false" MaxLength="2" />
   </EntityType>
   <EntityType Name="GroupeJeu">
     <Key>
@@ -125,6 +127,7 @@
     <Property Name="nomGroupe" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="nbMax" Type="smallint" Nullable="false" />
     <Property Name="Cours_idCours" Type="smallint" Nullable="false" />
+    <Property Name="noGroupe" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="HoraireJeu">
     <Key>
@@ -208,11 +211,11 @@
     <Key>
       <PropertyRef Name="idTarif" />
     </Key>
-    <Property Name="tarifNouveauMembre" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="rabais1Enfant" Type="decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="rabais2Enfant" Type="decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="rabais3Enfant" Type="decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="idTarif" Type="smallint" Nullable="false" />
+    <Property Name="idTarif" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tarifNouveauMembre" Type="decimal" Nullable="false" />
+    <Property Name="rabais1Enfant" Type="smallint" Nullable="false" />
+    <Property Name="rabais2Enfant" Type="smallint" Nullable="false" />
+    <Property Name="rabais3Enfant" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="SessionGroupe">
     <Key>
@@ -427,7 +430,6 @@
           <EntitySet Name="SessionJeu" EntityType="modelCLS.SessionJeu" />
           <EntitySet Name="SpecialiteJeu" EntityType="modelCLS.SpecialiteJeu" />
           <EntitySet Name="sysdiagrams" EntityType="modelCLS.sysdiagrams" />
-          <EntitySet Name="TarifsJeu" EntityType="modelCLS.TarifsJeu" />
           <AssociationSet Name="FK_AbonnementGroupe" Association="modelCLS.FK_AbonnementGroupe">
             <End Role="GroupeJeu" EntitySet="GroupeJeu" />
             <End Role="AbonnementJeu" EntitySet="AbonnementJeu" />
@@ -480,6 +482,7 @@
             <End Role="RoleJeu" EntitySet="RoleJeu" />
             <End Role="MembresJeu" EntitySet="MembresJeu" />
           </AssociationSet>
+          <EntitySet Name="TarifsJeu" EntityType="modelCLS.Tarifs" />
           </EntityContainer>
         <EntityType Name="AbonnementJeu">
           <Key>
@@ -513,7 +516,6 @@
           <Property Type="String" Name="prerequis" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="tarifAdulte" Nullable="false" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="tarifEnfant" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="String" Name="groupeAge" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="dateDebutInscription" Nullable="false" />
           <Property Type="DateTime" Name="dateFinInscription" Nullable="false" />
           <Property Type="DateTime" Name="dateDebutCours" Nullable="false" />
@@ -523,6 +525,9 @@
           <NavigationProperty Name="MembresJeu_Animateur" Relationship="modelCLS.FK_AnimateurCours" FromRole="CoursJeu" ToRole="MembresJeu_Animateur" />
           <NavigationProperty Name="GroupeJeu" Relationship="modelCLS.FK_CoursGroupe" FromRole="CoursJeu" ToRole="GroupeJeu" />
           <NavigationProperty Name="ListeAttenteJeu" Relationship="modelCLS.FK_CoursListeAttente" FromRole="CoursJeu" ToRole="ListeAttenteJeu" />
+          <Property Type="Int16" Name="groupeAgeMin" Nullable="false" />
+          <Property Type="Int16" Name="groupeAgeMax" Nullable="false" />
+          <Property Type="String" Name="groupeAgeMod" Nullable="false" MaxLength="2" />
         </EntityType>
         <EntityType Name="GroupeJeu">
           <Key>
@@ -536,6 +541,7 @@
           <NavigationProperty Name="CoursJeu" Relationship="modelCLS.FK_CoursGroupe" FromRole="GroupeJeu" ToRole="CoursJeu" />
           <NavigationProperty Name="HoraireJeu" Relationship="modelCLS.FK_HoraireGroupe" FromRole="GroupeJeu" ToRole="HoraireJeu" />
           <NavigationProperty Name="SessionJeu" Relationship="modelCLS.SessionGroupe" FromRole="GroupeJeu" ToRole="SessionJeu" />
+          <Property Type="Int16" Name="noGroupe" Nullable="false" />
         </EntityType>
         <EntityType Name="HoraireJeu">
           <Key>
@@ -628,16 +634,6 @@
           <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="version" />
           <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="TarifsJeu">
-          <Key>
-            <PropertyRef Name="idTarif" />
-          </Key>
-          <Property Type="Decimal" Name="tarifNouveauMembre" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Decimal" Name="rabais1Enfant" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="rabais2Enfant" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="rabais3Enfant" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Int16" Name="idTarif" Nullable="false" />
         </EntityType>
         <Association Name="FK_AbonnementGroupe">
           <End Type="modelCLS.GroupeJeu" Role="GroupeJeu" Multiplicity="1" />
@@ -779,6 +775,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Tarifs">
+          <Key>
+            <PropertyRef Name="idTarif" />
+          </Key>
+          <Property Type="Int32" Name="idTarif" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="tarifNouveauMembre" Nullable="false" />
+          <Property Type="Int16" Name="rabais1Enfant" Nullable="false" />
+          <Property Type="Int16" Name="rabais2Enfant" Nullable="false" />
+          <Property Type="Int16" Name="rabais3Enfant" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -814,12 +820,14 @@
           <ScalarProperty Name="prerequis" ColumnName="prerequis" />
           <ScalarProperty Name="tarifAdulte" ColumnName="tarifAdulte" />
           <ScalarProperty Name="tarifEnfant" ColumnName="tarifEnfant" />
-          <ScalarProperty Name="groupeAge" ColumnName="groupeAge" />
           <ScalarProperty Name="dateDebutInscription" ColumnName="dateDebutInscription" />
           <ScalarProperty Name="dateFinInscription" ColumnName="dateFinInscription" />
           <ScalarProperty Name="dateDebutCours" ColumnName="dateDebutCours" />
           <ScalarProperty Name="dateFinCours" ColumnName="dateFinCours" />
           <ScalarProperty Name="Animateur_idMembre" ColumnName="Animateur_idMembre" />
+          <ScalarProperty Name="groupeAgeMin" ColumnName="groupeAgeMin" />
+          <ScalarProperty Name="groupeAgeMax" ColumnName="groupeAgeMax" />
+          <ScalarProperty Name="groupeAgeMod" ColumnName="groupeAgeMod" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -830,6 +838,7 @@
           <ScalarProperty Name="nomGroupe" ColumnName="nomGroupe" />
           <ScalarProperty Name="nbMax" ColumnName="nbMax" />
           <ScalarProperty Name="Cours_idCours" ColumnName="Cours_idCours" />
+          <ScalarProperty Name="noGroupe" ColumnName="noGroupe" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -920,7 +929,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TarifsJeu">
-      <EntityTypeMapping TypeName="IsTypeOf(modelCLS.TarifsJeu)">
+      <EntityTypeMapping TypeName="IsTypeOf(modelCLS.Tarifs)">
         <MappingFragment StoreEntitySet="TarifsJeu">
           <ScalarProperty Name="idTarif" ColumnName="idTarif" />
           <ScalarProperty Name="tarifNouveauMembre" ColumnName="tarifNouveauMembre" />
@@ -968,8 +977,8 @@
       <Diagram Name="modelCLS" ZoomLevel="82" >
         <EntityTypeShape EntityType="modelCLS.AbonnementJeu" Width="1.5" PointX="3.5" PointY="14.25" Height="2.172587890624996" />
         <EntityTypeShape EntityType="modelCLS.CoursCompleteJeu" Width="1.75" PointX="7" PointY="13.125" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="modelCLS.CoursJeu" Width="1.5" PointX="10.5" PointY="9.875" Height="4.2879036458333317" />
-        <EntityTypeShape EntityType="modelCLS.GroupeJeu" Width="1.5" PointX="7.25" PointY="15.5" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="modelCLS.CoursJeu" Width="1.5" PointX="10.5" PointY="9.875" Height="4.6725065104166656" />
+        <EntityTypeShape EntityType="modelCLS.GroupeJeu" Width="1.5" PointX="7.25" PointY="15.5" Height="2.7494921875000031" />
         <EntityTypeShape EntityType="modelCLS.HoraireJeu" Width="1.5" PointX="9.375" PointY="16.125" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="modelCLS.ListeAttenteJeu" Width="1.5" PointX="7" PointY="8.5" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="modelCLS.MembresJeu" Width="1.5" PointX="1.125" PointY="10.125" Height="5.2494108072916656" />
@@ -978,7 +987,6 @@
         <EntityTypeShape EntityType="modelCLS.SessionJeu" Width="1.5" PointX="7.125" PointY="18.875" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="modelCLS.SpecialiteJeu" Width="2" PointX="6.875" PointY="11.25" Height="1.595683593749996" />
         <EntityTypeShape EntityType="modelCLS.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.5" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="modelCLS.TarifsJeu" Width="1.5" PointX="4.25" PointY="6.625" Height="1.9802864583333246" />
         <AssociationConnector Association="modelCLS.FK_AbonnementGroupe" >
           <ConnectorPoint PointX="7.25" PointY="15.961293945312498" />
           <ConnectorPoint PointX="5" PointY="15.961293945312498" />
@@ -992,15 +1000,15 @@
           <ConnectorPoint PointX="7" PointY="13.65625" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_CoursCoursComplete" >
-          <ConnectorPoint PointX="10.5" PointY="13.643951822916666" />
-          <ConnectorPoint PointX="8.75" PointY="13.643951822916666" />
+          <ConnectorPoint PointX="10.5" PointY="13.836253255208334" />
+          <ConnectorPoint PointX="8.75" PointY="13.836253255208334" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_AnimateurCours" >
           <ConnectorPoint PointX="5.375" PointY="10.84375" />
           <ConnectorPoint PointX="10.5" PointY="10.84375" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_CoursGroupe" >
-          <ConnectorPoint PointX="11.46875" PointY="14.162903645833332" />
+          <ConnectorPoint PointX="11.46875" PointY="14.547506510416666" />
           <ConnectorPoint PointX="11.46875" PointY="15.78125" />
           <ConnectorPoint PointX="8.75" PointY="15.78125" />
         </AssociationConnector>
@@ -1009,8 +1017,8 @@
           <ConnectorPoint PointX="8.5" PointY="10.177643229166669" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_HoraireGroupe" >
-          <ConnectorPoint PointX="8.75" PointY="17.091095377604166" />
-          <ConnectorPoint PointX="9.375" PointY="17.091095377604166" />
+          <ConnectorPoint PointX="8.75" PointY="17.18724609375" />
+          <ConnectorPoint PointX="9.375" PointY="17.18724609375" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_ListeAttenteMembres" >
           <ConnectorPoint PointX="2.625" PointY="10.302643229166669" />
@@ -1021,7 +1029,7 @@
           <ConnectorPoint PointX="3.375" PointY="11.490143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.SessionGroupe" >
-          <ConnectorPoint PointX="7.9375" PointY="18.057190755208332" />
+          <ConnectorPoint PointX="7.9375" PointY="18.249492187500003" />
           <ConnectorPoint PointX="7.9375" PointY="18.875" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.SpecialiteAnimateur" >
@@ -1032,6 +1040,7 @@
           <ConnectorPoint PointX="1.7734375" PointY="8.7879850260416674" />
           <ConnectorPoint PointX="1.7734375" PointY="10.125" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="modelCLS.Tarifs" Width="1.5" PointX="5" PointY="6.5" Height="1.9802864583333335" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

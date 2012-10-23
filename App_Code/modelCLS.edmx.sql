@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/15/2012 11:56:43
+-- Date Created: 10/23/2012 13:54:41
 -- Generated from EDMX file: C:\GitHub\cls-inc\App_Code\modelCLS.edmx
 -- --------------------------------------------------
 
@@ -103,9 +103,6 @@ GO
 IF OBJECT_ID(N'[dbo].[sysdiagrams]', 'U') IS NOT NULL
     DROP TABLE [dbo].[sysdiagrams];
 GO
-IF OBJECT_ID(N'[dbo].[TarifsJeu]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[TarifsJeu];
-GO
 IF OBJECT_ID(N'[dbo].[SessionGroupe]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SessionGroupe];
 GO
@@ -143,12 +140,14 @@ CREATE TABLE [dbo].[CoursJeu] (
     [prerequis] nvarchar(50)  NULL,
     [tarifAdulte] decimal(18,0)  NOT NULL,
     [tarifEnfant] decimal(18,0)  NOT NULL,
-    [groupeAge] nvarchar(4)  NOT NULL,
     [dateDebutInscription] datetime  NOT NULL,
     [dateFinInscription] datetime  NOT NULL,
     [dateDebutCours] datetime  NOT NULL,
     [dateFinCours] datetime  NOT NULL,
-    [Animateur_idMembre] smallint  NOT NULL
+    [Animateur_idMembre] smallint  NOT NULL,
+    [groupeAgeMin] smallint  NOT NULL,
+    [groupeAgeMax] smallint  NOT NULL,
+    [groupeAgeMod] nvarchar(2)  NOT NULL
 );
 GO
 
@@ -157,7 +156,8 @@ CREATE TABLE [dbo].[GroupeJeu] (
     [idGroupe] smallint IDENTITY(1,1) NOT NULL,
     [nomGroupe] nvarchar(20)  NOT NULL,
     [nbMax] smallint  NOT NULL,
-    [Cours_idCours] smallint  NOT NULL
+    [Cours_idCours] smallint  NOT NULL,
+    [noGroupe] smallint  NOT NULL
 );
 GO
 
@@ -241,11 +241,11 @@ GO
 
 -- Creating table 'TarifsJeu'
 CREATE TABLE [dbo].[TarifsJeu] (
-    [tarifNouveauMembre] decimal(18,0) IDENTITY(1,1) NOT NULL,
-    [rabais1Enfant] decimal(18,0)  NOT NULL,
-    [rabais2Enfant] decimal(18,0)  NOT NULL,
-    [rabais3Enfant] decimal(18,0)  NOT NULL,
-    [idTarif] smallint  NOT NULL
+    [idTarif] int IDENTITY(1,1) NOT NULL,
+    [tarifNouveauMembre] decimal(18,0)  NOT NULL,
+    [rabais1Enfant] smallint  NOT NULL,
+    [rabais2Enfant] smallint  NOT NULL,
+    [rabais3Enfant] smallint  NOT NULL
 );
 GO
 
