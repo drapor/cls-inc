@@ -75,21 +75,21 @@
 
 .modifierCoursGauche
 {
-    width:430px;
+    width:510px;
     height:auto;
     float:left;
 }
 
 .modifierCoursDroite
 {
-    width:430px;
+    width:340px;
     height:auto;
     float:left;
 }
 
 .partiGaucheCours
 {
-    width:130px;
+    width:100px;
     float:left;
     font-size:small;
     font-weight:bold
@@ -97,14 +97,25 @@
 
 .partiDroiteCours
 {
-    width:230px;
+    width:220px;
     float:left;
 }
-
+.partiGaucheCoursDate
+{
+    width:200px;
+    float:left;
+    font-size:small;
+    font-weight:bold
+}
+.partiDroiteCoursDate
+{
+    width:120px;
+    float:left;
+}
 .ligneCoursNormalLabelGauche
 {
     height: 16px;
-    width: 130px;
+    width: 120px;
 }
 
 .ligneCoursDescriptionLabel
@@ -122,7 +133,7 @@
 .ligneCoursDescription
 {
     height: 130px;
-    width: 230px;
+    width: 390px;
 }
 
 .boutonAdminRetour
@@ -154,4 +165,15 @@
     height:35px;
     padding-top:4px;
     float:left;
+}
+
+.ddlGroupeAgeMod
+{
+    margin-top: 7px;
+}
+
+.lnkButtonCategorie
+{
+    width: 150px;
+    height: 32px;
 }

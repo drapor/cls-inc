@@ -42,13 +42,13 @@
                 </div>
                 
                 <div class="partiDroite">
-                    <asp:Label ID="lblNomClient" runat="server" Text='<%# Eval("nomMembre") %>'></asp:Label>
+                    <asp:Label ID="lblNomClient" runat="server" Text='<%# Eval("MembresJeu.nomMembre") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblAdresseClient" runat="server" Text='<%# Eval("adresse") %>'></asp:Label>
+                    <asp:Label ID="lblAdresseClient" runat="server" Text='<%# Eval("MembresJeu.adresse") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblTelephoneClient" runat="server" Text='<%# Eval("telephoneMembre") %>'></asp:Label>
+                    <asp:Label ID="lblTelephoneClient" runat="server" Text='<%# Eval("MembresJeu.telephoneMembre") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblNaissanceClient" runat="server" Text='<%# (CType(Eval("dateNaissance"),DateTime)).ToShortDateString %>'></asp:Label>
+                    <asp:Label ID="lblNaissanceClient" runat="server" Text='<%# (CType(Eval("MembresJeu.dateNaissance"),DateTime)).ToShortDateString %>'></asp:Label>
                     </br>
                 </div>
             </div>
@@ -65,13 +65,13 @@
                 </div>
                 
                 <div class="partiDroite">
-                    <asp:Label ID="lblPrenomClient" runat="server" Text='<%# Eval("prenomMembre") %>'></asp:Label>
+                    <asp:Label ID="lblPrenomClient" runat="server" Text='<%# Eval("MembresJeu.prenomMembre") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblVilleClient" runat="server" Text='<%# Eval("ville") %>'></asp:Label>
+                    <asp:Label ID="lblVilleClient" runat="server" Text='<%# Eval("MembresJeu.ville") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblPostalClient" runat="server" Text='<%# Eval("codePostal") %>'></asp:Label>
+                    <asp:Label ID="lblPostalClient" runat="server" Text='<%# Eval("MembresJeu.codePostal") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblDateInscriptionClient" runat="server" Text='<%# (CType(Eval("dateInscription"),DateTime)).ToShortDateString %>'></asp:Label>
+                    <asp:Label ID="lblDateInscriptionClient" runat="server" Text='<%# (CType(Eval("MembresJeu.dateInscription"),DateTime)).ToShortDateString %>'></asp:Label>
                 </div>
                 
             </div>
@@ -114,31 +114,31 @@
                 
                 <div class="partiDroite" >
                     <div class="formatZone">
-                        <asp:TextBox ID="txtPrenomClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("prenomMembre") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtPrenomClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("MembresJeu.prenomMembre") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNomClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("nomMembre") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtNomClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("MembresJeu.nomMembre") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtAdresseClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("adresse") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtAdresseClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("MembresJeu.adresse") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                    <asp:TextBox ID="txtVilleClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("ville") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtVilleClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("MembresJeu.ville") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("MembresJeu.dateNaissance", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtTelephoneClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("telephoneMembre") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtTelephoneClient" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("MembresJeu.telephoneMembre") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                    <asp:TextBox ID="txtPostalClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("codePostal") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtPostalClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("MembresJeu.codePostal") %>'></asp:TextBox>
                     </div>
                     </br>
             </div>
@@ -205,7 +205,7 @@
                 </div>
                 
                 <div class="partiDroiteMotPasse">
-                    <asp:Label ID="lblCourrielClient" runat="server" Text='<%# Eval("courriel") %>' ></asp:Label>
+                    <asp:Label ID="lblCourrielClient" runat="server" Text='<%# Eval("MembresJeu.courriel") %>' ></asp:Label>
                     </br>
                     
                 </div>
@@ -230,11 +230,11 @@
                 </div>
                 <div class="partiDroiteCourriel">
                     <div class="formatZone">
-                        <asp:Label ID="lblCourrielPresent" runat="server" Text='<%# Eval("courriel") %>'></asp:Label>
+                        <asp:Label ID="lblCourrielPresent" runat="server" Text='<%# Eval("MembresJeu.courriel") %>'></asp:Label>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("courriel") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("MembresJeu.courriel") %>'></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
@@ -254,7 +254,7 @@
 
                 <div class="boutonCourriel">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CausesValidation="false" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx"/>
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CausesValidation="false" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Admin/admin_teacher_modify.aspx"/>
                 </div>
           </EditItemTemplate>
 </asp:ListView>
@@ -300,7 +300,7 @@
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauMP" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("motPasse") %>' TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauMP" runat="server" SkinID="txtBoxYellow" Text='<%# Bind("MembresJeu.motPasse") %>' TextMode="Password"></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
@@ -352,7 +352,7 @@
     EnableDelete="true" EnableInsert="true" 
     EnableUpdate="true"
     orderBy="it.idMembre"
-    Include="MembresJeu_Animateur"
+    Include="MembresJeu"
     Where="(@MembreID = it.idMembre)">
     <WhereParameters>
         <asp:ControlParameter Name="MembreID" ControlID="dropDownAnimateur" PropertyName="SelectedValue" Type="Int32" DefaultValue="0" />
@@ -367,7 +367,6 @@
     EnableFlattening="false"
     EnableDelete="false" EnableInsert="false" 
     EnableUpdate="false"
-    Include="MembresJeu"
     Select="it.idAnimateur, it.idMembre,(it.MembresJeu.[prenomMembre]+' '+it.MembresJeu.[nomMembre]) as FullName"
     >
     </asp:EntityDataSource>

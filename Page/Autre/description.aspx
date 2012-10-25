@@ -35,7 +35,10 @@
             <asp:Label ID="lblCoursPrerequis" SkinID="lblInfos" runat="server" Text="Cours prérequis: "></asp:Label>
             <asp:Label ID="lblPrerequis" Text='<%# Eval("prerequis") %>' runat="server"></asp:Label><br />
             <asp:Label ID="lblGroupeAgeTexte" SkinID="lblInfos"  runat="server" Text="Groupe d'âge: "></asp:Label>
-            <asp:Label ID="lblGroupeAge" Text='<%# Eval("groupeAge") %>' runat="server"></asp:Label><br />
+            <asp:Label ID="lblGroupeAge" Text='<%# Eval("groupeAgeMin") %>' runat="server"></asp:Label>
+            <asp:Label ID="lblGroupeAgeMod" runat="server" Text='<%# Eval("groupeAgeMod") %>'></asp:Label>
+            <asp:Label ID="lblGroupeAgeMax" runat="server" Text='<%# Eval("groupeAgeMax") %>'></asp:Label>
+             <br />
             <asp:Label ID="lblAnimateurTexte" SkinID="lblInfos" runat="server" Text="Animateur: "></asp:Label>
             <asp:Label ID="lblPrenomAnimateur" runat="server" Text='<%# Eval("MembresJeu_Animateur.MembresJeu.prenomMembre ") %>'></asp:Label>
             <asp:Label ID="lblNomAnimateur" runat="server" Text='<%# Eval("MembresJeu_Animateur.MembresJeu.nomMembre") %>'></asp:Label><br />

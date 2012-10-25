@@ -1,24 +1,38 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_permission.aspx.vb" Inherits="Page_Admin_admin_permission" Theme="Original" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false"
+    CodeFile="admin_permission.aspx.vb" Inherits="Page_Admin_admin_permission" Theme="Original" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="containerContenuAdmin">
-<asp:ListView ID="lvPermission" runat="server" DataSourceID="dsEmploye" DataKeyNames="idMembre">
-<LayoutTemplate>
-<div class="titleAdminNormal">
-    <asp:Label ID="lblPermission" runat="server" Text="Modifier les permissions"></asp:Label>
-    <div class="ligneFormulaire permissionTitle">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblNomDeEmploye" runat="server" Text="Nom de l'employé"></asp:Label></div>
-         <div class="elementFormulaire"><asp:Label ID="lblPermissionDeEmploye" runat="server" Text="Permission de l'employé"></asp:Label></div>
-    </div>
-    <div class="containerFormulaire">
-        <asp:PlaceHolder runat="server" ID="itemPlaceholder"/>
-        <div class="ligneFormulaire">
-        <div class="elementFormulaire permissionHeight"></div>
-       <div class="elementFormulaireTexte permissionHeight">
-             <asp:Button ID="btnCancel" runat="server" Text="Canceller" CssClass="btn btn-primary btn-large btn" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false" />
-       </div>
-       </div>
-    </div> 
-</div>
+    <div class="titlePanier">
+            <h3>
+                Modifier les permissions</h3>
+            <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
+                Visible="false" Height="20px" Width="20px" />
+            <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Les modifications ont bien été enregistrées!"
+                Visible="false"></asp:Label>
+            <br />
+        </div>
+        <asp:ListView ID="lvPermission" runat="server" DataSourceID="dsEmploye" DataKeyNames="idMembre">
+            <LayoutTemplate>
+                <div class="titleAdminNormal">
+                    <div class="ligneFormulaire permissionTitle">
+                        <div class="elementFormulaireTexte">
+                            <asp:Label ID="lblNomDeEmploye" runat="server" Text="Nom de l'employé"></asp:Label></div>
+                        <div class="elementFormulaire">
+                            <asp:Label ID="lblPermissionDeEmploye" runat="server" Text="Permission de l'employé"></asp:Label></div>
+                    </div>
+                    <div class="containerFormulaire">
+                        <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+                        <div class="ligneFormulaire">
+                            <div class="elementFormulaire permissionHeight">
+                            </div>
+                            <div class="elementFormulaireTexte permissionHeight">
+                                <asp:Button ID="btnCancel" runat="server" Text="Retour" CssClass="btn btn-primary btn-large btn"
+                                    PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
 </LayoutTemplate>
 
 <ItemTemplate>
@@ -31,7 +45,7 @@
            </asp:DropDownList>
        </div>
        <div class="elementFormulaireRequired permissionHeight">
-           <asp:Button ID="btnModifier" runat="server" Text="Modifier" CssClass="btn btn-primary btn-primary btn" CommandName="Update" />
+           <asp:Button ID="btnModifier" runat="server" Text="Modifier" OnClick="confirmation" CssClass="btn btn-primary btn-primary btn" CommandName="Update" />
            </div> 
     </div>
 </ItemTemplate>
