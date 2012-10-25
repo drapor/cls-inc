@@ -1,4 +1,5 @@
 ﻿Imports modelCLS
+Imports masterPage
 Partial Class Page_Autre_register
     Inherits System.Web.UI.Page
 
@@ -12,6 +13,10 @@ Partial Class Page_Autre_register
         e.Values("courriel") = Session("membrePrincipalCourriel")
         e.Values("motPasse") = Session("membrePrincipalMotPasse")
         e.Values("familleID") = Session("membrePrincipalIdFamille")
+        e.Values("adresse") = Session("membrePrincipalAdresse")
+        e.Values("ville") = Session("membrePrincipalVille")
+        e.Values("telephoneMembre") = Session("membrePrincipalTelephone")
+        e.Values("codePostal") = Session("membrePrincipalCodePostal")
         e.Values("dateInscription") = Date.Now.ToShortDateString
 
     End Sub

@@ -4,21 +4,14 @@
 <div class="contenuPage">
 <div class="titlePanier">
 <h3>Votre panier d'activités</h3>
-<div class="ligneFormulaire">
-         <div class="elementFormulaireTexte">
-         Choisissez un membre</div>
-         <div class="elementFormulaire">
-             <asp:DropDownList ID="dropDownMembre" runat="server" Width="200px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="FullName" />
-         </div>
-    </div>
 </div>
 
 <div class="contenuStandard">
-    <asp:ListView ID="lvPanier" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre">
+    <asp:ListView ID="lvPanier" runat="server" DataSourceID="EntityDataSource1" DataKeyNames="idMembre" ItemPlaceholderID="itemPlaceHolder">
         <LayoutTemplate>
             <div class="panier">
                 <div class="panierNomTitre">
-                    <asp:Label ID="lblTitreNom" runat="server" Text="Nom du groupe"></asp:Label>
+                    <asp:Label ID="lblTitreNom" runat="server" Text="Nom de l'activité"></asp:Label>
                 </div>
                 <div class="panierGroupeTitre">
                     <asp:Label ID="lblTitreGroupe" runat="server" Text="Groupe"></asp:Label>
@@ -62,7 +55,7 @@
                     <asp:Button ID="btnRetour" runat="server" Text="Retour" CssClass="btn btn-primary" Width="120px" />
                 </div>
                 <div class="boutonPanierConfirme">
-                    <asp:Button ID="btnConfirme" runat="server" Text="Confirmer" CssClass="btn btn-primary" Width="120px" />
+                    <asp:Button ID="btnConfirme" runat="server" Text="Confirmer" CssClass="btn btn-primary" Width="120px" PostBackUrl="cart_paiement.aspx" />
                 </div>
             </div>
         </LayoutTemplate>
@@ -98,11 +91,7 @@
 <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
     EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre"
-    EntityTypeFilter="MembresJeu" 
-    where="(@MembreID = it.idMembre)">
-    <WhereParameters>
-        <asp:ControlParameter Name="MembreID" ControlID="dropDownMembre" PropertyName="SelectedValue" Type="Int32" />
-    </WhereParameters>
+    EntityTypeFilter="MembresJeu">
     </asp:EntityDataSource>
 
     <asp:EntityDataSource ID="dsMember" runat="server" ConnectionString="name=modelCLSContainer"

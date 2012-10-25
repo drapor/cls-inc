@@ -25,7 +25,7 @@
         </div>
         <br />
         <div class="formatZone">
-            <asp:DropDownList ID="ddlNomGroupe" SkinID="ddlBlue"  runat="server" CssClass="search-query" DataSourceID="dsGroupeSelection" DataTextField="NomGroupe" DataValueField="idGroupe" appendDataBoundItems="True"  MaxLength="16" Width="150px" AutoPostBack="True"></asp:DropDownList>
+            <asp:DropDownList ID="ddlNomGroupe" SkinID="ddlBlue"  runat="server" CssClass="search-query" DataSourceID="dsGroupeSelection" DataTextField="NomGroupe" DataValueField="idGroupe" appendDataBoundItems="False"  MaxLength="16" Width="150px" AutoPostBack="True"></asp:DropDownList>
         </div>
     </div>
 
@@ -36,8 +36,11 @@
         </LayoutTemplate>
 
         <ItemTemplate>
-        <div class="groupeBouton">     
-             <div class="boutonGroupeRetour">
+        <div class="groupeBouton">  
+            <div class="boutonGroupeRetour">
+                    <asp:Button ID="btnRetour" runat="server" commandName="Cancel" Text="Retour" CssClass="btn btn-primary" Width="120px" CausesValidation="false" PostBackUrl="~/Page/Admin/home_admin.aspx" />
+                </div>   
+             <div class="boutonGroupeAjout">
                 <asp:Button ID="btnDelete" runat="server" commandName="Delete" Text="Supprimer" CssClass="btn btn-primary" Width="120px" />
             </div>
         </div>
@@ -48,7 +51,7 @@
 
 <asp:EntityDataSource ID="dsGroupe" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="GroupeJeu" EnableFlattening="False"
-    EnableDelete="True" EnableInsert="True" EnableUpdate="True" orderBy="it.idGroupe"
+    EnableDelete="True" EnableInsert="False" EnableUpdate="True" orderBy="it.idGroupe"
     where="(@coursID = it.Cours_idCours) AND (@groupeID = it.idGroupe)">
     <WhereParameters>
         <asp:ControlParameter Name="coursID" ControlID="ddlNomCours" PropertyName="SelectedValue" Type="Int32" />

@@ -27,6 +27,9 @@
                     </div>
                     <div class="bouton">
                         <asp:Button ID="btnAccepter" runat="server" Text="Rechercher" onClick="actionRecherche" CssClass="btn btn-primary btn-small" />
+                        <br />
+                        <br />
+                        <asp:Label ID="lblSupprime" runat="server" Text="Le membre à été supprimé!" Visible="false"  ForeColor="Green" Font-Bold="True"></asp:Label>
                     </div>                   
                 </div>
             </div>
@@ -54,6 +57,9 @@
              </div>    
             </ItemTemplate>
         </asp:ListView>
+        <div class="bouton">
+            <asp:Button ID="btnRetour" runat="server" OnClick="actionRetour" Text="Retour page employé" CssClass="btn btn-primary btn-small" />
+        </div>
    </div>
 
    <asp:EntityDataSource ID="dsListView" runat="server" ConnectionString="name=modelCLSContainer"

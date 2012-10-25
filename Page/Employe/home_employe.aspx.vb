@@ -1,20 +1,18 @@
-﻿
+﻿Imports masterPage
+Imports modelCLS
+
 Partial Class Page_Employe_home_employe
     Inherits System.Web.UI.Page
 
-    Public Shared Function FindChildControl(Of T As Control)(ByVal startingControl As Control, ByVal id As String) As T
-        Dim found As T = Nothing
-        For Each activeControl As Control In startingControl.Controls
-            found = TryCast(activeControl, T)
-            If found Is Nothing OrElse (String.Compare(id, found.ID, True) <> 0) Then
-                found = FindChildControl(Of T)(activeControl, id)
-            End If
-            If found IsNot Nothing Then
-                Exit For
-            End If
-        Next
-        Return found
-    End Function
+    Public entClient As modelCLSContainer = New modelCLSContainer
+
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        Dim idEmploye As Integer = CType(Request.QueryString("idMembre"), Integer)
+
+        Session("employeId") = Request.QueryString("idMembre")
+
+        dsListView.WhereParameters("membreID").DefaultValue = idEmploye
+    End Sub
 
     Protected Sub lvInfoMembre_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvInfoMembre.ItemCommand
 
@@ -31,8 +29,6 @@ Partial Class Page_Employe_home_employe
         End If
     End Sub
 
-
-
     Protected Sub lvCourriel_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvCourriel.ItemCommand
 
         Dim btnHideInfo As Button = FindChildControl(Of Button)(lvInfoMembre, "btnModifier")
@@ -48,7 +44,6 @@ Partial Class Page_Employe_home_employe
         End If
     End Sub
 
-
     Protected Sub lvMotPasse_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMotPasse.ItemCommand
         Dim btnHideInfo As Button = FindChildControl(Of Button)(lvInfoMembre, "btnModifier")
         Dim btnHideCourriel As LinkButton = FindChildControl(Of LinkButton)(lvCourriel, "btnModifierCourriel")
@@ -63,11 +58,43 @@ Partial Class Page_Employe_home_employe
         End If
     End Sub
 
-
-    Protected Sub dsListView_Updating(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangingEventArgs) Handles dsListView.Updating
+    Protected Sub lvCourriel_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvCourriel.ItemUpdating
         Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
-        Dim txtMotPasse As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "lblMP")
 
-        e.Entity.courriel = txtCourriel.Text
+        e.NewValues("courriel") = txtCourriel.Text
+    End Sub
+
+    Protected Sub lvMotPasse_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvMotPasse.ItemUpdating
+
+        Dim txtMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtNouveauMP")
+
+        e.NewValues("motPasse") = txtMP.Text
+
+    End Sub
+
+    Sub validationCourriel(sender As Object, args As ServerValidateEventArgs)
+
+        Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
+
+        Dim utilisateur = (From A In entClient.MembresJeu Where (A.courriel = txtCourriel.Text) Select A).Any
+
+        If utilisateur = Nothing Then
+            args.IsValid = True
+        Else
+            args.IsValid = False
+            SetFocus(txtCourriel)
+        End If
+    End Sub
+
+    Sub validationMotPasse(sender As Object, args As ServerValidateEventArgs)
+
+        Dim txtVieuxMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtPresentMP")
+
+        If txtVieuxMP.Text = Session("membrePrincipalMotPasse") Then
+            args.IsValid = True
+        Else
+            args.IsValid = False
+            SetFocus(txtVieuxMP)
+        End If
     End Sub
 End Class

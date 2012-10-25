@@ -4,6 +4,7 @@ Partial Class Page_Autre_register
     Inherits System.Web.UI.Page
 
     Dim entClient As modelCLSContainer = New modelCLSContainer
+
     Dim idFamille As Integer = Nothing
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
@@ -26,42 +27,17 @@ Partial Class Page_Autre_register
         Response.Redirect(url)
     End Sub
 
-    Private Function ValidateValue(PropertyToCheck As String) As Boolean
-        '// Return true if Username is Unique
-        Dim rtnValue = False
-
-        If (entClient.MembresJeu.Any()) Then ' Check if there are "any" records in the Employee table
-
-            Dim courrielClient = From c In entClient.MembresJeu Select c.courriel ' Select just the PayrollNumber column to work with
-
-            For Each item As Object In courrielClient ' Loop through each employee in the Employees entity
-
-                If (item = PropertyToCheck) Then ' Check if PayrollNumber in current row matches PropertyToCheck
-
-                    '// Found a match, throw exception and return False
-                    rtnValue = False
-                    Exit For
-                Else
-                    '// No matches, return True (Unique)
-                    rtnValue = True
-                End If
-            Next
-        Else
-            '// The is currently no employees in the person entity so return True (Unqiue)
-            rtnValue = True
-        End If
-        Return rtnValue
-
-    End Function
-
     Sub validationCourriel(sender As Object, args As ServerValidateEventArgs)
 
         Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvNouveauMembre, "txtCourriel")
 
-        If ValidateValue(txtCourriel.Text) Then
+        Dim utilisateur = (From A In entClient.MembresJeu Where (A.courriel = txtCourriel.Text) Select A).Any
+
+        If utilisateur = Nothing Then
             args.IsValid = True
         Else
             args.IsValid = False
+            SetFocus(txtCourriel)
         End If
     End Sub
 

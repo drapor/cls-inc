@@ -34,6 +34,14 @@ Partial Class Page_Employe_employe_client_modify
         End If
     End Sub
 
+    Sub actionRetour(sender As Object, e As EventArgs)
+
+        Dim url As String
+        url = "../Employe/home_employe.aspx?idMembre=" & Session("employeId")
+        Response.Redirect(url)
+
+    End Sub
+
     <System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>
     Public Shared Function GetCompletionList(ByVal prefixText As String, ByVal count As Integer) As String()
 
@@ -42,6 +50,5 @@ Partial Class Page_Employe_employe_client_modify
         Return entClient.MembresJeu.Where(Function(n) n.courriel.StartsWith(prefixText) And n.RoleJeu_idRole = 3).OrderBy(Function(n) n.courriel).[Select](Function(n) n.courriel).Take(count).ToArray()
 
     End Function
-
 
 End Class

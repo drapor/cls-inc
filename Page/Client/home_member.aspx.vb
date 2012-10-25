@@ -4,9 +4,9 @@ Imports masterPage
 Partial Class Page_Client_home_member
     Inherits System.Web.UI.Page
 
-    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+    Public entClient As modelCLSContainer = New modelCLSContainer
 
-        Dim entClient As modelCLSContainer = New modelCLSContainer
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
         Dim idClient As Integer = CType(Request.QueryString("idMembre"), Integer)
         Dim idFamille As String = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).First
@@ -15,6 +15,10 @@ Partial Class Page_Client_home_member
         Session("membrePrincipalCourriel") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.courriel).First
         Session("membrePrincipalMotPasse") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.motPasse).First
         Session("membrePrincipalIdFamille") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).First
+        Session("membrePrincipalAdresse") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.adresse).First
+        Session("membrePrincipalVille") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.ville).First
+        Session("membrePrincipalTelephone") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.telephoneMembre).First
+        Session("membrePrincipalCodePostal") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.codePostal).First
 
         dsListView.WhereParameters("membreID").DefaultValue = idClient
 
@@ -124,12 +128,36 @@ Partial Class Page_Client_home_member
 
     Protected Sub lvMotPasse_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvMotPasse.ItemUpdating
 
-        Dim txtVieuxMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtPresentMP")
         Dim txtMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtNouveauMP")
 
-        If Session("membrePrincipalMotPasse") = txtVieuxMP.Text Then
-            e.NewValues("motPasse") = txtMP.Text
-        End If
+        e.NewValues("motPasse") = txtMP.Text
 
     End Sub
+
+    Sub validationCourriel(sender As Object, args As ServerValidateEventArgs)
+
+        Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
+
+        Dim utilisateur = (From A In entClient.MembresJeu Where (A.courriel = txtCourriel.Text) Select A).Any
+
+        If utilisateur = Nothing Then
+            args.IsValid = True
+        Else
+            args.IsValid = False
+            SetFocus(txtCourriel)
+        End If
+    End Sub
+
+    Sub validationMotPasse(sender As Object, args As ServerValidateEventArgs)
+
+        Dim txtVieuxMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtPresentMP")
+
+        If txtVieuxMP.Text = Session("membrePrincipalMotPasse") Then
+            args.IsValid = True
+        Else
+            args.IsValid = False
+            SetFocus(txtVieuxMP)
+        End If
+    End Sub
+
 End Class

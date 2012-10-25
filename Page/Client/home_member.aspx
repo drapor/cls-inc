@@ -4,14 +4,7 @@
 <div class="contenuPage">
 
 <div class="titleClient">
-<h3>Compte client</h3>
-<%--<div class="ligneFormulaire">
-         <div class="elementFormulaireTexte">
-         Choisissez un membre</div>
-         <div class="elementFormulaire">
-             <asp:DropDownList ID="dropDownMembre" runat="server" Width="200px" SkinID="ddlBlue" DataSourceId="dsMember" DataValueField="idMembre" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="FullName" />
-         </div>
-    </div>--%>
+    <h3>Compte client</h3>
 </div>
 
 <div class="contenuClient">
@@ -129,19 +122,19 @@
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker search-query" SkinID="txtBoxYellow" MaxLength="10" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker search-query" SkinID="txtBoxYellow" MaxLength="10" Width="80px" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>' ></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtTelephoneClient" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("telephoneMembre") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtTelephoneClient" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text='<%# Bind("telephoneMembre") %>' MaxLength="13" Width="100px"></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                    <asp:TextBox ID="txtPostalClient" SkinID="txtBoxYellow" runat="server" CssClass="search-query" Text='<%# Bind("codePostal") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtPostalClient" SkinID="txtBoxYellow" runat="server" CssClass="search-query" Text='<%# Bind("codePostal") %>' MaxLength="7" Width="65px"></asp:TextBox>
                     </div>
                     <div class="bouton">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CausesValidation="false" CssClass="btn btn-primary btn-small" />
                 </div>
             </div>
 
@@ -229,16 +222,16 @@
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text=""></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauCourriel" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text="" CausesValidation="false"></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauCourrielEncore" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text=""></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauCourrielConfirme" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text=""></asp:TextBox>
                     </div>
                     <div class="boutonCourriel">
-                    <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Canceler" CssClass="btn btn-primary btn-small" />
-                </div>
+                        <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
+                        <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                    </div>
                 </div>
 
                 <div class="validationCourriel">
@@ -246,7 +239,14 @@
                         </br>
                     </div>
                     <div class="formatZone">
-                        <asp:CompareValidator Display="Dynamic" ID="compareCourriel" runat="server" ErrorMessage="*Votre courriel ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauCourriel" ControlToValidate="txtNouveauCourrielEncore"></asp:CompareValidator>  
+                        <asp:RequiredFieldValidator ID="courrielRequis" runat="server" ErrorMessage="*Une addresse courriel est requise!" ControlToValidate='txtNouveauCourriel' ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>  
+                        <asp:RegularExpressionValidator ID="regExCourriel" runat="server" ErrorMessage="*Veuillez entrer une adresse dans <br/> le format adresse@courriel.com!" ControlToValidate="txtNouveauCourriel" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"></asp:RegularExpressionValidator>
+                        <asp:CustomValidator ID="courrielCompare" runat="server" ControlToValidate="txtNouveauCourriel" OnServerValidate="validationCourriel" ErrorMessage="Ce courriel est déjà utilisé!" ForeColor="Red" Display="Dynamic"></asp:CustomValidator>    
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:RequiredFieldValidator ID="courrielRequisConfirme" runat="server" ErrorMessage="*Veuillez confirmer votre courriel!" ControlToValidate='txtNouveauCourrielConfirme' ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:CompareValidator Display="Dynamic" ID="CompareCourriel" runat="server" ErrorMessage="*Votre courriel ne correspond pas!" ForeColor="Red" ControlToCompare="txtNouveauCourriel" ControlToValidate="txtNouveauCourrielConfirme"></asp:CompareValidator>  
                     </div>
                 </div>
 
@@ -294,24 +294,28 @@
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtNouveauMPEncore" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text="" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="txtNouveauMPConfirme" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text="" TextMode="Password"></asp:TextBox>
                     </div>
                     <div class="boutonMotPasse">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Canceler" CssClass="btn btn-primary btn-small" />
                 </div>
                 </div>
 
                 <div class="validationMotPasse">
                     <div class="formatZone">
-                        <%--<asp:RequiredFieldValidator ID="requiredMP" runat="server" ErrorMessage="*Le mot de passe est obligatoire" ControlToValidate="txtNouveauMP" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>--%>
-                        <asp:Label ID="lblErreurMotPasse" runat="server" Text="" ForeColor="Red"></asp:Label>
-                        </br>
+                        <asp:RequiredFieldValidator ID="motPasseValideRequis" runat="server" ErrorMessage="*Veuillez entrer votre présent mot de passe!" ControlToValidate='txtPresentMP' ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:CustomValidator ID="motPasseCompare" runat="server" ControlToValidate="txtPresentMP" OnServerValidate="validationMotPasse" ErrorMessage="Votre mot de passe est incorrect!" ForeColor="Red" Display="Dynamic"></asp:CustomValidator>
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:CompareValidator Display="Dynamic" ID="compareMP" runat="server" ErrorMessage="*Votre Mot de passe ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauMPEncore" ControlToValidate="txtNouveauMP"></asp:CompareValidator>
-                        <%--<asp:RequiredFieldValidator Display="Dynamic" ID="requiredMPConfirm" runat="server" ErrorMessage="*Veuillez confirmez votre nouveau mot de passe" ControlToValidate="txtNouveauMPEncore" ForeColor="Red" SetFocusOnError="False"></asp:RequiredFieldValidator>--%>
+                        <asp:RegularExpressionValidator ID="regExMDP" runat="server" ErrorMessage="*Votre mot de passe doit contenir entre 8 et <br/> 20 caractère" ControlToValidate="txtNouveauMP" ForeColor="Red" Display="Dynamic" ValidationExpression="^[A-Za-z0-9]{8,}$"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="motPasseRequis" runat="server" ErrorMessage="*Un mot de passe est requis!" ControlToValidate='txtNouveauMP' ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </div>
+                    </br>
+                    <div class="formatZone">
+                        <asp:CompareValidator Display="Dynamic" ID="compareMP" runat="server" ErrorMessage="*Votre mot de passe ne correspond pas" ForeColor="Red" ControlToCompare="txtNouveauMP" ControlToValidate="txtNouveauMPConfirme"></asp:CompareValidator>
+                        <asp:RequiredFieldValidator Display="Dynamic" ID="requiredMDPConfirm" runat="server" ErrorMessage="*Veuillez confirmez votre mot de passe" ControlToValidate="txtNouveauMPConfirme" ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
  
@@ -419,13 +423,6 @@
     <WhereParameters>
         <asp:Parameter Name="membreID" Type="Int32" DefaultValue="0"/>
     </WhereParameters>
-    </asp:EntityDataSource>
-
-    <asp:EntityDataSource ID="dsMember" runat="server" ConnectionString="name=modelCLSContainer"
-    DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
-    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idMembre"
-    EntityTypeFilter="MembresJeu" 
-    Select="it.idMembre,it.nomMembre,it.prenomMembre,(it.[prenomMembre]+' '+it.[nomMembre]) as FullName, it.adresse, it.ville, it.dateNaissance, it.telephoneMembre, it.codePostal, it.courriel, it.motPasse, it.dateInscription">
     </asp:EntityDataSource>
 
     <asp:EntityDataSource ID="dsFamille" runat="server" ConnectionString="name=modelCLSContainer"

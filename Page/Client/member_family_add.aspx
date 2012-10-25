@@ -1,7 +1,7 @@
 <%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_family_add.aspx.vb" Inherits="Page_Autre_register" Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-<div class="contenuFamille">
+    <div class="contenuFamille">
 
     <div class="titleFamille">
         <h3><asp:Label ID="lblAjouterFamille" runat="server" Text="Ajouter un membre de famille"></asp:Label></h3>
@@ -38,49 +38,20 @@
             </div>
         </div>
         <div class="ligneFormulaire">
-            <div class="elementFormulaireTexte"><asp:Label ID="lblAdresse" runat="server" Text="Adresse"></asp:Label></div>
-            <div class="elementFormulaire"><asp:TextBox ID="txtAdresse" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="40" Text='<%# Bind("adresse") %>'></asp:TextBox></div>
-            <div class="elementFormulaireRequired">
-                <asp:RequiredFieldValidator ID="requiredAdresse" runat="server" ErrorMessage="*L'adresse est obligatoire" ControlToValidate="txtAdresse" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-            </div>
-        </div>
-        <div class="ligneFormulaire">
-            <div class="elementFormulaireTexte"><asp:Label ID="lblVille" runat="server" Text="Ville"></asp:Label></div>
-            <div class="elementFormulaire"><asp:TextBox ID="txtVille" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="25" Text='<%# Bind("ville") %>'></asp:TextBox></div>
-            <div class="elementFormulaireRequired">
-                <asp:RequiredFieldValidator ID="requiredVille" runat="server" ErrorMessage="*La ville est obligatoire" ControlToValidate="txtVille" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-            </div>
-        </div>
-        <div class="ligneFormulaire">
             <div class="elementFormulaireTexte"><asp:Label ID="lblDateNaissance" runat="server" Text="Date de naissance"></asp:Label></div>
             <div class="elementFormulaire">
-                <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
+                <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>' Width="100px"></asp:TextBox>
             </div>
             <asp:RequiredFieldValidator ID="requiredDate" runat="server" ErrorMessage="*La date de naissance est obligatoire" ControlToValidate="txtDate" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
             <asp:RegularExpressionValidator ID="regExDate" runat="server" ErrorMessage="*Votre date n'est pas dans le format aaaa/mm/jj" 
             ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$" Display="Dynamic" ControlToValidate="txtDate" ForeColor="Red"></asp:RegularExpressionValidator>
         </div>
         <div class="ligneFormulaire">
-            <div class="elementFormulaireTexte"><asp:Label ID="lblTelephone" runat="server" Text="Téléphone"></asp:Label></div>
-            <div class="elementFormulaire"><asp:TextBox ID="txtTelephone" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="13" Text='<%# Bind("telephoneMembre") %>'></asp:TextBox></div>
-            <div class="elementFormulaireRequired">
-                <asp:RegularExpressionValidator ID="regExTelephone" runat="server" Display="Dynamic" ErrorMessage="*Entrer un numéro de téléphone dans le format suivant (123)456-7890" ForeColor="Red" ControlToValidate="txtTelephone" ValidationExpression="^([\(]{1}[0-9]{3}[\)]{1}[0-9]{3}[\-]{1}[0-9]{4})$"></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="requiredTelephone" runat="server" ErrorMessage="*Le téléphone est obligatoire" ControlToValidate="txtTelephone" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-            </div>
-        </div>
-        <div class="ligneFormulaire">
-            <div class="elementFormulaireTexte"><asp:Label ID="lblCodePostal" runat="server" Text="Code Postal"></asp:Label></div>
-            <div class="elementFormulaire"><asp:TextBox ID="txtCodePostal" runat="server" CssClass="search-query" SkinID="txtBoxBlue" Width="80px" Text='<%# Bind("codePostal") %>'></asp:TextBox></div>
-            <div class="elementFormulaireRequired">
-                <asp:RegularExpressionValidator ID="regExCodePostal" runat="server" ErrorMessage="*Veuillez entrer un code postal dans le format A1A 1A1" ForeColor="Red" Display="Dynamic" ControlToValidate="txtCodePostal" ValidationExpression="[A-Z]\d[A-Z] \d[A-Z]\d"></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="requiredCodePostal" runat="server" ErrorMessage="*Le code postal est obligatoire" ControlToValidate="txtCodePostal" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-            </div>
-        </div>
-        <div class="ligneFormulaire">
             <div class="elementFormulaireTexte"><asp:Label ID="lblType" runat="server" Text="Type de compte:"></asp:Label></div>
-            <div class="elementFormulaire">
-                <asp:DropDownList ID="ddlRole" runat="server" Width="130px" SkinID="ddlBlue" SelectedValue='<%# Bind("RoleJeu_idRole") %>' DataSourceID="dsListeRole" 
-                                    appendDataboundItems="False" DataTextField="nomRole" DataValueField="idRole">
+                <div class="elementFormulaire">
+                <asp:DropDownList ID="ddlRole" runat="server" Width="130px" SkinID="ddlBlue" SelectedValue='<%# Bind("RoleJeu_idRole") %>'>
+                    <asp:ListItem Selected="True" Value="4">Conjoint(e)</asp:ListItem>
+                    <asp:ListItem Value="5">Enfant</asp:ListItem>
                 </asp:DropDownList>
             </div>
         </div>

@@ -40,26 +40,20 @@
         <div class="groupeBouton">    
             <div class="partiGauche">
                 <div class="formatZone">
-                    <asp:Label ID="lblNouveauNomGroupe" runat="server" Text="Nouveau nom:"></asp:Label>
-                </div>
-                <br />
-                <div class="formatZone">
                     <asp:Label ID="lblNbsMax" runat="server" Text="Nombre maximal:"></asp:Label>
                 </div>
             </div>
 
             <div class="partiDroite">
                 <div class="formatZone">
-                    <asp:TextBox ID="txtNomGroupe" SkinID="txtBoxYellowPerso" runat="server" CssClass="search-query" Text='<%# Bind("nomGroupe") %>'></asp:TextBox>
-                </div>
-                <br />
-                <div class="formatZone">
                     <asp:TextBox ID="txtNbsMax" SkinID="txtBoxYellowPerso"  runat="server" CssClass="search-query" Text='<%# Bind("nbMax") %>'  MaxLength="3" Width="25px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="requiredNb" runat="server" ErrorMessage="*Entrer le nombre de membre maximum" ForeColor="Red" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RangeValidator ID="rangeNb" runat="server" ErrorMessage="*Nombre entre 1 et 999" ForeColor="Red" Type="Integer" MinimumValue="1" MaximumValue="999" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic"></asp:RangeValidator>
                 </div>
             </div>
             <div class="groupeBouton">
                 <div class="boutonGroupeRetour">
-                    <asp:Button ID="btnRetour" runat="server" commandName="Cancel" Text="Retour" CssClass="btn btn-primary" Width="120px" />
+                    <asp:Button ID="btnRetour" runat="server" commandName="Cancel" Text="Retour" CssClass="btn btn-primary" Width="120px" CausesValidation="false" PostBackUrl="~/Page/Admin/home_admin.aspx"/>
                 </div>
                 <div class="boutonGroupeAjout">
                     <asp:Button ID="btnUpdate" runat="server" commandName="Update" Text="Confirmer" CssClass="btn btn-primary" Width="120px" />
@@ -73,7 +67,7 @@
 
 <asp:EntityDataSource ID="dsGroupe" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="GroupeJeu" EnableFlattening="False"
-    EnableDelete="False" EnableInsert="True" EnableUpdate="True" orderBy="it.idGroupe"
+    EnableDelete="False" EnableInsert="False" EnableUpdate="True" orderBy="it.idGroupe"
     where="(@coursID = it.Cours_idCours) AND (@groupeID = it.idGroupe)">
     <WhereParameters>
         <asp:ControlParameter Name="coursID" ControlID="ddlNomCours" PropertyName="SelectedValue" Type="Int32" />
