@@ -16,8 +16,13 @@ Partial Class Page_Admin_admin_permission
             Else
                 item.Text = "Employe"
             End If
-
-
         Next
+    End Sub
+
+    Sub confirmation(sender As Object, e As EventArgs)
+        If Page.IsValid = True Then
+            lblFelicitation.Visible = True
+            checkImage.Visible = True
+        End If
     End Sub
 End Class

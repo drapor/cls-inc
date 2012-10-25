@@ -21,12 +21,20 @@
 <br />
     <asp:ListView ID="lvCours" runat="server" DataSourceID="dsCategorie" DataKeyNames="idCours">
         <LayoutTemplate>  
+        <div class="row">  
+<div class="span8">  
+<ul class="nav nav-tabs nav-stacked lnkButtonCategorie">   
+<li>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+                </li> 
+</ul>  
+</div>  
+</div>  
+</div> 
         </LayoutTemplate>
         <ItemTemplate>
-                                <div class="blockNormal">
-                                    <asp:Button ID="btnSport" runat="server" CommandName="selection" Text='<%# Eval("nomCours") %>' CssClass="btn btn-primary btnPadding" />
-                                </div>
+
+    <asp:LinkButton ID="lnkActivite" runat="server" CommandName="selection" Text='<%# Eval("nomCours") %>'></asp:LinkButton>
         </ItemTemplate>
     </asp:ListView>
 

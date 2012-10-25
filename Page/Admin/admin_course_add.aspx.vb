@@ -23,4 +23,9 @@ Partial Class Page_Admin_admin_course_add
             End If
         Next c
     End Sub
+
+    Protected Sub dsCourseAdd_Inserted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsCourseAdd.Inserted
+        lblFelicitation.Visible = True
+        checkImage.Visible = True
+    End Sub
 End Class
