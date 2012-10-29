@@ -1,12 +1,13 @@
 ﻿Imports Microsoft.VisualBasic
 Imports modelCLS
+Imports System.Configuration.Provider
 
 Public Class CustomMembershipProvider
     Inherits MembershipProvider
 
 
 
-    Dim entity As modelCLSContainer
+    Private Shared leContext As modelCLSContainer = Nothing
 
 
     Public Overrides Property ApplicationName As String
@@ -139,6 +140,24 @@ Public Class CustomMembershipProvider
     End Sub
 
     Public Overrides Function ValidateUser(username As String, password As String) As Boolean
+        If username Is Nothing OrElse username = "" Then Throw New ProviderException("Le nom d'utilisateur ne peut être vide ou nulle.")
+        If password Is Nothing OrElse password = "" Then Throw New ProviderException("Le mot de passe ne peut être vide ou nulle.")
 
+        Dim entUser As New modelCLSContainer
+        Dim userIsInRole As Boolean = False
+
+        Dim utilisateur = (From A In entUser.MembresJeu Where (A.courriel = username And A.motPasse = password) Select A).Any()
+
+        If utilisateur Then
+            'Dim roleUtilisateur As RoleJeu = (From A In entUser.RoleJeu Where (A.idRole = utilisateur.RoleJeu_idRole) Select A)
+            'If roleUtilisateur.nomRole = roleName Then
+            userIsInRole = True
+            'Else
+            '    userIsInRole = False
+            'End If
+        End If
+
+
+        Return userIsInRole
     End Function
 End Class
