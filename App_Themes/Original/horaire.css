@@ -1,0 +1,39 @@
+﻿.jourSemaine
+{
+    width:400px;
+    height:100px;
+    padding:10px;
+    float:left;
+    border:2px solid black;
+    margin-left:20px;
+}
+
+.interieurGaucheHoraire
+{
+    width:130px;
+    font-size:small;
+    font-weight:bold;
+    float:left;
+}
+
+.interieurDroitHoraire
+{
+    width:150px;
+    float:left;
+}
+
+.local
+{
+    width:900px;
+    float:left;
+}
+
+.validationLocal
+{
+    width:160px;
+    float:left;
+}
+
+.validationHoraire
+{
+}

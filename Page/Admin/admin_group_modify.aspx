@@ -2,52 +2,51 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <div class="contenuPage">
-<div class="titlePanier">
+<div class="title">
 <h3>Modifier un groupe</h3>
 <br />
 </div>
 
 <div class="contenuStandard">
-    <div class="partiGauche">
-        <div class="formatZone">
-            <asp:Label ID="lblNomCours" runat="server" Text="Nom du cours:"></asp:Label>
+    <div class="partiGaucheGroupe">
+        <div class="interieurGauche">
+            <div class="formatZone">
+                <asp:Label ID="lblNomCours" runat="server" Text="Nom du cours:"></asp:Label>
+            </div>
+            <br />
+            <div class="formatZone">
+                <asp:Label ID="lblNomGroupe" runat="server" Text="Nom du groupe:"></asp:Label>
+            </div>
+            <br />
         </div>
-        <br />
-        <div class="formatZone">
-            <asp:Label ID="lblNomGroupe" runat="server" Text="Nom du groupe:"></asp:Label>
-        </div>
-        <br />
-    </div>
 
-    <div class="partiDroite">
-        <div class="formatZone">
-            <asp:DropDownList ID="ddlNomCours" SkinID="ddlBlue"  runat="server" CssClass="search-query" DataSourceID="dsCours" DataTextField="NomCours" DataValueField="idCours" appendDataBoundItems="False" MaxLength="16" Width="150px" AutoPostBack="True"></asp:DropDownList>
+        <div class="interieurDroit">
+            <div class="formatZone">
+                <asp:DropDownList ID="ddlNomCours" SkinID="ddlBlue"  runat="server" CssClass="search-query" DataSourceID="dsCours" DataTextField="NomCours" DataValueField="idCours" appendDataBoundItems="False" MaxLength="16" Width="150px" AutoPostBack="True"></asp:DropDownList>
+            </div>
+            <br />
+            <div class="formatZone">
+                <asp:DropDownList ID="ddlNomGroupe" SkinID="ddlBlue"  runat="server" CssClass="search-query" DataSourceID="dsGroupeSelection" DataTextField="NomGroupe" DataValueField="idGroupe" appendDataBoundItems="False"  MaxLength="16" Width="150px" AutoPostBack="True"></asp:DropDownList>
+            </div>
+            <br />
         </div>
-        <br />
-        <div class="formatZone">
-            <asp:DropDownList ID="ddlNomGroupe" SkinID="ddlBlue"  runat="server" CssClass="search-query" DataSourceID="dsGroupeSelection" DataTextField="NomGroupe" DataValueField="idGroupe" appendDataBoundItems="False"  MaxLength="16" Width="150px" AutoPostBack="True"></asp:DropDownList>
-        </div>
-        <br />
-    </div>
-
 
     <asp:ListView ID="lvGroupe" runat="server" DataSourceID="dsGroupe" DataKeyNames="idGroupe">
         <LayoutTemplate>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
         </LayoutTemplate>
 
-        <ItemTemplate>
-        <div class="groupeBouton">    
-            <div class="partiGauche">
+        <ItemTemplate>       
+            <div class="interieurGauche">
                 <div class="formatZone">
                     <asp:Label ID="lblNbsMax" runat="server" Text="Nombre maximal:"></asp:Label>
                 </div>
             </div>
 
-            <div class="partiDroite">
+            <div class="interieurDroit">
                 <div class="formatZone">
                     <asp:TextBox ID="txtNbsMax" SkinID="txtBoxYellowPerso"  runat="server" CssClass="search-query" Text='<%# Bind("nbMax") %>'  MaxLength="3" Width="25px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="requiredNb" runat="server" ErrorMessage="*Entrer le nombre de membre maximum" ForeColor="Red" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="requiredNb" runat="server" ErrorMessage="*Entrez le nombre de membre" ForeColor="Red" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic"></asp:RequiredFieldValidator>
                     <asp:RangeValidator ID="rangeNb" runat="server" ErrorMessage="*Nombre entre 1 et 999" ForeColor="Red" Type="Integer" MinimumValue="1" MaximumValue="999" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic"></asp:RangeValidator>
                 </div>
             </div>
@@ -59,9 +58,10 @@
                     <asp:Button ID="btnUpdate" runat="server" commandName="Update" Text="Confirmer" CssClass="btn btn-primary" Width="120px" />
                 </div> 
             </div>  
-            </div>
+          
         </ItemTemplate>
     </asp:ListView>
+    </div>
 </div>
 </div>
 
@@ -86,7 +86,7 @@
 
     <asp:EntityDataSource ID="dsCours" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="CoursJeu" EnableFlattening="False"
-    EnableDelete="True" EnableInsert="True" EnableUpdate="True">
+    EnableDelete="True" EnableInsert="True" EnableUpdate="True" orderBy="it.nomCours">
     </asp:EntityDataSource>
 
 </asp:Content>

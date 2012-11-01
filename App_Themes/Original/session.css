@@ -1,0 +1,25 @@
+﻿.partiSession
+{
+    width:860px;
+    margin-top:10px;
+    height:auto;
+    float:left;
+}
+
+.sessionGauche
+{
+    width:180px;
+    height:auto;
+    float:left;
+}
+
+.sessionDroite
+{
+    width:250px;
+    height:auto;
+    float:left;
+}
+
+.validationSession
+{
+}

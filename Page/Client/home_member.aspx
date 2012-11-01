@@ -1,4 +1,7 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_member.aspx.vb" Inherits="Page_Client_home_member" Theme="Original"%>
+﻿<%--Créé par Francis Griggs--%>
+<%--Le 6 septembre 2012--%>
+<%--Dernière mise à jour le 29 octobre 2012--%>
+<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_member.aspx.vb" Inherits="Page_Client_home_member" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <div class="contenuPage">
@@ -173,7 +176,7 @@
             </div>                
         </div>
         </EditItemTemplate>
-    </asp:ListView>
+    </asp:ListView><%--ListView informations personnelles--%>
     
 
 <div class="section">
@@ -354,7 +357,7 @@
                     <asp:LinkButton ID="btnAfficherFamille" runat="server" Text="Afficher" commandName="afficher"></asp:LinkButton>
             </div>
             <div class="supprimerFamille">
-                    <asp:LinkButton ID="btnSupprimerFamille" runat="server" Text="Supprimer" CommandName="delete"></asp:LinkButton>
+                    <asp:LinkButton ID="btnSupprimerFamille" runat="server" Text="Supprimer" CommandName="delete" OnClientClick="return confirm('Veuillez confirmer la suppression');"></asp:LinkButton>
             </div>
         </ItemTemplate>
 </asp:ListView>
@@ -435,5 +438,5 @@
     </WhereParameters>
     </asp:EntityDataSource>
 
-</asp:Content>
+</asp:Content><%--Page entière--%>
 

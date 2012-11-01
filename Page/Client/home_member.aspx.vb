@@ -1,4 +1,10 @@
-﻿Imports modelCLS
+﻿'Créé par Francis Griggs
+'Le 6 septembre 2012
+'Dernière mise à jour le 29 octobre 2012
+'Claase partielle qui crée un objet session pour stocké certaines informations utiles sur d'autres pages du site. Récupère le queryString pour l'affichage du bon membre.
+'Affiche ou rend invible certains contrôles selon l'Item Command et finalement vérifie si certaines données sont présentes dans la BD.
+
+Imports modelCLS
 Imports masterPage
 
 Partial Class Page_Client_home_member
@@ -6,6 +12,7 @@ Partial Class Page_Client_home_member
 
     Public entClient As modelCLSContainer = New modelCLSContainer
 
+    'Récupère le queryString et crée plusieurs objets session
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
         Dim idClient As Integer = CType(Request.QueryString("idMembre"), Integer)
@@ -119,6 +126,7 @@ Partial Class Page_Client_home_member
 
     End Sub
 
+    'Met à jour le courriel à partir du textBox
     Protected Sub lvCourriel_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvCourriel.ItemUpdating
         Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
 
@@ -134,6 +142,7 @@ Partial Class Page_Client_home_member
 
     End Sub
 
+    'Valide le courriel
     Sub validationCourriel(sender As Object, args As ServerValidateEventArgs)
 
         Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
@@ -148,6 +157,7 @@ Partial Class Page_Client_home_member
         End If
     End Sub
 
+    'Valide le mot de passe
     Sub validationMotPasse(sender As Object, args As ServerValidateEventArgs)
 
         Dim txtVieuxMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtPresentMP")

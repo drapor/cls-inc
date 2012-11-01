@@ -8,7 +8,13 @@ Partial Class Page_Autre_register
     Dim idFamille As Integer = Nothing
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        idFamille = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).Max
+        Dim famille = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).Any
+
+        If famille = Nothing Then
+            idFamille = 0
+        Else
+            idFamille = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).Max
+        End If
     End Sub
 
     Protected Sub lvNouveauMembre_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvNouveauMembre.ItemInserting

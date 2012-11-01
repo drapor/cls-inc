@@ -10,6 +10,7 @@
     margin-right:auto;
     border-radius:15px;
     padding:10px;
+    overflow:hidden;
 }
 
 .contenuClient
@@ -187,7 +188,7 @@
 
 .partiGaucheMotPasse
 {
-    width:240px;
+    width:250px;
     float:left;
     font-size:small;
     font-weight:bold;

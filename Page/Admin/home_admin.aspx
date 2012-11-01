@@ -80,9 +80,9 @@
 </div>
 
 <div class="contenuAdmin">
-    <asp:LinkButton ID="lnkAjouterSession" runat="server">Ajouter une session</asp:LinkButton><br/>
-    <asp:LinkButton ID="lnkModifierSession" runat="server">Modifier une session</asp:LinkButton><br/>
-    <asp:LinkButton ID="lnkSupprimerSession" runat="server">Supprimer une session</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkAjouterSession" runat="server" PostBackUrl="~/Page/Admin/admin_session_add.aspx">Ajouter une session</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkModifierSession" runat="server" PostBackUrl="~/Page/Admin/admin_session_modify.aspx">Modifier une session</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkSupprimerSession" runat="server" PostBackUrl="~/Page/Admin/admin_session_delete.aspx">Supprimer une session</asp:LinkButton><br/>
 </div>
 
 <div class="contenuAdmin">

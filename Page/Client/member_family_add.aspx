@@ -15,30 +15,30 @@
     <InsertItemTemplate>
     <div class="containerFormulaire">
         <div class="ligneFormulaire">
-            <div class="elementFormulaireTexte"><asp:Label ID="lblPrenom" runat="server" Text="Prénom"></asp:Label></div>
+            <div class="elementFormulaireTexte"><asp:Label ID="lblPrenom" runat="server" Text="Prénom(*)"></asp:Label></div>
             <div class="elementFormulaire"><asp:TextBox ID="txtPrenom" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="25" Text='<%# Bind("prenomMembre") %>'></asp:TextBox></div>
             <div class="elementFormulaireRequired">
                 <asp:RequiredFieldValidator ID="requiredPrenom" runat="server" ErrorMessage="*Le prénom est obligatoire" ControlToValidate="txtPrenom" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
             </div>
         </div>
         <div class="ligneFormulaire">
-            <div class="elementFormulaireTexte"><asp:Label ID="lblNom" runat="server" Text="Nom"></asp:Label></div>
+            <div class="elementFormulaireTexte"><asp:Label ID="lblNom" runat="server" Text="Nom(*)"></asp:Label></div>
             <div class="elementFormulaire"><asp:TextBox ID="txtNom" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="25" Text='<%# Bind("nomMembre") %>'></asp:TextBox></div>
             <div class="elementFormulaireRequired">
                 <asp:RequiredFieldValidator ID="requiredNom" runat="server" ErrorMessage="*Le nom est obligatoire" ControlToValidate="txtNom" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
             </div>
         </div>
         <div class="ligneFormulaire">
-            <div class="elementFormulaireTexte"><asp:Label ID="lblSexe" runat="server" Text="Sexe"></asp:Label></div>
-            <div class="elementFormulaire">
-                <asp:DropDownList ID="dropDownSexe" runat="server" Width="60px" SkinID="ddlBlue" SelectedValue='<%# Bind("sexe") %>'>
-                    <asp:ListItem Selected="True">H</asp:ListItem>
-                    <asp:ListItem>F</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-        </div>
+         <div class="elementFormulaireTexte"><asp:Label ID="lblSexe" runat="server" Text="Sexe"></asp:Label></div>
+         <div class="elementFormulaire">
+             <asp:RadioButtonList ID="rdbtnSexe" runat="server" RepeatDirection="Horizontal" Width="200px" SelectedValue='<%# Bind("sexe") %>'>
+             <asp:ListItem Text="Homme" Value="H" Selected="true"></asp:ListItem>
+             <asp:ListItem Text="Femme" Value="F"></asp:ListItem>
+            </asp:RadioButtonList>
+         </div>
+    </div>
         <div class="ligneFormulaire">
-            <div class="elementFormulaireTexte"><asp:Label ID="lblDateNaissance" runat="server" Text="Date de naissance"></asp:Label></div>
+            <div class="elementFormulaireTexte"><asp:Label ID="lblDateNaissance" runat="server" Text="Date de naissance(*)"></asp:Label></div>
             <div class="elementFormulaire">
                 <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>' Width="100px"></asp:TextBox>
             </div>
