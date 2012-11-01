@@ -1,6 +1,5 @@
 ﻿Imports System.Configuration.Provider
 Imports modelCLS
-Imports System.Configuration
 
 Public Class CustomRoleProvider
     Inherits RoleProvider
@@ -9,6 +8,7 @@ Public Class CustomRoleProvider
 
     Private _ApplicationName As String
 
+#Region "Fonction du RoleProvider non-implémenter"
     Public Overrides Sub AddUsersToRoles(usernames() As String, roleNames() As String)
         Throw New System.NotSupportedException("No saving")
     End Sub
@@ -22,6 +22,10 @@ Public Class CustomRoleProvider
         End Set
     End Property
 
+    Public Overrides Function GetUsersInRole(roleName As String) As String()
+        Throw New System.NotSupportedException("No saving")
+    End Function
+
     Public Overrides Sub CreateRole(roleName As String)
         Throw New System.NotSupportedException("No saving")
     End Sub
@@ -31,7 +35,7 @@ Public Class CustomRoleProvider
     End Function
 
     Public Overrides Function FindUsersInRole(roleName As String, usernameToMatch As String) As String()
-
+        Throw New System.NotSupportedException("No saving")
     End Function
 
     Public Overrides Function GetAllRoles() As String()
@@ -39,12 +43,41 @@ Public Class CustomRoleProvider
     End Function
 
     Public Overrides Function GetRolesForUser(username As String) As String()
+        Dim entUser As New modelCLSContainer
+        Dim roleUser(0) As String
+
+        Dim user As MembresJeu = (From A In entUser.MembresJeu Where (A.courriel = username) Select A).First()
+        Dim role As RoleJeu = (From A In entUser.RoleJeu Where (A.idRole = user.RoleJeu_idRole) Select A).First()
+
+        roleUser(0) = role.nomRole.ToString
+
+        Return roleUser
+    End Function
+
+    Public Overrides Sub RemoveUsersFromRoles(usernames() As String, roleNames() As String)
+        Throw New System.NotSupportedException("No saving")
+    End Sub
+
+    Public Overrides Function RoleExists(roleName As String) As Boolean
         Throw New System.NotSupportedException("No saving")
     End Function
+#End Region
 
-    Public Overrides Function GetUsersInRole(roleName As String) As String()
+
+    Public Function GetRoleForUser(username As String) As String
+        Dim entUser As New modelCLSContainer
+        Dim roleUser As String = Nothing
+
+        Dim user As MembresJeu = (From A In entUser.MembresJeu Where (A.courriel = username) Select A)
+        Dim role As RoleJeu = (From A In entUser.RoleJeu Where (A.idRole = user.RoleJeu_idRole) Select A)
+
+        roleUser = role.nomRole
+
+        Return roleUser
 
     End Function
+
+    
 
     Public Overrides Function IsUserInRole(username As String, roleName As String) As Boolean
         If username Is Nothing OrElse username = "" Then Throw New ProviderException("Le nom d'utilisateur ne peut être vide ou nulle.")
@@ -53,10 +86,10 @@ Public Class CustomRoleProvider
         Dim entUser As New modelCLSContainer
         Dim userIsInRole As Boolean = False
 
-        Dim utilisateur As MembresJeu = (From A In entUser.MembresJeu Where (A.courriel = username) Select A)
+        Dim utilisateur As MembresJeu = (From A In entUser.MembresJeu Where (A.courriel = username) Select A).First()
 
         If utilisateur IsNot Nothing Then
-            Dim roleUtilisateur As RoleJeu = (From A In entUser.RoleJeu Where (A.idRole = utilisateur.RoleJeu_idRole) Select A)
+            Dim roleUtilisateur As RoleJeu = (From A In entUser.RoleJeu Where (A.idRole = utilisateur.RoleJeu_idRole) Select A).First()
             If roleUtilisateur.nomRole = roleName Then
                 userIsInRole = True
             Else
@@ -67,14 +100,6 @@ Public Class CustomRoleProvider
 
         Return userIsInRole
 
-    End Function
-
-    Public Overrides Sub RemoveUsersFromRoles(usernames() As String, roleNames() As String)
-        Throw New System.NotSupportedException("No saving")
-    End Sub
-
-    Public Overrides Function RoleExists(roleName As String) As Boolean
-        Throw New System.NotSupportedException("No saving")
     End Function
 
 End Class

@@ -1,9 +1,20 @@
 ﻿Imports Microsoft.VisualBasic
 Imports System.Globalization
 Imports System.Threading
+Imports System.Configuration
+Imports System.Data
+Imports System.Web
+Imports System.Web.Security
+Imports System.Web.UI
+Imports System.Web.UI.WebControls
+Imports System.Web.UI.WebControls.WebParts
+Imports System.Web.UI.HtmlControls
+Imports System.Web.HttpRequest
+Imports System.Web.Services
+Imports modelCLS
 
 Public Class masterPage
-    Inherits Page
+    Inherits System.Web.UI.Page
 
     Public Shared Function FindChildControl(Of T As Control)(ByVal startingControl As Control, ByVal id As String) As T
         Dim found As T = Nothing
