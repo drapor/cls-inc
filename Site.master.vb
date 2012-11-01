@@ -1,8 +1,5 @@
-﻿Imports System.Web.Services
-Imports System.Configuration
-Imports modelCLS
-
-
+﻿Imports System.IO
+Imports masterPage
 Partial Class Site
     Inherits System.Web.UI.MasterPage
 
@@ -10,33 +7,45 @@ Partial Class Site
     Dim categorie As String = Nothing
     Dim url As String
 
+#Region "Redirection des boutons de catégorie"
     Protected Sub btnCulture_Click(sender As Object, e As System.EventArgs) Handles btnCulture.Click
         categorie = btnCulture.Text
-        url = "../Autre/category.aspx?categorie=" & categorie
+        url = "~/Page/Autre/category.aspx?categorie=" & categorie
         Response.Redirect(url)
     End Sub
 
     Protected Sub btnLoisir_Click(sender As Object, e As System.EventArgs) Handles btnLoisir.Click
         categorie = btnLoisir.Text
-        url = "../Autre/category.aspx?categorie=" & categorie
+        url = "~/Page/Autre/category.aspx?categorie=" & categorie
         Response.Redirect(url)
     End Sub
 
     Protected Sub btnSport_Click(sender As Object, e As System.EventArgs) Handles btnSport.Click
         categorie = btnSport.Text
-        url = "../Autre/category.aspx?categorie=" & categorie
+        url = "~/Page/Autre/category.aspx?categorie=" & categorie
         Response.Redirect(url)
     End Sub
+#End Region
 
-    '<System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>
-    'Public Shared Function GetCompletionList(ByVal prefixText As String, ByVal count As Integer) As String()
 
-    '    Dim entCours As modelCLSContainer = New modelCLSContainer
 
-    '    Return entCours.CoursJeu.Where(Function(n) n.nomCours.StartsWith(prefixText)).OrderBy(Function(n) n.nomCours).[Select](Function(n) n.nomCours).Take(count).ToArray()
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        If HttpContext.Current.User.Identity.IsAuthenticated = True Then
+            'Apparition des boutons de l'utilisateur
+            lnkConnecter.Visible = False
+            lnkInscrire.Visible = False
+            lnkUserName.Visible = True
+            lnkLogOut.Visible = True
+            lnkUserName.Text = HttpContext.Current.User.Identity.Name
+        End If
+    End Sub
 
-    'End Function
 
+    Protected Sub lnkLogOut_Click(sender As Object, e As System.EventArgs) Handles lnkLogOut.Click
+        FormsAuthentication.SignOut()
+        Response.Redirect("~/Page/login.aspx")
+        Session("idUser") = Nothing
+    End Sub
 
 End Class
 

@@ -1,14 +1,15 @@
 ﻿Imports Microsoft.VisualBasic
 Imports modelCLS
+Imports System.Configuration.Provider
 
 Public Class CustomMembershipProvider
     Inherits MembershipProvider
 
 
 
-    Dim entity As modelCLSContainer
+    Private Shared leContext As modelCLSContainer = Nothing
 
-
+#Region "Fonction du Membership Provider non-implémenter"
     Public Overrides Property ApplicationName As String
         Get
 
@@ -138,7 +139,52 @@ Public Class CustomMembershipProvider
 
     End Sub
 
-    Public Overrides Function ValidateUser(username As String, password As String) As Boolean
+#End Region
 
+    'Fonction qui vérifi si l'utilisateur est valide
+    Public Overrides Function ValidateUser(username As String, password As String) As Boolean
+        If username Is Nothing OrElse username = "" Then Throw New ProviderException("Le nom d'utilisateur ne peut être vide ou nulle.")
+        If password Is Nothing OrElse password = "" Then Throw New ProviderException("Le mot de passe ne peut être vide ou nulle.")
+
+        Dim entUser As New modelCLSContainer
+        Dim isUserValid As Boolean = False
+        Dim utilisateur As MembresJeu = Nothing
+
+        Try
+            utilisateur = (From A In entUser.MembresJeu Where (A.courriel = username And A.motPasse = password) Select A).First()
+        Catch ex As Exception
+            Throw New ProviderException("Le courriel ou le mot de passe ne corresponde pas.")
+        End Try
+
+
+
+        If utilisateur IsNot Nothing Then
+            isUserValid = True
+        End If
+        Return isUserValid
     End Function
+
+    Shared Function GetRoleForUser(username As String) As String
+        Dim entUser As New modelCLSContainer
+        Dim roleUser As String = Nothing
+
+        Dim user As MembresJeu = (From A In entUser.MembresJeu Where (A.courriel = username) Select A).First()
+        Dim role As RoleJeu = (From A In entUser.RoleJeu Where (A.idRole = user.RoleJeu_idRole) Select A).First()
+
+        roleUser = role.nomRole
+
+        Return roleUser
+    End Function
+
+    Shared Function GetUserId(username As String) As String
+        Dim entUser As New modelCLSContainer
+        Dim idUser As String = Nothing
+
+        Dim user As MembresJeu = (From A In entUser.MembresJeu Where (A.courriel = username) Select A).First()
+
+        idUser = user.idMembre
+
+        Return idUser
+    End Function
+
 End Class
