@@ -177,3 +177,46 @@
     width: 150px;
     height: 32px;
 }
+
+.ligneAnimateur
+{
+    height: 20px;
+    width: 800px;
+    float:left;
+}
+
+.blockNomAnimateur1
+{
+    height: 20px;
+    width: 200px;
+    float: left;
+    text-align: left;
+    background-color:Gray;
+}
+
+.blockNomAnimateur2
+{
+    height: 20px;
+    width: 200px;
+    float: left;
+    text-align: left;
+    background-color:white;
+}
+
+.blockCours1
+{
+    height: 20px;
+    width: auto;
+    float: left;
+    text-align: center;
+    background-color:Gray;
+}
+
+.blockCours2
+{
+    height: 20px;
+    width: auto;
+    float: left;
+    text-align: center;
+    background-color:white;
+}
