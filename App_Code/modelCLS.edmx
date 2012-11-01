@@ -108,8 +108,7 @@
     <Property Name="categorie" Type="nvarchar" Nullable="false" MaxLength="7" />
     <Property Name="description" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="prerequis" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="tarifAdulte" Type="decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="tarifEnfant" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="tarif" Type="decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="dateDebutInscription" Type="datetime" Nullable="false" />
     <Property Name="dateFinInscription" Type="datetime" Nullable="false" />
     <Property Name="dateDebutCours" Type="datetime" Nullable="false" />
@@ -135,10 +134,22 @@
     </Key>
     <Property Name="idHoraire" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="jourSemaine" Type="nvarchar" Nullable="false" MaxLength="8" />
-    <Property Name="heureDebut" Type="datetime" Nullable="false" />
-    <Property Name="heureFin" Type="datetime" Nullable="false" />
+    <Property Name="heureDebutLundi" Type="datetime" Nullable="true" />
+    <Property Name="heureFinLundi" Type="datetime" Nullable="true" />
     <Property Name="noLocal" Type="nvarchar" Nullable="false" MaxLength="10" />
     <Property Name="Groupe_idGroupe" Type="smallint" Nullable="false" />
+    <Property Name="heureDebutMardi" Type="datetime" Nullable="true" />
+    <Property Name="heureFinMardi" Type="datetime" Nullable="true" />
+    <Property Name="heureDebutMercredi" Type="datetime" Nullable="true" />
+    <Property Name="heureFinMercredi" Type="datetime" Nullable="true" />
+    <Property Name="heureDebutJeudi" Type="datetime" Nullable="true" />
+    <Property Name="heureFinJeudi" Type="datetime" Nullable="true" />
+    <Property Name="heureDebutVendredi" Type="datetime" Nullable="true" />
+    <Property Name="heureFinVendredi" Type="datetime" Nullable="true" />
+    <Property Name="heureDebutSamedi" Type="datetime" Nullable="true" />
+    <Property Name="heureFinSamedi" Type="datetime" Nullable="true" />
+    <Property Name="heureDebutDimanche" Type="datetime" Nullable="true" />
+    <Property Name="heureFinDimanche" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="ListeAttenteJeu">
     <Key>
@@ -514,8 +525,7 @@
           <Property Type="String" Name="categorie" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="description" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="prerequis" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="tarifAdulte" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="tarifEnfant" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="tarif" Nullable="false" Precision="18" Scale="0" />
           <Property Type="DateTime" Name="dateDebutInscription" Nullable="false" />
           <Property Type="DateTime" Name="dateFinInscription" Nullable="false" />
           <Property Type="DateTime" Name="dateDebutCours" Nullable="false" />
@@ -549,11 +559,23 @@
           </Key>
           <Property Type="Int16" Name="idHoraire" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="jourSemaine" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="heureDebut" Nullable="false" />
-          <Property Type="DateTime" Name="heureFin" Nullable="false" />
+          <Property Type="DateTime" Name="heureDebutLundi" Nullable="true" />
+          <Property Type="DateTime" Name="heureFinLundi" Nullable="true" />
           <Property Type="String" Name="noLocal" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Type="Int16" Name="Groupe_idGroupe" Nullable="false" />
           <NavigationProperty Name="GroupeJeu" Relationship="modelCLS.FK_HoraireGroupe" FromRole="HoraireJeu" ToRole="GroupeJeu" />
+          <Property Type="DateTime" Name="heureDebutMardi" Nullable="true" />
+          <Property Type="DateTime" Name="heureFinMardi" Nullable="true" />
+          <Property Type="DateTime" Name="heureDebutMercredi" Nullable="true" />
+          <Property Type="DateTime" Name="heureFinMercredi" Nullable="true" />
+          <Property Type="DateTime" Name="heureDebutJeudi" Nullable="true" />
+          <Property Type="DateTime" Name="heureFinJeudi" Nullable="true" />
+          <Property Type="DateTime" Name="heureDebutVendredi" Nullable="true" />
+          <Property Type="DateTime" Name="heureFinVendredi" Nullable="true" />
+          <Property Type="DateTime" Name="heureDebutSamedi" Nullable="true" />
+          <Property Type="DateTime" Name="heureFinSamedi" Nullable="true" />
+          <Property Type="DateTime" Name="heureDebutDimanche" Nullable="true" />
+          <Property Type="DateTime" Name="heureFinDimanche" Nullable="true" />
         </EntityType>
         <EntityType Name="ListeAttenteJeu">
           <Key>
@@ -818,8 +840,7 @@
           <ScalarProperty Name="categorie" ColumnName="categorie" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="prerequis" ColumnName="prerequis" />
-          <ScalarProperty Name="tarifAdulte" ColumnName="tarifAdulte" />
-          <ScalarProperty Name="tarifEnfant" ColumnName="tarifEnfant" />
+          <ScalarProperty Name="tarif" ColumnName="tarif" />
           <ScalarProperty Name="dateDebutInscription" ColumnName="dateDebutInscription" />
           <ScalarProperty Name="dateFinInscription" ColumnName="dateFinInscription" />
           <ScalarProperty Name="dateDebutCours" ColumnName="dateDebutCours" />
@@ -847,10 +868,22 @@
         <MappingFragment StoreEntitySet="HoraireJeu">
           <ScalarProperty Name="idHoraire" ColumnName="idHoraire" />
           <ScalarProperty Name="jourSemaine" ColumnName="jourSemaine" />
-          <ScalarProperty Name="heureDebut" ColumnName="heureDebut" />
-          <ScalarProperty Name="heureFin" ColumnName="heureFin" />
+          <ScalarProperty Name="heureDebutLundi" ColumnName="heureDebutLundi" />
+          <ScalarProperty Name="heureFinLundi" ColumnName="heureFinLundi" />
           <ScalarProperty Name="noLocal" ColumnName="noLocal" />
           <ScalarProperty Name="Groupe_idGroupe" ColumnName="Groupe_idGroupe" />
+          <ScalarProperty Name="heureDebutMardi" ColumnName="heureDebutMardi" />
+          <ScalarProperty Name="heureFinMardi" ColumnName="heureFinMardi" />
+          <ScalarProperty Name="heureDebutMercredi" ColumnName="heureDebutMercredi" />
+          <ScalarProperty Name="heureFinMercredi" ColumnName="heureFinMercredi" />
+          <ScalarProperty Name="heureDebutJeudi" ColumnName="heureDebutJeudi" />
+          <ScalarProperty Name="heureFinJeudi" ColumnName="heureFinJeudi" />
+          <ScalarProperty Name="heureDebutVendredi" ColumnName="heureDebutVendredi" />
+          <ScalarProperty Name="heureFinVendredi" ColumnName="heureFinVendredi" />
+          <ScalarProperty Name="heureDebutSamedi" ColumnName="heureDebutSamedi" />
+          <ScalarProperty Name="heureFinSamedi" ColumnName="heureFinSamedi" />
+          <ScalarProperty Name="heureDebutDimanche" ColumnName="heureDebutDimanche" />
+          <ScalarProperty Name="heureFinDimanche" ColumnName="heureFinDimanche" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -977,9 +1010,9 @@
       <Diagram Name="modelCLS" ZoomLevel="82" >
         <EntityTypeShape EntityType="modelCLS.AbonnementJeu" Width="1.5" PointX="3.5" PointY="14.25" Height="2.172587890624996" />
         <EntityTypeShape EntityType="modelCLS.CoursCompleteJeu" Width="1.75" PointX="7" PointY="13.125" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="modelCLS.CoursJeu" Width="1.5" PointX="10.5" PointY="9.875" Height="4.6725065104166656" />
+        <EntityTypeShape EntityType="modelCLS.CoursJeu" Width="1.5" PointX="10.5" PointY="9.875" Height="4.480205078125" />
         <EntityTypeShape EntityType="modelCLS.GroupeJeu" Width="1.5" PointX="7.25" PointY="15.5" Height="2.7494921875000031" />
-        <EntityTypeShape EntityType="modelCLS.HoraireJeu" Width="1.5" PointX="9.375" PointY="16.125" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="modelCLS.HoraireJeu" Width="1.875" PointX="9.375" PointY="16.125" Height="4.672506510416671" />
         <EntityTypeShape EntityType="modelCLS.ListeAttenteJeu" Width="1.5" PointX="7" PointY="8.5" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="modelCLS.MembresJeu" Width="1.5" PointX="1.125" PointY="10.125" Height="5.2494108072916656" />
         <EntityTypeShape EntityType="modelCLS.MembresJeu_Animateur" Width="2" PointX="3.375" PointY="10.5" Height="1.9802864583333246" />
@@ -1000,16 +1033,16 @@
           <ConnectorPoint PointX="7" PointY="13.65625" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_CoursCoursComplete" >
-          <ConnectorPoint PointX="10.5" PointY="13.836253255208334" />
-          <ConnectorPoint PointX="8.75" PointY="13.836253255208334" />
+          <ConnectorPoint PointX="10.5" PointY="13.7401025390625" />
+          <ConnectorPoint PointX="8.75" PointY="13.7401025390625" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_AnimateurCours" >
           <ConnectorPoint PointX="5.375" PointY="10.84375" />
           <ConnectorPoint PointX="10.5" PointY="10.84375" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_CoursGroupe" >
-          <ConnectorPoint PointX="11.46875" PointY="14.547506510416666" />
-          <ConnectorPoint PointX="11.46875" PointY="15.78125" />
+          <ConnectorPoint PointX="11.65625" PointY="14.355205078125" />
+          <ConnectorPoint PointX="11.65625" PointY="15.78125" />
           <ConnectorPoint PointX="8.75" PointY="15.78125" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_CoursListeAttente" >

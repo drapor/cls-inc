@@ -16,7 +16,7 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("ed4d8a5b-ce14-4ccf-a482-60e75e5b750b")>
+<Assembly: EdmSchemaAttribute("1f666e28-459d-4ed2-8627-0b4f9de740e2")>
 #Region "Métadonnées de relation EDM"
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
@@ -752,8 +752,7 @@ Namespace modelCLS
         ''' <param name="idCours">Valeur initiale de la propriété idCours.</param>
         ''' <param name="nomCours">Valeur initiale de la propriété nomCours.</param>
         ''' <param name="categorie">Valeur initiale de la propriété categorie.</param>
-        ''' <param name="tarifAdulte">Valeur initiale de la propriété tarifAdulte.</param>
-        ''' <param name="tarifEnfant">Valeur initiale de la propriété tarifEnfant.</param>
+        ''' <param name="tarif">Valeur initiale de la propriété tarif.</param>
         ''' <param name="dateDebutInscription">Valeur initiale de la propriété dateDebutInscription.</param>
         ''' <param name="dateFinInscription">Valeur initiale de la propriété dateFinInscription.</param>
         ''' <param name="dateDebutCours">Valeur initiale de la propriété dateDebutCours.</param>
@@ -762,13 +761,12 @@ Namespace modelCLS
         ''' <param name="groupeAgeMin">Valeur initiale de la propriété groupeAgeMin.</param>
         ''' <param name="groupeAgeMax">Valeur initiale de la propriété groupeAgeMax.</param>
         ''' <param name="groupeAgeMod">Valeur initiale de la propriété groupeAgeMod.</param>
-        Public Shared Function CreateCoursJeu(idCours As Global.System.Int16, nomCours As Global.System.String, categorie As Global.System.String, tarifAdulte As Global.System.Decimal, tarifEnfant As Global.System.Decimal, dateDebutInscription As Global.System.DateTime, dateFinInscription As Global.System.DateTime, dateDebutCours As Global.System.DateTime, dateFinCours As Global.System.DateTime, animateur_idMembre As Global.System.Int16, groupeAgeMin As Global.System.Int16, groupeAgeMax As Global.System.Int16, groupeAgeMod As Global.System.String) As CoursJeu
+        Public Shared Function CreateCoursJeu(idCours As Global.System.Int16, nomCours As Global.System.String, categorie As Global.System.String, tarif As Global.System.Decimal, dateDebutInscription As Global.System.DateTime, dateFinInscription As Global.System.DateTime, dateDebutCours As Global.System.DateTime, dateFinCours As Global.System.DateTime, animateur_idMembre As Global.System.Int16, groupeAgeMin As Global.System.Int16, groupeAgeMax As Global.System.Int16, groupeAgeMod As Global.System.String) As CoursJeu
             Dim coursJeu as CoursJeu = New CoursJeu
             coursJeu.idCours = idCours
             coursJeu.nomCours = nomCours
             coursJeu.categorie = categorie
-            coursJeu.tarifAdulte = tarifAdulte
-            coursJeu.tarifEnfant = tarifEnfant
+            coursJeu.tarif = tarif
             coursJeu.dateDebutInscription = dateDebutInscription
             coursJeu.dateFinInscription = dateFinInscription
             coursJeu.dateDebutCours = dateDebutCours
@@ -915,49 +913,24 @@ Namespace modelCLS
         ''' </summary>
         <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
         <DataMemberAttribute()>
-        Public Property tarifAdulte() As Global.System.Decimal
+        Public Property tarif() As Global.System.Decimal
             Get
-                Return _tarifAdulte
+                Return _tarif
             End Get
             Set
-                OntarifAdulteChanging(value)
-                ReportPropertyChanging("tarifAdulte")
-                _tarifAdulte = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("tarifAdulte")
-                OntarifAdulteChanged()
+                OntarifChanging(value)
+                ReportPropertyChanging("tarif")
+                _tarif = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("tarif")
+                OntarifChanged()
             End Set
         End Property
     
-        Private _tarifAdulte As Global.System.Decimal
-        Private Partial Sub OntarifAdulteChanging(value As Global.System.Decimal)
+        Private _tarif As Global.System.Decimal
+        Private Partial Sub OntarifChanging(value As Global.System.Decimal)
         End Sub
     
-        Private Partial Sub OntarifAdulteChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property tarifEnfant() As Global.System.Decimal
-            Get
-                Return _tarifEnfant
-            End Get
-            Set
-                OntarifEnfantChanging(value)
-                ReportPropertyChanging("tarifEnfant")
-                _tarifEnfant = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("tarifEnfant")
-                OntarifEnfantChanged()
-            End Set
-        End Property
-    
-        Private _tarifEnfant As Global.System.Decimal
-        Private Partial Sub OntarifEnfantChanging(value As Global.System.Decimal)
-        End Sub
-    
-        Private Partial Sub OntarifEnfantChanged()
+        Private Partial Sub OntarifChanged()
         End Sub
     
         ''' <summary>
@@ -1515,16 +1488,12 @@ Namespace modelCLS
         ''' </summary>
         ''' <param name="idHoraire">Valeur initiale de la propriété idHoraire.</param>
         ''' <param name="jourSemaine">Valeur initiale de la propriété jourSemaine.</param>
-        ''' <param name="heureDebut">Valeur initiale de la propriété heureDebut.</param>
-        ''' <param name="heureFin">Valeur initiale de la propriété heureFin.</param>
         ''' <param name="noLocal">Valeur initiale de la propriété noLocal.</param>
         ''' <param name="groupe_idGroupe">Valeur initiale de la propriété Groupe_idGroupe.</param>
-        Public Shared Function CreateHoraireJeu(idHoraire As Global.System.Int16, jourSemaine As Global.System.String, heureDebut As Global.System.DateTime, heureFin As Global.System.DateTime, noLocal As Global.System.String, groupe_idGroupe As Global.System.Int16) As HoraireJeu
+        Public Shared Function CreateHoraireJeu(idHoraire As Global.System.Int16, jourSemaine As Global.System.String, noLocal As Global.System.String, groupe_idGroupe As Global.System.Int16) As HoraireJeu
             Dim horaireJeu as HoraireJeu = New HoraireJeu
             horaireJeu.idHoraire = idHoraire
             horaireJeu.jourSemaine = jourSemaine
-            horaireJeu.heureDebut = heureDebut
-            horaireJeu.heureFin = heureFin
             horaireJeu.noLocal = noLocal
             horaireJeu.Groupe_idGroupe = groupe_idGroupe
             Return horaireJeu
@@ -1588,51 +1557,51 @@ Namespace modelCLS
         ''' <summary>
         ''' Aucune documentation sur les métadonnées n'est disponible.
         ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
         <DataMemberAttribute()>
-        Public Property heureDebut() As Global.System.DateTime
+        Public Property heureDebutLundi() As Nullable(Of Global.System.DateTime)
             Get
-                Return _heureDebut
+                Return _heureDebutLundi
             End Get
             Set
-                OnheureDebutChanging(value)
-                ReportPropertyChanging("heureDebut")
-                _heureDebut = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("heureDebut")
-                OnheureDebutChanged()
+                OnheureDebutLundiChanging(value)
+                ReportPropertyChanging("heureDebutLundi")
+                _heureDebutLundi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureDebutLundi")
+                OnheureDebutLundiChanged()
             End Set
         End Property
     
-        Private _heureDebut As Global.System.DateTime
-        Private Partial Sub OnheureDebutChanging(value As Global.System.DateTime)
+        Private _heureDebutLundi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureDebutLundiChanging(value As Nullable(Of Global.System.DateTime))
         End Sub
     
-        Private Partial Sub OnheureDebutChanged()
+        Private Partial Sub OnheureDebutLundiChanged()
         End Sub
     
         ''' <summary>
         ''' Aucune documentation sur les métadonnées n'est disponible.
         ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
         <DataMemberAttribute()>
-        Public Property heureFin() As Global.System.DateTime
+        Public Property heureFinLundi() As Nullable(Of Global.System.DateTime)
             Get
-                Return _heureFin
+                Return _heureFinLundi
             End Get
             Set
-                OnheureFinChanging(value)
-                ReportPropertyChanging("heureFin")
-                _heureFin = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("heureFin")
-                OnheureFinChanged()
+                OnheureFinLundiChanging(value)
+                ReportPropertyChanging("heureFinLundi")
+                _heureFinLundi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureFinLundi")
+                OnheureFinLundiChanged()
             End Set
         End Property
     
-        Private _heureFin As Global.System.DateTime
-        Private Partial Sub OnheureFinChanging(value As Global.System.DateTime)
+        Private _heureFinLundi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureFinLundiChanging(value As Nullable(Of Global.System.DateTime))
         End Sub
     
-        Private Partial Sub OnheureFinChanged()
+        Private Partial Sub OnheureFinLundiChanged()
         End Sub
     
         ''' <summary>
@@ -1683,6 +1652,306 @@ Namespace modelCLS
         End Sub
     
         Private Partial Sub OnGroupe_idGroupeChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureDebutMardi() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureDebutMardi
+            End Get
+            Set
+                OnheureDebutMardiChanging(value)
+                ReportPropertyChanging("heureDebutMardi")
+                _heureDebutMardi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureDebutMardi")
+                OnheureDebutMardiChanged()
+            End Set
+        End Property
+    
+        Private _heureDebutMardi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureDebutMardiChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureDebutMardiChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureFinMardi() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureFinMardi
+            End Get
+            Set
+                OnheureFinMardiChanging(value)
+                ReportPropertyChanging("heureFinMardi")
+                _heureFinMardi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureFinMardi")
+                OnheureFinMardiChanged()
+            End Set
+        End Property
+    
+        Private _heureFinMardi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureFinMardiChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureFinMardiChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureDebutMercredi() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureDebutMercredi
+            End Get
+            Set
+                OnheureDebutMercrediChanging(value)
+                ReportPropertyChanging("heureDebutMercredi")
+                _heureDebutMercredi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureDebutMercredi")
+                OnheureDebutMercrediChanged()
+            End Set
+        End Property
+    
+        Private _heureDebutMercredi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureDebutMercrediChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureDebutMercrediChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureFinMercredi() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureFinMercredi
+            End Get
+            Set
+                OnheureFinMercrediChanging(value)
+                ReportPropertyChanging("heureFinMercredi")
+                _heureFinMercredi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureFinMercredi")
+                OnheureFinMercrediChanged()
+            End Set
+        End Property
+    
+        Private _heureFinMercredi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureFinMercrediChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureFinMercrediChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureDebutJeudi() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureDebutJeudi
+            End Get
+            Set
+                OnheureDebutJeudiChanging(value)
+                ReportPropertyChanging("heureDebutJeudi")
+                _heureDebutJeudi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureDebutJeudi")
+                OnheureDebutJeudiChanged()
+            End Set
+        End Property
+    
+        Private _heureDebutJeudi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureDebutJeudiChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureDebutJeudiChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureFinJeudi() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureFinJeudi
+            End Get
+            Set
+                OnheureFinJeudiChanging(value)
+                ReportPropertyChanging("heureFinJeudi")
+                _heureFinJeudi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureFinJeudi")
+                OnheureFinJeudiChanged()
+            End Set
+        End Property
+    
+        Private _heureFinJeudi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureFinJeudiChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureFinJeudiChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureDebutVendredi() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureDebutVendredi
+            End Get
+            Set
+                OnheureDebutVendrediChanging(value)
+                ReportPropertyChanging("heureDebutVendredi")
+                _heureDebutVendredi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureDebutVendredi")
+                OnheureDebutVendrediChanged()
+            End Set
+        End Property
+    
+        Private _heureDebutVendredi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureDebutVendrediChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureDebutVendrediChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureFinVendredi() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureFinVendredi
+            End Get
+            Set
+                OnheureFinVendrediChanging(value)
+                ReportPropertyChanging("heureFinVendredi")
+                _heureFinVendredi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureFinVendredi")
+                OnheureFinVendrediChanged()
+            End Set
+        End Property
+    
+        Private _heureFinVendredi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureFinVendrediChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureFinVendrediChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureDebutSamedi() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureDebutSamedi
+            End Get
+            Set
+                OnheureDebutSamediChanging(value)
+                ReportPropertyChanging("heureDebutSamedi")
+                _heureDebutSamedi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureDebutSamedi")
+                OnheureDebutSamediChanged()
+            End Set
+        End Property
+    
+        Private _heureDebutSamedi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureDebutSamediChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureDebutSamediChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureFinSamedi() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureFinSamedi
+            End Get
+            Set
+                OnheureFinSamediChanging(value)
+                ReportPropertyChanging("heureFinSamedi")
+                _heureFinSamedi = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureFinSamedi")
+                OnheureFinSamediChanged()
+            End Set
+        End Property
+    
+        Private _heureFinSamedi As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureFinSamediChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureFinSamediChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureDebutDimanche() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureDebutDimanche
+            End Get
+            Set
+                OnheureDebutDimancheChanging(value)
+                ReportPropertyChanging("heureDebutDimanche")
+                _heureDebutDimanche = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureDebutDimanche")
+                OnheureDebutDimancheChanged()
+            End Set
+        End Property
+    
+        Private _heureDebutDimanche As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureDebutDimancheChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureDebutDimancheChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+        <DataMemberAttribute()>
+        Public Property heureFinDimanche() As Nullable(Of Global.System.DateTime)
+            Get
+                Return _heureFinDimanche
+            End Get
+            Set
+                OnheureFinDimancheChanging(value)
+                ReportPropertyChanging("heureFinDimanche")
+                _heureFinDimanche = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("heureFinDimanche")
+                OnheureFinDimancheChanged()
+            End Set
+        End Property
+    
+        Private _heureFinDimanche As Nullable(Of Global.System.DateTime)
+        Private Partial Sub OnheureFinDimancheChanging(value As Nullable(Of Global.System.DateTime))
+        End Sub
+    
+        Private Partial Sub OnheureFinDimancheChanged()
         End Sub
 
         #End Region

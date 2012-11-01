@@ -6,6 +6,7 @@ Partial Class Page_login
         If (Membership.ValidateUser(loginCLS.UserName.ToString, loginCLS.Password.ToString)) Then
             Dim role As String = CustomMembershipProvider.GetRoleForUser(loginCLS.UserName.ToString)
             If (Roles.IsUserInRole(loginCLS.UserName.ToString, role)) Then
+                Session("idUser") = CustomMembershipProvider.GetUserId(loginCLS.UserName.ToString)
                 If role = "Administrateur" Then
                     Response.Redirect("~/Page/Admin/home_admin.aspx")
                 ElseIf role = "Employé" Then
@@ -15,7 +16,6 @@ Partial Class Page_login
                 Else
                     Response.Redirect("~/Page/Default.aspx")
                 End If
-                Session("idUser") = CustomMembershipProvider.GetUserId(loginCLS.UserName.ToString)
             End If
         Else
             Msg.Text = "La connexion a échoué. Veuillez entrer votre adresse courriel et votre mot de passe à nouveau."

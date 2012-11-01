@@ -207,7 +207,7 @@
         </ItemTemplate>
 </asp:ListView>
 <div class="bouton">
-    <asp:Button ID="btnRetour" runat="server" OnClick="actionRetour" Text="Retour" CssClass="btn btn-primary btn-small" />
+    <asp:Button ID="btnRetour" runat="server"  Text="Retour" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx" />
 </div>
 <script>
     $(function () {

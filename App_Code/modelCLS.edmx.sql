@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/23/2012 13:54:41
+-- Date Created: 11/01/2012 09:36:24
 -- Generated from EDMX file: C:\GitHub\cls-inc\App_Code\modelCLS.edmx
 -- --------------------------------------------------
 
@@ -103,6 +103,9 @@ GO
 IF OBJECT_ID(N'[dbo].[sysdiagrams]', 'U') IS NOT NULL
     DROP TABLE [dbo].[sysdiagrams];
 GO
+IF OBJECT_ID(N'[dbo].[TarifsJeu]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TarifsJeu];
+GO
 IF OBJECT_ID(N'[dbo].[SessionGroupe]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SessionGroupe];
 GO
@@ -138,8 +141,7 @@ CREATE TABLE [dbo].[CoursJeu] (
     [categorie] nvarchar(7)  NOT NULL,
     [description] nvarchar(500)  NULL,
     [prerequis] nvarchar(50)  NULL,
-    [tarifAdulte] decimal(18,0)  NOT NULL,
-    [tarifEnfant] decimal(18,0)  NOT NULL,
+    [tarif] decimal(18,0)  NOT NULL,
     [dateDebutInscription] datetime  NOT NULL,
     [dateFinInscription] datetime  NOT NULL,
     [dateDebutCours] datetime  NOT NULL,
@@ -165,10 +167,22 @@ GO
 CREATE TABLE [dbo].[HoraireJeu] (
     [idHoraire] smallint IDENTITY(1,1) NOT NULL,
     [jourSemaine] nvarchar(8)  NOT NULL,
-    [heureDebut] datetime  NOT NULL,
-    [heureFin] datetime  NOT NULL,
+    [heureDebutLundi] datetime  NULL,
+    [heureFinLundi] datetime  NULL,
     [noLocal] nvarchar(10)  NOT NULL,
-    [Groupe_idGroupe] smallint  NOT NULL
+    [Groupe_idGroupe] smallint  NOT NULL,
+    [heureDebutMardi] datetime  NULL,
+    [heureFinMardi] datetime  NULL,
+    [heureDebutMercredi] datetime  NULL,
+    [heureFinMercredi] datetime  NULL,
+    [heureDebutJeudi] datetime  NULL,
+    [heureFinJeudi] datetime  NULL,
+    [heureDebutVendredi] datetime  NULL,
+    [heureFinVendredi] datetime  NULL,
+    [heureDebutSamedi] datetime  NULL,
+    [heureFinSamedi] datetime  NULL,
+    [heureDebutDimanche] datetime  NULL,
+    [heureFinDimanche] datetime  NULL
 );
 GO
 
