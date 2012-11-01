@@ -15,17 +15,16 @@ Partial Class Page_Client_home_member
     'Récupère le queryString et crée plusieurs objets session
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
-        Dim idClient As Integer = CType(Request.QueryString("idMembre"), Integer)
+        Dim idClient As Integer = Session("idUser")
         Dim idFamille As String = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).First
 
-        Session("membrePrincipalId") = Request.QueryString("idMembre")
-        Session("membrePrincipalCourriel") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.courriel).First
-        Session("membrePrincipalMotPasse") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.motPasse).First
-        Session("membrePrincipalIdFamille") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).First
-        Session("membrePrincipalAdresse") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.adresse).First
-        Session("membrePrincipalVille") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.ville).First
-        Session("membrePrincipalTelephone") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.telephoneMembre).First
-        Session("membrePrincipalCodePostal") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.codePostal).First
+        Session("userCourriel") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.courriel).First
+        Session("userMotPasse") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.motPasse).First
+        Session("userIdFamille") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).First
+        Session("userAdresse") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.adresse).First
+        Session("userVille") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.ville).First
+        Session("userTelephone") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.telephoneMembre).First
+        Session("userCodePostal") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.codePostal).First
 
         dsListView.WhereParameters("membreID").DefaultValue = idClient
 
@@ -118,10 +117,10 @@ Partial Class Page_Client_home_member
         Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
         Dim idMembre As Integer = lvFamille.DataKeys(dataItem.DisplayIndex).Value.ToString()
 
+        Session("idUserFamille") = idMembre
+
         If e.CommandName = "afficher" Then
-            Dim url As String
-            url = "../Client/member_family.aspx?idMembre=" & idMembre
-            Response.Redirect(url)
+            Response.Redirect("../Client/member_family.aspx")
         End If
 
     End Sub

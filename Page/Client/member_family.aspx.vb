@@ -4,9 +4,7 @@ Partial Class Page_Client_client_membre_famille
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
-        Dim idClient As Integer = CType(Request.QueryString("idMembre"), Integer)
-
-        dsFamille.WhereParameters("MembreID").DefaultValue = idClient
+        dsFamille.WhereParameters("MembreID").DefaultValue = Session("idUserFamille")
 
     End Sub
 
@@ -21,11 +19,4 @@ Partial Class Page_Client_client_membre_famille
 
     End Sub
 
-    Sub actionRetour(sender As Object, e As EventArgs)
-
-        Dim url As String
-        url = "../Client/home_member.aspx?idMembre=" & Session("membrePrincipalId")
-        Response.Redirect(url)
-
-    End Sub
 End Class
