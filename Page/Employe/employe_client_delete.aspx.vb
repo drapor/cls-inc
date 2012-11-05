@@ -12,16 +12,6 @@ Partial Class Page_Employe_employe_client_delete
 
     End Sub
 
-    Sub actionRetour(sender As Object, e As EventArgs)
-
-        Dim url As String
-        url = "../Employe/home_employe.aspx?idMembre=" & Session("employeId")
-        Response.Redirect(url)
-
-    End Sub
-
-
-
     <System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>
     Public Shared Function GetCompletionList(ByVal prefixText As String, ByVal count As Integer) As String()
 

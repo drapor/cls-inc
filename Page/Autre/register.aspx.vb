@@ -28,9 +28,7 @@ Partial Class Page_Autre_register
     Protected Sub lvNouveauMembre_ItemInserted(sender As Object, e As System.Web.UI.WebControls.ListViewInsertedEventArgs) Handles lvNouveauMembre.ItemInserted
         Dim idMembre As String = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.idMembre).Max
 
-        Dim url As String
-        url = "../Client/home_member.aspx?idMembre=" & idMembre
-        Response.Redirect(url)
+        Response.Redirect("../Client/home_member.aspx")
     End Sub
 
     Sub validationCourriel(sender As Object, args As ServerValidateEventArgs)

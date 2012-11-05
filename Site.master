@@ -46,10 +46,10 @@
                 <asp:LinkButton ID="lnkAccueil" runat="server" CssClass="linkHeaderMenuLeft" PostBackUrl="~/Page/Default.aspx" CausesValidation="false" >Accueil</asp:LinkButton>
                 <asp:LinkButton ID="lnkAPropos" runat="server" CssClass="linkHeaderMenuLeft" CausesValidation="false">À propos</asp:LinkButton>
                 <asp:LinkButton ID="lnkNousJoindre" runat="server" CssClass="linkHeaderMenuLeft" CausesValidation="false">Nous joindre</asp:LinkButton>
-                <asp:LinkButton ID="lnkLogOut" runat="server" CssClass="linkHeaderMenuRight" Visible="false">Déconnexion</asp:LinkButton>
-                <asp:LinkButton ID="lnkUserName" runat="server" CssClass="linkHeaderMenuRight" Visible="false"></asp:LinkButton>
+                <asp:LinkButton ID="lnkLogOut" runat="server" CssClass="linkHeaderMenuRight" Visible="false" CausesValidation="false">Déconnexion</asp:LinkButton>
+                <asp:LinkButton ID="lnkUserName" runat="server" CssClass="linkHeaderMenuRight" Visible="false" CausesValidation="false" PostBackUrl="~/Page/Client/home_member.aspx"></asp:LinkButton>
                 <asp:LinkButton ID="lnkInscrire" runat="server" CssClass="linkHeaderMenuRight" PostBackUrl="~/Page/login.aspx">Connecter</asp:LinkButton>
-                <asp:LinkButton ID="lnkConnecter" runat="server" CssClass="linkHeaderMenuRight" PostBackUrl="~/Page/Autre/register.aspx">S'incrire</asp:LinkButton>
+                <asp:LinkButton ID="lnkConnecter" runat="server" CssClass="linkHeaderMenuRight" PostBackUrl="~/Page/Autre/register.aspx" CausesValidation="false">S'incrire</asp:LinkButton>
             </div>
             <div class="ligneHeader">
             </div>

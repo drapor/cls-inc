@@ -28,18 +28,9 @@ Partial Class Page_Employe_employe_client_modify
         Dim idMembre As Integer = lvMembre.DataKeys(dataItem.DisplayIndex).Value.ToString()
 
         If e.CommandName = "modifier" Then
-            Dim url As String
-            url = "../Client/home_member.aspx?idMembre=" & idMembre
-            Response.Redirect(url)
+            Session("idClient") = idMembre
+            Response.Redirect("../Employe/employe_home_member.aspx")
         End If
-    End Sub
-
-    Sub actionRetour(sender As Object, e As EventArgs)
-
-        Dim url As String
-        url = "../Employe/home_employe.aspx?idMembre=" & Session("employeId")
-        Response.Redirect(url)
-
     End Sub
 
     <System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>

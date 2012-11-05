@@ -3,7 +3,12 @@ Imports masterPage
 Partial Class Page_Autre_register
     Inherits System.Web.UI.Page
 
+    Public entClient As modelCLSContainer = New modelCLSContainer
+
     Protected Sub lvMembreFamille_ItemInserted(sender As Object, e As System.Web.UI.WebControls.ListViewInsertedEventArgs) Handles lvMembreFamille.ItemInserted
+        Dim idMembre As String = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.idMembre).Max
+
+        Session("idMembreFamille") = idMembre
         Response.Redirect("../Client/member_family.aspx")
     End Sub
 

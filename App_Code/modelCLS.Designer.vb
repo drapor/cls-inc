@@ -16,7 +16,7 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("1f666e28-459d-4ed2-8627-0b4f9de740e2")>
+<Assembly: EdmSchemaAttribute("7ad83027-0dc7-4c6c-b5a0-21bdbdf312e3")>
 #Region "Métadonnées de relation EDM"
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
@@ -1487,13 +1487,11 @@ Namespace modelCLS
         ''' Créez un nouvel objet HoraireJeu.
         ''' </summary>
         ''' <param name="idHoraire">Valeur initiale de la propriété idHoraire.</param>
-        ''' <param name="jourSemaine">Valeur initiale de la propriété jourSemaine.</param>
         ''' <param name="noLocal">Valeur initiale de la propriété noLocal.</param>
         ''' <param name="groupe_idGroupe">Valeur initiale de la propriété Groupe_idGroupe.</param>
-        Public Shared Function CreateHoraireJeu(idHoraire As Global.System.Int16, jourSemaine As Global.System.String, noLocal As Global.System.String, groupe_idGroupe As Global.System.Int16) As HoraireJeu
+        Public Shared Function CreateHoraireJeu(idHoraire As Global.System.Int16, noLocal As Global.System.String, groupe_idGroupe As Global.System.Int16) As HoraireJeu
             Dim horaireJeu as HoraireJeu = New HoraireJeu
             horaireJeu.idHoraire = idHoraire
-            horaireJeu.jourSemaine = jourSemaine
             horaireJeu.noLocal = noLocal
             horaireJeu.Groupe_idGroupe = groupe_idGroupe
             Return horaireJeu
@@ -1527,31 +1525,6 @@ Namespace modelCLS
         End Sub
     
         Private Partial Sub OnidHoraireChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property jourSemaine() As Global.System.String
-            Get
-                Return _jourSemaine
-            End Get
-            Set
-                OnjourSemaineChanging(value)
-                ReportPropertyChanging("jourSemaine")
-                _jourSemaine = StructuralObject.SetValidValue(value, false)
-                ReportPropertyChanged("jourSemaine")
-                OnjourSemaineChanged()
-            End Set
-        End Property
-    
-        Private _jourSemaine As Global.System.String
-        Private Partial Sub OnjourSemaineChanging(value As Global.System.String)
-        End Sub
-    
-        Private Partial Sub OnjourSemaineChanged()
         End Sub
     
         ''' <summary>

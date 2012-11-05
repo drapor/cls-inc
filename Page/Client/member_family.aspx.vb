@@ -4,7 +4,7 @@ Partial Class Page_Client_client_membre_famille
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
-        dsFamille.WhereParameters("MembreID").DefaultValue = Session("idUserFamille")
+        dsFamille.WhereParameters("MembreID").DefaultValue = Session("idMembreFamille")
 
     End Sub
 

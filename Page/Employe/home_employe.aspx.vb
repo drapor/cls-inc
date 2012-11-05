@@ -7,11 +7,7 @@ Partial Class Page_Employe_home_employe
     Public entClient As modelCLSContainer = New modelCLSContainer
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        Dim idEmploye As Integer = CType(Request.QueryString("idMembre"), Integer)
-
-        Session("employeId") = Request.QueryString("idMembre")
-
-        dsListView.WhereParameters("membreID").DefaultValue = idEmploye
+        dsListView.WhereParameters("membreID").DefaultValue = Session("idUser")
     End Sub
 
     Protected Sub lvInfoMembre_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvInfoMembre.ItemCommand

@@ -1,13 +1,12 @@
 ﻿'Créé par Francis Griggs
 'Le 6 septembre 2012
 'Dernière mise à jour le 29 octobre 2012
-'Claase partielle qui crée un objet session pour stocké certaines informations utiles sur d'autres pages du site. Récupère le queryString pour l'affichage du bon membre.
+'Classe partielle qui crée un objet session pour stocké certaines informations utiles sur d'autres pages du site. Récupère le queryString pour l'affichage du bon membre.
 'Affiche ou rend invible certains contrôles selon l'Item Command et finalement vérifie si certaines données sont présentes dans la BD.
 
 Imports modelCLS
 Imports masterPage
-
-Partial Class Page_Client_home_member
+Partial Class Page_Employe_employe_home_member
     Inherits System.Web.UI.Page
 
     Public entClient As modelCLSContainer = New modelCLSContainer
@@ -15,7 +14,7 @@ Partial Class Page_Client_home_member
     'Récupère le queryString et crée plusieurs objets session
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
-        Dim idClient As Integer = Session("idUser")
+        Dim idClient As Integer = Session("idClient")
         Dim idFamille As String = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).First
 
         Session("userCourriel") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.courriel).First
@@ -171,3 +170,4 @@ Partial Class Page_Client_home_member
     End Sub
 
 End Class
+
