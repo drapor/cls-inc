@@ -52,12 +52,8 @@
         </div>
         <div class="blockCout">
         <div class="blockTarif">
-        <asp:Label ID="lblTarifAdulteTexte" SkinID="lblInfos" runat="server" Text="Tarif Adulte: "></asp:Label>
-        <asp:Label ID="lblTarifAdulte" runat="server" Text='<%#Eval ("tarifAdulte")&"$" %>'></asp:Label><br />
-        </div>
-        <div class="blockTarif">
-        <asp:Label ID="lblTarifEnfantTexte" SkinID="lblInfos" runat="server" Text="Tarif Enfant: "></asp:Label>
-        <asp:Label ID="lblTarifEnfant" runat="server" Text='<%#Eval ("tarifEnfant")&"$" %>'></asp:Label>
+        <asp:Label ID="lblTarifTexte" SkinID="lblInfos" runat="server" Text="Tarif: "></asp:Label>
+        <asp:Label ID="lblTarif" runat="server" Text='<%#Eval ("tarif")&"$" %>'></asp:Label><br />
         </div>
         </div>          
         </ItemTemplate>
