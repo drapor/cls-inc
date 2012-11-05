@@ -178,45 +178,66 @@
     height: 32px;
 }
 
-.ligneAnimateur
-{
-    height: 20px;
-    width: 800px;
-    float:left;
-}
-
 .blockNomAnimateur1
 {
-    height: 20px;
+    height: 23px;
     width: 200px;
     float: left;
     text-align: left;
-    background-color:Gray;
+    background-color:#DEDEDE;
+    border-radius: 6px;
+    padding: 2px;
+    margin-bottom:2px;
 }
 
 .blockNomAnimateur2
 {
-    height: 20px;
+    height: 23px;
     width: 200px;
     float: left;
     text-align: left;
-    background-color:white;
+    background-color:#F5F5F5;
+    border-radius: 6px;
+    padding: 2px;
+    margin-bottom:2px;
 }
 
 .blockCours1
 {
-    height: 20px;
-    width: auto;
+    height: 23px;
+    width: 200px;
     float: left;
     text-align: center;
-    background-color:Gray;
+    background-color:#DEDEDE;
+    border-radius: 6px;
+    padding: 2px;
+    margin-bottom:2px;
+    text-align:center;
 }
 
 .blockCours2
 {
-    height: 20px;
-    width: auto;
+    height: 23px;
+    width: 200px;
     float: left;
     text-align: center;
-    background-color:white;
+    background-color:#F5F5F5;
+    border-radius: 6px;
+    padding: 2px;
+    margin-bottom:2px;
+    text-align:center;
+}
+
+.boutonFloatRight
+{
+    float:right;
+    margin-right: 4px;
+}
+
+.coursAnimateur
+{
+    width: 200px;
+    height:auto;
+    float:left;
+    margin:4px;
 }

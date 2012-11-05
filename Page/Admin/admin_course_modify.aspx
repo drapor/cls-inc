@@ -72,9 +72,7 @@
 
             <div class="modifierCoursDroite">
                 <div class="partiGaucheCoursDate">
-                    <asp:Label ID="lblTarifAdulte" runat="server" Text="Tarif adulte:"></asp:Label>
-                    </br>
-                    <asp:Label ID="lblTarifEnfant" runat="server" Text="Tarif enfant:"></asp:Label>
+                    <asp:Label ID="lblTarif" runat="server" Text="Tarif:"></asp:Label>
                     </br>
                     <asp:Label ID="lblDateDebutInscription" runat="server" Text="Date début inscription:"></asp:Label>
                     </br>
@@ -87,9 +85,7 @@
                 </div>
                 
                 <div class="partiDroiteCoursDate">
-                    <asp:Label ID="lblTarifAdulteCours" runat="server" Text='<%# Eval("tarifAdulte") %>'></asp:Label>
-                    </br>
-                    <asp:Label ID="lblTarifEnfantCours" runat="server" Text='<%# Eval("tarifEnfant") %>'></asp:Label>
+                    <asp:Label ID="lblTarifCours" runat="server" Text='<%# Eval("tarif") %>'></asp:Label>
                     </br>
                     <asp:Label ID="lblDateDebutInscriptionCours" runat="server" Text='<%# (CType(Eval("dateDebutInscription"),DateTime)).ToShortDateString %>'></asp:Label>
                     </br>
@@ -146,21 +142,12 @@
     </div>  <%--Prérequis--%>
 
     <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblTarifAdulte" runat="server" Text="Tarif Adulte"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtTarifAdulte" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="6" Width="50px" Text='<%#Bind("tarifAdulte") %>'></asp:TextBox></div>
+         <div class="elementFormulaireTexte"><asp:Label ID="lblTarif" runat="server" Text="Tarif"></asp:Label></div>
+         <div class="elementFormulaire"><asp:TextBox ID="txtTarif" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="6" Width="50px" Text='<%#Bind("tarif") %>'></asp:TextBox></div>
          <div class="elementFormulaireRequired">
-        <asp:RequiredFieldValidator ID="requiredTarifAdulte" runat="server" ErrorMessage="*Le tarif adulte est obligatoire" ControlToValidate="txtTarifAdulte" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="requiredTarif" runat="server" ErrorMessage="*Le tarif est obligatoire" ControlToValidate="txtTarif" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         </div>
     </div> <%--Tarif Adulte--%>
-
-    <div class="ligneFormulaire">
-         <div class="elementFormulaireTexte"><asp:Label ID="lblTarifEnfant" runat="server" Text="Tarif Enfant"></asp:Label></div>
-         <div class="elementFormulaire"><asp:TextBox ID="txtTarifEnfant" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="6" Width="50px" Text='<%#Bind("tarifEnfant") %>'></asp:TextBox></div>
-         <div class="elementFormulaireRequired">
-        <asp:RequiredFieldValidator ID="requiredTarifEnfant" runat="server" ErrorMessage="*Le tarif enfant est obligatoire" ControlToValidate="txtTarifEnfant" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-        </div>
-    </div>
-            <%--Tarif Enfant--%>
             <div class="ligneFormulaire">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblGroupeAge" runat="server" Text="Groupe d'âge"></asp:Label></div>
