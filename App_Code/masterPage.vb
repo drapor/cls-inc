@@ -30,4 +30,19 @@ Public Class masterPage
         Return found
     End Function
 
+    Public Sub ResetFormControlValues(ByVal parent As Control)
+        For Each c As Control In parent.Controls
+            If c.Controls.Count > 0 Then
+                ResetFormControlValues(c)
+            Else
+                Select Case (c.GetType().ToString())
+                    Case "System.Web.UI.WebControls.TextBox"
+                        CType(c, TextBox).Text = ""
+                    Case "System.Web.UI.WebControls.RadioButtonList"
+                        CType(c, RadioButtonList).ClearSelection()
+                End Select
+            End If
+        Next c
+    End Sub
+
 End Class

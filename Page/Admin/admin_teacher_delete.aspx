@@ -34,21 +34,6 @@
                         </div> 
                     </ItemTemplate>
                 </asp:ListView>
-                <%--<div class="coursAnimateur">
-                <asp:ListView ID="lvCours" runat="server" DataKeyNames="idCours" DataSourceID="dsCours">
-                            <LayoutTemplate>
-                                <div class="blockCours1">
-                                    <b>Cours assigné</b>
-                                </div>
-                                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
-                            </LayoutTemplate>
-                            <ItemTemplate>
-                                <div class="blockCours2">
-                                    <asp:Label ID="lblNomCours" runat="server" Text='<%# Eval("nomCours") %>'></asp:Label>
-                                </div>
-                            </ItemTemplate>
-                        </asp:ListView>
-                </div>--%>
                 <div class="boutonAdminRetourDelete">
                     <asp:Button ID="btnRetour" runat="server" PostBackUrl="~/Page/Admin/home_admin.aspx"
                         Text="Retour" CssClass="btn btn-primary" />
@@ -56,20 +41,9 @@
             </div>
         </div>
     </div>
-
-
     <asp:EntityDataSource ID="dsAnimateur" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu_Animateur"
         EnableFlattening="false" EnableDelete="true" EnableInsert="false" Include="MembresJeu,CoursJeu"
         EnableUpdate="true">
     </asp:EntityDataSource>
-
-    <%--<asp:EntityDataSource ID="dsCours" runat="server" ConnectionString="name=modelCLSContainer"
-        DefaultContainerName="modelCLSContainer" EntitySetName="CoursJeu" EnableFlattening="false"
-        EnableDelete="true" EnableInsert="false" EnableUpdate="true" 
-        Where="(it.Animateur_idMembre = @MembreID)">
-        <WhereParameters>
-            <asp:Parameter Name="MembreID" DbType="Int16" DefaultValue="0" />
-        </WhereParameters>
-    </asp:EntityDataSource>--%>
 </asp:Content>

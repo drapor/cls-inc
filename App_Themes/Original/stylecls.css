@@ -119,6 +119,18 @@
     color:#1b1bb3;
 }
 
+.myProfile
+{
+    height:42px;
+    width:300px;
+    text-align:center;
+    float:left;
+    color:White;
+    padding-top:3px;
+    font-size: 38px;
+    font-weight:bold;
+}
+
 .menuButtonAlign
 {
     width:100px;

@@ -7,8 +7,8 @@
             <asp:Label ID="lblConnecter" runat="server" Text="Se connecter"></asp:Label><br />
         </div>
         <br />
-        <asp:Login ID="loginCLS" runat="server" DisplayRememberMe="false" UserNameLabelText="Adresse courriel: "
-            TitleText="" RememberMeSet="true" RememberMeText="">
+        <asp:Login ID="loginCLS" runat="server" DisplayRememberMe="false" Width="360px" UserNameLabelText="Adresse courriel: "
+            TitleText="" RememberMeSet="true" RememberMeText="" FailureText="Le nom d'utilisateur ou le mot de passe ne correspond pas.">
             <LoginButtonStyle CssClass="btn btn-primary btn-large btn" />
             <TextBoxStyle CssClass="search-query" BorderColor="#1b1bb3" ForeColor="#1b1bb3" BackColor="#ffbf00" BorderWidth="2px" />
         </asp:Login>

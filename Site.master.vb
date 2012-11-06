@@ -36,6 +36,8 @@ Partial Class Site
             lnkInscrire.Visible = False
             lnkUserName.Visible = True
             lnkLogOut.Visible = True
+            lnkProfile.Visible = True
+            imgProfileIcon.Visible = True
             lnkUserName.Text = HttpContext.Current.User.Identity.Name
         End If
     End Sub

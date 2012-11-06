@@ -67,6 +67,10 @@
                             Width="28px" />
                         </form>
                     </div>
+                    <div class="myProfile">
+                        <asp:ImageButton ID="imgProfileIcon" runat="server" ImageUrl="~/App_Themes/Original/img/profile_account.png" Height="35px" Width="39px" Visible="false" />
+                        <asp:LinkButton ID="lnkProfile" runat="server" Visible="false" ForeColor="White" Font-Size="Medium">Mon profil</asp:LinkButton>
+                    </div>
                 </div>
             </div>
             <div class="containerContenu">

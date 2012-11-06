@@ -1,8 +1,13 @@
-﻿Imports masterPage
+﻿'Créé par Francis Griggs
+'Le 16 septembre 2012
+'Dernière mise à jour le 25 septembre 2012
+'Classe partielle qui ajoute un groupe dans la BD associé à un cours
+
+Imports masterPage
 Imports modelCLS
 
 Partial Class Page_Admin_admin_group_add
-    Inherits System.Web.UI.Page
+    Inherits masterPage
 
     Dim entClient As modelCLSContainer = New modelCLSContainer
 

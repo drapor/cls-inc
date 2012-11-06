@@ -14,43 +14,27 @@
                     <asp:Label ID="listeEmploye" runat="server" Text="Liste des employés"></asp:Label>
                 </div>
             </div>
+            <div class="infoClient">
             <asp:ListView ID="lvEmploye" runat="server" DataSourceID="dsEmploye" DataKeyNames="idMembre">
                 <LayoutTemplate>
-                    <div class="infoClient">
-                        <div class="ligneAnimateur">
+                    <div class="coursAnimateur">
                             <div class="blockNomAnimateur1">
-                                <b>Nom de l'employé </b></div>
-                            <div class="blockCours2">
-                            </div>
-                        </div>
+                                <b>Nom de l'employé </b>
+                                </div>
                         <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                     </div>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <div class="ligneAnimateur">
                         <div class="blockNomAnimateur2">
                             <asp:Label ID="lblprenomEmploye" runat="server" Text='<%# Eval("prenomMembre ") %>'></asp:Label>
                             <asp:Label ID="lblNomEmploye" runat="server" Text='<%# Eval("nomMembre ") %>'></asp:Label>
+                            <asp:ImageButton ID="imgDelete" CommandArgument='<%#Eval("idMembre")%>' CssClass="boutonFloatRight" ImageUrl="~/App_Themes/Original/img/delete.png"
+                                OnClientClick="return confirm('Etes-vous certain?');" CommandName="Delete" runat="server"
+                                Width="20px" Height="20px" />
                         </div>
-                        <div class="blockCours2">
-                            <asp:Button ID="btnSupprimer" runat="server" CommandName="Delete" Text="Supprimer"
-                                CssClass="btn btn-danger btn-mini " OnClientClick="return confirm('Etes-vous certain?');" />
-                        </div>
-                    </div>
                 </ItemTemplate>
-                <AlternatingItemTemplate>
-                <div class="ligneAnimateur">
-                        <div class="blockNomAnimateur1">
-                            <asp:Label ID="lblprenomEmploye" runat="server" Text='<%# Eval("prenomMembre ") %>'></asp:Label>
-                            <asp:Label ID="lblNomEmploye" runat="server" Text='<%# Eval("nomMembre ") %>'></asp:Label>
-                        </div>
-                        <div class="blockCours2">
-                            <asp:Button ID="btnSupprimer" runat="server" CommandName="Delete" Text="Supprimer"
-                                CssClass="btn btn-danger btn-mini " OnClientClick="return confirm('Etes-vous certain?');" />
-                        </div>
-                    </div>
-                </AlternatingItemTemplate>
             </asp:ListView>
+            </div> 
             <div class="boutonAdminRetourDelete">
                 <asp:Button ID="btnRetour" runat="server" PostBackUrl="~/Page/Admin/home_admin.aspx"
                     Text="Retour" CssClass="btn btn-primary" />

@@ -6,6 +6,7 @@ Partial Class Page_Autre_description
         Dim cours As Integer = Session("idCours")
         dsCours.WhereParameters("cours").DefaultValue = cours
         dsGroupes.WhereParameters("coursID").DefaultValue = cours
+        dsMembreFamille.WhereParameters("familleID").DefaultValue = Session("idFamille")
 
         Dim categorie As String = Request.QueryString("categorie")
         If categorie = "Sport" Then
@@ -19,18 +20,20 @@ Partial Class Page_Autre_description
 
     End Sub
 
+    'Protected Sub lvCours_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvCours.ItemCommand
+
+    '    Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
+    '    Dim idCours As Integer = lvCours.DataKeys(dataItem.DisplayIndex).Value.ToString()
+
+    '    If e.CommandName = "selection" Then
+
+    '    End If
+
+    'End Sub
     Sub retourCategorie(sender As Object, e As EventArgs)
         Dim categorie As String = Request.QueryString("categorie")
         Dim url As String
         url = "../Autre/category.aspx?categorie=" & categorie
         Response.Redirect(url)
-    End Sub
-
-    Sub redirection(sender As Object, e As EventArgs)
-        If User.Identity.IsAuthenticated = False Then
-            MsgBox("Vous devez être inscrit chez CLS pour pouvoir vous inscrire à une activité.", MsgBoxStyle.OkOnly, "Inscription")
-            Response.Redirect("~/Page/login.aspx")
-        Else
-        End If
     End Sub
 End Class

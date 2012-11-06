@@ -22,16 +22,19 @@ Partial Class Page_Autre_category
 
 
     Protected Sub lvCours_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvCours.ItemCommand
-
         Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
         Dim idCours As Integer = lvCours.DataKeys(dataItem.DisplayIndex).Value.ToString()
         Session("idCours") = idCours
         categorie = Request.QueryString("categorie")
         If e.CommandName = "selection" Then
             cours = idCours
-            url = "../Autre/description.aspx?categorie=" & categorie
-            Response.Redirect(url)
+            If User.Identity.IsAuthenticated = False Then
+                url = "../Autre/description.aspx?categorie=" & categorie
+                Response.Redirect(url)
+            Else
+                url = "../Client/member_description.aspx?categorie=" & categorie
+                Response.Redirect(url)
+            End If
         End If
-
     End Sub
 End Class

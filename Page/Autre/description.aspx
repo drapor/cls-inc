@@ -85,7 +85,7 @@
          <asp:Label ID="lblPlaceRestante"  runat="server" Text="Place restante: 5"></asp:Label>
     </div>
     <div class="blockGroupe">
-         <asp:Button ID="btnJeMinscris" runat="server" Text="Je m'inscris !" CssClass="btn btn-small btn-primary" />  
+         <asp:Button ID="btnJeMinscris" runat="server" Text="Je m'inscris !" CssClass="btn btn-small btn-primary" CommandArgument='<%#Eval ("idGroupe")%>' OnClick="redirection" />  
     </div>
     </div>
     </ItemTemplate>

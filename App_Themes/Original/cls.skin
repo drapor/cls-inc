@@ -6,3 +6,4 @@
 <asp:Button BackColor="#ffbf00" SkinID="btnYellow" runat="server" ForeColor="#1b1bb3" Font-Bold="true" BorderColor="#1b1bb3" BorderWidth="2px" ></asp:Button>
 <asp:Login BorderColor="#1b1bb3" SkinID="loginCustom" runat="server"  ForeColor="#1b1bb3" Font-Bold="true" border-top-left-radius= "20px" border-top-right-radius= "20px" border-bottom-left-radius="20px" border-bottom-right-radius= "20px" TextBoxStyle-BackColor="#ffbf00" TextBoxStyle-BorderColor="#1b1bb3" TextBoxStyle-BorderWidth="2px" LoginButtonStyle-CssClass="btn btn-primary btn-large btn" TextBoxStyle-ForeColor="#1b1bb3" TextBoxStyle-Font-Bold="true" ></asp:Login>
 <asp:Label BorderColor="#1b1bb3" SkinID="lblInfos" runat="server" ForeColor="#1b1bb3" Font-Bold="true" Font-Size="15px" ></asp:Label>
+<asp:DropDownList BackColor="#ffbf00" SkinID="ddlBluePetit" runat="server" ForeColor="#1b1bb3" Font-Bold="false" BorderColor="#1b1bb3" BorderWidth="2px"></asp:DropDownList>

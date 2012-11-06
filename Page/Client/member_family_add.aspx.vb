@@ -15,7 +15,7 @@ Partial Class Page_Autre_register
     Protected Sub lvMembreFamille_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvMembreFamille.ItemInserting
         e.Values("courriel") = Session("userCourriel")
         e.Values("motPasse") = Session("userMotPasse")
-        e.Values("familleID") = Session("userIdFamille")
+        e.Values("familleID") = Session("idFamille")
         e.Values("adresse") = Session("userAdresse")
         e.Values("ville") = Session("userVille")
         e.Values("telephoneMembre") = Session("userTelephone")

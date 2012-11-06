@@ -7,6 +7,7 @@ Partial Class Page_login
             Dim role As String = CustomMembershipProvider.GetRoleForUser(loginCLS.UserName.ToString)
             If (Roles.IsUserInRole(loginCLS.UserName.ToString, role)) Then
                 Session("idUser") = CustomMembershipProvider.GetUserId(loginCLS.UserName.ToString)
+                Session.Timeout = 10
                 If role = "Administrateur" Then
                     Response.Redirect("~/Page/Admin/home_admin.aspx")
                 ElseIf role = "Employé" Then
@@ -18,7 +19,7 @@ Partial Class Page_login
                 End If
             End If
         Else
-            Msg.Text = "La connexion a échoué. Veuillez entrer votre adresse courriel et votre mot de passe à nouveau."
+            Msg.Text = "Le nom d'utilisateur ou le mot de passe ne correspond pas."
         End If
     End Sub
 End Class

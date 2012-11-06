@@ -1,6 +1,11 @@
+'Créé par Samuel Bellerose
+'Le 16 septembre 2012
+'Dernière mise à jour le 25 septembre 2012
+'Classe partielle qui ajoute un employé dans la BD
+
 Imports modelCLS
 Partial Class Page_Admin_admin_employe_add
-    Inherits System.Web.UI.Page
+    Inherits masterPage
 
     Private Shared leContext As modelCLSContainer = Nothing
 
@@ -8,19 +13,15 @@ Partial Class Page_Admin_admin_employe_add
         leContext = New modelCLSContainer
     End Sub
 
+    'Fonction qui ajoute un employé dans la BD et lui met le rôle d'employé soit admin ou employé
     Sub ajouterEmployeClick(sender As Object, e As EventArgs)
         If Page.IsValid = True Then
             Dim entEmploye As New modelCLSContainer
             Dim unEmploye As MembresJeu = Nothing
-
-
-
             Dim email As String = txtCourriel.Text
-
             Dim utilisateur = (From A In entEmploye.MembresJeu Where (A.courriel = email) Select A).Any
 
             If utilisateur = Nothing Then
-
                 unEmploye = MembresJeu.CreateMembresJeu(0, txtNom.Text, txtPrenom.Text, txtTelephone.Text, txtMDP.Text, txtAdresse.Text, txtVille.Text, Date.Now.ToShortDateString, txtDate.Text, txtCourriel.Text, txtCodePostal.Text, 0, rdbtnSexe.SelectedItem.Value, dropDownType.SelectedItem.Value)
                 entEmploye.MembresJeu.AddObject(unEmploye)
                 entEmploye.SaveChanges()
@@ -33,35 +34,14 @@ Partial Class Page_Admin_admin_employe_add
 
                 lblFelicitation.Visible = True
                 checkImage.Visible = True
+
                 ResetFormControlValues(Me)
-
             Else
-
                 lblErreurEmail.Visible = True
                 lblFelicitation.Visible = False
                 checkImage.Visible = False
-
             End If
         End If
 
     End Sub
-
-    Private Sub ResetFormControlValues(ByVal parent As Control)
-        For Each c As Control In parent.Controls
-            If c.Controls.Count > 0 Then
-                ResetFormControlValues(c)
-            Else
-                Select Case (c.GetType().ToString())
-                    Case "System.Web.UI.WebControls.TextBox"
-                        CType(c, TextBox).Text = ""
-                    Case "System.Web.UI.WebControls.RadioButtonList"
-                        CType(c, RadioButtonList).ClearSelection()
-                End Select
-            End If
-        Next c
-    End Sub
-
-
-
-
 End Class

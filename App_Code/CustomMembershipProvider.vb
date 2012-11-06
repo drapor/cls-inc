@@ -153,7 +153,7 @@ Public Class CustomMembershipProvider
         Try
             utilisateur = (From A In entUser.MembresJeu Where (A.courriel = username And A.motPasse = password) Select A).First()
         Catch ex As Exception
-            Throw New ProviderException("Le courriel ou le mot de passe ne corresponde pas.")
+
         End Try
 
 
