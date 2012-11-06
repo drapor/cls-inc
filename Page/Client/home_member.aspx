@@ -1,6 +1,7 @@
 ﻿<%--Créé par Francis Griggs--%>
 <%--Le 6 septembre 2012--%>
 <%--Dernière mise à jour le 29 octobre 2012--%>
+
 <%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_member.aspx.vb" Inherits="Page_Client_home_member" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
@@ -125,7 +126,7 @@
                     </div>
                     </br>
                     <div class="formatZone">
-                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker search-query" SkinID="txtBoxYellow" MaxLength="10" Width="80px" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:yyyy-MM-dd}") %>' ></asp:TextBox>
+                        <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker search-query" SkinID="txtBoxYellow" MaxLength="10" Width="80px" ForeColor="Red" Text='<%# Bind("dateNaissance", "{0:yyyy/MM/dd}") %>' ></asp:TextBox>
                     </div>
                     </br>
                     <div class="formatZone">

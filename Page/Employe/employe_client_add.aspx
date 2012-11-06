@@ -1,4 +1,4 @@
-<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="register.aspx.vb" Inherits="Page_Autre_register" Theme="Original" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" MasterPageFile="~/Site.master" CodeFile="employe_client_add.aspx.vb" Inherits="Page_Employe_employe_client_add" Theme="Original"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <div class="containerContenuAdmin">
@@ -43,8 +43,8 @@
          <div class="elementFormulaireTexte"><asp:Label ID="lblSexe" runat="server" Text="Sexe"></asp:Label></div>
          <div class="elementFormulaire">
              <asp:RadioButtonList ID="rdbtnSexe" runat="server" RepeatDirection="Horizontal" Width="200px" SelectedValue='<%# Bind("sexe") %>'>
-                <asp:ListItem Text="Homme" Value="H" Selected="true"></asp:ListItem>
-                <asp:ListItem Text="Femme" Value="F"></asp:ListItem>
+             <asp:ListItem Text="Homme" Value="H" Selected="true"></asp:ListItem>
+             <asp:ListItem Text="Femme" Value="F"></asp:ListItem>
             </asp:RadioButtonList>
          </div>
     </div>
@@ -104,13 +104,14 @@
         <div class="ligneFormulaire">
             <div class="elementFormulaireTexte"></div>
             <div class="elementFormulaire">
-                <asp:Button ID="btnAjouter" runat="server" CommandName="Insert" Text="Ajouter" CssClass="btn btn-primary btn-large btn"/>
-                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary btn-large btn" CausesValidation="false"/>
+                <asp:Button ID="btnAjouter" runat="server" CommandName="Insert" Text="Créer l'employé" CssClass="btn btn-primary btn-large btn"/>
             </div>
         </div>
     </InsertItemTemplate>
 </asp:ListView>
-
+<div class="bouton" style="margin-bottom:10px; margin-left:10px;">
+    <asp:Button ID="btnRetour" runat="server"  Text="Retour page employé" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Employe/home_employe.aspx" CausesValidation="False" />
+</div>
 <script>
     $(function () {
         $(".datepicker").datepicker({

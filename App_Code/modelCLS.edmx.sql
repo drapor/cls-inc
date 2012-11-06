@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/01/2012 09:36:24
+-- Date Created: 11/06/2012 08:47:27
 -- Generated from EDMX file: C:\GitHub\cls-inc\App_Code\modelCLS.edmx
 -- --------------------------------------------------
 
@@ -23,14 +23,17 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_AbonnementMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[AbonnementJeu] DROP CONSTRAINT [FK_AbonnementMembres];
 GO
+IF OBJECT_ID(N'[dbo].[FK_Animateur_inherits_Membres]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembresJeu_Animateur] DROP CONSTRAINT [FK_Animateur_inherits_Membres];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AnimateurCours]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CoursJeu] DROP CONSTRAINT [FK_AnimateurCours];
+GO
 IF OBJECT_ID(N'[dbo].[FK_CoursCompleteMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CoursCompleteJeu] DROP CONSTRAINT [FK_CoursCompleteMembres];
 GO
 IF OBJECT_ID(N'[dbo].[FK_CoursCoursComplete]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CoursCompleteJeu] DROP CONSTRAINT [FK_CoursCoursComplete];
-GO
-IF OBJECT_ID(N'[dbo].[FK_AnimateurCours]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CoursJeu] DROP CONSTRAINT [FK_AnimateurCours];
 GO
 IF OBJECT_ID(N'[dbo].[FK_CoursGroupe]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[GroupeJeu] DROP CONSTRAINT [FK_CoursGroupe];
@@ -44,8 +47,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ListeAttenteMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ListeAttenteJeu] DROP CONSTRAINT [FK_ListeAttenteMembres];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Animateur_inherits_Membres]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembresJeu_Animateur] DROP CONSTRAINT [FK_Animateur_inherits_Membres];
+IF OBJECT_ID(N'[dbo].[FK_RoleJeuMembresJeu]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembresJeu] DROP CONSTRAINT [FK_RoleJeuMembresJeu];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SessionGroupe_GroupeJeu]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SessionGroupe] DROP CONSTRAINT [FK_SessionGroupe_GroupeJeu];
@@ -58,9 +61,6 @@ IF OBJECT_ID(N'[dbo].[FK_SpecialiteAnimateur_MembresJeu_Animateur]', 'F') IS NOT
 GO
 IF OBJECT_ID(N'[dbo].[FK_SpecialiteAnimateur_SpecialiteJeu]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SpecialiteAnimateur] DROP CONSTRAINT [FK_SpecialiteAnimateur_SpecialiteJeu];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RoleJeuMembresJeu]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembresJeu] DROP CONSTRAINT [FK_RoleJeuMembresJeu];
 GO
 
 -- --------------------------------------------------
@@ -94,8 +94,14 @@ GO
 IF OBJECT_ID(N'[dbo].[RoleJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[RoleJeu];
 GO
+IF OBJECT_ID(N'[dbo].[SessionGroupe]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SessionGroupe];
+GO
 IF OBJECT_ID(N'[dbo].[SessionJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SessionJeu];
+GO
+IF OBJECT_ID(N'[dbo].[SpecialiteAnimateur]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SpecialiteAnimateur];
 GO
 IF OBJECT_ID(N'[dbo].[SpecialiteJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SpecialiteJeu];
@@ -105,12 +111,6 @@ IF OBJECT_ID(N'[dbo].[sysdiagrams]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[TarifsJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TarifsJeu];
-GO
-IF OBJECT_ID(N'[dbo].[SessionGroupe]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SessionGroupe];
-GO
-IF OBJECT_ID(N'[dbo].[SpecialiteAnimateur]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SpecialiteAnimateur];
 GO
 
 -- --------------------------------------------------
@@ -166,23 +166,8 @@ GO
 -- Creating table 'HoraireJeu'
 CREATE TABLE [dbo].[HoraireJeu] (
     [idHoraire] smallint IDENTITY(1,1) NOT NULL,
-    [jourSemaine] nvarchar(8)  NOT NULL,
-    [heureDebutLundi] datetime  NULL,
-    [heureFinLundi] datetime  NULL,
     [noLocal] nvarchar(10)  NOT NULL,
-    [Groupe_idGroupe] smallint  NOT NULL,
-    [heureDebutMardi] datetime  NULL,
-    [heureFinMardi] datetime  NULL,
-    [heureDebutMercredi] datetime  NULL,
-    [heureFinMercredi] datetime  NULL,
-    [heureDebutJeudi] datetime  NULL,
-    [heureFinJeudi] datetime  NULL,
-    [heureDebutVendredi] datetime  NULL,
-    [heureFinVendredi] datetime  NULL,
-    [heureDebutSamedi] datetime  NULL,
-    [heureFinSamedi] datetime  NULL,
-    [heureDebutDimanche] datetime  NULL,
-    [heureFinDimanche] datetime  NULL
+    [Groupe_idGroupe] smallint  NOT NULL
 );
 GO
 
@@ -260,6 +245,16 @@ CREATE TABLE [dbo].[TarifsJeu] (
     [rabais1Enfant] smallint  NOT NULL,
     [rabais2Enfant] smallint  NOT NULL,
     [rabais3Enfant] smallint  NOT NULL
+);
+GO
+
+-- Creating table 'JourSemaineJeu'
+CREATE TABLE [dbo].[JourSemaineJeu] (
+    [idJourSemaine] int IDENTITY(1,1) NOT NULL,
+    [nomJourSemaine] nvarchar(max)  NOT NULL,
+    [heureDebut] nvarchar(max)  NOT NULL,
+    [heureFin] nvarchar(max)  NOT NULL,
+    [HoraireJeu_idHoraire] smallint  NOT NULL
 );
 GO
 
@@ -357,6 +352,12 @@ GO
 ALTER TABLE [dbo].[TarifsJeu]
 ADD CONSTRAINT [PK_TarifsJeu]
     PRIMARY KEY CLUSTERED ([idTarif] ASC);
+GO
+
+-- Creating primary key on [idJourSemaine] in table 'JourSemaineJeu'
+ALTER TABLE [dbo].[JourSemaineJeu]
+ADD CONSTRAINT [PK_JourSemaineJeu]
+    PRIMARY KEY CLUSTERED ([idJourSemaine] ASC);
 GO
 
 -- Creating primary key on [GroupeJeu_idGroupe], [SessionJeu_idSession] in table 'SessionGroupe'
@@ -568,6 +569,20 @@ ADD CONSTRAINT [FK_RoleJeuMembresJeu]
 CREATE INDEX [IX_FK_RoleJeuMembresJeu]
 ON [dbo].[MembresJeu]
     ([RoleJeu_idRole]);
+GO
+
+-- Creating foreign key on [HoraireJeu_idHoraire] in table 'JourSemaineJeu'
+ALTER TABLE [dbo].[JourSemaineJeu]
+ADD CONSTRAINT [FK_HoraireJeuJourSemaine]
+    FOREIGN KEY ([HoraireJeu_idHoraire])
+    REFERENCES [dbo].[HoraireJeu]
+        ([idHoraire])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_HoraireJeuJourSemaine'
+CREATE INDEX [IX_FK_HoraireJeuJourSemaine]
+ON [dbo].[JourSemaineJeu]
+    ([HoraireJeu_idHoraire]);
 GO
 
 -- --------------------------------------------------

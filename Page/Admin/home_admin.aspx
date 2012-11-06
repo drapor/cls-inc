@@ -56,9 +56,9 @@
 
 
 <div class="contenuAdmin">
-    <asp:LinkButton ID="lnkAjouterHoraire" runat="server">Ajouter un horaire</asp:LinkButton><br/>
-    <asp:LinkButton ID="lnkModifierHoraire" runat="server">Modifier horaire</asp:LinkButton><br/>
-    <asp:LinkButton ID="lnkSupprimerHoraire" runat="server">Supprimer horaire</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkAjouterHoraire" runat="server" PostBackUrl="~/Page/Admin/admin_schedule_add.aspx">Ajouter un horaire</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkModifierHoraire" runat="server" PostBackUrl="~/Page/Admin/admin_schedule_modify.aspx">Modifier horaire</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkSupprimerHoraire" runat="server" PostBackUrl="~/Page/Admin/admin_schedule_delete.aspx">Supprimer horaire</asp:LinkButton><br/>
 </div>
 
 

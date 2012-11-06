@@ -19,13 +19,37 @@
 
 .interieurDroitHoraire
 {
-    width:150px;
+    width:100px;
     float:left;
 }
 
 .local
 {
     width:900px;
+    float:left;
+}
+
+.titreJourSemaine
+{
+    width:250px;
+    font-size:20;
+    font-weight:bold;
+    float:left;
+}
+
+.titreHeureDebut
+{
+    width:250px;
+    font-size:20;
+    font-weight:bold;
+    float:left;
+}
+
+.titreHeureFin
+{
+    width:250px;
+    font-size:20;
+    font-weight:bold;
     float:left;
 }
 
