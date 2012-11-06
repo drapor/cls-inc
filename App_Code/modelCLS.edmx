@@ -5,425 +5,438 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="modelCLS.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="modelCLSStoreContainer">
-          <EntitySet Name="AbonnementJeu" EntityType="modelCLS.Store.AbonnementJeu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CoursCompleteJeu" EntityType="modelCLS.Store.CoursCompleteJeu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CoursJeu" EntityType="modelCLS.Store.CoursJeu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="GroupeJeu" EntityType="modelCLS.Store.GroupeJeu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="HoraireJeu" EntityType="modelCLS.Store.HoraireJeu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ListeAttenteJeu" EntityType="modelCLS.Store.ListeAttenteJeu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MembresJeu" EntityType="modelCLS.Store.MembresJeu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MembresJeu_Animateur" EntityType="modelCLS.Store.MembresJeu_Animateur" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RoleJeu" EntityType="modelCLS.Store.RoleJeu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SessionGroupe" EntityType="modelCLS.Store.SessionGroupe" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SessionJeu" EntityType="modelCLS.Store.SessionJeu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SpecialiteAnimateur" EntityType="modelCLS.Store.SpecialiteAnimateur" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SpecialiteJeu" EntityType="modelCLS.Store.SpecialiteJeu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sysdiagrams" EntityType="modelCLS.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TarifsJeu" EntityType="modelCLS.Store.TarifsJeu" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_AbonnementGroupe" Association="modelCLS.Store.FK_AbonnementGroupe">
-            <End Role="GroupeJeu" EntitySet="GroupeJeu" />
-            <End Role="AbonnementJeu" EntitySet="AbonnementJeu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AbonnementMembres" Association="modelCLS.Store.FK_AbonnementMembres">
-            <End Role="MembresJeu" EntitySet="MembresJeu" />
-            <End Role="AbonnementJeu" EntitySet="AbonnementJeu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Animateur_inherits_Membres" Association="modelCLS.Store.FK_Animateur_inherits_Membres">
-            <End Role="MembresJeu" EntitySet="MembresJeu" />
-            <End Role="MembresJeu_Animateur" EntitySet="MembresJeu_Animateur" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AnimateurCours" Association="modelCLS.Store.FK_AnimateurCours">
-            <End Role="MembresJeu_Animateur" EntitySet="MembresJeu_Animateur" />
-            <End Role="CoursJeu" EntitySet="CoursJeu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CoursCompleteMembres" Association="modelCLS.Store.FK_CoursCompleteMembres">
-            <End Role="MembresJeu" EntitySet="MembresJeu" />
-            <End Role="CoursCompleteJeu" EntitySet="CoursCompleteJeu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CoursCoursComplete" Association="modelCLS.Store.FK_CoursCoursComplete">
-            <End Role="CoursJeu" EntitySet="CoursJeu" />
-            <End Role="CoursCompleteJeu" EntitySet="CoursCompleteJeu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CoursGroupe" Association="modelCLS.Store.FK_CoursGroupe">
-            <End Role="CoursJeu" EntitySet="CoursJeu" />
-            <End Role="GroupeJeu" EntitySet="GroupeJeu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CoursListeAttente" Association="modelCLS.Store.FK_CoursListeAttente">
-            <End Role="CoursJeu" EntitySet="CoursJeu" />
-            <End Role="ListeAttenteJeu" EntitySet="ListeAttenteJeu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoraireGroupe" Association="modelCLS.Store.FK_HoraireGroupe">
-            <End Role="GroupeJeu" EntitySet="GroupeJeu" />
-            <End Role="HoraireJeu" EntitySet="HoraireJeu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ListeAttenteMembres" Association="modelCLS.Store.FK_ListeAttenteMembres">
-            <End Role="MembresJeu" EntitySet="MembresJeu" />
-            <End Role="ListeAttenteJeu" EntitySet="ListeAttenteJeu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RoleJeuMembresJeu" Association="modelCLS.Store.FK_RoleJeuMembresJeu">
-            <End Role="RoleJeu" EntitySet="RoleJeu" />
-            <End Role="MembresJeu" EntitySet="MembresJeu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SessionGroupe_GroupeJeu" Association="modelCLS.Store.FK_SessionGroupe_GroupeJeu">
-            <End Role="GroupeJeu" EntitySet="GroupeJeu" />
-            <End Role="SessionGroupe" EntitySet="SessionGroupe" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SessionGroupe_SessionJeu" Association="modelCLS.Store.FK_SessionGroupe_SessionJeu">
-            <End Role="SessionJeu" EntitySet="SessionJeu" />
-            <End Role="SessionGroupe" EntitySet="SessionGroupe" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SpecialiteAnimateur_MembresJeu_Animateur" Association="modelCLS.Store.FK_SpecialiteAnimateur_MembresJeu_Animateur">
-            <End Role="MembresJeu_Animateur" EntitySet="MembresJeu_Animateur" />
-            <End Role="SpecialiteAnimateur" EntitySet="SpecialiteAnimateur" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SpecialiteAnimateur_SpecialiteJeu" Association="modelCLS.Store.FK_SpecialiteAnimateur_SpecialiteJeu">
-            <End Role="SpecialiteJeu" EntitySet="SpecialiteJeu" />
-            <End Role="SpecialiteAnimateur" EntitySet="SpecialiteAnimateur" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="AbonnementJeu">
-          <Key>
-            <PropertyRef Name="idAbonnement" />
-          </Key>
-          <Property Name="dateAbonnement" Type="datetime" Nullable="false" />
-          <Property Name="idAbonnement" Type="smallint" Nullable="false" />
-          <Property Name="Membres_idMembre" Type="smallint" Nullable="false" />
-          <Property Name="Groupe_idGroupe" Type="smallint" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CoursCompleteJeu">
-          <Key>
-            <PropertyRef Name="idCoursComplete" />
-          </Key>
-          <Property Name="idCoursComplete" Type="smallint" Nullable="false" />
-          <Property Name="Cours_idCours" Type="smallint" Nullable="false" />
-          <Property Name="Membres_idMembre" Type="smallint" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CoursJeu">
-          <Key>
-            <PropertyRef Name="idCours" />
-          </Key>
-          <Property Name="idCours" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nomCours" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="categorie" Type="nvarchar" Nullable="false" MaxLength="7" />
-          <Property Name="description" Type="nvarchar" MaxLength="500" />
-          <Property Name="prerequis" Type="nvarchar" MaxLength="50" />
-          <Property Name="tarif" Type="decimal" Nullable="false" />
-          <Property Name="dateDebutInscription" Type="datetime" Nullable="false" />
-          <Property Name="dateFinInscription" Type="datetime" Nullable="false" />
-          <Property Name="dateDebutCours" Type="datetime" Nullable="false" />
-          <Property Name="dateFinCours" Type="datetime" Nullable="false" />
-          <Property Name="Animateur_idMembre" Type="smallint" Nullable="false" />
-          <Property Name="groupeAgeMin" Type="smallint" Nullable="false" />
-          <Property Name="groupeAgeMax" Type="smallint" Nullable="false" />
-          <Property Name="groupeAgeMod" Type="nvarchar" Nullable="false" MaxLength="2" />
-        </EntityType>
-        <EntityType Name="GroupeJeu">
-          <Key>
-            <PropertyRef Name="idGroupe" />
-          </Key>
-          <Property Name="idGroupe" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nomGroupe" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="nbMax" Type="smallint" Nullable="false" />
-          <Property Name="Cours_idCours" Type="smallint" Nullable="false" />
-          <Property Name="noGroupe" Type="smallint" Nullable="false" />
-        </EntityType>
-        <EntityType Name="HoraireJeu">
-          <Key>
-            <PropertyRef Name="idHoraire" />
-          </Key>
-          <Property Name="idHoraire" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="heureDebutLundi" Type="datetime" />
-          <Property Name="heureFinLundi" Type="datetime" />
-          <Property Name="noLocal" Type="nvarchar" Nullable="false" MaxLength="10" />
-          <Property Name="Groupe_idGroupe" Type="smallint" Nullable="false" />
-          <Property Name="heureDebutMardi" Type="datetime" />
-          <Property Name="heureFinMardi" Type="datetime" />
-          <Property Name="heureDebutMercredi" Type="datetime" />
-          <Property Name="heureFinMercredi" Type="datetime" />
-          <Property Name="heureDebutJeudi" Type="datetime" />
-          <Property Name="heureFinJeudi" Type="datetime" />
-          <Property Name="heureDebutVendredi" Type="datetime" />
-          <Property Name="heureFinVendredi" Type="datetime" />
-          <Property Name="heureDebutSamedi" Type="datetime" />
-          <Property Name="heureFinSamedi" Type="datetime" />
-          <Property Name="heureDebutDimanche" Type="datetime" />
-          <Property Name="heureFinDimanche" Type="datetime" />
-        </EntityType>
-        <EntityType Name="ListeAttenteJeu">
-          <Key>
-            <PropertyRef Name="idListeAttente" />
-          </Key>
-          <Property Name="idListeAttente" Type="smallint" Nullable="false" />
-          <Property Name="Cours_idCours" Type="smallint" Nullable="false" />
-          <Property Name="Membres_idMembre" Type="smallint" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MembresJeu">
-          <Key>
-            <PropertyRef Name="idMembre" />
-          </Key>
-          <Property Name="idMembre" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nomMembre" Type="nvarchar" Nullable="false" MaxLength="25" />
-          <Property Name="prenomMembre" Type="nvarchar" Nullable="false" MaxLength="25" />
-          <Property Name="telephoneMembre" Type="nvarchar" Nullable="false" MaxLength="13" />
-          <Property Name="motPasse" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="adresse" Type="nvarchar" Nullable="false" MaxLength="40" />
-          <Property Name="ville" Type="nvarchar" Nullable="false" MaxLength="25" />
-          <Property Name="dateInscription" Type="datetime" Nullable="false" />
-          <Property Name="dateNaissance" Type="datetime" Nullable="false" />
-          <Property Name="courriel" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="codePostal" Type="nvarchar" Nullable="false" MaxLength="7" />
-          <Property Name="familleID" Type="smallint" Nullable="false" />
-          <Property Name="sexe" Type="nvarchar" Nullable="false" MaxLength="1" />
-          <Property Name="RoleJeu_idRole" Type="smallint" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MembresJeu_Animateur">
-          <Key>
-            <PropertyRef Name="idMembre" />
-          </Key>
-          <Property Name="idAnimateur" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="idMembre" Type="smallint" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RoleJeu">
-          <Key>
-            <PropertyRef Name="idRole" />
-          </Key>
-          <Property Name="idRole" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nomRole" Type="nvarchar" Nullable="false" MaxLength="15" />
-        </EntityType>
-        <EntityType Name="SessionGroupe">
-          <Key>
-            <PropertyRef Name="GroupeJeu_idGroupe" />
-            <PropertyRef Name="SessionJeu_idSession" />
-          </Key>
-          <Property Name="GroupeJeu_idGroupe" Type="smallint" Nullable="false" />
-          <Property Name="SessionJeu_idSession" Type="smallint" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SessionJeu">
-          <Key>
-            <PropertyRef Name="idSession" />
-          </Key>
-          <Property Name="idSession" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nomSession" Type="nvarchar" Nullable="false" MaxLength="9" />
-          <Property Name="debutSession" Type="datetime" Nullable="false" />
-          <Property Name="finSession" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SpecialiteAnimateur">
-          <Key>
-            <PropertyRef Name="MembresJeu_Animateur_idMembre" />
-            <PropertyRef Name="SpecialiteJeu_idSpecialite" />
-          </Key>
-          <Property Name="MembresJeu_Animateur_idMembre" Type="smallint" Nullable="false" />
-          <Property Name="SpecialiteJeu_idSpecialite" Type="smallint" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SpecialiteJeu">
-          <Key>
-            <PropertyRef Name="idSpecialite" />
-          </Key>
-          <Property Name="idSpecialite" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nomSpecialite" Type="nvarchar" Nullable="false" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="TarifsJeu">
-          <Key>
-            <PropertyRef Name="idTarif" />
-          </Key>
-          <Property Name="idTarif" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="tarifNouveauMembre" Type="decimal" Nullable="false" />
-          <Property Name="rabais1Enfant" Type="smallint" Nullable="false" />
-          <Property Name="rabais2Enfant" Type="smallint" Nullable="false" />
-          <Property Name="rabais3Enfant" Type="smallint" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_AbonnementGroupe">
-          <End Role="GroupeJeu" Type="modelCLS.Store.GroupeJeu" Multiplicity="1" />
-          <End Role="AbonnementJeu" Type="modelCLS.Store.AbonnementJeu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GroupeJeu">
-              <PropertyRef Name="idGroupe" />
-            </Principal>
-            <Dependent Role="AbonnementJeu">
-              <PropertyRef Name="Groupe_idGroupe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AbonnementMembres">
-          <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="1" />
-          <End Role="AbonnementJeu" Type="modelCLS.Store.AbonnementJeu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MembresJeu">
-              <PropertyRef Name="idMembre" />
-            </Principal>
-            <Dependent Role="AbonnementJeu">
-              <PropertyRef Name="Membres_idMembre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Animateur_inherits_Membres">
-          <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="1" />
-          <End Role="MembresJeu_Animateur" Type="modelCLS.Store.MembresJeu_Animateur" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="MembresJeu">
-              <PropertyRef Name="idMembre" />
-            </Principal>
-            <Dependent Role="MembresJeu_Animateur">
-              <PropertyRef Name="idMembre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AnimateurCours">
-          <End Role="MembresJeu_Animateur" Type="modelCLS.Store.MembresJeu_Animateur" Multiplicity="1" />
-          <End Role="CoursJeu" Type="modelCLS.Store.CoursJeu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MembresJeu_Animateur">
-              <PropertyRef Name="idMembre" />
-            </Principal>
-            <Dependent Role="CoursJeu">
-              <PropertyRef Name="Animateur_idMembre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CoursCompleteMembres">
-          <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="1" />
-          <End Role="CoursCompleteJeu" Type="modelCLS.Store.CoursCompleteJeu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MembresJeu">
-              <PropertyRef Name="idMembre" />
-            </Principal>
-            <Dependent Role="CoursCompleteJeu">
-              <PropertyRef Name="Membres_idMembre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CoursCoursComplete">
-          <End Role="CoursJeu" Type="modelCLS.Store.CoursJeu" Multiplicity="1" />
-          <End Role="CoursCompleteJeu" Type="modelCLS.Store.CoursCompleteJeu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CoursJeu">
-              <PropertyRef Name="idCours" />
-            </Principal>
-            <Dependent Role="CoursCompleteJeu">
-              <PropertyRef Name="Cours_idCours" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CoursGroupe">
-          <End Role="CoursJeu" Type="modelCLS.Store.CoursJeu" Multiplicity="1" />
-          <End Role="GroupeJeu" Type="modelCLS.Store.GroupeJeu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CoursJeu">
-              <PropertyRef Name="idCours" />
-            </Principal>
-            <Dependent Role="GroupeJeu">
-              <PropertyRef Name="Cours_idCours" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CoursListeAttente">
-          <End Role="CoursJeu" Type="modelCLS.Store.CoursJeu" Multiplicity="1" />
-          <End Role="ListeAttenteJeu" Type="modelCLS.Store.ListeAttenteJeu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CoursJeu">
-              <PropertyRef Name="idCours" />
-            </Principal>
-            <Dependent Role="ListeAttenteJeu">
-              <PropertyRef Name="Cours_idCours" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HoraireGroupe">
-          <End Role="GroupeJeu" Type="modelCLS.Store.GroupeJeu" Multiplicity="1" />
-          <End Role="HoraireJeu" Type="modelCLS.Store.HoraireJeu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GroupeJeu">
-              <PropertyRef Name="idGroupe" />
-            </Principal>
-            <Dependent Role="HoraireJeu">
-              <PropertyRef Name="Groupe_idGroupe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ListeAttenteMembres">
-          <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="1" />
-          <End Role="ListeAttenteJeu" Type="modelCLS.Store.ListeAttenteJeu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MembresJeu">
-              <PropertyRef Name="idMembre" />
-            </Principal>
-            <Dependent Role="ListeAttenteJeu">
-              <PropertyRef Name="Membres_idMembre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RoleJeuMembresJeu">
-          <End Role="RoleJeu" Type="modelCLS.Store.RoleJeu" Multiplicity="1" />
-          <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RoleJeu">
-              <PropertyRef Name="idRole" />
-            </Principal>
-            <Dependent Role="MembresJeu">
-              <PropertyRef Name="RoleJeu_idRole" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SessionGroupe_GroupeJeu">
-          <End Role="GroupeJeu" Type="modelCLS.Store.GroupeJeu" Multiplicity="1" />
-          <End Role="SessionGroupe" Type="modelCLS.Store.SessionGroupe" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GroupeJeu">
-              <PropertyRef Name="idGroupe" />
-            </Principal>
-            <Dependent Role="SessionGroupe">
-              <PropertyRef Name="GroupeJeu_idGroupe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SessionGroupe_SessionJeu">
-          <End Role="SessionJeu" Type="modelCLS.Store.SessionJeu" Multiplicity="1" />
-          <End Role="SessionGroupe" Type="modelCLS.Store.SessionGroupe" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SessionJeu">
-              <PropertyRef Name="idSession" />
-            </Principal>
-            <Dependent Role="SessionGroupe">
-              <PropertyRef Name="SessionJeu_idSession" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SpecialiteAnimateur_MembresJeu_Animateur">
-          <End Role="MembresJeu_Animateur" Type="modelCLS.Store.MembresJeu_Animateur" Multiplicity="1" />
-          <End Role="SpecialiteAnimateur" Type="modelCLS.Store.SpecialiteAnimateur" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MembresJeu_Animateur">
-              <PropertyRef Name="idMembre" />
-            </Principal>
-            <Dependent Role="SpecialiteAnimateur">
-              <PropertyRef Name="MembresJeu_Animateur_idMembre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SpecialiteAnimateur_SpecialiteJeu">
-          <End Role="SpecialiteJeu" Type="modelCLS.Store.SpecialiteJeu" Multiplicity="1" />
-          <End Role="SpecialiteAnimateur" Type="modelCLS.Store.SpecialiteAnimateur" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SpecialiteJeu">
-              <PropertyRef Name="idSpecialite" />
-            </Principal>
-            <Dependent Role="SpecialiteAnimateur">
-              <PropertyRef Name="SpecialiteJeu_idSpecialite" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema></edmx:StorageModels>
+  <EntityContainer Name="modelCLSStoreContainer">
+    <EntitySet Name="AbonnementJeu" EntityType="modelCLS.Store.AbonnementJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CoursCompleteJeu" EntityType="modelCLS.Store.CoursCompleteJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CoursJeu" EntityType="modelCLS.Store.CoursJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GroupeJeu" EntityType="modelCLS.Store.GroupeJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HoraireJeu" EntityType="modelCLS.Store.HoraireJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ListeAttenteJeu" EntityType="modelCLS.Store.ListeAttenteJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MembresJeu" EntityType="modelCLS.Store.MembresJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MembresJeu_Animateur" EntityType="modelCLS.Store.MembresJeu_Animateur" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoleJeu" EntityType="modelCLS.Store.RoleJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SessionJeu" EntityType="modelCLS.Store.SessionJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SpecialiteJeu" EntityType="modelCLS.Store.SpecialiteJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="modelCLS.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TarifsJeu" EntityType="modelCLS.Store.TarifsJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JourSemaineJeu" EntityType="modelCLS.Store.JourSemaineJeu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SessionGroupe" EntityType="modelCLS.Store.SessionGroupe" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SpecialiteAnimateur" EntityType="modelCLS.Store.SpecialiteAnimateur" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_AbonnementGroupe" Association="modelCLS.Store.FK_AbonnementGroupe">
+      <End Role="GroupeJeu" EntitySet="GroupeJeu" />
+      <End Role="AbonnementJeu" EntitySet="AbonnementJeu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AbonnementMembres" Association="modelCLS.Store.FK_AbonnementMembres">
+      <End Role="MembresJeu" EntitySet="MembresJeu" />
+      <End Role="AbonnementJeu" EntitySet="AbonnementJeu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CoursCompleteMembres" Association="modelCLS.Store.FK_CoursCompleteMembres">
+      <End Role="MembresJeu" EntitySet="MembresJeu" />
+      <End Role="CoursCompleteJeu" EntitySet="CoursCompleteJeu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CoursCoursComplete" Association="modelCLS.Store.FK_CoursCoursComplete">
+      <End Role="CoursJeu" EntitySet="CoursJeu" />
+      <End Role="CoursCompleteJeu" EntitySet="CoursCompleteJeu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnimateurCours" Association="modelCLS.Store.FK_AnimateurCours">
+      <End Role="MembresJeu_Animateur" EntitySet="MembresJeu_Animateur" />
+      <End Role="CoursJeu" EntitySet="CoursJeu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CoursGroupe" Association="modelCLS.Store.FK_CoursGroupe">
+      <End Role="CoursJeu" EntitySet="CoursJeu" />
+      <End Role="GroupeJeu" EntitySet="GroupeJeu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CoursListeAttente" Association="modelCLS.Store.FK_CoursListeAttente">
+      <End Role="CoursJeu" EntitySet="CoursJeu" />
+      <End Role="ListeAttenteJeu" EntitySet="ListeAttenteJeu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoraireGroupe" Association="modelCLS.Store.FK_HoraireGroupe">
+      <End Role="GroupeJeu" EntitySet="GroupeJeu" />
+      <End Role="HoraireJeu" EntitySet="HoraireJeu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ListeAttenteMembres" Association="modelCLS.Store.FK_ListeAttenteMembres">
+      <End Role="MembresJeu" EntitySet="MembresJeu" />
+      <End Role="ListeAttenteJeu" EntitySet="ListeAttenteJeu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Animateur_inherits_Membres" Association="modelCLS.Store.FK_Animateur_inherits_Membres">
+      <End Role="MembresJeu" EntitySet="MembresJeu" />
+      <End Role="MembresJeu_Animateur" EntitySet="MembresJeu_Animateur" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionGroupe_GroupeJeu" Association="modelCLS.Store.FK_SessionGroupe_GroupeJeu">
+      <End Role="GroupeJeu" EntitySet="GroupeJeu" />
+      <End Role="SessionGroupe" EntitySet="SessionGroupe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionGroupe_SessionJeu" Association="modelCLS.Store.FK_SessionGroupe_SessionJeu">
+      <End Role="SessionJeu" EntitySet="SessionJeu" />
+      <End Role="SessionGroupe" EntitySet="SessionGroupe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SpecialiteAnimateur_MembresJeu_Animateur" Association="modelCLS.Store.FK_SpecialiteAnimateur_MembresJeu_Animateur">
+      <End Role="MembresJeu_Animateur" EntitySet="MembresJeu_Animateur" />
+      <End Role="SpecialiteAnimateur" EntitySet="SpecialiteAnimateur" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SpecialiteAnimateur_SpecialiteJeu" Association="modelCLS.Store.FK_SpecialiteAnimateur_SpecialiteJeu">
+      <End Role="SpecialiteJeu" EntitySet="SpecialiteJeu" />
+      <End Role="SpecialiteAnimateur" EntitySet="SpecialiteAnimateur" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleJeuMembresJeu" Association="modelCLS.Store.FK_RoleJeuMembresJeu">
+      <End Role="RoleJeu" EntitySet="RoleJeu" />
+      <End Role="MembresJeu" EntitySet="MembresJeu" />
+    </AssociationSet>
+    <AssociationSet Name="HoraireJeuJourSemaine" Association="modelCLS.Store.HoraireJeuJourSemaine">
+      <End Role="HoraireJeu" EntitySet="HoraireJeu" />
+      <End Role="JourSemaine" EntitySet="JourSemaineJeu" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AbonnementJeu">
+    <Key>
+      <PropertyRef Name="idAbonnement" />
+    </Key>
+    <Property Name="dateAbonnement" Type="datetime" Nullable="false" />
+    <Property Name="idAbonnement" Type="smallint" Nullable="false" />
+    <Property Name="Membres_idMembre" Type="smallint" Nullable="false" />
+    <Property Name="Groupe_idGroupe" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CoursCompleteJeu">
+    <Key>
+      <PropertyRef Name="idCoursComplete" />
+    </Key>
+    <Property Name="idCoursComplete" Type="smallint" Nullable="false" />
+    <Property Name="Cours_idCours" Type="smallint" Nullable="false" />
+    <Property Name="Membres_idMembre" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CoursJeu">
+    <Key>
+      <PropertyRef Name="idCours" />
+    </Key>
+    <Property Name="idCours" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomCours" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="categorie" Type="nvarchar" Nullable="false" MaxLength="7" />
+    <Property Name="description" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="prerequis" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="tarif" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="dateDebutInscription" Type="datetime" Nullable="false" />
+    <Property Name="dateFinInscription" Type="datetime" Nullable="false" />
+    <Property Name="dateDebutCours" Type="datetime" Nullable="false" />
+    <Property Name="dateFinCours" Type="datetime" Nullable="false" />
+    <Property Name="Animateur_idMembre" Type="smallint" Nullable="false" />
+    <Property Name="groupeAgeMin" Type="smallint" Nullable="false" />
+    <Property Name="groupeAgeMax" Type="smallint" Nullable="false" />
+    <Property Name="groupeAgeMod" Type="nvarchar" Nullable="false" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="GroupeJeu">
+    <Key>
+      <PropertyRef Name="idGroupe" />
+    </Key>
+    <Property Name="idGroupe" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomGroupe" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="nbMax" Type="smallint" Nullable="false" />
+    <Property Name="Cours_idCours" Type="smallint" Nullable="false" />
+    <Property Name="noGroupe" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HoraireJeu">
+    <Key>
+      <PropertyRef Name="idHoraire" />
+    </Key>
+    <Property Name="idHoraire" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="noLocal" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Groupe_idGroupe" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ListeAttenteJeu">
+    <Key>
+      <PropertyRef Name="idListeAttente" />
+    </Key>
+    <Property Name="idListeAttente" Type="smallint" Nullable="false" />
+    <Property Name="Cours_idCours" Type="smallint" Nullable="false" />
+    <Property Name="Membres_idMembre" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MembresJeu">
+    <Key>
+      <PropertyRef Name="idMembre" />
+    </Key>
+    <Property Name="idMembre" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomMembre" Type="nvarchar" Nullable="false" MaxLength="25" />
+    <Property Name="prenomMembre" Type="nvarchar" Nullable="false" MaxLength="25" />
+    <Property Name="telephoneMembre" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="motPasse" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="adresse" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="ville" Type="nvarchar" Nullable="false" MaxLength="25" />
+    <Property Name="dateInscription" Type="datetime" Nullable="false" />
+    <Property Name="dateNaissance" Type="datetime" Nullable="false" />
+    <Property Name="courriel" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="codePostal" Type="nvarchar" Nullable="false" MaxLength="7" />
+    <Property Name="familleID" Type="smallint" Nullable="false" />
+    <Property Name="sexe" Type="nvarchar" Nullable="false" MaxLength="1" />
+    <Property Name="RoleJeu_idRole" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MembresJeu_Animateur">
+    <Key>
+      <PropertyRef Name="idMembre" />
+    </Key>
+    <Property Name="idAnimateur" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idMembre" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoleJeu">
+    <Key>
+      <PropertyRef Name="idRole" />
+    </Key>
+    <Property Name="idRole" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomRole" Type="nvarchar" Nullable="false" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="SessionJeu">
+    <Key>
+      <PropertyRef Name="idSession" />
+    </Key>
+    <Property Name="idSession" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomSession" Type="nvarchar" Nullable="false" MaxLength="9" />
+    <Property Name="debutSession" Type="datetime" Nullable="false" />
+    <Property Name="finSession" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpecialiteJeu">
+    <Key>
+      <PropertyRef Name="idSpecialite" />
+    </Key>
+    <Property Name="idSpecialite" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomSpecialite" Type="nvarchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="true" />
+    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="TarifsJeu">
+    <Key>
+      <PropertyRef Name="idTarif" />
+    </Key>
+    <Property Name="idTarif" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tarifNouveauMembre" Type="decimal" Nullable="false" />
+    <Property Name="rabais1Enfant" Type="smallint" Nullable="false" />
+    <Property Name="rabais2Enfant" Type="smallint" Nullable="false" />
+    <Property Name="rabais3Enfant" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JourSemaineJeu">
+    <Key>
+      <PropertyRef Name="idJourSemaine" />
+    </Key>
+    <Property Name="idJourSemaine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomJourSemaine" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="heureDebut" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="heureFin" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HoraireJeu_idHoraire" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SessionGroupe">
+    <Key>
+      <PropertyRef Name="GroupeJeu_idGroupe" />
+      <PropertyRef Name="SessionJeu_idSession" />
+    </Key>
+    <Property Name="GroupeJeu_idGroupe" Type="smallint" Nullable="false" />
+    <Property Name="SessionJeu_idSession" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpecialiteAnimateur">
+    <Key>
+      <PropertyRef Name="MembresJeu_Animateur_idMembre" />
+      <PropertyRef Name="SpecialiteJeu_idSpecialite" />
+    </Key>
+    <Property Name="MembresJeu_Animateur_idMembre" Type="smallint" Nullable="false" />
+    <Property Name="SpecialiteJeu_idSpecialite" Type="smallint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AbonnementGroupe">
+    <End Role="GroupeJeu" Type="modelCLS.Store.GroupeJeu" Multiplicity="1" />
+    <End Role="AbonnementJeu" Type="modelCLS.Store.AbonnementJeu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupeJeu">
+        <PropertyRef Name="idGroupe" />
+      </Principal>
+      <Dependent Role="AbonnementJeu">
+        <PropertyRef Name="Groupe_idGroupe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AbonnementMembres">
+    <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="1" />
+    <End Role="AbonnementJeu" Type="modelCLS.Store.AbonnementJeu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MembresJeu">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="AbonnementJeu">
+        <PropertyRef Name="Membres_idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CoursCompleteMembres">
+    <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="1" />
+    <End Role="CoursCompleteJeu" Type="modelCLS.Store.CoursCompleteJeu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MembresJeu">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="CoursCompleteJeu">
+        <PropertyRef Name="Membres_idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CoursCoursComplete">
+    <End Role="CoursJeu" Type="modelCLS.Store.CoursJeu" Multiplicity="1" />
+    <End Role="CoursCompleteJeu" Type="modelCLS.Store.CoursCompleteJeu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CoursJeu">
+        <PropertyRef Name="idCours" />
+      </Principal>
+      <Dependent Role="CoursCompleteJeu">
+        <PropertyRef Name="Cours_idCours" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnimateurCours">
+    <End Role="MembresJeu_Animateur" Type="modelCLS.Store.MembresJeu_Animateur" Multiplicity="1" />
+    <End Role="CoursJeu" Type="modelCLS.Store.CoursJeu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MembresJeu_Animateur">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="CoursJeu">
+        <PropertyRef Name="Animateur_idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CoursGroupe">
+    <End Role="CoursJeu" Type="modelCLS.Store.CoursJeu" Multiplicity="1" />
+    <End Role="GroupeJeu" Type="modelCLS.Store.GroupeJeu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CoursJeu">
+        <PropertyRef Name="idCours" />
+      </Principal>
+      <Dependent Role="GroupeJeu">
+        <PropertyRef Name="Cours_idCours" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CoursListeAttente">
+    <End Role="CoursJeu" Type="modelCLS.Store.CoursJeu" Multiplicity="1" />
+    <End Role="ListeAttenteJeu" Type="modelCLS.Store.ListeAttenteJeu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CoursJeu">
+        <PropertyRef Name="idCours" />
+      </Principal>
+      <Dependent Role="ListeAttenteJeu">
+        <PropertyRef Name="Cours_idCours" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoraireGroupe">
+    <End Role="GroupeJeu" Type="modelCLS.Store.GroupeJeu" Multiplicity="1" />
+    <End Role="HoraireJeu" Type="modelCLS.Store.HoraireJeu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupeJeu">
+        <PropertyRef Name="idGroupe" />
+      </Principal>
+      <Dependent Role="HoraireJeu">
+        <PropertyRef Name="Groupe_idGroupe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ListeAttenteMembres">
+    <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="1" />
+    <End Role="ListeAttenteJeu" Type="modelCLS.Store.ListeAttenteJeu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MembresJeu">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="ListeAttenteJeu">
+        <PropertyRef Name="Membres_idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Animateur_inherits_Membres">
+    <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="1" />
+    <End Role="MembresJeu_Animateur" Type="modelCLS.Store.MembresJeu_Animateur" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MembresJeu">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="MembresJeu_Animateur">
+        <PropertyRef Name="idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleJeuMembresJeu">
+    <End Role="RoleJeu" Type="modelCLS.Store.RoleJeu" Multiplicity="1" />
+    <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleJeu">
+        <PropertyRef Name="idRole" />
+      </Principal>
+      <Dependent Role="MembresJeu">
+        <PropertyRef Name="RoleJeu_idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HoraireJeuJourSemaine">
+    <End Role="HoraireJeu" Type="modelCLS.Store.HoraireJeu" Multiplicity="1" />
+    <End Role="JourSemaine" Type="modelCLS.Store.JourSemaineJeu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoraireJeu">
+        <PropertyRef Name="idHoraire" />
+      </Principal>
+      <Dependent Role="JourSemaine">
+        <PropertyRef Name="HoraireJeu_idHoraire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionGroupe_GroupeJeu">
+    <End Role="GroupeJeu" Type="modelCLS.Store.GroupeJeu" Multiplicity="1" />
+    <End Role="SessionGroupe" Type="modelCLS.Store.SessionGroupe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupeJeu">
+        <PropertyRef Name="idGroupe" />
+      </Principal>
+      <Dependent Role="SessionGroupe">
+        <PropertyRef Name="GroupeJeu_idGroupe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionGroupe_SessionJeu">
+    <End Role="SessionGroupe" Type="modelCLS.Store.SessionGroupe" Multiplicity="*" />
+    <End Role="SessionJeu" Type="modelCLS.Store.SessionJeu" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SessionJeu">
+        <PropertyRef Name="idSession" />
+      </Principal>
+      <Dependent Role="SessionGroupe">
+        <PropertyRef Name="SessionJeu_idSession" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SpecialiteAnimateur_MembresJeu_Animateur">
+    <End Role="MembresJeu_Animateur" Type="modelCLS.Store.MembresJeu_Animateur" Multiplicity="1" />
+    <End Role="SpecialiteAnimateur" Type="modelCLS.Store.SpecialiteAnimateur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MembresJeu_Animateur">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="SpecialiteAnimateur">
+        <PropertyRef Name="MembresJeu_Animateur_idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SpecialiteAnimateur_SpecialiteJeu">
+    <End Role="SpecialiteAnimateur" Type="modelCLS.Store.SpecialiteAnimateur" Multiplicity="*" />
+    <End Role="SpecialiteJeu" Type="modelCLS.Store.SpecialiteJeu" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SpecialiteJeu">
+        <PropertyRef Name="idSpecialite" />
+      </Principal>
+      <Dependent Role="SpecialiteAnimateur">
+        <PropertyRef Name="SpecialiteJeu_idSpecialite" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="modelCLS" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
@@ -493,6 +506,11 @@
             <End Role="MembresJeu" EntitySet="MembresJeu" />
           </AssociationSet>
           <EntitySet Name="TarifsJeu" EntityType="modelCLS.Tarifs" />
+          <EntitySet Name="JourSemaineJeu" EntityType="modelCLS.JourSemaine" />
+          <AssociationSet Name="HoraireJeuJourSemaine" Association="modelCLS.HoraireJeuJourSemaine">
+            <End Role="HoraireJeu" EntitySet="HoraireJeu" />
+            <End Role="JourSemaine" EntitySet="JourSemaineJeu" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="AbonnementJeu">
           <Key>
@@ -557,23 +575,10 @@
             <PropertyRef Name="idHoraire" />
           </Key>
           <Property Type="Int16" Name="idHoraire" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="heureDebutLundi" Nullable="true" />
-          <Property Type="DateTime" Name="heureFinLundi" Nullable="true" />
           <Property Type="String" Name="noLocal" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Type="Int16" Name="Groupe_idGroupe" Nullable="false" />
           <NavigationProperty Name="GroupeJeu" Relationship="modelCLS.FK_HoraireGroupe" FromRole="HoraireJeu" ToRole="GroupeJeu" />
-          <Property Type="DateTime" Name="heureDebutMardi" Nullable="true" />
-          <Property Type="DateTime" Name="heureFinMardi" Nullable="true" />
-          <Property Type="DateTime" Name="heureDebutMercredi" Nullable="true" />
-          <Property Type="DateTime" Name="heureFinMercredi" Nullable="true" />
-          <Property Type="DateTime" Name="heureDebutJeudi" Nullable="true" />
-          <Property Type="DateTime" Name="heureFinJeudi" Nullable="true" />
-          <Property Type="DateTime" Name="heureDebutVendredi" Nullable="true" />
-          <Property Type="DateTime" Name="heureFinVendredi" Nullable="true" />
-          <Property Type="DateTime" Name="heureDebutSamedi" Nullable="true" />
-          <Property Type="DateTime" Name="heureFinSamedi" Nullable="true" />
-          <Property Type="DateTime" Name="heureDebutDimanche" Nullable="true" />
-          <Property Type="DateTime" Name="heureFinDimanche" Nullable="true" />
+          <NavigationProperty Name="JourSemaine" Relationship="modelCLS.HoraireJeuJourSemaine" FromRole="HoraireJeu" ToRole="JourSemaine" />
         </EntityType>
         <EntityType Name="ListeAttenteJeu">
           <Key>
@@ -805,6 +810,20 @@
           <Property Type="Int16" Name="rabais2Enfant" Nullable="false" />
           <Property Type="Int16" Name="rabais3Enfant" Nullable="false" />
         </EntityType>
+        <EntityType Name="JourSemaine">
+          <Key>
+            <PropertyRef Name="idJourSemaine" />
+          </Key>
+          <Property Type="Int32" Name="idJourSemaine" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nomJourSemaine" Nullable="false" />
+          <Property Type="String" Name="heureDebut" Nullable="false" />
+          <Property Type="String" Name="heureFin" Nullable="false" />
+          <NavigationProperty Name="HoraireJeu" Relationship="modelCLS.HoraireJeuJourSemaine" FromRole="JourSemaine" ToRole="HoraireJeu" />
+        </EntityType>
+        <Association Name="HoraireJeuJourSemaine">
+          <End Type="modelCLS.HoraireJeu" Role="HoraireJeu" Multiplicity="1" />
+          <End Type="modelCLS.JourSemaine" Role="JourSemaine" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -865,22 +884,8 @@
       <EntityTypeMapping TypeName="IsTypeOf(modelCLS.HoraireJeu)">
         <MappingFragment StoreEntitySet="HoraireJeu">
           <ScalarProperty Name="idHoraire" ColumnName="idHoraire" />
-          <ScalarProperty Name="heureDebutLundi" ColumnName="heureDebutLundi" />
-          <ScalarProperty Name="heureFinLundi" ColumnName="heureFinLundi" />
           <ScalarProperty Name="noLocal" ColumnName="noLocal" />
           <ScalarProperty Name="Groupe_idGroupe" ColumnName="Groupe_idGroupe" />
-          <ScalarProperty Name="heureDebutMardi" ColumnName="heureDebutMardi" />
-          <ScalarProperty Name="heureFinMardi" ColumnName="heureFinMardi" />
-          <ScalarProperty Name="heureDebutMercredi" ColumnName="heureDebutMercredi" />
-          <ScalarProperty Name="heureFinMercredi" ColumnName="heureFinMercredi" />
-          <ScalarProperty Name="heureDebutJeudi" ColumnName="heureDebutJeudi" />
-          <ScalarProperty Name="heureFinJeudi" ColumnName="heureFinJeudi" />
-          <ScalarProperty Name="heureDebutVendredi" ColumnName="heureDebutVendredi" />
-          <ScalarProperty Name="heureFinVendredi" ColumnName="heureFinVendredi" />
-          <ScalarProperty Name="heureDebutSamedi" ColumnName="heureDebutSamedi" />
-          <ScalarProperty Name="heureFinSamedi" ColumnName="heureFinSamedi" />
-          <ScalarProperty Name="heureDebutDimanche" ColumnName="heureDebutDimanche" />
-          <ScalarProperty Name="heureFinDimanche" ColumnName="heureFinDimanche" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -969,6 +974,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="JourSemaineJeu">
+      <EntityTypeMapping TypeName="IsTypeOf(modelCLS.JourSemaine)">
+        <MappingFragment StoreEntitySet="JourSemaineJeu">
+          <ScalarProperty Name="idJourSemaine" ColumnName="idJourSemaine" />
+          <ScalarProperty Name="nomJourSemaine" ColumnName="nomJourSemaine" />
+          <ScalarProperty Name="heureDebut" ColumnName="heureDebut" />
+          <ScalarProperty Name="heureFin" ColumnName="heureFin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="SessionGroupe" TypeName="modelCLS.SessionGroupe" StoreEntitySet="SessionGroupe">
       <EndProperty Name="GroupeJeu">
         <ScalarProperty Name="idGroupe" ColumnName="GroupeJeu_idGroupe" />
@@ -983,6 +998,14 @@
       </EndProperty>
       <EndProperty Name="SpecialiteJeu">
         <ScalarProperty Name="idSpecialite" ColumnName="SpecialiteJeu_idSpecialite" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HoraireJeuJourSemaine" TypeName="modelCLS.HoraireJeuJourSemaine" StoreEntitySet="JourSemaineJeu">
+      <EndProperty Name="HoraireJeu">
+        <ScalarProperty Name="idHoraire" ColumnName="HoraireJeu_idHoraire" />
+      </EndProperty>
+      <EndProperty Name="JourSemaine">
+        <ScalarProperty Name="idJourSemaine" ColumnName="idJourSemaine" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
@@ -1009,7 +1032,7 @@
         <EntityTypeShape EntityType="modelCLS.CoursCompleteJeu" Width="1.75" PointX="7" PointY="13.125" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="modelCLS.CoursJeu" Width="1.5" PointX="10.5" PointY="9.875" Height="4.480205078125" />
         <EntityTypeShape EntityType="modelCLS.GroupeJeu" Width="1.5" PointX="7.25" PointY="15.5" Height="2.7494921875000031" />
-        <EntityTypeShape EntityType="modelCLS.HoraireJeu" Width="1.875" PointX="9.375" PointY="16.125" Height="4.4802050781250031" />
+        <EntityTypeShape EntityType="modelCLS.HoraireJeu" Width="1.875" PointX="9.375" PointY="16.125" Height="1.9802864583333353" />
         <EntityTypeShape EntityType="modelCLS.ListeAttenteJeu" Width="1.5" PointX="7" PointY="8.5" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="modelCLS.MembresJeu" Width="1.5" PointX="1.125" PointY="10.125" Height="5.2494108072916656" />
         <EntityTypeShape EntityType="modelCLS.MembresJeu_Animateur" Width="2" PointX="3.375" PointY="10.5" Height="1.9802864583333246" />
@@ -1047,8 +1070,8 @@
           <ConnectorPoint PointX="8.5" PointY="10.177643229166669" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_HoraireGroupe" >
-          <ConnectorPoint PointX="8.75" PointY="17.18724609375" />
-          <ConnectorPoint PointX="9.375" PointY="17.18724609375" />
+          <ConnectorPoint PointX="8.75" PointY="17.115143229166669" />
+          <ConnectorPoint PointX="9.375" PointY="17.115143229166669" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_ListeAttenteMembres" >
           <ConnectorPoint PointX="2.625" PointY="10.302643229166669" />
@@ -1071,6 +1094,11 @@
           <ConnectorPoint PointX="1.7734375" PointY="10.125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="modelCLS.Tarifs" Width="1.5" PointX="5" PointY="6.5" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="modelCLS.JourSemaine" Width="1.5" PointX="12.875" PointY="16.25" Height="1.7879850260416674" />
+        <AssociationConnector Association="modelCLS.HoraireJeuJourSemaine">
+          <ConnectorPoint PointX="11.25" PointY="17.177643229166669" />
+          <ConnectorPoint PointX="12.875" PointY="17.177643229166669" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -23,7 +23,7 @@
         </br>
         <div class="contenuOperation">
             <div class="contenuBouton">
-                <asp:Button ID="btnAjouterMembre" runat="server" Text="Ajouter un membre" CssClass="btn btn-primary btn-large" Width="200px" PostBackUrl="~/Page/Autre/register.aspx"></asp:Button>
+                <asp:Button ID="btnAjouterMembre" runat="server" Text="Ajouter un membre" CssClass="btn btn-primary btn-large" Width="200px" PostBackUrl="~/Page/Employe/employe_client_add.aspx"></asp:Button>
             </div>
             <div class="contenuBouton">
                 <asp:Button ID="btnModifierMembre" runat="server" Text="Modifier un membre" CssClass="btn btn-primary btn-large" Width="200px" PostBackUrl="~/Page/Employe/employe_client_modify.aspx"></asp:Button>
@@ -197,7 +197,7 @@
 
                 <div class="bouton">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CausesValidation="false" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Annuler" CausesValidation="false" CssClass="btn btn-primary btn-small" />
                 </div>
            </div>
         </EditItemTemplate>
@@ -260,7 +260,7 @@
                     </div>
                     <div class="boutonCourriel">
                         <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                        <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                        <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Annuler" CssClass="btn btn-primary btn-small" />
                     </div>
                 </div>
 
@@ -327,7 +327,7 @@
                     </div>
                     <div class="boutonCourriel">
                         <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                        <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                        <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Annuler" CssClass="btn btn-primary btn-small" />
                     </div>
                 </div>
 
