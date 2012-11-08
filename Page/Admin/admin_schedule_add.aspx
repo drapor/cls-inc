@@ -30,11 +30,12 @@
             </div>
             <br />
         </div>
-        
+
     <asp:ListView ID="lvHoraire" runat="server" DataSourceID="dsHoraire" DataKeyNames="idHoraire" InsertItemPosition="LastItem">
         <LayoutTemplate>
-            <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
         </LayoutTemplate>
+
         <InsertItemTemplate>
             <div class="local">
             <div class="interieurGauche">
@@ -58,19 +59,9 @@
                 <br />
             </div>
             </div>
-        </InsertItemTemplate>
-    </asp:ListView>
-
-    <asp:ListView ID="lvJourSemaine" runat="server" DataSourceID="dsJourSemaine" DataKeyNames="idJourSemaine" InsertItemPosition="LastItem">
-        <LayoutTemplate>
-                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
-        </LayoutTemplate>
-
-        <InsertItemTemplate>
-            
             <div class="jourSemaine">
                 <div class="formatZone" style="font-size:20px;">
-                    <asp:DropDownList ID="DropDownList1" SkinID="ddlBlue" runat="server" width="120px" SelectedValue='<%# Bind("nomJourSemaine") %>'>
+                    <asp:DropDownList ID="DropDownList1" SkinID="ddlBlue" runat="server" width="120px" SelectedValue='<%# Bind("jourSemaine") %>'>
                         <asp:ListItem Text="Lundi" Value="Lundi" Selected="true"></asp:ListItem>
                         <asp:ListItem Text="Mardi" Value="Mardi"></asp:ListItem>
                         <asp:ListItem Text="Mercredi" Value="Mercredi"></asp:ListItem>
@@ -147,11 +138,6 @@
     <asp:EntityDataSource ID="dsHoraire" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
     EnableDelete="True" EnableInsert="True" EnableUpdate="True" orderBy="it.idHoraire">
-    </asp:EntityDataSource>
-
-    <asp:EntityDataSource ID="dsJourSemaine" runat="server" ConnectionString="name=modelCLSContainer"
-    DefaultContainerName="modelCLSContainer" EntitySetName="JourSemaineJeu" EnableFlattening="False"
-    EnableDelete="True" EnableInsert="True" EnableUpdate="True" orderBy="it.idJourSemaine">
     </asp:EntityDataSource>
 
 </asp:Content>
