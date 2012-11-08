@@ -88,11 +88,11 @@
                     </div>
                     <div class="blockGroupe">
                         <asp:DropDownList ID="ddlMembreFamille" runat="server" Width="100px" DataSourceID="dsMembreFamille"
-                            AppendDataBoundItems="true" SkinID="ddlBluePetit" Height="28px" DataTextField="prenomMembre" DataValueField="idMembre">
+                            AppendDataBoundItems="true" SkinID="ddlBluePetit" Height="28px" DataTextField="prenomMembre" DataValueField="idMembre" >
                         </asp:DropDownList>
                     </div>
                 <div class="blockGroupe">
-                    <asp:Button ID="btnJeMinscris" runat="server" Text="Confirmer l'inscription" CssClass="btn btn-small btn-primary" />
+                    <asp:Button ID="btnJeMinscris" runat="server" Text="Inscription" CssClass="btn btn-small btn-primary" OnClick="inscriptionCours" CommandArgument='<%# Eval("idGroupe") %>' CommandName="inscription" />
                 </div>
                 </div>
             </ItemTemplate>

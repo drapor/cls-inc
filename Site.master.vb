@@ -27,8 +27,6 @@ Partial Class Site
     End Sub
 #End Region
 
-
-
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         If HttpContext.Current.User.Identity.IsAuthenticated = True Then
             'Apparition des boutons de l'utilisateur
@@ -43,11 +41,33 @@ Partial Class Site
     End Sub
 
 
+    Sub redirectionCourriel(sender As Object, e As EventArgs)
+        If HttpContext.Current.User.IsInRole("Administrateur") Then
+            Response.Redirect("~/Page/Admin/home_admin.aspx")
+        ElseIf HttpContext.Current.User.IsInRole("Employé") Then
+            Response.Redirect("~/Page/Employe/home_employe.aspx")
+        ElseIf HttpContext.Current.User.IsInRole("Adulte") Then
+            Response.Redirect("~/Page/Client/home_member.aspx")
+        End If
+    End Sub
+
+    Sub redirectionProfil(sender As Object, e As EventArgs)
+        If HttpContext.Current.User.IsInRole("Administrateur") Then
+            Response.Redirect("~/Page/Employe/home_employe.aspx")
+        ElseIf HttpContext.Current.User.IsInRole("Employé") Then
+            Response.Redirect("~/Page/Employe/home_employe.aspx")
+        ElseIf HttpContext.Current.User.IsInRole("Adulte") Then
+            Response.Redirect("~/Page/Client/home_member.aspx")
+        End If
+    End Sub
+
     Protected Sub lnkLogOut_Click(sender As Object, e As System.EventArgs) Handles lnkLogOut.Click
         FormsAuthentication.SignOut()
         Response.Redirect("~/Page/login.aspx")
         Session("idUser") = Nothing
     End Sub
+
+
 
 End Class
 

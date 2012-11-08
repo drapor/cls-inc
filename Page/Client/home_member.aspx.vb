@@ -38,10 +38,9 @@ Partial Class Page_Client_home_member
         Dim btnHideMP As LinkButton = FindChildControl(Of LinkButton)(lvMotPasse, "btnModifierMP")
         Dim btnHideAfficherFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnAfficherFamille")
         Dim btnHideSupprimerFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnSupprimerFamille")
-        Dim btnHideAjouterFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnAjouterFamille")
 
         If e.CommandName = "Edit" Then
-            btnHideAjouterFamille.Visible = False
+            btnAjouterFamille.Visible = False
             btnHistorique.Visible = False
             btnHideCourriel.Visible = False
             btnHideMP.Visible = False
@@ -49,7 +48,7 @@ Partial Class Page_Client_home_member
             'btnHideSupprimerFamille.Visible = False
 
         Else
-            btnHideAjouterFamille.Visible = True
+            btnAjouterFamille.Visible = True
             btnHistorique.Visible = True
             btnHideCourriel.Visible = True
             btnHideMP.Visible = True
@@ -64,10 +63,9 @@ Partial Class Page_Client_home_member
         Dim btnHideMP As LinkButton = FindChildControl(Of LinkButton)(lvMotPasse, "btnModifierMP")
         Dim btnHideAfficherFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnAfficherFamille")
         Dim btnHideSupprimerFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnSupprimerFamille")
-        Dim btnHideAjouterFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnAjouterFamille")
 
         If e.CommandName = "Edit" Then
-            btnHideAjouterFamille.Visible = False
+            btnAjouterFamille.Visible = False
             btnHistorique.Visible = False
             btnHideInfo.Visible = False
             btnHideMP.Visible = False
@@ -76,7 +74,7 @@ Partial Class Page_Client_home_member
 
 
         Else
-            btnHideAjouterFamille.Visible = True
+            btnAjouterFamille.Visible = True
             btnHistorique.Visible = True
             btnHideInfo.Visible = True
             btnHideMP.Visible = True
@@ -90,10 +88,9 @@ Partial Class Page_Client_home_member
         Dim btnHideCourriel As LinkButton = FindChildControl(Of LinkButton)(lvCourriel, "btnModifierCourriel")
         Dim btnHideAfficherFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnAfficherFamille")
         Dim btnHideSupprimerFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnSupprimerFamille")
-        Dim btnHideAjouterFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnAjouterFamille")
 
         If e.CommandName = "Edit" Then
-            btnHideAjouterFamille.Visible = False
+            btnAjouterFamille.Visible = False
             btnHistorique.Visible = False
             btnHideInfo.Visible = False
             btnHideCourriel.Visible = False
@@ -101,7 +98,7 @@ Partial Class Page_Client_home_member
             'btnHideSupprimerFamille.Visible = False
 
         Else
-            btnHideAjouterFamille.Visible = True
+            btnAjouterFamille.Visible = True
             btnHistorique.Visible = True
             btnHideInfo.Visible = True
             btnHideCourriel.Visible = True

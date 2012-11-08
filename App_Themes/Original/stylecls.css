@@ -470,6 +470,7 @@ background-image: "img/button2.png";
     box-shadow: 0 3px 3px rgba(50, 50, 50, 0.25);
     border-radius: 15px;
     padding: 10px;
+    overflow:hidden;
 }
 
 .titleAdmin
