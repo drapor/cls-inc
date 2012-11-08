@@ -30,7 +30,7 @@
             </div>
             <br />
         </div>
-        
+
     <asp:ListView ID="lvHoraire" runat="server" DataSourceID="dsHoraire" DataKeyNames="idHoraire" InsertItemPosition="LastItem">
         <LayoutTemplate>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -61,7 +61,7 @@
             </div>
             <div class="jourSemaine">
                 <div class="formatZone" style="font-size:20px;">
-                    <asp:DropDownList ID="DropDownList1" SkinID="ddlBlue" runat="server" width="120px" SelectedValue='<%# Bind("nomJourSemaine") %>'>
+                    <asp:DropDownList ID="DropDownList1" SkinID="ddlBlue" runat="server" width="120px" SelectedValue='<%# Bind("jourSemaine") %>'>
                         <asp:ListItem Text="Lundi" Value="Lundi" Selected="true"></asp:ListItem>
                         <asp:ListItem Text="Mardi" Value="Mardi"></asp:ListItem>
                         <asp:ListItem Text="Mercredi" Value="Mercredi"></asp:ListItem>
@@ -83,11 +83,11 @@
                 </div>
                 <div class="interieurDroitHoraire">
                     <div class="formatZone">
-                        <asp:TextBox ID="txtDebut" SkinID="txtBoxYellowPerso" runat="server" CssClass="search-query" Text='<%# Bind("heureDebutLundi") %>' MaxLength="5" Width="50px"></asp:TextBox>
+                        <asp:TextBox ID="txtDebut" SkinID="txtBoxYellowPerso" runat="server" CssClass="search-query" Text='<%# Bind("heureDebut") %>' MaxLength="5" Width="50px"></asp:TextBox>
                     </div>
                     <br />
                     <div class="formatZone">
-                        <asp:TextBox ID="txtFin" SkinID="txtBoxYellowPerso"  runat="server" CssClass="search-query" Text='<%# Bind("heureFinLundi") %>'  MaxLength="5" Width="50px"></asp:TextBox>
+                        <asp:TextBox ID="txtFin" SkinID="txtBoxYellowPerso"  runat="server" CssClass="search-query" Text='<%# Bind("heureFin") %>'  MaxLength="5" Width="50px"></asp:TextBox>
                     </div>
                 </div>
                 <div class="validationHoraire">
