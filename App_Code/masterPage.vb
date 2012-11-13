@@ -12,6 +12,7 @@ Imports System.Web.UI.HtmlControls
 Imports System.Web.HttpRequest
 Imports System.Web.Services
 Imports modelCLS
+Imports System.IO
 
 Public Class masterPage
     Inherits System.Web.UI.Page
@@ -44,5 +45,27 @@ Public Class masterPage
             End If
         Next c
     End Sub
+
+    Protected Sub Page_Error(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Error
+        Dim erreur As Exception = Server.GetLastError
+        masterPage.traiteErreur(Page, "UNE ERREUR EST SURVENUE:", erreur)
+        Dim pagePrecedente As String = Request.Url.AbsolutePath
+        Dim url As String
+        url = "~/Page/error.aspx?pagePrecedente=" & pagePrecedente
+        Response.Redirect(url)
+
+        Server.ClearError()
+        'Response.Redirect(utile.utilall.pageerreur, True)
+    End Sub
+
+    Public Shared Function traiteErreur(ByRef page As Page, ByVal msg As String, ByVal ex As Exception) As String
+        Try
+            File.AppendAllText(page.Server.MapPath("~/App_Data/logErreur.txt"), "ERREUR " & Now.ToLongDateString & ControlChars.CrLf)
+            File.AppendAllText(page.Server.MapPath("~/App_Data/logErreur.txt"), msg & ex.ToString())
+        Catch ex2 As Exception
+        End Try
+        Return "UNE ERREUR S'EST PRODUITE: " & ex.ToString
+    End Function
+
 
 End Class

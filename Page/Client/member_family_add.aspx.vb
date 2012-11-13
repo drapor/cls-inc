@@ -1,6 +1,6 @@
 ﻿Imports modelCLS
 Imports masterPage
-Partial Class Page_Autre_register
+Partial Class Page_Client_member_family_add
     Inherits System.Web.UI.Page
 
     Public entClient As modelCLSContainer = New modelCLSContainer

@@ -1,4 +1,4 @@
-<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_family_add.aspx.vb" Inherits="Page_Autre_register" Theme="Original" %>
+<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_family_add.aspx.vb" Inherits="Page_Client_member_family_add" Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <div class="contenuFamille">
@@ -75,7 +75,9 @@
             yearRange: "c-100:c",
             changeMonth: true,
             changeYear: true,
-            dateFormat: "yy/mm/dd"
+            dateFormat: "yy/mm/dd",
+            maxDate: "-1d",
+            minDate: "-18y"
         });
     });
 	</script>

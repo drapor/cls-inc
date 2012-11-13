@@ -1,0 +1,45 @@
+﻿ERREUR mardi 13 novembre 2012
+UNE ERREUR EST SURVENUE:System.NullReferenceException: La référence d'objet n'est pas définie à une instance d'un objet.
+   à Page_Admin_admin_course_add.changementAgeMod(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Admin\admin_course_add.aspx.vb:ligne 24
+   à System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   à System.Web.UI.WebControls.DropDownList.RaisePostDataChangedEvent()
+   à System.Web.UI.WebControls.DropDownList.System.Web.UI.IPostBackDataHandler.RaisePostDataChangedEvent()
+   à System.Web.UI.Page.RaiseChangedEvents()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR mardi 13 novembre 2012
+UNE ERREUR EST SURVENUE:System.NullReferenceException: La référence d'objet n'est pas définie à une instance d'un objet.
+   à Page_Admin_admin_course_add.changementAgeMod(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Admin\admin_course_add.aspx.vb:ligne 24
+   à System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   à System.Web.UI.WebControls.DropDownList.RaisePostDataChangedEvent()
+   à System.Web.UI.WebControls.DropDownList.System.Web.UI.IPostBackDataHandler.RaisePostDataChangedEvent()
+   à System.Web.UI.Page.RaiseChangedEvents()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR mardi 13 novembre 2012
+UNE ERREUR EST SURVENUE:System.InvalidOperationException: La propriété « heureDebut » sur « HoraireJeu » n'a pas pu être définie à une valeur « String ». Vous devez assigner une valeur non Null de type « DateTime » à cette propriété. 
+   à System.Web.UI.WebControls.EntityDataSourceView.ExecuteSelect(DataSourceSelectArguments arguments)
+   à System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   à System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   à System.Web.UI.WebControls.ListView.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListView.CreateChildControls()
+   à System.Web.UI.Control.EnsureChildControls()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR mardi 13 novembre 2012
+UNE ERREUR EST SURVENUE:System.InvalidOperationException: La propriété « heureDebut » sur « HoraireJeu » n'a pas pu être définie à une valeur « String ». Vous devez assigner une valeur non Null de type « DateTime » à cette propriété. 
+   à System.Web.UI.WebControls.EntityDataSourceView.ExecuteSelect(DataSourceSelectArguments arguments)
+   à System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   à System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   à System.Web.UI.WebControls.ListView.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListView.CreateChildControls()
+   à System.Web.UI.Control.EnsureChildControls()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)

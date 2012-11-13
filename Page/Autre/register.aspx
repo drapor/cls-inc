@@ -119,7 +119,8 @@
             yearRange: "c-100:c",
             changeMonth: true,
             changeYear: true,
-            dateFormat: "yy/mm/dd"
+            dateFormat: "yy/mm/dd",
+            maxDate: "-18y"
         });
     });
 	</script>

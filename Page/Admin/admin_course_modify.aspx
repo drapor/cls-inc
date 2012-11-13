@@ -20,7 +20,6 @@
 <LayoutTemplate>
    <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
 </LayoutTemplate>
-
       <ItemTemplate>
             <div class="modifierCoursGauche">
                 <div class="partiGaucheCours">

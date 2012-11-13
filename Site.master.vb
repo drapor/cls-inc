@@ -29,6 +29,7 @@ Partial Class Site
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         If HttpContext.Current.User.Identity.IsAuthenticated = True Then
+
             'Apparition des boutons de l'utilisateur
             lnkConnecter.Visible = False
             lnkInscrire.Visible = False
@@ -37,6 +38,21 @@ Partial Class Site
             lnkProfile.Visible = True
             imgProfileIcon.Visible = True
             lnkUserName.Text = HttpContext.Current.User.Identity.Name
+
+            If HttpContext.Current.User.IsInRole("Administrateur") Then
+            Else
+                imgCart.Visible = True
+                lnkNumberItemCart.Visible = True
+            End If
+            
+
+            If (Session("membreIDList") IsNot Nothing) Then
+                Dim membreID As List(Of String) = Session("membreIDList")
+                Dim nombreItemCart = membreID.Count
+                lnkNumberItemCart.Text = "(" & nombreItemCart & ")"
+            Else
+                lnkNumberItemCart.Text = "(0)"
+            End If
         End If
     End Sub
 
@@ -62,9 +78,12 @@ Partial Class Site
     End Sub
 
     Protected Sub lnkLogOut_Click(sender As Object, e As System.EventArgs) Handles lnkLogOut.Click
+        Session("idUser") = Nothing
+        Session("groupeIDList") = Nothing
+        Session("coursIDList") = Nothing
+        Session("membreIDList") = Nothing
         FormsAuthentication.SignOut()
         Response.Redirect("~/Page/login.aspx")
-        Session("idUser") = Nothing
     End Sub
 
 

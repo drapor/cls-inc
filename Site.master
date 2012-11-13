@@ -6,6 +6,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="../../Scripts/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="../../Scripts/jquery-ui-1.8.23.custom.min.js"></script>
+
+
+
     <%--<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script> --%>
@@ -48,7 +51,7 @@
                 <asp:LinkButton ID="lnkNousJoindre" runat="server" CssClass="linkHeaderMenuLeft" CausesValidation="false">Nous joindre</asp:LinkButton>
                 <asp:LinkButton ID="lnkLogOut" runat="server" CssClass="linkHeaderMenuRight" Visible="false" CausesValidation="false">Déconnexion</asp:LinkButton>
                 <asp:LinkButton ID="lnkUserName" runat="server" CssClass="linkHeaderMenuRight" Visible="false" CausesValidation="false" OnClick="redirectionCourriel"></asp:LinkButton>
-                <asp:LinkButton ID="lnkInscrire" runat="server" CssClass="linkHeaderMenuRight" PostBackUrl="~/Page/login.aspx">Connecter</asp:LinkButton>
+                <asp:LinkButton ID="lnkInscrire" runat="server" CssClass="linkHeaderMenuRight" PostBackUrl="~/Page/login.aspx" CausesValidation="false" >Connecter</asp:LinkButton>
                 <asp:LinkButton ID="lnkConnecter" runat="server" CssClass="linkHeaderMenuRight" PostBackUrl="~/Page/Autre/register.aspx" CausesValidation="false">S'incrire</asp:LinkButton>
             </div>
             <div class="ligneHeader">
@@ -64,12 +67,14 @@
                         <form class="navbar-search fieldSearch">
                         <asp:TextBox ID="txtSearch" runat="server" CssClass="search-query span3 fieldSearch"></asp:TextBox>
                         <asp:ImageButton ID="searchButton" runat="server" CssClass="searchButton" Height="28px"
-                            Width="28px" />
+                            Width="28px" CausesValidation="false" />
                         </form>
                     </div>
                     <div class="myProfile">
                         <asp:ImageButton ID="imgProfileIcon" runat="server" ImageUrl="~/App_Themes/Original/img/profile_account.png" Height="35px" Width="39px" Visible="false" CausesValidation="false" OnClick="redirectionProfil" />
                         <asp:LinkButton ID="lnkProfile" runat="server" Visible="false" ForeColor="White" Font-Size="Medium" CausesValidation="false" OnClick="redirectionProfil">Mon profil</asp:LinkButton>
+                        <asp:ImageButton ID="imgCart" runat="server" ImageUrl="~/App_Themes/Original/img/shopping_cart.png" Height="35px" Width="42px" Visible="false" CausesValidation="false"/>                   
+                        <asp:LinkButton ID="lnkNumberItemCart" runat="server" ForeColor="#ffbf00" Font-Size="Medium" CausesValidation="false" Text="" Visible="false"></asp:LinkButton>
                     </div>
                 </div>
             </div>
@@ -82,23 +87,23 @@
                     <div class="footerLiens">
                         <asp:Label CssClass="footerTitle" ID="lblLiensImportants" runat="server" Text="Liens importants"></asp:Label><br />
                         <br />
-                        <asp:LinkButton ID="lnkAccueilFooter" runat="server" CssClass="linkFooter" PostBackUrl="~/Page/Default.aspx">Accueil</asp:LinkButton><br />
-                        <asp:LinkButton ID="lnkAProposFooter" runat="server" CssClass="linkFooter">À propos</asp:LinkButton><br />
-                        <asp:LinkButton ID="lnkNousJoindreFooter" runat="server" CssClass="linkFooter">Nous joindre</asp:LinkButton>
+                        <asp:LinkButton ID="lnkAccueilFooter" runat="server" CssClass="linkFooter" PostBackUrl="~/Page/Default.aspx" CausesValidation="false">Accueil</asp:LinkButton><br />
+                        <asp:LinkButton ID="lnkAProposFooter" runat="server" CssClass="linkFooter" CausesValidation="false">À propos</asp:LinkButton><br />
+                        <asp:LinkButton ID="lnkNousJoindreFooter" runat="server" CssClass="linkFooter" CausesValidation="false">Nous joindre</asp:LinkButton>
                     </div>
                     <div class="footerMedia">
                         <asp:Label CssClass="footerTitle" ID="lblMediaSociaux" runat="server" Text="Média sociaux"></asp:Label><br />
                         <br />
-                        <asp:LinkButton ID="lnkFacebook" runat="server" CssClass="linkFooter" PostBackUrl="http://www.facebook.com">Facebook</asp:LinkButton><br />
-                        <asp:LinkButton ID="lnkTwitter" runat="server" CssClass="linkFooter" PostBackUrl="http://www.twitter.com">Twitter</asp:LinkButton><br />
-                        <asp:LinkButton ID="lnkYoutube" runat="server" CssClass="linkFooter" PostBackUrl="http://www.youtube.com">Youtube</asp:LinkButton>
+                        <asp:LinkButton ID="lnkFacebook" runat="server" CssClass="linkFooter" PostBackUrl="http://www.facebook.com" CausesValidation="false">Facebook</asp:LinkButton><br />
+                        <asp:LinkButton ID="lnkTwitter" runat="server" CssClass="linkFooter" PostBackUrl="http://www.twitter.com" CausesValidation="false">Twitter</asp:LinkButton><br />
+                        <asp:LinkButton ID="lnkYoutube" runat="server" CssClass="linkFooter" PostBackUrl="http://www.youtube.com" CausesValidation="false">Youtube</asp:LinkButton>
                     </div>
                     <div class="footerDroit">
                         <asp:Label CssClass="footerTitle" ID="lblDroitUtilisation" runat="server" Text="Droit d'utilisation"></asp:Label><br />
                         <br />
                         <asp:Label ID="lblclsInc2012" runat="server" CssClass="footerText">© 2012 CLS inc.</asp:Label><br />
                         <asp:Label ID="lblToutDroitReserver" runat="server" CssClass="footerText">Tous droits réservés.</asp:Label><br />
-                        <asp:LinkButton ID="lnkContacterWebmester" runat="server" CssClass="linkFooter">Contactez le webmestre</asp:LinkButton>
+                        <asp:LinkButton ID="lnkContacterWebmester" runat="server" CssClass="linkFooter" CausesValidation="false">Contactez le webmestre</asp:LinkButton>
                     </div>
                 </div>
             </div>

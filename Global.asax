@@ -2,8 +2,10 @@
 
 <script runat="server">
 
+    Sub Application_BeginRequest(ByVal sender As Object, ByVal e As EventArgs)
+    End Sub
     Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
-        ' Code qui s’exécute au démarrage de l’application
+        FormsAuthentication.SignOut()
     End Sub
     
     Sub Application_End(ByVal sender As Object, ByVal e As EventArgs)

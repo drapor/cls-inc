@@ -1,14 +1,14 @@
 ﻿
-Partial Class Page_Autre_description
+Partial Class Page_Client_description
     Inherits masterPage
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim cours As Integer = Session("idCours")
         dsCours.WhereParameters("cours").DefaultValue = cours
         dsGroupes.WhereParameters("coursID").DefaultValue = cours
-        dsMembreFamille.WhereParameters("familleID").DefaultValue = Session("idFamille")
 
         Dim categorie As String = Request.QueryString("categorie")
+        Session("categorie") = categorie
         If categorie = "Sport" Then
             imgCategory.ImageUrl = "~/App_Themes/Original/img/sports_banner.png"
         ElseIf categorie = "Loisir" Then
@@ -32,11 +32,13 @@ Partial Class Page_Autre_description
     'End Sub
 
     Sub inscriptionCours(sender As Object, e As EventArgs)
-        Dim aCookie As New HttpCookie("commande")
-        aCookie.Values("idMembre") = Session("idUser")
-        aCookie.Values("idMembreInscrire") = FindChildControl(Of DropDownList)(lvGroupes, "ddlMembreFamille").SelectedValue.ToString
-        aCookie.Values("idGroupe") = CType(sender, Button).CommandArgument.ToString
-        aCookie.Values("idCours") = Session("idCours")
+
+        Session("idCoursSelected") = Session("idCours")
+        Session("idGroupeSelected") = CType(sender, Button).CommandArgument.ToString
+        Response.Redirect("~/Page/Client/member_inscription_memberchoice.aspx")
+
+        'Dim aCookie As New HttpCookie("commande")
+        'aCookie.Values("idMembre") = Session("idUser")
     End Sub
 
     Sub retourCategorie(sender As Object, e As EventArgs)
