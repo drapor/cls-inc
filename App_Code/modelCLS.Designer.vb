@@ -16,7 +16,7 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("5a2b27bf-06ee-48a9-b316-e521183f39cf")>
+<Assembly: EdmSchemaAttribute("1f8743fa-736f-4db9-b7c4-1336c211764f")>
 #Region "Métadonnées de relation EDM"
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
@@ -1492,7 +1492,7 @@ Namespace modelCLS
         ''' <param name="heureFin">Valeur initiale de la propriété heureFin.</param>
         ''' <param name="noLocal">Valeur initiale de la propriété noLocal.</param>
         ''' <param name="groupeJeu_idGroupe">Valeur initiale de la propriété GroupeJeu_idGroupe.</param>
-        Public Shared Function CreateHoraireJeu(idHoraire As Global.System.Int16, jourSemaine As Global.System.String, heureDebut As Global.System.DateTime, heureFin As Global.System.DateTime, noLocal As Global.System.String, groupeJeu_idGroupe As Global.System.Int16) As HoraireJeu
+        Public Shared Function CreateHoraireJeu(idHoraire As Global.System.Int16, jourSemaine As Global.System.String, heureDebut As Global.System.String, heureFin As Global.System.String, noLocal As Global.System.String, groupeJeu_idGroupe As Global.System.Int16) As HoraireJeu
             Dim horaireJeu as HoraireJeu = New HoraireJeu
             horaireJeu.idHoraire = idHoraire
             horaireJeu.jourSemaine = jourSemaine
@@ -1563,21 +1563,21 @@ Namespace modelCLS
         ''' </summary>
         <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
         <DataMemberAttribute()>
-        Public Property heureDebut() As Global.System.DateTime
+        Public Property heureDebut() As Global.System.String
             Get
                 Return _heureDebut
             End Get
             Set
                 OnheureDebutChanging(value)
                 ReportPropertyChanging("heureDebut")
-                _heureDebut = StructuralObject.SetValidValue(value)
+                _heureDebut = StructuralObject.SetValidValue(value, false)
                 ReportPropertyChanged("heureDebut")
                 OnheureDebutChanged()
             End Set
         End Property
     
-        Private _heureDebut As Global.System.DateTime
-        Private Partial Sub OnheureDebutChanging(value As Global.System.DateTime)
+        Private _heureDebut As Global.System.String
+        Private Partial Sub OnheureDebutChanging(value As Global.System.String)
         End Sub
     
         Private Partial Sub OnheureDebutChanged()
@@ -1588,21 +1588,21 @@ Namespace modelCLS
         ''' </summary>
         <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
         <DataMemberAttribute()>
-        Public Property heureFin() As Global.System.DateTime
+        Public Property heureFin() As Global.System.String
             Get
                 Return _heureFin
             End Get
             Set
                 OnheureFinChanging(value)
                 ReportPropertyChanging("heureFin")
-                _heureFin = StructuralObject.SetValidValue(value)
+                _heureFin = StructuralObject.SetValidValue(value, false)
                 ReportPropertyChanged("heureFin")
                 OnheureFinChanged()
             End Set
         End Property
     
-        Private _heureFin As Global.System.DateTime
-        Private Partial Sub OnheureFinChanging(value As Global.System.DateTime)
+        Private _heureFin As Global.System.String
+        Private Partial Sub OnheureFinChanging(value As Global.System.String)
         End Sub
     
         Private Partial Sub OnheureFinChanged()

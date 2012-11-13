@@ -1,19 +1,4 @@
-﻿.contenuPage
-{
-    position:relative;
-    width:920px;
-    height:auto;
-    min-height:400px;
-    background-color:White;
-    box-shadow:0 3px 3px rgba(50,50,50,0.25);
-    margin-left:auto;
-    margin-right:auto;
-    border-radius:15px;
-    padding:10px;
-    overflow:hidden;
-}
-
-.contenuClient
+﻿.contenuClient
 {
    width:900px;
    height:auto;
