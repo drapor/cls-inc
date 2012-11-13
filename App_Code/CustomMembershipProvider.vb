@@ -141,7 +141,7 @@ Public Class CustomMembershipProvider
 
 #End Region
 
-    'Fonction qui vérifi si l'utilisateur est valide
+    'Fonction qui vérifie si l'utilisateur est valide
     Public Overrides Function ValidateUser(username As String, password As String) As Boolean
         If username Is Nothing OrElse username = "" Then Throw New ProviderException("Le nom d'utilisateur ne peut être vide ou nulle.")
         If password Is Nothing OrElse password = "" Then Throw New ProviderException("Le mot de passe ne peut être vide ou nulle.")

@@ -6,24 +6,22 @@ Partial Class Page_Admin_admin_group_add
 
     Public entClient As modelCLSContainer = New modelCLSContainer
 
-    Protected Sub lvHoraire_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvHoraire.ItemInserting
-        Dim idGroupe As Short = FindChildControl(Of DropDownList)(Me, "ddlNomGroupe").SelectedValue
+    Protected Sub lvAjout_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvAjout.ItemInserting
+        Dim idGroupe As Short = FindChildControl(Of DropDownList)(Me, "ddlNomGroupeAjout").SelectedValue
 
         e.Values("GroupeJeu_idGroupe") = idGroupe
 
     End Sub
 
-    Protected Sub ServerValidate(sender As Object, args As ServerValidateEventArgs)
-        Dim debut As String = FindChildControl(Of TextBox)(lvHoraire, "txtDebut").Text
-        Dim fin As String = FindChildControl(Of TextBox)(lvHoraire, "txtFin").Text
-
-        If String.IsNullOrEmpty(debut) AndAlso String.IsNullOrEmpty(fin) Then
-            args.IsValid = True
-        ElseIf Not String.IsNullOrEmpty(debut) AndAlso Not String.IsNullOrEmpty(fin) Then
-            args.IsValid = True
-        Else
-            args.IsValid = False
-        End If
+    Sub actionAjout(sender As Object, e As EventArgs)
+        MVPrincipal.SetActiveView(viewAjout)
     End Sub
 
+    'Sub actionModifie(sender As Object, e As EventArgs)
+    '    MVPrincipal.SetActiveView(viewModifie)
+    'End Sub
+
+    'Sub actionSupprime(sender As Object, e As EventArgs)
+    '    MVPrincipal.SetActiveView(viewSupprime)
+    'End Sub
 End Class

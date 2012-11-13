@@ -134,8 +134,8 @@
           </Key>
           <Property Name="idHoraire" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="jourSemaine" Type="nvarchar" Nullable="false" MaxLength="9" />
-          <Property Name="heureDebut" Type="datetime" Nullable="false" />
-          <Property Name="heureFin" Type="datetime" Nullable="false" />
+          <Property Name="heureDebut" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="heureFin" Type="nvarchar" Nullable="false" MaxLength="5" />
           <Property Name="noLocal" Type="nvarchar" Nullable="false" MaxLength="10" />
           <Property Name="GroupeJeu_idGroupe" Type="smallint" Nullable="false" />
         </EntityType>
@@ -547,8 +547,8 @@
           </Key>
           <Property Type="Int16" Name="idHoraire" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="jourSemaine" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="heureDebut" Nullable="false" />
-          <Property Type="DateTime" Name="heureFin" Nullable="false" />
+          <Property Type="String" Name="heureDebut" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="heureFin" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="noLocal" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Type="Int16" Name="GroupeJeu_idGroupe" Nullable="false" />
           <NavigationProperty Name="GroupeJeu" Relationship="modelCLS.FK_GroupeJeuHoraire" FromRole="HoraireJeu" ToRole="GroupeJeu" />

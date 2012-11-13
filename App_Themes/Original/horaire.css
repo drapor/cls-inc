@@ -1,17 +1,30 @@
-﻿.jourSemaine
+﻿.ligneHoraire
+{
+    width:900px;
+    font-size:18px;
+    float:left;
+}
+
+.partiHoraire
+{
+    width:430px;
+    font-size:18px;
+    float:left;
+}
+
+.jourSemaine
 {
     width:400px;
     height:100px;
     padding:10px;
     float:left;
-    border:2px solid black;
     margin-left:20px;
     margin-bottom:10px;
 }
 
 .interieurGaucheHoraire
 {
-    width:130px;
+    width:150px;
     font-size:small;
     font-weight:bold;
     float:left;
@@ -29,36 +42,67 @@
     float:left;
 }
 
-.titreJourSemaine
+.sectionJourSemaine
 {
-    width:250px;
-    font-size:20;
-    font-weight:bold;
+    width:220px;
+    text-align:center;
     float:left;
 }
 
-.titreHeureDebut
+.sectionHeureDebut
 {
-    width:250px;
-    font-size:20;
-    font-weight:bold;
+    width:185px;
+    text-align:center;
     float:left;
 }
 
-.titreHeureFin
+.sectionHeureFin
 {
-    width:250px;
-    font-size:20;
-    font-weight:bold;
+    width:170px;
+    text-align:center;
+    float:left;
+}
+
+.sectionLocal
+{
+    width:130px;
+    text-align:center;
+    float:left;
+}
+
+.sectionDelete
+{
+    width:100px;
+    text-align:center;
+    float:left;
+}
+
+.sectionModify
+{
+    width:130px;
+    text-align:center;
     float:left;
 }
 
 .validationLocal
 {
-    width:160px;
     float:left;
+    font-weight:bolder;
 }
 
 .validationHoraire
 {
+    
+}
+
+.horaireGauche
+{
+    width:431px;
+    float:left;
+}
+
+.horaireDroit
+{
+    width:429px;
+    float:left;
 }
