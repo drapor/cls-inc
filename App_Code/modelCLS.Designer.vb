@@ -16,7 +16,7 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("1f8743fa-736f-4db9-b7c4-1336c211764f")>
+<Assembly: EdmSchemaAttribute("d1aa97ce-d402-4cc7-b370-79c7a6e1baa7")>
 #Region "Métadonnées de relation EDM"
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
@@ -31,6 +31,10 @@ Imports System.Runtime.Serialization
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_RoleJeuMembresJeu", "RoleJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.RoleJeu), "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.MembresJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "SessionGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.GroupeJeu), "SessionJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.SessionJeu))>
 <Assembly: EdmRelationshipAttribute("modelCLS", "SpecialiteAnimateur", "MembresJeu_Animateur", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.MembresJeu_Animateur), "SpecialiteJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.SpecialiteJeu))>
+<Assembly: EdmRelationshipAttribute("modelCLS", "MembresJeuPanier", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "Panier", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.Panier))>
+<Assembly: EdmRelationshipAttribute("modelCLS", "ItemPanierGroupeJeu", "ItemPanier", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.ItemPanier), "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu))>
+<Assembly: EdmRelationshipAttribute("modelCLS", "ItemPanierMembresJeu", "ItemPanier", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.ItemPanier), "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu))>
+<Assembly: EdmRelationshipAttribute("modelCLS", "PanierItemPanier", "Panier", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.Panier), "ItemPanier", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.ItemPanier))>
 
 #End Region
 Namespace modelCLS
@@ -264,6 +268,34 @@ Namespace modelCLS
         End Property
     
         Private _TarifsJeu As ObjectSet(Of TarifsJeu)
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        Public ReadOnly Property PanierJeu() As ObjectSet(Of Panier)
+            Get
+                If (_PanierJeu Is Nothing) Then
+                    _PanierJeu = MyBase.CreateObjectSet(Of Panier)("PanierJeu")
+                End If
+                Return _PanierJeu
+            End Get
+        End Property
+    
+        Private _PanierJeu As ObjectSet(Of Panier)
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        Public ReadOnly Property ItemPanierJeu() As ObjectSet(Of ItemPanier)
+            Get
+                If (_ItemPanierJeu Is Nothing) Then
+                    _ItemPanierJeu = MyBase.CreateObjectSet(Of ItemPanier)("ItemPanierJeu")
+                End If
+                Return _ItemPanierJeu
+            End Get
+        End Property
+    
+        Private _ItemPanierJeu As ObjectSet(Of ItemPanier)
 
         #End Region
         #Region "Méthodes AddTo"
@@ -357,6 +389,20 @@ Namespace modelCLS
         ''' </summary>
         Public Sub AddToTarifsJeu(ByVal tarifsJeu As TarifsJeu)
             MyBase.AddObject("TarifsJeu", tarifsJeu)
+        End Sub
+    
+        ''' <summary>
+        ''' Méthode déconseillée pour ajouter un nouvel objet à l'EntitySet PanierJeu. Utilisez la méthode .Add de la propriété ObjectSet(Of T) associée à la place.
+        ''' </summary>
+        Public Sub AddToPanierJeu(ByVal panier As Panier)
+            MyBase.AddObject("PanierJeu", panier)
+        End Sub
+    
+        ''' <summary>
+        ''' Méthode déconseillée pour ajouter un nouvel objet à l'EntitySet ItemPanierJeu. Utilisez la méthode .Add de la propriété ObjectSet(Of T) associée à la place.
+        ''' </summary>
+        Public Sub AddToItemPanierJeu(ByVal itemPanier As ItemPanier)
+            MyBase.AddObject("ItemPanierJeu", itemPanier)
         End Sub
 
         #End Region
@@ -1469,6 +1515,24 @@ Namespace modelCLS
                 End If
             End Set
         End Property
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "ItemPanierGroupeJeu", "ItemPanier")>
+         Public Property ItemPanier() As EntityCollection(Of ItemPanier)
+            Get
+                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of ItemPanier)("modelCLS.ItemPanierGroupeJeu", "ItemPanier")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of ItemPanier)("modelCLS.ItemPanierGroupeJeu", "ItemPanier", value)
+                End If
+            End Set
+        End Property
 
         #End Region
     End Class
@@ -1688,6 +1752,155 @@ Namespace modelCLS
             Set
                 If (Not value Is Nothing)
                     CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of GroupeJeu)("modelCLS.FK_GroupeJeuHoraire", "GroupeJeu", value)
+                End If
+            End Set
+        End Property
+
+        #End Region
+    End Class
+    
+    ''' <summary>
+    ''' Aucune documentation sur les métadonnées n'est disponible.
+    ''' </summary>
+    <EdmEntityTypeAttribute(NamespaceName:="modelCLS", Name:="ItemPanier")>
+    <Serializable()>
+    <DataContractAttribute(IsReference:=True)>
+    Public Partial Class ItemPanier
+        Inherits EntityObject
+        #Region "Méthode de fabrique"
+    
+        ''' <summary>
+        ''' Créez un nouvel objet ItemPanier.
+        ''' </summary>
+        ''' <param name="idItemPanier">Valeur initiale de la propriété idItemPanier.</param>
+        Public Shared Function CreateItemPanier(idItemPanier As Global.System.Int32) As ItemPanier
+            Dim itemPanier as ItemPanier = New ItemPanier
+            itemPanier.idItemPanier = idItemPanier
+            Return itemPanier
+        End Function
+
+        #End Region
+        #Region "Propriétés primitives"
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property idItemPanier() As Global.System.Int32
+            Get
+                Return _idItemPanier
+            End Get
+            Set
+                If (_idItemPanier <> Value) Then
+                    OnidItemPanierChanging(value)
+                    ReportPropertyChanging("idItemPanier")
+                    _idItemPanier = StructuralObject.SetValidValue(value)
+                    ReportPropertyChanged("idItemPanier")
+                    OnidItemPanierChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _idItemPanier As Global.System.Int32
+        Private Partial Sub OnidItemPanierChanging(value As Global.System.Int32)
+        End Sub
+    
+        Private Partial Sub OnidItemPanierChanged()
+        End Sub
+
+        #End Region
+        #Region "Propriétés de navigation"
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "ItemPanierGroupeJeu", "GroupeJeu")>
+        Public Property GroupeJeu() As GroupeJeu
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GroupeJeu)("modelCLS.ItemPanierGroupeJeu", "GroupeJeu").Value
+            End Get
+            Set
+                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GroupeJeu)("modelCLS.ItemPanierGroupeJeu", "GroupeJeu").Value = value
+            End Set
+        End Property
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <BrowsableAttribute(False)>
+        <DataMemberAttribute()>
+        Public Property GroupeJeuReference() As EntityReference(Of GroupeJeu)
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of GroupeJeu)("modelCLS.ItemPanierGroupeJeu", "GroupeJeu")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of GroupeJeu)("modelCLS.ItemPanierGroupeJeu", "GroupeJeu", value)
+                End If
+            End Set
+        End Property
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "ItemPanierMembresJeu", "MembresJeu")>
+        Public Property MembresJeu() As MembresJeu
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of MembresJeu)("modelCLS.ItemPanierMembresJeu", "MembresJeu").Value
+            End Get
+            Set
+                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of MembresJeu)("modelCLS.ItemPanierMembresJeu", "MembresJeu").Value = value
+            End Set
+        End Property
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <BrowsableAttribute(False)>
+        <DataMemberAttribute()>
+        Public Property MembresJeuReference() As EntityReference(Of MembresJeu)
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of MembresJeu)("modelCLS.ItemPanierMembresJeu", "MembresJeu")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of MembresJeu)("modelCLS.ItemPanierMembresJeu", "MembresJeu", value)
+                End If
+            End Set
+        End Property
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "PanierItemPanier", "Panier")>
+        Public Property Panier() As Panier
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Panier)("modelCLS.PanierItemPanier", "Panier").Value
+            End Get
+            Set
+                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Panier)("modelCLS.PanierItemPanier", "Panier").Value = value
+            End Set
+        End Property
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <BrowsableAttribute(False)>
+        <DataMemberAttribute()>
+        Public Property PanierReference() As EntityReference(Of Panier)
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Panier)("modelCLS.PanierItemPanier", "Panier")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of Panier)("modelCLS.PanierItemPanier", "Panier", value)
                 End If
             End Set
         End Property
@@ -2386,6 +2599,42 @@ Namespace modelCLS
                 End If
             End Set
         End Property
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "MembresJeuPanier", "Panier")>
+         Public Property Panier() As EntityCollection(Of Panier)
+            Get
+                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of Panier)("modelCLS.MembresJeuPanier", "Panier")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of Panier)("modelCLS.MembresJeuPanier", "Panier", value)
+                End If
+            End Set
+        End Property
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "ItemPanierMembresJeu", "ItemPanier")>
+         Public Property ItemPanier() As EntityCollection(Of ItemPanier)
+            Get
+                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of ItemPanier)("modelCLS.ItemPanierMembresJeu", "ItemPanier")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of ItemPanier)("modelCLS.ItemPanierMembresJeu", "ItemPanier", value)
+                End If
+            End Set
+        End Property
 
         #End Region
     End Class
@@ -2533,6 +2782,111 @@ Namespace modelCLS
             Set
                 If (Not value Is Nothing)
                     CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of SpecialiteJeu)("modelCLS.SpecialiteAnimateur", "SpecialiteJeu", value)
+                End If
+            End Set
+        End Property
+
+        #End Region
+    End Class
+    
+    ''' <summary>
+    ''' Aucune documentation sur les métadonnées n'est disponible.
+    ''' </summary>
+    <EdmEntityTypeAttribute(NamespaceName:="modelCLS", Name:="Panier")>
+    <Serializable()>
+    <DataContractAttribute(IsReference:=True)>
+    Public Partial Class Panier
+        Inherits EntityObject
+        #Region "Méthode de fabrique"
+    
+        ''' <summary>
+        ''' Créez un nouvel objet Panier.
+        ''' </summary>
+        ''' <param name="idCommande">Valeur initiale de la propriété idCommande.</param>
+        Public Shared Function CreatePanier(idCommande As Global.System.Int32) As Panier
+            Dim panier as Panier = New Panier
+            panier.idCommande = idCommande
+            Return panier
+        End Function
+
+        #End Region
+        #Region "Propriétés primitives"
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property idCommande() As Global.System.Int32
+            Get
+                Return _idCommande
+            End Get
+            Set
+                If (_idCommande <> Value) Then
+                    OnidCommandeChanging(value)
+                    ReportPropertyChanging("idCommande")
+                    _idCommande = StructuralObject.SetValidValue(value)
+                    ReportPropertyChanged("idCommande")
+                    OnidCommandeChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _idCommande As Global.System.Int32
+        Private Partial Sub OnidCommandeChanging(value As Global.System.Int32)
+        End Sub
+    
+        Private Partial Sub OnidCommandeChanged()
+        End Sub
+
+        #End Region
+        #Region "Propriétés de navigation"
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "MembresJeuPanier", "MembresJeu")>
+        Public Property MembresJeu() As MembresJeu
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of MembresJeu)("modelCLS.MembresJeuPanier", "MembresJeu").Value
+            End Get
+            Set
+                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of MembresJeu)("modelCLS.MembresJeuPanier", "MembresJeu").Value = value
+            End Set
+        End Property
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <BrowsableAttribute(False)>
+        <DataMemberAttribute()>
+        Public Property MembresJeuReference() As EntityReference(Of MembresJeu)
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of MembresJeu)("modelCLS.MembresJeuPanier", "MembresJeu")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of MembresJeu)("modelCLS.MembresJeuPanier", "MembresJeu", value)
+                End If
+            End Set
+        End Property
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "PanierItemPanier", "ItemPanier")>
+         Public Property ItemPanier() As EntityCollection(Of ItemPanier)
+            Get
+                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of ItemPanier)("modelCLS.PanierItemPanier", "ItemPanier")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of ItemPanier)("modelCLS.PanierItemPanier", "ItemPanier", value)
                 End If
             End Set
         End Property

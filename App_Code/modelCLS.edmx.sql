@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/08/2012 08:27:23
+-- Date Created: 11/15/2012 14:42:07
 -- Generated from EDMX file: C:\GitHub\cls-inc\App_Code\modelCLS.edmx
 -- --------------------------------------------------
 
@@ -41,6 +41,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_CoursListeAttente]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ListeAttenteJeu] DROP CONSTRAINT [FK_CoursListeAttente];
 GO
+IF OBJECT_ID(N'[dbo].[FK_GroupeJeuHoraire]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HoraireJeu] DROP CONSTRAINT [FK_GroupeJeuHoraire];
+GO
 IF OBJECT_ID(N'[dbo].[FK_ListeAttenteMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ListeAttenteJeu] DROP CONSTRAINT [FK_ListeAttenteMembres];
 GO
@@ -75,6 +78,9 @@ IF OBJECT_ID(N'[dbo].[CoursJeu]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[GroupeJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[GroupeJeu];
+GO
+IF OBJECT_ID(N'[dbo].[HoraireJeu]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[HoraireJeu];
 GO
 IF OBJECT_ID(N'[dbo].[ListeAttenteJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ListeAttenteJeu];
@@ -157,6 +163,17 @@ CREATE TABLE [dbo].[GroupeJeu] (
 );
 GO
 
+-- Creating table 'HoraireJeu'
+CREATE TABLE [dbo].[HoraireJeu] (
+    [idHoraire] smallint IDENTITY(1,1) NOT NULL,
+    [jourSemaine] nvarchar(9)  NOT NULL,
+    [heureDebut] nvarchar(5)  NOT NULL,
+    [heureFin] nvarchar(5)  NOT NULL,
+    [noLocal] nvarchar(10)  NOT NULL,
+    [GroupeJeu_idGroupe] smallint  NOT NULL
+);
+GO
+
 -- Creating table 'ListeAttenteJeu'
 CREATE TABLE [dbo].[ListeAttenteJeu] (
     [idListeAttente] smallint  NOT NULL,
@@ -234,14 +251,19 @@ CREATE TABLE [dbo].[TarifsJeu] (
 );
 GO
 
--- Creating table 'HoraireJeu'
-CREATE TABLE [dbo].[HoraireJeu] (
-    [idHoraire] smallint IDENTITY(1,1) NOT NULL,
-    [jourSemaine] nvarchar(9)  NOT NULL,
-    [heureDebut] datetime  NOT NULL,
-    [heureFin] datetime  NOT NULL,
-    [noLocal] nvarchar(10)  NOT NULL,
-    [GroupeJeu_idGroupe] smallint  NOT NULL
+-- Creating table 'PanierJeu'
+CREATE TABLE [dbo].[PanierJeu] (
+    [idCommande] int IDENTITY(1,1) NOT NULL,
+    [MembresJeu_idMembre] smallint  NOT NULL
+);
+GO
+
+-- Creating table 'ItemPanierJeu'
+CREATE TABLE [dbo].[ItemPanierJeu] (
+    [idItemPanier] int IDENTITY(1,1) NOT NULL,
+    [GroupeJeu_idGroupe] smallint  NOT NULL,
+    [MembresJeu_idMembre] smallint  NOT NULL,
+    [Panier_idCommande] int  NOT NULL
 );
 GO
 
@@ -285,6 +307,12 @@ GO
 ALTER TABLE [dbo].[GroupeJeu]
 ADD CONSTRAINT [PK_GroupeJeu]
     PRIMARY KEY CLUSTERED ([idGroupe] ASC);
+GO
+
+-- Creating primary key on [idHoraire] in table 'HoraireJeu'
+ALTER TABLE [dbo].[HoraireJeu]
+ADD CONSTRAINT [PK_HoraireJeu]
+    PRIMARY KEY CLUSTERED ([idHoraire] ASC);
 GO
 
 -- Creating primary key on [idListeAttente] in table 'ListeAttenteJeu'
@@ -335,10 +363,16 @@ ADD CONSTRAINT [PK_TarifsJeu]
     PRIMARY KEY CLUSTERED ([idTarif] ASC);
 GO
 
--- Creating primary key on [idHoraire] in table 'HoraireJeu'
-ALTER TABLE [dbo].[HoraireJeu]
-ADD CONSTRAINT [PK_HoraireJeu]
-    PRIMARY KEY CLUSTERED ([idHoraire] ASC);
+-- Creating primary key on [idCommande] in table 'PanierJeu'
+ALTER TABLE [dbo].[PanierJeu]
+ADD CONSTRAINT [PK_PanierJeu]
+    PRIMARY KEY CLUSTERED ([idCommande] ASC);
+GO
+
+-- Creating primary key on [idItemPanier] in table 'ItemPanierJeu'
+ALTER TABLE [dbo].[ItemPanierJeu]
+ADD CONSTRAINT [PK_ItemPanierJeu]
+    PRIMARY KEY CLUSTERED ([idItemPanier] ASC);
 GO
 
 -- Creating primary key on [GroupeJeu_idGroupe], [SessionJeu_idSession] in table 'SessionGroupe'
@@ -455,6 +489,20 @@ ON [dbo].[ListeAttenteJeu]
     ([Cours_idCours]);
 GO
 
+-- Creating foreign key on [GroupeJeu_idGroupe] in table 'HoraireJeu'
+ALTER TABLE [dbo].[HoraireJeu]
+ADD CONSTRAINT [FK_GroupeJeuHoraire]
+    FOREIGN KEY ([GroupeJeu_idGroupe])
+    REFERENCES [dbo].[GroupeJeu]
+        ([idGroupe])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_GroupeJeuHoraire'
+CREATE INDEX [IX_FK_GroupeJeuHoraire]
+ON [dbo].[HoraireJeu]
+    ([GroupeJeu_idGroupe]);
+GO
+
 -- Creating foreign key on [Membres_idMembre] in table 'ListeAttenteJeu'
 ALTER TABLE [dbo].[ListeAttenteJeu]
 ADD CONSTRAINT [FK_ListeAttenteMembres]
@@ -476,6 +524,20 @@ ADD CONSTRAINT [FK_Animateur_inherits_Membres]
     REFERENCES [dbo].[MembresJeu]
         ([idMembre])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [RoleJeu_idRole] in table 'MembresJeu'
+ALTER TABLE [dbo].[MembresJeu]
+ADD CONSTRAINT [FK_RoleJeuMembresJeu]
+    FOREIGN KEY ([RoleJeu_idRole])
+    REFERENCES [dbo].[RoleJeu]
+        ([idRole])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RoleJeuMembresJeu'
+CREATE INDEX [IX_FK_RoleJeuMembresJeu]
+ON [dbo].[MembresJeu]
+    ([RoleJeu_idRole]);
 GO
 
 -- Creating foreign key on [GroupeJeu_idGroupe] in table 'SessionGroupe'
@@ -524,32 +586,60 @@ ON [dbo].[SpecialiteAnimateur]
     ([SpecialiteJeu_idSpecialite]);
 GO
 
--- Creating foreign key on [RoleJeu_idRole] in table 'MembresJeu'
-ALTER TABLE [dbo].[MembresJeu]
-ADD CONSTRAINT [FK_RoleJeuMembresJeu]
-    FOREIGN KEY ([RoleJeu_idRole])
-    REFERENCES [dbo].[RoleJeu]
-        ([idRole])
+-- Creating foreign key on [MembresJeu_idMembre] in table 'PanierJeu'
+ALTER TABLE [dbo].[PanierJeu]
+ADD CONSTRAINT [FK_MembresJeuPanier]
+    FOREIGN KEY ([MembresJeu_idMembre])
+    REFERENCES [dbo].[MembresJeu]
+        ([idMembre])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_RoleJeuMembresJeu'
-CREATE INDEX [IX_FK_RoleJeuMembresJeu]
-ON [dbo].[MembresJeu]
-    ([RoleJeu_idRole]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_MembresJeuPanier'
+CREATE INDEX [IX_FK_MembresJeuPanier]
+ON [dbo].[PanierJeu]
+    ([MembresJeu_idMembre]);
 GO
 
--- Creating foreign key on [GroupeJeu_idGroupe] in table 'HoraireJeu'
-ALTER TABLE [dbo].[HoraireJeu]
-ADD CONSTRAINT [FK_GroupeJeuHoraire]
+-- Creating foreign key on [GroupeJeu_idGroupe] in table 'ItemPanierJeu'
+ALTER TABLE [dbo].[ItemPanierJeu]
+ADD CONSTRAINT [FK_ItemPanierGroupeJeu]
     FOREIGN KEY ([GroupeJeu_idGroupe])
     REFERENCES [dbo].[GroupeJeu]
         ([idGroupe])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_GroupeJeuHoraire'
-CREATE INDEX [IX_FK_GroupeJeuHoraire]
-ON [dbo].[HoraireJeu]
+-- Creating non-clustered index for FOREIGN KEY 'FK_ItemPanierGroupeJeu'
+CREATE INDEX [IX_FK_ItemPanierGroupeJeu]
+ON [dbo].[ItemPanierJeu]
     ([GroupeJeu_idGroupe]);
+GO
+
+-- Creating foreign key on [MembresJeu_idMembre] in table 'ItemPanierJeu'
+ALTER TABLE [dbo].[ItemPanierJeu]
+ADD CONSTRAINT [FK_ItemPanierMembresJeu]
+    FOREIGN KEY ([MembresJeu_idMembre])
+    REFERENCES [dbo].[MembresJeu]
+        ([idMembre])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ItemPanierMembresJeu'
+CREATE INDEX [IX_FK_ItemPanierMembresJeu]
+ON [dbo].[ItemPanierJeu]
+    ([MembresJeu_idMembre]);
+GO
+
+-- Creating foreign key on [Panier_idCommande] in table 'ItemPanierJeu'
+ALTER TABLE [dbo].[ItemPanierJeu]
+ADD CONSTRAINT [FK_PanierItemPanier]
+    FOREIGN KEY ([Panier_idCommande])
+    REFERENCES [dbo].[PanierJeu]
+        ([idCommande])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PanierItemPanier'
+CREATE INDEX [IX_FK_PanierItemPanier]
+ON [dbo].[ItemPanierJeu]
+    ([Panier_idCommande]);
 GO
 
 -- --------------------------------------------------

@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_admin.aspx.vb" Inherits="Page_Admin_home_admin" Theme="Original" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <div class="menuAdmin">
+    </div>
+    <div class="contenuPrincipal">
+    </div>
+    
     <div class="containerContenuAdmin">
 
 
