@@ -23,13 +23,7 @@
         </br>
         <div class="contenuOperation">
             <div class="contenuBouton">
-                <asp:Button ID="btnAjouterMembre" runat="server" Text="Ajouter un membre" CssClass="btn btn-primary btn-large" Width="200px" PostBackUrl="~/Page/Employe/employe_client_add.aspx"></asp:Button>
-            </div>
-            <div class="contenuBouton">
-                <asp:Button ID="btnModifierMembre" runat="server" Text="Modifier un membre" CssClass="btn btn-primary btn-large" Width="200px" PostBackUrl="~/Page/Employe/employe_client_modify.aspx"></asp:Button>
-            </div>
-            <div class="contenuBouton">
-                <asp:Button ID="btnSupprimerMembre" runat="server" Text="Supprimer un membre" CssClass="btn btn-primary btn-large" Width="200px" PostBackUrl="~/Page/Employe/employe_client_delete.aspx"></asp:Button>
+                <asp:Button ID="btnAjouterMembre" runat="server" Text="Opérations sur un membre" CssClass="btn btn-primary btn-large" Width="220px" PostBackUrl="~/Page/Employe/employe_client.aspx"></asp:Button>
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@ Partial Class Page_Admin_admin_teacher_add
                 entMembre.MembresJeu_Animateur.AddObject(unAnim)
                 entMembre.SaveChanges()
                 lblFelicitation.Text = "L'animateur a &eacute;t&eacute; ajout&eacute; avec succ&egrave;s !"
-                
+
                 lblFelicitation.Visible = True
                 checkImage.Visible = True
                 ResetFormControlValues(Me)

@@ -20,9 +20,7 @@
 </div>  
 
 <div class="contenuAdmin">
-    <asp:LinkButton ID="lnkAjouterCours" runat="server" PostBackUrl="~/Page/Admin/admin_course_add.aspx">Ajouter un cours</asp:LinkButton><br />
-    <asp:LinkButton ID="lnkModifierCours" runat="server" PostBackUrl="~/Page/Admin/admin_course_modify.aspx">Modifier un cours</asp:LinkButton><br/>
-    <asp:LinkButton ID="lnkSupprimerCours" runat="server" PostBackUrl="~/Page/Admin/admin_course_delete.aspx" >Supprimer un cours</asp:LinkButton><br/>
+    <asp:LinkButton ID="lnkAjouterCours" runat="server" PostBackUrl="~/Page/Admin/admin_course_add.aspx" Text="Opérations sur les cours"></asp:LinkButton><br />
 </div>
 
 <div class="contenuAdmin">
