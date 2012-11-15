@@ -5,6 +5,7 @@ obj/
 #User Specific Files
 *.user
 *.suo
+*.txt
 
 #Resource Caches
 _ReSharper.*

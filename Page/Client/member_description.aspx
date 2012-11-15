@@ -27,7 +27,8 @@
             </LayoutTemplate>
             <ItemTemplate>
                 <div class="blockInfos">
-                    <asp:Label ID="lblSessionText" SkinID="lblInfos" runat="server" Text="Session: "></asp:Label><br />
+                    <asp:Label ID="lblSessionText" SkinID="lblInfos" runat="server" Text="Session: "></asp:Label>
+                    <asp:Label ID="lblSession" runat="server" Text="Automne 2012"></asp:Label><br />
                     <asp:Label ID="lblPeriodeDeCoursText" SkinID="lblInfos" runat="server" Text="Période de cours: "></asp:Label>
                     <asp:Label ID="lblPeriodeDeCours" runat="server" Text='<%# "Du " +((CType(Eval("dateDebutCours"),DateTime)).ToString("D"))+ " au "+((CType(Eval("dateFinCours"),DateTime)).ToString("D"))%>'></asp:Label><br />
                     <asp:Label ID="lblPeriodeInscriptionText" SkinID="lblInfos" runat="server" Text="Période d'inscription: "></asp:Label>
@@ -75,15 +76,21 @@
                         <asp:Label ID="lblNomGroupe" SkinID="lblInfos" runat="server" Text='<%#Eval ("nomGroupe")+": " %>'></asp:Label>
                     </div>
                     <div class="blockGroupe">
-                        <asp:Label ID="lblHoraire" runat="server" Text='<%#Eval ("HoraireJeu.jourSemaine") %>'></asp:Label>
-                        <asp:Label ID="Label1" runat="server" Text='<%#Eval ("HoraireJeu.heureDebut") %>'></asp:Label>
-                        <asp:Label ID="Label2" runat="server" Text='<%#Eval ("HoraireJeu.heureFin") %>'></asp:Label>
+                        <%--<asp:ListView ID="lvHoraire" runat="server" DataKeyNames="idHoraire" DataSourceID="dsHoraire">
+                            <LayoutTemplate>
+                                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblJourSemaine" runat="server" Text='<%#Eval ("jourSemaine")+" de " %>'></asp:Label>
+                                <asp:Label ID="Label1" runat="server" Text='<%#Eval ("heureDebut")+" à " %>'></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text='<%#Eval ("heureFin") %>'></asp:Label>
+                                <br />
+                            </ItemTemplate>
+                        </asp:ListView>--%>
                     </div>
                     <div class="blockGroupe">
-                        <asp:Label ID="lblLocal" runat="server" Text='<%#Eval ("HoraireJeu.noLocal") %>'></asp:Label>
-                    </div>
-                    <div class="blockGroupe">
-                        <asp:Label ID="lblPlaceRestante" runat="server" Text="Place restante: 5"></asp:Label>
+                        <asp:Label ID="lblNbPlaceRestant" runat="server" Text="Nombre place restante: "></asp:Label>
+                        <asp:Label ID="lblNbPlace" runat="server" Text='<%#Eval("nbMax") %>'></asp:Label>
                     </div>
                 <div class="blockGroupe">
                     <asp:Button ID="btnJeMinscris" runat="server" Text="Inscription" CssClass="btn btn-small btn-primary" OnClick="inscriptionCours" CommandArgument='<%# Eval("idGroupe") %>' CommandName="inscription" />
@@ -104,10 +111,16 @@
     </asp:EntityDataSource>
     <asp:EntityDataSource ID="dsGroupes" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="GroupeJeu" EnableFlattening="False"
-        EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.Cours_idCours = @coursID"
-        Include="HoraireJeu">
+        EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.Cours_idCours = @coursID">
         <WhereParameters>
             <asp:Parameter Name="coursID" DbType="Int16" DefaultValue="Nothing" />
+        </WhereParameters>
+    </asp:EntityDataSource>
+    <asp:EntityDataSource ID="dsHoraire" runat="server" ConnectionString="name=modelCLSContainer"
+        DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
+        EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.GroupeJeu_idGroupe = @groupeID">
+        <WhereParameters>
+            <asp:Parameter Name="groupeID" DbType="Int16" DefaultValue="1" />
         </WhereParameters>
     </asp:EntityDataSource>
 </asp:Content>
