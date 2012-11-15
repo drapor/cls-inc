@@ -3,6 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="contenuPage">
+        <div class="contenuStandard">
         <div class="titlePanier">
             <h3>
                 Modifier les tarifs</h3>
@@ -26,60 +27,72 @@
                         <asp:Label ID="lblTarifNouveauMembre" runat="server" Text="Tarif nouveau membre"></asp:Label>
                     </div>
                 </div>
-                <asp:Label ID="lblVeuillezEntreTarifNouveauMembre" runat="server" Text="Veuillez entrer le tarif d'un nouveau membre"></asp:Label><br />
-                <asp:TextBox ID="txtTarifNouveauMembre" SkinID="txtBoxYellowPerso" Width="40px" runat="server"
+                <div style="margin-left:15px; margin-bottom:10px;">
+                    <asp:Label ID="lblVeuillezEntreTarifNouveauMembre" runat="server" Text="Veuillez entrer le tarif d'un nouveau membre"></asp:Label>
+                    <br />
+                    <br />
+                    <asp:TextBox ID="txtTarifNouveauMembre" SkinID="txtBoxYellowPerso" Width="40px" runat="server"
                     CssClass="search-query" Text='<%# Bind("tarifNouveauMembre") %>'></asp:TextBox>*
-                <asp:RequiredFieldValidator ID="requiredTarifNouveauMembre" runat="server" ErrorMessage="*Le tarif des nouveaux membres est obligatoire"
+                    <asp:RequiredFieldValidator ID="requiredTarifNouveauMembre" runat="server" ErrorMessage="*Le tarif des nouveaux membres est obligatoire"
                     ControlToValidate="txtTarifNouveauMembre" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="regExGroupeAgeMin" runat="server" ErrorMessage="*Veuillez entrer seulement des chiffres"
+                    <asp:RegularExpressionValidator ID="regExGroupeAgeMin" runat="server" ErrorMessage="*Veuillez entrer seulement des chiffres"
                     ValidationExpression="^[0-9]+$" Display="Dynamic" ControlToValidate="txtTarifNouveauMembre"
                     ForeColor="Red"></asp:RegularExpressionValidator>
+                </div>
                 <div class="section">
                     <div class="sectionTitre">
                         <asp:Label ID="lblRabaisEnfant" runat="server" Text="Rabais enfants"></asp:Label>
                     </div>
                 </div>
-                <div class="ligneRabaisEnfant">
-                    <asp:Label ID="lblTarifChaqueEnfant" runat="server" Text="Veuillez entrer les rabais (%) attribué pour chaque enfants abonné"></asp:Label>
-                </div>
-                <div class="ligneRabaisEnfant">
-                    <asp:Label ID="lbl1erEnfant" runat="server" Text="1er Enfant: "></asp:Label>
-                    <asp:TextBox ID="txtRabais1erEnfant" SkinID="txtBoxYellowPerso" runat="server" Width="30px"
+                <div style="margin-left:15px;">
+                    <div class="ligneRabaisEnfant">
+                        <asp:Label ID="lblTarifChaqueEnfant" runat="server" Text="Veuillez entrer les rabais (%) attribué pour chaque enfants abonné"></asp:Label>
+                    </div>
+                    <div class="ligneRabaisEnfant">
+                        <asp:Label ID="lbl1erEnfant" runat="server" Text="1er Enfant: "></asp:Label>
+                        <asp:TextBox ID="txtRabais1erEnfant" SkinID="txtBoxYellowPerso" runat="server" Width="30px"
                         CssClass="search-query" Text='<%# Bind("rabais1Enfant") %>' MaxLength="3"></asp:TextBox>*
-                    <asp:RequiredFieldValidator ID="requiredRabais1erEnfant" runat="server" ErrorMessage="*Le rabais du 1er enfant est obligatoire"
+                        <asp:RequiredFieldValidator ID="requiredRabais1erEnfant" runat="server" ErrorMessage="*Le rabais du 1er enfant est obligatoire"
                         ControlToValidate="txtRabais1erEnfant" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regExRabais1erEnfant" runat="server" ErrorMessage="*Veuillez entrer seulement des chiffres"
+                        <asp:RegularExpressionValidator ID="regExRabais1erEnfant" runat="server" ErrorMessage="*Veuillez entrer seulement des chiffres"
                         ValidationExpression="^[0-9]+$" Display="Dynamic" ControlToValidate="txtRabais1erEnfant"
                         ForeColor="Red"></asp:RegularExpressionValidator><br />
-                </div>
-                <div class="ligneRabaisEnfant">
-                    <asp:Label ID="lbl2eEnfant" runat="server" Text="2e Enfant:  "></asp:Label>
-                    <asp:TextBox ID="txtRabais2eEnfant" SkinID="txtBoxYellowPerso" runat="server" Width="30px"
+                    </div>
+                    <div class="ligneRabaisEnfant">
+                        <asp:Label ID="lbl2eEnfant" runat="server" Text="2e Enfant:  "></asp:Label>
+                        &nbsp;
+                        <asp:TextBox ID="txtRabais2eEnfant" SkinID="txtBoxYellowPerso" runat="server" Width="30px"
                         CssClass="search-query" Text='<%# Bind("rabais2Enfant") %>' MaxLength="3"></asp:TextBox>*
-                    <asp:RequiredFieldValidator ID="requiredRabais2eEnfant" runat="server" ErrorMessage="*Le rabais du 2e enfant est obligatoire"
+                        <asp:RequiredFieldValidator ID="requiredRabais2eEnfant" runat="server" ErrorMessage="*Le rabais du 2e enfant est obligatoire"
                         ControlToValidate="txtRabais2eEnfant" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regExRabais2eEnfant" runat="server" ErrorMessage="*Veuillez entrer seulement des chiffres"
+                        <asp:RegularExpressionValidator ID="regExRabais2eEnfant" runat="server" ErrorMessage="*Veuillez entrer seulement des chiffres"
                         ValidationExpression="^[0-9]+$" Display="Dynamic" ControlToValidate="txtRabais2eEnfant"
                         ForeColor="Red"></asp:RegularExpressionValidator><br />
-                </div>
-                <div class="ligneRabaisEnfant">
-                    <asp:Label ID="lbl3eEnfant" runat="server" Text="3e Enfant:  "></asp:Label>
-                    <asp:TextBox ID="txtRabais3eEnfant" SkinID="txtBoxYellowPerso" runat="server" Width="30px"
+                    </div>
+                    <div class="ligneRabaisEnfant">
+                        <asp:Label ID="lbl3eEnfant" runat="server" Text="3e Enfant:  "></asp:Label>
+                        &nbsp;
+                        <asp:TextBox ID="txtRabais3eEnfant" SkinID="txtBoxYellowPerso" runat="server" Width="30px"
                         CssClass="search-query" Text='<%# Bind("rabais3Enfant") %>' MaxLength="3"></asp:TextBox>*
-                    <asp:RequiredFieldValidator ID="requiredRabais3eEnfant" runat="server" ErrorMessage="*Le rabais du 3e enfant est obligatoire"
+                        <asp:RequiredFieldValidator ID="requiredRabais3eEnfant" runat="server" ErrorMessage="*Le rabais du 3e enfant est obligatoire"
                         ControlToValidate="txtRabais3eEnfant" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regExRabais3eEnfant" runat="server" ErrorMessage="*Veuillez entrer seulement des chiffres"
+                        <asp:RegularExpressionValidator ID="regExRabais3eEnfant" runat="server" ErrorMessage="*Veuillez entrer seulement des chiffres"
                         ValidationExpression="^[0-9]+$" Display="Dynamic" ControlToValidate="txtRabais3eEnfant"
                         ForeColor="Red"></asp:RegularExpressionValidator><br />
+                    </div>
                 </div>
-                <div class="ligneRabaisEnfant">
-                    <asp:Button ID="btnRetour" runat="server" PostBackUrl="~/Page/Admin/home_admin.aspx"
-                        Text="Retour" CssClass="btn btn-primary" Width="120px" />
-                    <asp:Button ID="btnUpdate" runat="server" CommandName="Update" Text="Confirmer" CssClass="btn btn-primary"
+                <div class="ligneRabaisEnfant" style="margin-left:150px; margin-top:20px;">
+                    <asp:Button ID="btnUpdate" runat="server" CommandName="Update" Text="Modifier" CssClass="btn btn-primary"
                         Width="120px" OnClick="confirmation"/>
                 </div>
             </ItemTemplate>
         </asp:ListView>
+        </div>
+        <div class="groupeBouton">
+            <div class="boutonGroupeRetour" style="margin-bottom:20px;">
+                <asp:Button ID="btnRetour" runat="server" Text="Retour page admin" CssClass="btn btn-primary" Width="150px" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false"/>
+        </div>
+        </div> 
     </div>
     <asp:EntityDataSource ID="dsTarif" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="TarifsJeu" EnableFlattening="False"

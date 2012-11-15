@@ -1,4 +1,12 @@
-﻿Imports modelCLS
+﻿Imports System
+Imports System.Collections
+Imports System.Linq
+Imports System.Web
+Imports System.Web.Services
+Imports System.Web.Services.Protocols
+Imports System.Xml.Linq
+Imports System.Collections.Generic
+Imports modelCLS
 Imports masterPage
 Partial Class Page_Employe_employe_client_add
     Inherits System.Web.UI.Page
@@ -43,5 +51,47 @@ Partial Class Page_Employe_employe_client_add
             args.IsValid = False
             SetFocus(txtCourriel)
         End If
+    End Sub
+
+    Sub actionRecherche(sender As Object, e As EventArgs)
+
+        dsListView.WhereParameters("courriel").DefaultValue = txtCourriel.Text
+
+    End Sub
+
+    Protected Sub lvMembre_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMembre.ItemCommand
+        Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
+        Dim idMembre As Integer = lvMembre.DataKeys(dataItem.DisplayIndex).Value.ToString()
+
+        If e.CommandName = "modifier" Then
+            Session("idClient") = idMembre
+            Response.Redirect("../Employe/employe_home_member.aspx")
+        End If
+    End Sub
+
+    Protected Sub lvMembreSupprime_ItemDeleted(sender As Object, e As System.Web.UI.WebControls.ListViewDeletedEventArgs) Handles lvMembreSupprime.ItemDeleted
+        txtCourrielSupprime.Text = ""
+        lblSupprime.Visible = True
+    End Sub
+
+    <System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>
+    Public Shared Function GetCompletionList(ByVal prefixText As String, ByVal count As Integer) As String()
+
+        Dim entClient As modelCLSContainer = New modelCLSContainer
+
+        Return entClient.MembresJeu.Where(Function(n) n.courriel.StartsWith(prefixText) And n.RoleJeu_idRole = 3).OrderBy(Function(n) n.courriel).[Select](Function(n) n.courriel).Take(count).ToArray()
+
+    End Function
+
+    Sub actionAjout(sender As Object, e As EventArgs)
+        MVPrincipal.SetActiveView(viewAjout)
+    End Sub
+
+    Sub actionModifie(sender As Object, e As EventArgs)
+        MVPrincipal.SetActiveView(viewModifie)
+    End Sub
+
+    Sub actionSupprime(sender As Object, e As EventArgs)
+        MVPrincipal.SetActiveView(viewSupprime)
     End Sub
 End Class

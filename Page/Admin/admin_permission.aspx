@@ -3,6 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="containerContenuAdmin">
+    <div class="contenuStandard">
     <div class="titlePanier">
             <h3>
                 Modifier les permissions</h3>
@@ -23,14 +24,6 @@
                     </div>
                     <div class="containerFormulaire">
                         <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
-                        <div class="ligneFormulaire">
-                            <div class="elementFormulaire permissionHeight">
-                            </div>
-                            <div class="elementFormulaireTexte permissionHeight">
-                                <asp:Button ID="btnCancel" runat="server" Text="Retour" CssClass="btn btn-primary btn-large btn"
-                                    PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false" />
-                            </div>
-                        </div>
                     </div>
                 </div>
 </LayoutTemplate>
@@ -69,5 +62,12 @@
     Where="(it.idRole = 1 OR it.idRole = 2)">
 </asp:EntityDataSource> 
 
+</div>
+
+    <div class="groupeBouton" style="clear:both;">
+        <div class="boutonGroupeRetour" style="margin-bottom:20px;">
+            <asp:Button ID="btnRetour" runat="server" Text="Retour page admin" CssClass="btn btn-primary" Width="150px" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false"/>
+        </div>
+    </div>
 </div>
 </asp:Content>

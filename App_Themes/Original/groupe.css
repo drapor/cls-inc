@@ -7,7 +7,6 @@
 .boutonGroupeRetour
 {
     height: 25px;
-    margin-top:30px;
     text-align:right;
     float: left;
 }
@@ -22,6 +21,7 @@
 
 .groupeBouton
 {
+    margin-left:20px;
     width:460px;
     height:auto;
     float:left;
@@ -36,7 +36,7 @@
 
 .partiGaucheGroupe
 {
-    width:460px;
+    width:420px;
     height:auto;
     float:left;
 }
@@ -57,26 +57,26 @@
 
 .interieurDroit
 {
-    width:300px;
+    width:260px;
     float:left;
 }
 
 .gauche
 {   
-    width:170px;
+    width:180px;
     height:auto;
     font-size:large;
-    font-weight:bold;
-    margin-bottom:5px;
+    margin-bottom:10px;
     float:left;
     
 }
 
 .droit
 {
+    width:210px;
     height:auto;
+    text-align:center;
     font-size:large;
-    font-weight:bold;
-    margin-bottom:5px;
+    margin-bottom:10px;
     float:left;
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_schedule_add.aspx.vb" Inherits="Page_Admin_admin_group_add" Theme="Original"%>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_schedule.aspx.vb" Inherits="Page_Admin_admin_group_add" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <div class="contenuPage">
@@ -10,18 +10,18 @@
                 <div class="boutonEntete" style="margin-right:10px;">
                     <asp:Button ID="btnAjouter" runat="server" onClick="actionAjout" Text="Ajouter" CssClass="btn btn-primary" Width="150px" height="40px" CausesValidation="false"/>
                 </div>
-                <%--<div class="boutonEntete" style="margin-right:10px;">
+                <div class="boutonEntete" style="margin-right:10px;">
                     <asp:Button ID="btnModifier" runat="server" onClick="actionModifie" Text="Modifier" CssClass="btn btn-primary" Width="150px" height="40px" CausesValidation="false"/>
                 </div>
                 <div class="boutonEntete" style="margin-right:10px;">
                     <asp:Button ID="btnSupprimer" runat="server" onClick="actionSupprime" Text="Supprimer" CssClass="btn btn-primary" Width="150px" height="40px" CausesValidation="false"/>
-                </div>--%>
+                </div>
             </div>
         </div>
 
         <asp:MultiView ID="MVPrincipal" runat="server" ActiveViewIndex="0">
             <asp:View ID="viewAjout" runat="server">
-                <div class="contenuStandard" style="width:860px;">
+                <div class="contenuStandard" >
                     <asp:Label ID="lblTitreAjout" runat="server" text="Ajouter un horaire" Font-Size="24px" Font-Bold="true"/>
                     <br />
                     <br />
@@ -136,7 +136,7 @@
                             </div>
 
                             <div class="groupeBouton">
-                                <div class="boutonGroupeAjout" style="margin-left:650px;">
+                                <div class="boutonGroupeAjout" style="margin-left:520px;">
                                     <asp:Button ID="btnConfirme" runat="server" commandName="Insert" Text="Ajouter l'horaire" CssClass="btn btn-primary" Width="130px" />
                                 </div>
                             </div>
@@ -148,8 +148,8 @@
                 </div>
             </asp:View>
 
-<%--            <asp:View ID="viewModifie" runat="server">
-                <div class="contenuStandard" style="width:860px;">
+            <asp:View ID="viewModifie" runat="server">
+                <div class="contenuStandard">
                     <asp:Label ID="lblTitreModifie" runat="server" text="Modifier un horaire" Font-Size="24px" Font-Bold="true"/>
                     <br />
                     <br />
@@ -267,6 +267,10 @@
 
             <asp:View ID="viewSupprime" runat="server">
                 <div class="contenuStandard">
+                    <asp:Label ID="lblTitreSupprime" runat="server" text="Supprimer un horaire" Font-Size="24px" Font-Bold="true"/>
+                    <br />
+                    <br />
+                    <br />
                     <div class="ligneHoraire">
                         <div class="interieurGauche">
                             <div class="formatZone">
@@ -291,7 +295,7 @@
                         </div>
                     </div> 
                    
-                    <asp:ListView ID="lvSupprime" runat="server" DataSourceID="dsHoraire" DataKeyNames="idHoraire">
+                    <asp:ListView ID="lvSupprime" runat="server" DataSourceID="dsHoraireSupprime" DataKeyNames="idHoraire">
                         <LayoutTemplate>
                             <div class="ligneHoraire" style="font-size:20px; font-weight:bolder; margin-top:20px;">
                                 <div class="sectionJourSemaine">
@@ -340,7 +344,7 @@
                         </ItemTemplate>
                     </asp:ListView>
                 </div>
-            </asp:View>--%>
+            </asp:View>
 
         </asp:MultiView>
         <div class="groupeBouton">
@@ -349,6 +353,8 @@
             </div>
         </div> 
     </div>
+
+
 
     <asp:EntityDataSource ID="dsGroupeAjout" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="GroupeJeu" EnableFlattening="False"
@@ -359,7 +365,7 @@
     </WhereParameters>
     </asp:EntityDataSource>
 
-<%--    <asp:EntityDataSource ID="dsGroupeModifie" runat="server" ConnectionString="name=modelCLSContainer"
+    <asp:EntityDataSource ID="dsGroupeModifie" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="GroupeJeu" EnableFlattening="False"
     EnableDelete="True" EnableInsert="True" EnableUpdate="True" orderBy="it.idGroupe"
     where="(@coursID = it.Cours_idCours)">
@@ -375,7 +381,7 @@
     <WhereParameters>
         <asp:ControlParameter Name="coursID" ControlID="ddlNomCoursSupprime" PropertyName="SelectedValue" Type="Int32" />
     </WhereParameters>
-    </asp:EntityDataSource>--%>
+    </asp:EntityDataSource>
 
     <asp:EntityDataSource ID="dsCours" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="CoursJeu" EnableFlattening="False"
@@ -387,22 +393,31 @@
     EnableDelete="True" EnableInsert="True" EnableUpdate="True" orderBy="it.idHoraire">
     </asp:EntityDataSource>
 
-   <%-- <asp:EntityDataSource ID="dsHoraireDDL" runat="server" ConnectionString="name=modelCLSContainer"
+    <asp:EntityDataSource ID="dsHoraireDDL" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
     EnableDelete="True" EnableInsert="True" EnableUpdate="True" orderBy="it.idHoraire"
     where="(@groupeID = it.GroupeJeu_idGroupe)">
     <WhereParameters>
         <asp:ControlParameter Name="groupeID" ControlID="ddlNomGroupeModifie" PropertyName="SelectedValue" Type="Int32" />
     </WhereParameters>
-    </asp:EntityDataSource>--%>
+    </asp:EntityDataSource>
 
-   <%-- <asp:EntityDataSource ID="dsHoraireModifie" runat="server" ConnectionString="name=modelCLSContainer"
+    <asp:EntityDataSource ID="dsHoraireModifie" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
     EnableDelete="True" EnableInsert="True" EnableUpdate="True" orderBy="it.idHoraire"
     where="(@horaireID = it.idHoraire)">
     <WhereParameters>
         <asp:ControlParameter Name="horaireID" ControlID="ddlHoraire" PropertyName="SelectedValue" Type="Int32" />
     </WhereParameters>
-    </asp:EntityDataSource>--%>
+    </asp:EntityDataSource>
+
+    <asp:EntityDataSource ID="dsHoraireSupprime" runat="server" ConnectionString="name=modelCLSContainer"
+    DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
+    EnableDelete="True" EnableInsert="True" EnableUpdate="True" orderBy="it.idHoraire"
+    where="(@groupeID = it.GroupeJeu_idGroupe)">
+    <WhereParameters>
+        <asp:ControlParameter Name="groupeID" ControlID="ddlNomGroupeSupprime" PropertyName="SelectedValue" Type="Int32" />
+    </WhereParameters>
+    </asp:EntityDataSource>
 
 </asp:Content>

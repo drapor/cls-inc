@@ -17,11 +17,14 @@ Partial Class Page_Admin_admin_group_add
         MVPrincipal.SetActiveView(viewAjout)
     End Sub
 
-    'Sub actionModifie(sender As Object, e As EventArgs)
-    '    MVPrincipal.SetActiveView(viewModifie)
-    'End Sub
+    Sub actionModifie(sender As Object, e As EventArgs)
+        Dim horaire As DropDownList = FindChildControl(Of DropDownList)(Me, "ddlHoraire")
+        MVPrincipal.SetActiveView(viewModifie)
+        horaire.DataBind()
+    End Sub
 
-    'Sub actionSupprime(sender As Object, e As EventArgs)
-    '    MVPrincipal.SetActiveView(viewSupprime)
-    'End Sub
+    Sub actionSupprime(sender As Object, e As EventArgs)
+        MVPrincipal.SetActiveView(viewSupprime)
+        lvSupprime.DataBind()
+    End Sub
 End Class

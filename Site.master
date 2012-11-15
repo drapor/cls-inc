@@ -47,8 +47,8 @@
         <div id="pageEntire" class="page">
             <div id="headerMenu" class="headerMenu">
                 <asp:LinkButton ID="lnkAccueil" runat="server" CssClass="linkHeaderMenuLeft" PostBackUrl="~/Page/Default.aspx" CausesValidation="false" >Accueil</asp:LinkButton>
-                <asp:LinkButton ID="lnkAPropos" runat="server" CssClass="linkHeaderMenuLeft" CausesValidation="false">À propos</asp:LinkButton>
-                <asp:LinkButton ID="lnkNousJoindre" runat="server" CssClass="linkHeaderMenuLeft" CausesValidation="false">Nous joindre</asp:LinkButton>
+                <asp:LinkButton ID="lnkAPropos" runat="server" CssClass="linkHeaderMenuLeft" PostBackUrl="~/Page/Autre/about.aspx" CausesValidation="false">À propos</asp:LinkButton>
+                <asp:LinkButton ID="lnkNousJoindre" runat="server" CssClass="linkHeaderMenuLeft" PostBackUrl="~/Page/Autre/contact.aspx" CausesValidation="false">Nous joindre</asp:LinkButton>
                 <asp:LinkButton ID="lnkLogOut" runat="server" CssClass="linkHeaderMenuRight" Visible="false" CausesValidation="false">Déconnexion</asp:LinkButton>
                 <asp:LinkButton ID="lnkUserName" runat="server" CssClass="linkHeaderMenuRight" Visible="false" CausesValidation="false" OnClick="redirectionCourriel"></asp:LinkButton>
                 <asp:LinkButton ID="lnkInscrire" runat="server" CssClass="linkHeaderMenuRight" PostBackUrl="~/Page/login.aspx" CausesValidation="false" >Connecter</asp:LinkButton>
@@ -88,8 +88,8 @@
                         <asp:Label CssClass="footerTitle" ID="lblLiensImportants" runat="server" Text="Liens importants"></asp:Label><br />
                         <br />
                         <asp:LinkButton ID="lnkAccueilFooter" runat="server" CssClass="linkFooter" PostBackUrl="~/Page/Default.aspx" CausesValidation="false">Accueil</asp:LinkButton><br />
-                        <asp:LinkButton ID="lnkAProposFooter" runat="server" CssClass="linkFooter" CausesValidation="false">À propos</asp:LinkButton><br />
-                        <asp:LinkButton ID="lnkNousJoindreFooter" runat="server" CssClass="linkFooter" CausesValidation="false">Nous joindre</asp:LinkButton>
+                        <asp:LinkButton ID="lnkAProposFooter" runat="server" CssClass="linkFooter" PostBackUrl="~/Page/Autre/about.aspx" CausesValidation="false">À propos</asp:LinkButton><br />
+                        <asp:LinkButton ID="lnkNousJoindreFooter" runat="server" CssClass="linkFooter" PostBackUrl="~/Page/Autre/contact.aspx" CausesValidation="false">Nous joindre</asp:LinkButton>
                     </div>
                     <div class="footerMedia">
                         <asp:Label CssClass="footerTitle" ID="lblMediaSociaux" runat="server" Text="Média sociaux"></asp:Label><br />
