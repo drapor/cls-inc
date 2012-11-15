@@ -68,4 +68,11 @@ Partial Class Page_Client_description
     '    End If
 
     'End Sub
+
+    'Protected Sub lvGroupes_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvGroupes.ItemDataBound
+    '    Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
+    '    Dim idGroupe As Integer = lvCours.DataKeys(dataItem.DisplayIndex).Value.ToString()
+    '    dsHoraire.WhereParameters("groupeID").DefaultValue = idGroupe
+    'End Sub
+
 End Class

@@ -1,20 +1,14 @@
-﻿ERREUR mardi 13 novembre 2012
-UNE ERREUR EST SURVENUE:System.NullReferenceException: La référence d'objet n'est pas définie à une instance d'un objet.
-   à Page_Admin_admin_course_add.changementAgeMod(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Admin\admin_course_add.aspx.vb:ligne 24
-   à System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
-   à System.Web.UI.WebControls.DropDownList.RaisePostDataChangedEvent()
-   à System.Web.UI.WebControls.DropDownList.System.Web.UI.IPostBackDataHandler.RaisePostDataChangedEvent()
-   à System.Web.UI.Page.RaiseChangedEvents()
-   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR mardi 13 novembre 2012
-UNE ERREUR EST SURVENUE:System.NullReferenceException: La référence d'objet n'est pas définie à une instance d'un objet.
-   à Page_Admin_admin_course_add.changementAgeMod(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Admin\admin_course_add.aspx.vb:ligne 24
-   à System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
-   à System.Web.UI.WebControls.DropDownList.RaisePostDataChangedEvent()
-   à System.Web.UI.WebControls.DropDownList.System.Web.UI.IPostBackDataHandler.RaisePostDataChangedEvent()
-   à System.Web.UI.Page.RaiseChangedEvents()
-   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR mardi 13 novembre 2012
-UNE ERREUR EST SURVENUE:System.InvalidOperationException: La propriété « heureDebut » sur « HoraireJeu » n'a pas pu être définie à une valeur « String ». Vous devez assigner une valeur non Null de type « DateTime » à cette propriété. 
-   à System.Web.UI.WebControls.EntityDataSourceView.ExecuteSelect(DataSourceSelectArguments arguments)
+﻿ERREUR mercredi 14 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.DataKeyArray.get_Item(Int32 index)
+   à Page_Client_description.lvGroupes_ItemDataBound(Object sender, ListViewItemEventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_description.aspx.vb:ligne 74
+   à System.Web.UI.WebControls.ListView.OnItemDataBound(ListViewItemEventArgs e)
+   à System.Web.UI.WebControls.ListView.CreateItemsWithoutGroups(ListViewPagedDataSource dataSource, Boolean dataBinding, InsertItemPosition insertPosition, ArrayList keyArray)
+   à System.Web.UI.WebControls.ListView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   à System.Web.UI.WebControls.ListView.PerformDataBinding(IEnumerable data)
+   à System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
    à System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
    à System.Web.UI.WebControls.DataBoundControl.PerformSelect()
    à System.Web.UI.WebControls.ListView.PerformSelect()
@@ -27,19 +21,525 @@ UNE ERREUR EST SURVENUE:System.InvalidOperationException: La propriété « heur
    à System.Web.UI.Control.PreRenderRecursiveInternal()
    à System.Web.UI.Control.PreRenderRecursiveInternal()
    à System.Web.UI.Control.PreRenderRecursiveInternal()
-   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR mardi 13 novembre 2012
-UNE ERREUR EST SURVENUE:System.InvalidOperationException: La propriété « heureDebut » sur « HoraireJeu » n'a pas pu être définie à une valeur « String ». Vous devez assigner une valeur non Null de type « DateTime » à cette propriété. 
-   à System.Web.UI.WebControls.EntityDataSourceView.ExecuteSelect(DataSourceSelectArguments arguments)
-   à System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
-   à System.Web.UI.WebControls.DataBoundControl.PerformSelect()
-   à System.Web.UI.WebControls.ListView.PerformSelect()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR mercredi 14 novembre 2012
+UNE ERREUR EST SURVENUE:System.InvalidOperationException: La collection a été modifiée ; l'opération d'énumération peut ne pas s'exécuter.
+   à System.Collections.ArrayList.ArrayListEnumeratorSimple.MoveNext()
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 81
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
    à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
    à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
-   à System.Web.UI.WebControls.ListView.CreateChildControls()
-   à System.Web.UI.Control.EnsureChildControls()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
    à System.Web.UI.Control.PreRenderRecursiveInternal()
    à System.Web.UI.Control.PreRenderRecursiveInternal()
    à System.Web.UI.Control.PreRenderRecursiveInternal()
    à System.Web.UI.Control.PreRenderRecursiveInternal()
    à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR mercredi 14 novembre 2012
+UNE ERREUR EST SURVENUE:System.InvalidOperationException: La collection a été modifiée ; l'opération d'énumération peut ne pas s'exécuter.
+   à System.Collections.ArrayList.ArrayListEnumeratorSimple.MoveNext()
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 81
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.InvalidOperationException: La collection a été modifiée ; l'opération d'énumération peut ne pas s'exécuter.
+   à System.Collections.ArrayList.ArrayListEnumeratorSimple.MoveNext()
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 82
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.NullReferenceException: La référence d'objet n'est pas définie à une instance d'un objet.
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 80
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.NullReferenceException: La référence d'objet n'est pas définie à une instance d'un objet.
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 80
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.InvalidOperationException: La collection a été modifiée ; l'opération d'énumération peut ne pas s'exécuter.
+   à System.Collections.ArrayList.ArrayListEnumeratorSimple.MoveNext()
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 86
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.InvalidOperationException: La collection a été modifiée ; l'opération d'énumération peut ne pas s'exécuter.
+   à System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   à System.Collections.Generic.List`1.Enumerator.MoveNextRare()
+   à System.Collections.Generic.List`1.Enumerator.MoveNext()
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 82
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.RemoveAt(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.RemoveAt(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 91
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.RemoveAt(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.RemoveAt(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 91
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 92
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 92
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 92
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 92
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 92
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 92
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.NullReferenceException: La référence d'objet n'est pas définie à une instance d'un objet.
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 76
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.NullReferenceException: La référence d'objet n'est pas définie à une instance d'un objet.
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 78
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   à System.Collections.Generic.List`1.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   à System.Collections.Generic.List`1.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   à System.Collections.Generic.List`1.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   à System.Collections.Generic.List`1.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   à System.Collections.Generic.List`1.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 98
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.Collections.ArrayList.get_Item(Int32 index)
+   à System.Web.UI.WebControls.ListItemCollection.get_Item(Int32 index)
+   à Page_Client_member_inscription_memberchoice.ddlMembreFamille_DataBound(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 93
+   à System.Web.UI.WebControls.BaseDataBoundControl.OnDataBound(EventArgs e)
+   à System.Web.UI.WebControls.ListControl.PerformSelect()
+   à System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   à System.Web.UI.WebControls.BaseDataBoundControl.EnsureDataBound()
+   à System.Web.UI.WebControls.ListControl.OnPreRender(EventArgs e)
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Control.PreRenderRecursiveInternal()
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.NullReferenceException: La référence d'objet n'est pas définie à une instance d'un objet.
+   à Page_Client_member_inscription_memberchoice.retourCategorie(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_inscription_memberchoice.aspx.vb:ligne 16
+   à System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   à System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   à System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   à System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   à System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)ERREUR jeudi 15 novembre 2012
+UNE ERREUR EST SURVENUE:System.NullReferenceException: La référence d'objet n'est pas définie à une instance d'un objet.
+   à Page_Client_description.Page_Load(Object sender, EventArgs e) dans C:\Users\Samuel\Documents\GitHub\cls-inc\Page\Client\member_description.aspx.vb:ligne 19
+   à System.Web.UI.Control.OnLoad(EventArgs e)
+   à System.Web.UI.Control.LoadRecursive()
    à System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
