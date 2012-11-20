@@ -12,6 +12,14 @@ Partial Class Page_Admin_admin_teacher_add
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         leContext = New modelCLSContainer
+
+        If Request.QueryString("view") = 0 Then
+            MVPrincipal.ActiveViewIndex = 0
+        ElseIf Request.QueryString("view") = 1 Then
+            MVPrincipal.ActiveViewIndex = 1
+        Else
+            MVPrincipal.ActiveViewIndex = 2
+        End If
     End Sub
 
     'Fonction qui ajoute un animateur et lui donne le bon rôle, soit 6 pour l'animateur

@@ -1,5 +1,5 @@
-<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_teacher.aspx.vb" Inherits="Page_Admin_admin_teacher_add" Theme="Original" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<%@ Page Title="" Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master" AutoEventWireup="false" CodeFile="admin_teacher.aspx.vb" Inherits="Page_Admin_admin_teacher_add" Theme="Original" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="menu" Runat="Server">
     <div class="containerContenuAdmin">
         <div class="entetePage">
                 <div class="menuPageGauche" style="margin-top:10px;">

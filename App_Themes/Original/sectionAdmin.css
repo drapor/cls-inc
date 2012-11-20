@@ -1,0 +1,86 @@
+﻿.contenuPageAdmin
+{
+    position:relative;
+    width:920px;
+    height:auto;
+    min-height:400px;
+    background-color:White;
+    box-shadow:0 3px 3px rgba(50,50,50,0.25);
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:15px;
+    padding:10px;
+    overflow:hidden;
+}
+
+.contenuMenuAdmin
+{
+    width:200px;
+    height:auto;
+    float:left;
+    margin:0px;
+}
+
+.contenuPrincipalAdmin
+{
+   width:700px;
+   height:auto;
+   min-height:400px;
+   margin-top:10px;
+   margin-bottom:10px;
+   margin-left:20px;
+   margin-right:auto;
+   float:left; 
+   overflow:hidden;
+}
+
+.sectionAdmin
+{
+    background-color:#1b1bb3;
+    width:680px;
+    height:30px;
+    box-shadow:0 3px 3px rgba(50,50,500.25);
+    border-radius:5px;
+    margin-top:5px;
+    margin-bottom:5px;    
+    float:left;
+}
+
+.sectionTitreAdmin
+{
+    width:680px;
+    margin-right:10px;
+    margin-left:10px;
+    height:30px;
+    color:#ffbf00;
+    font-weight:bold;
+    font-size:18px;
+    padding-top:4px;
+    
+}
+
+.infoAdmin
+{
+    width:640px;
+    height:auto;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+    float:left;
+}
+
+.sectionInfo
+{
+    width:320px;
+    height:auto;
+    float:left;
+}
+
+.boutonAdmin
+{
+    width: 640px;
+    height: 40px;
+    margin-top:20px;
+    float: left;
+}

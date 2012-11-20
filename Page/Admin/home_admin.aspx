@@ -10,10 +10,24 @@
         <asp:Accordion ID="menuCategorie" runat="server" Width="200px" CssClass="accordion" HeaderCssClass="accordionHeader" 
         HeaderSelectedCssClass="accordionHeaderSelected" ContentCssClass="accordionContent" >
             <Panes>
-                <asp:AccordionPane runat="server">
+                <asp:AccordionPane  runat="server">
                     <Header>Cours</Header>
                     <Content>
-                        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Page/Admin/admin_course_add.aspx" Text="Opérations sur les cours"></asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" Onclick="actionAjoutCours" Text="Ajouter un cours"></asp:LinkButton>
+                        <br />
+                        <asp:LinkButton ID="LinkButton4" runat="server" OnClick="actionModifieCours" Text="Modifier un cours"></asp:LinkButton>
+                        <br />
+                        <asp:LinkButton ID="LinkButton5" runat="server" OnClick="actionSupprimeCours" Text="Supprimer un cours"></asp:LinkButton>
+                    </Content>
+                </asp:AccordionPane>
+                <asp:AccordionPane ID="menuCours" runat="server">
+                    <Header>Cours</Header>
+                    <Content>
+                        <asp:LinkButton ID="btnCoursAjout" runat="server" Onclick="actionAjoutCours" Text="Ajouter un cours"></asp:LinkButton>
+                        <br />
+                        <asp:LinkButton ID="btnCoursModifie" runat="server" OnClick="actionModifieCours" Text="Modifier un cours"></asp:LinkButton>
+                        <br />
+                        <asp:LinkButton ID="btnCoursSupprime" runat="server" OnClick="actionSupprimeCours" Text="Supprimer un cours"></asp:LinkButton>
                     </Content>
                 </asp:AccordionPane>
                 <asp:AccordionPane ID="menuGroupe" runat="server">

@@ -201,7 +201,7 @@
                     <asp:Label ID="lblCourrielClient" runat="server" Text='<%# Eval("courriel") %>' ></asp:Label>
                     </br>      
                 </div>
-                <div class="modifierBouton">
+                <div class="modifierBouton" style="margin-left:20px;">
                     <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier le courriel" commandName="Edit"></asp:LinkButton>
                     </br>    
                 </div>
@@ -270,7 +270,7 @@
             </div>
         </LayoutTemplate>
         <ItemTemplate>
-                <div class="modifierBoutonMotPasse">
+                <div class="modifierBouton">
                     <asp:LinkButton ID="btnModifierMP" runat="server" commandName="Edit" Text="Changer votre mot de passe"></asp:LinkButton>
                 </div>
         </ItemTemplate>

@@ -9,7 +9,7 @@ Partial Class Page_login
                 Session("idUser") = CustomMembershipProvider.GetUserId(loginCLS.UserName.ToString)
                 Session.Timeout = 10
                 If role = "Administrateur" Then
-                    Response.Redirect("~/Page/Admin/home_admin.aspx")
+                    Response.Redirect("~/Page/Admin/admin_home.aspx")
                 ElseIf role = "Employé" Then
                     Response.Redirect("~/Page/Employe/home_employe.aspx")
                 ElseIf role = "Adulte" Then

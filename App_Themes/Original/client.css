@@ -148,17 +148,6 @@
 {
     height:20px;
     margin-top:3px;
-    margin-left:20px;
-    font-weight:bolder;
-    font-size:14px;
-    float:left;
-    color:#1b1bb3;
-}
-
-.modifierBoutonMotPasse
-{
-    height:20px;
-    margin-top:3px;
     font-weight:bolder;
     font-size:14px;
     float:left;
@@ -253,7 +242,7 @@
 
 .bouton
 {
-    width: 250px;
+    width: 800px;
     height: 40px;
     margin-top:20px;
     float: left;

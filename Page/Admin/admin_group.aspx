@@ -1,23 +1,7 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_group.aspx.vb" Inherits="Page_Admin_admin_group_add" Theme="Original"%>
+﻿<%@ Page Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master" AutoEventWireup="false" CodeFile="admin_group.aspx.vb" Inherits="Page_Admin_admin_group_add" Theme="Original"%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="menu" Runat="Server">
 <div class="contenuPage">
-    <div class="entetePage">
-        <div class="menuPageGauche" style="margin-top:10px;">
-            <asp:Label ID="lblEntete" runat="server" text="Opérations Groupes" Font-Size="32px" Font-Bold="true"/>
-        </div>
-        <div class="menuPageDroit">
-            <div class="boutonEntete" style="margin-right:10px;">
-                <asp:Button ID="btnAjouter" runat="server" onClick="actionAjout" Text="Ajouter" CssClass="btn btn-primary" Width="150px" height="40px" CausesValidation="false"/>
-            </div>
-            <div class="boutonEntete" style="margin-right:10px;">
-                <asp:Button ID="btnModifier" runat="server" onClick="actionModifie" Text="Modifier" CssClass="btn btn-primary" Width="150px" height="40px" CausesValidation="false"/>
-            </div>
-            <div class="boutonEntete" style="margin-right:10px;">
-                <asp:Button ID="btnSupprimer" runat="server" onClick="actionSupprime" Text="Supprimer" CssClass="btn btn-primary" Width="150px" height="40px" CausesValidation="false"/>
-            </div>
-        </div>
-    </div>
 
     <asp:MultiView ID="MVPrincipal" runat="server" ActiveViewIndex="0">
         <asp:View ID="viewAjout" runat="server">

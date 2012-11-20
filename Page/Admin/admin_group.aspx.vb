@@ -11,6 +11,17 @@ Partial Class Page_Admin_admin_group_add
 
     Dim entClient As modelCLSContainer = New modelCLSContainer
 
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+
+        If Request.QueryString("view") = 0 Then
+            MVPrincipal.ActiveViewIndex = 0
+        ElseIf Request.QueryString("view") = 1 Then
+            MVPrincipal.ActiveViewIndex = 1
+        Else
+            MVPrincipal.ActiveViewIndex = 2
+        End If
+    End Sub
+
     Protected Sub lvAjout_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvAjout.ItemInserting
         Dim groupeNo As Short = Nothing
         Dim ddlCoursNo As Short = Nothing
@@ -54,7 +65,4 @@ Partial Class Page_Admin_admin_group_add
         lvSupprime.DataBind()
     End Sub
 
-    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-
-    End Sub
 End Class

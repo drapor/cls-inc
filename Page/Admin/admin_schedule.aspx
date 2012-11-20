@@ -1,7 +1,7 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="admin_schedule.aspx.vb"
-    Inherits="Page_Admin_admin_group_add" Theme="Original" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master" AutoEventWireup="false" CodeFile="admin_schedule.aspx.vb"
+    Inherits="Page_Admin_admin_schedule_add" Theme="Original" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
     <div class="contenuPage">
         <div class="entetePage">
             <div class="menuPageGauche" style="margin-top: 10px;">
