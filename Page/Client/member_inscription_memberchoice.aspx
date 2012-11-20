@@ -38,7 +38,7 @@
                 <div class="infoCours">
                     <asp:Label ID="lblMembre" runat="server" Text="Membre: "></asp:Label>
                     <asp:DropDownList ID="ddlMembreFamille" runat="server" DataSourceID="dsMembreFamille" AppendDataBoundItems="true"
-                    DataValueField="idMembre" DataTextField="prenomMembre">
+                    DataValueField="idMembre" DataTextField="prenomMembre" >
                     </asp:DropDownList>
                     <asp:Button ID="btnRegisterMember" runat="server" Text="Inscrire le membre" CssClass="btn btn-primary" OnClick="inscriptionMembre" />
                 </div>

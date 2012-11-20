@@ -73,8 +73,8 @@
                     <div class="myProfile">
                         <asp:ImageButton ID="imgProfileIcon" runat="server" ImageUrl="~/App_Themes/Original/img/profile_account.png" Height="35px" Width="39px" Visible="false" CausesValidation="false" OnClick="redirectionProfil" />
                         <asp:LinkButton ID="lnkProfile" runat="server" Visible="false" ForeColor="White" Font-Size="Medium" CausesValidation="false" OnClick="redirectionProfil">Mon profil</asp:LinkButton>
-                        <asp:ImageButton ID="imgCart" runat="server" ImageUrl="~/App_Themes/Original/img/shopping_cart.png" Height="35px" Width="42px" Visible="false" CausesValidation="false"/>                   
-                        <asp:LinkButton ID="lnkNumberItemCart" runat="server" ForeColor="#ffbf00" Font-Size="Medium" CausesValidation="false" Text="" Visible="false"></asp:LinkButton>
+                        <asp:ImageButton ID="imgCart" runat="server" ImageUrl="~/App_Themes/Original/img/shopping_cart.png" Height="35px" Width="42px" Visible="false" CausesValidation="false" PostBackUrl="~/Page/Client/cart.aspx"/>                   
+                        <asp:LinkButton ID="lnkNumberItemCart" runat="server" ForeColor="#ffbf00" Font-Size="Medium" CausesValidation="false" Text="" Visible="false" PostBackUrl="~/Page/Client/cart.aspx"></asp:LinkButton>
                     </div>
                 </div>
             </div>
