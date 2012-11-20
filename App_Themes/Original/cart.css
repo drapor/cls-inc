@@ -7,8 +7,8 @@
 .panierNomTitre
 {
     margin-bottom:20px;
-    width:250px;
-    font-size:24px;
+    width:180px;
+    font-size:20px;
     font-weight:bolder;
     float:left;
 }
@@ -16,8 +16,8 @@
 .panierGroupeTitre
 {
     margin-bottom:20px;
-    width:180px;
-    font-size:24px;
+    width:140px;
+    font-size:20px;
     font-weight:bold;
     float:left;
 }
@@ -25,8 +25,8 @@
 .panierAbonneTitre
 {
     margin-bottom:20px;
-    width:250px;
-    font-size:24px;
+    width:220px;
+    font-size:20px;
     font-weight:bold;
     float:left;
 }
@@ -35,39 +35,50 @@
 {
     margin-bottom:20px;
     width:80px;
-    font-size:24px;
+    font-size:20px;
     font-weight:bold;
     float:left;
 }
 
+.statusTitre
+{
+    margin-bottom:20px;
+    width:90px;
+    font-size:20px;
+    font-weight:bold;
+    float:left;
+}
+
+
 .panierNom
 {
-    width:250px;
-    font-size:18px;
+    width:180px;
     float:left;
 }
 
 .panierGroupe
 {
-    width:180px;
-    font-size:18px;
+    width:140px;
     float:left;
 }
 
 .panierAbonne
 {
-    width:250px;
-    font-size:18px;
+    width:220px;
     float:left;
 }
 
 .panierPrix
 {
     width:80px;
-    font-size:18px;
     float:left;
 }
 
+.panierStatus
+{
+    width:90px;
+    float:left;
+}
 .panierSupprime
 {
     margin-left:40px;
@@ -78,7 +89,6 @@
 {
     width:860px;
     height:auto;
-    margin-left:20px;
     margin-right:20px;
     margin-top:10px;
     margin-bottom:10px;

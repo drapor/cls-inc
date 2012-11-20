@@ -1,11 +1,13 @@
 ﻿Imports System.IO
 Imports masterPage
+Imports modelCLS
 Partial Class Site
     Inherits System.Web.UI.MasterPage
 
 
     Dim categorie As String = Nothing
     Dim url As String
+    Dim entPanier As New modelCLSContainer
 
 #Region "Redirection des boutons de catégorie"
     Protected Sub btnCulture_Click(sender As Object, e As System.EventArgs) Handles btnCulture.Click
@@ -43,15 +45,17 @@ Partial Class Site
             Else
                 imgCart.Visible = True
                 lnkNumberItemCart.Visible = True
+                Dim cookie As HttpCookie = Request.Cookies("noPanier")
+                Dim noPanier As Integer = cookie.Values("noPanier")
+                Dim utilisateur As Integer = (From A In entPanier.ItemPanierJeu Where (A.Panier_idCommande = noPanier) Select A).Count
+                lnkNumberItemCart.Text = "(" & utilisateur & ")"
             End If
-            
 
             If (Session("membreIDList") IsNot Nothing) Then
                 Dim membreID As List(Of String) = Session("membreIDList")
                 Dim nombreItemCart = membreID.Count
                 lnkNumberItemCart.Text = "(" & nombreItemCart & ")"
             Else
-                lnkNumberItemCart.Text = "(0)"
             End If
         End If
     End Sub
@@ -59,7 +63,7 @@ Partial Class Site
 
     Sub redirectionCourriel(sender As Object, e As EventArgs)
         If HttpContext.Current.User.IsInRole("Administrateur") Then
-            Response.Redirect("~/Page/Admin/home_admin.aspx")
+            Response.Redirect("~/Page/Admin/admin_home.aspx")
         ElseIf HttpContext.Current.User.IsInRole("Employé") Then
             Response.Redirect("~/Page/Employe/home_employe.aspx")
         ElseIf HttpContext.Current.User.IsInRole("Adulte") Then
