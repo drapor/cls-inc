@@ -348,7 +348,7 @@
                 <asp:Label ID="lblNomFamille" runat="server" Text='<%# Eval("prenomMembre") + " " + Eval("nomMembre") %>'></asp:Label>
             </div>
             <div class="contenuDroit">
-                <asp:Label ID="lblStatusFamille" runat="server" Text='<%# Eval("RoleJeu_1.nomRole") %>'></asp:Label>
+                <asp:Label ID="lblStatusFamille" runat="server" Text='<%# Eval("RoleJeu.nomRole") %>'></asp:Label>
             </div>
             <div class="afficherFamille">
                     <asp:LinkButton ID="btnAfficherFamille" runat="server" Text="Afficher" commandName="afficher"></asp:LinkButton>
@@ -428,7 +428,7 @@
     </asp:EntityDataSource>
 
     <asp:EntityDataSource ID="dsFamille" runat="server" ConnectionString="name=modelCLSContainer"
-    DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" Include="RoleJeu_1"
+    DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" Include="RoleJeu"
     EnableFlattening="False" EnableDelete="True" EnableInsert="false" EnableUpdate="True" 
     orderBy="it.idMembre"
     where="(@idFamille = it.familleID and (it.RoleJeu_idRole = 4 or it.RoleJeu_idRole = 5))">

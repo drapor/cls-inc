@@ -71,7 +71,7 @@
 
         <EditItemTemplate>
         <div >
-                <div class="partiGauche">
+                <div class="partiGauche" style="width:180px;">
                     <div class="formatZone">
                         <asp:Label ID="lblPrenom" runat="server" Text="Prénom:"></asp:Label>
                     </div>
@@ -142,11 +142,11 @@
                         </div>
                         </br>
                         <div class="formatZone">
-                            <asp:RequiredFieldValidator ID="requiredAdresse" runat="server" ErrorMessage="*L'adresse est obligatoire" ControlToValidate="txtAdresseClient" ForeColor="Red" >!</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="requiredAdresse" runat="server" ErrorMessage="*L'adresse est obligatoire" ControlToValidate="txtAdresseClient" ForeColor="Red" ValidationGroup="infoPerso">!</asp:RequiredFieldValidator>
                         </div>
                         </br>
                         <div class="formatZone">
-                            <asp:RequiredFieldValidator ID="requiredVille" runat="server" ErrorMessage="*La ville est obligatoire" ControlToValidate="txtVilleClient" ForeColor="Red" >!</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="requiredVille" runat="server" ErrorMessage="*La ville est obligatoire" ControlToValidate="txtVilleClient" ForeColor="Red" ValidationGroup="infoPerso">!</asp:RequiredFieldValidator>
                         </div>
                         </br>
                         <div class="formatZone">
@@ -192,7 +192,7 @@
             </div>
         </LayoutTemplate>
         <ItemTemplate>
-                <div class="partiGaucheCourriel">
+                <div class="partiGaucheCourriel" style="width:150px;">
                     <asp:Label ID="lblCourriel" runat="server" Text="Votre courriel:" Font-Bold="True"></asp:Label>
                     </br>
                     
@@ -210,7 +210,7 @@
                 </div>
           </ItemTemplate>
           <EditItemTemplate>
-            <div class="partiGaucheCourrielEdit">
+            <div class="partiGaucheCourrielEdit" style="width:280px;">
                     <div class="formatZone">
                         <asp:Label ID="lblCourriel" runat="server" Text="Votre présent courriel:"></asp:Label>
                     </div>
@@ -254,7 +254,7 @@
                     </div>
                 </div>
 
-                <div class="validationListe">
+                <div class="validationListe" style="margin-top:10px;">
                     <asp:ValidationSummary ID="ValidationInfo" ValidationGroup="courriel" DisplayMode="List"
                     ForeColor="Red" runat="server" />
                 </div>
@@ -286,7 +286,7 @@
                 </div>
         </ItemTemplate>
         <EditItemTemplate>
-        <div class="partiGaucheMotPasse">
+        <div class="partiGaucheMotPasse" style="width:300px;">
                     <div class="formatZone">
                         <asp:Label ID="lblMP" runat="server" Text="Présent mot de passe:"></asp:Label>
                     </div>
@@ -313,7 +313,7 @@
                     </div> 
                 </div>
 
-                <div class="validation">
+                <div class="validation" >
                     <div class="formatZone">
                         <asp:RequiredFieldValidator ID="motPasseValideRequis" runat="server" ErrorMessage="*Veuillez entrer votre présent mot de passe!" ControlToValidate='txtPresentMP' ForeColor="Red" Display="Dynamic" ValidationGroup="motPasse">!</asp:RequiredFieldValidator>
                         <asp:CustomValidator ID="motPasseCompare" runat="server" ControlToValidate="txtPresentMP" OnServerValidate="validationMotPasse" ErrorMessage="Votre mot de passe est incorrect!" ForeColor="Red" Display="Dynamic" ValidationGroup="motPasse">!</asp:CustomValidator>
@@ -330,7 +330,7 @@
                     </div>
                 </div>
 
-                <div class="validationListe">
+                <div class="validationListe" style="margin-top:10px;">
                     <asp:ValidationSummary ID="ValidationInfo" ValidationGroup="motPasse" DisplayMode="List"
                     ForeColor="Red" runat="server" />
                 </div>
