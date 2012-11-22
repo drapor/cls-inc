@@ -27,3 +27,8 @@
     float:left;
     text-align:center;
 }
+
+.boutonPaypal
+{
+    background-image: url('img/btn_paynow_paypal.gif');
+}

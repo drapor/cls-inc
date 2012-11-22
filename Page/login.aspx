@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="containerContenuClient">
         <div class="titleClient">
-            <asp:Label ID="lblConnecter" runat="server" Text="Connection utilisateur"></asp:Label><br />
+            <asp:Label ID="lblConnecter" runat="server" Text="Authentification utilisateur"></asp:Label><br />
         </div>
         <br />
         <asp:Login ID="loginCLS" runat="server" DisplayRememberMe="false" Width="360px" UserNameLabelText="Adresse courriel: "

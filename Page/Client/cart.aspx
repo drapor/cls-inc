@@ -61,7 +61,7 @@
                         </div>
                         <div class="boutonPanierConfirme">
                             <asp:Button ID="btnConfirme" runat="server" Text="Confirmer" CssClass="btn btn-primary"
-                                Width="120px" PostBackUrl="cart_paiement.aspx" />
+                                Width="120px" PostBackUrl="~/Page/Client/cart_paiement.aspx" />
                         </div>
                     </div>
                 </LayoutTemplate>

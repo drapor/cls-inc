@@ -1,11 +1,11 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="cart_paiement.aspx.vb"
-    Inherits="Page_Client_cart_paiement" Theme="Original" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="inscription_paiement.aspx.vb"
+    Inherits="Page_Autre_inscription_paiement" Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="contenuPage">
         <div class="titlePanier">
             <h3>
-                Informations de paiment de la commande</h3>
+                Informations de paiment d'inscription chez CLS inc.</h3>
         </div>
         <div class="contenuStandard">
             <br />

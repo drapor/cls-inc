@@ -9,7 +9,8 @@ Partial Class Page_Autre_register
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim famille = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).Any
-
+        imgFailEmail.Visible = False
+        lblEmailErro.Visible = False
         If famille = Nothing Then
             idFamille = 0
         Else
@@ -17,30 +18,36 @@ Partial Class Page_Autre_register
         End If
     End Sub
 
-    Protected Sub lvNouveauMembre_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvNouveauMembre.ItemInserting
-        Dim rolePrincipal As Short = 3
-
-        e.Values("dateInscription") = Date.Now.ToShortDateString
-        e.Values("familleID") = CType(idFamille + 1, Short)
-        e.Values("RoleJeu_idRole") = rolePrincipal
-    End Sub
-
-    Protected Sub lvNouveauMembre_ItemInserted(sender As Object, e As System.Web.UI.WebControls.ListViewInsertedEventArgs) Handles lvNouveauMembre.ItemInserted
-        Dim idMembre As String = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.idMembre).Max
-
-        Response.Redirect("../Client/home_member.aspx")
-    End Sub
-
-    Sub validationCourriel(sender As Object, args As ServerValidateEventArgs)
-
-        Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvNouveauMembre, "txtCourriel")
-
+    Sub emailVerification(sender As Object, e As EventArgs)
         Dim utilisateur = (From A In entClient.MembresJeu Where (A.courriel = txtCourriel.Text) Select A).Any
-
         If utilisateur = Nothing Then
-            args.IsValid = True
         Else
-            args.IsValid = False
+            imgFailEmail.Visible = True
+            lblEmailErro.Visible = True
+            SetFocus(txtCourriel)
+        End If
+    End Sub
+    Sub inscription(sender As Object, e As EventArgs)
+        Dim utilisateur = (From A In entClient.MembresJeu Where (A.courriel = txtCourriel.Text) Select A).Any
+        If utilisateur = Nothing Then
+            Dim aCookie As New HttpCookie("inscription")
+            aCookie.Values("prenom") = txtPrenom.Text
+            aCookie.Values("nom") = txtNom.Text
+            aCookie.Values("adresse") = txtAdresse.Text
+            aCookie.Values("codePostal") = txtCodePostal.Text
+            aCookie.Values("courriel") = txtCourriel.Text
+            aCookie.Values("dateNaissance") = txtDate.Text
+            aCookie.Values("motDePasse") = txtMDP.Text
+            aCookie.Values("telephone") = txtTelephone.Text
+            aCookie.Values("ville") = txtVille.Text
+            aCookie.Values("sexe") = rdbtnSexe.SelectedItem.Value
+            aCookie.Values("dateInscription") = System.DateTime.Now.ToShortDateString
+            aCookie.Expires.AddDays(1)
+            Response.Cookies.Add(aCookie)
+            Response.Redirect("~/Page/Autre/inscription_paiement.aspx")
+        Else
+            imgFailEmail.Visible = True
+            lblEmailErro.Visible = True
             SetFocus(txtCourriel)
         End If
     End Sub
