@@ -44,28 +44,28 @@
 
 .sectionJourSemaine
 {
-    width:220px;
+    width:200px;
     text-align:center;
     float:left;
 }
 
 .sectionHeureDebut
 {
-    width:185px;
+    width:155px;
     text-align:center;
     float:left;
 }
 
 .sectionHeureFin
 {
-    width:170px;
+    width:140px;
     text-align:center;
     float:left;
 }
 
 .sectionLocal
 {
-    width:130px;
+    width:80px;
     text-align:center;
     float:left;
 }

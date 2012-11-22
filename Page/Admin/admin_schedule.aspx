@@ -2,36 +2,15 @@
     Inherits="Page_Admin_admin_schedule_add" Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
-    <div class="contenuPage">
-        <div class="entetePage">
-            <div class="menuPageGauche" style="margin-top: 10px;">
-                <asp:Label ID="lblEntete" runat="server" Text="Opérations horaires" Font-Size="32px"
-                    Font-Bold="true" />
-            </div>
-            <div class="menuPageDroit">
-                <div class="boutonEntete" style="margin-right: 10px;">
-                    <asp:Button ID="btnAjouter" runat="server" OnClick="actionAjout" Text="Ajouter" CssClass="btn btn-primary"
-                        Width="150px" Height="40px" CausesValidation="false" />
-                </div>
-                <div class="boutonEntete" style="margin-right: 10px;">
-                    <asp:Button ID="btnModifier" runat="server" OnClick="actionModifie" Text="Modifier"
-                        CssClass="btn btn-primary" Width="150px" Height="40px" CausesValidation="false" />
-                </div>
-                <div class="boutonEntete" style="margin-right: 10px;">
-                    <asp:Button ID="btnSupprimer" runat="server" OnClick="actionSupprime" Text="Supprimer"
-                        CssClass="btn btn-primary" Width="150px" Height="40px" CausesValidation="false" />
-                </div>
-            </div>
-        </div>
+
         <asp:MultiView ID="MVPrincipal" runat="server" ActiveViewIndex="0">
             <asp:View ID="viewAjout" runat="server">
-                <div class="contenuStandard">
                     <asp:Label ID="lblTitreAjout" runat="server" Text="Ajouter un horaire" Font-Size="24px"
                         Font-Bold="true" />
                     <br />
                     <br />
                     <br />
-                    <div class="ligneHoraire">
+                    <div class="horaireGauche">
                         <div class="interieurGaucheHoraire">
                             <div class="formatZone">
                                 <asp:Label ID="lblNomCoursAjout" runat="server" Text="Nom du cours:"></asp:Label>
@@ -58,7 +37,7 @@
                             </div>
                             <br />
                         </div>
-                        <div class="separateur" style="padding-top: 10px;">
+                        <div class="separateur" style="padding-top: 10px; width:680px;">
                             <asp:Image ID="Image1" runat="server" ImageUrl="~/App_Themes/Original/img/Separateur.png" />
                         </div>
                     </div>
@@ -91,27 +70,27 @@
                                     <br />
                                 </div>
                                 <div class="horaireGauche">
-                                    <div class="interieurGaucheHoraire">
+                                    <div class="interieurGaucheHoraire" style="margin-top:5px;">
                                         <div class="formatZone">
                                             <asp:Label ID="lblLocal" runat="server" Text="Local:"></asp:Label>
                                         </div>
                                         <br />
                                     </div>
-                                    <div class="interieurDroitHoraire">
+                                    <div class="interieurDroitHoraire" style="margin-top:5px;">
                                         <div class="formatZone">
                                             <asp:TextBox ID="txtLocal" SkinID="txtBoxYellowPerso" runat="server" CssClass="search-query"
                                                 Text='<%# Bind("noLocal") %>' MaxLength="10" Width="50px" CausesValidation="false"></asp:TextBox>
                                         </div>
                                         <br />
                                     </div>
-                                    <div class="validationLocal">
+                                    <div class="validationLocal" style="margin-top:5px; ">
                                         <asp:RequiredFieldValidator ID="requiredLocal" runat="server" ErrorMessage="No local requis"
                                             ControlToValidate="txtLocal" ForeColor="Red" Display="Dynamic" Font-Size="14px"></asp:RequiredFieldValidator>
                                         <br />
                                     </div>
                                 </div>
                             </div>
-                            <div class="horaireDroit" style="margin-top: 15px;">
+                            <div class="horaireDroit" style="margin-top: 5px;">
                                 <div class="interieurGaucheHoraire">
                                     <div class="formatZone">
                                         <asp:Label ID="lblDebut" runat="server" Text="Heure de début:"></asp:Label>
@@ -154,7 +133,7 @@
                                 </div>
                             </div>
                             <div class="groupeBouton">
-                                <div class="boutonGroupeAjout" style="margin-left: 520px;">
+                                <div class="boutonGroupeAjout" style="margin-left: 150px;">
                                     <asp:Button ID="btnConfirme" runat="server" CommandName="Insert" Text="Ajouter l'horaire"
                                         CssClass="btn btn-primary" Width="130px" />
                                 </div>
@@ -163,16 +142,14 @@
                         <ItemTemplate>
                         </ItemTemplate>
                     </asp:ListView>
-                </div>
             </asp:View>
             <asp:View ID="viewModifie" runat="server">
-                <div class="contenuStandard">
                     <asp:Label ID="lblTitreModifie" runat="server" Text="Modifier un horaire" Font-Size="24px"
                         Font-Bold="true" />
                     <br />
                     <br />
                     <br />
-                    <div class="ligneHoraire">
+                    <div class="horaireGauche">
                         <div class="interieurGauche">
                             <div class="formatZone">
                                 <asp:Label ID="lblNomCoursModifie" runat="server" Text="Nom du cours:"></asp:Label>
@@ -200,7 +177,7 @@
                             <br />
                         </div>
                     </div>
-                    <div class="separateur" style="padding-top: 10px;">
+                    <div class="separateur" style="padding-top: 10px; width:680px;">
                         <asp:Image ID="imgSeparateur" runat="server" ImageUrl="~/App_Themes/Original/img/Separateur.png" />
                     </div>
                     <div class="horaireGauche" style="margin-top: 15px;">
@@ -226,26 +203,26 @@
                         </LayoutTemplate>
                         <ItemTemplate>
                             <div class="horaireGauche">
-                                <div class="interieurGaucheHoraire">
+                                <div class="interieurGaucheHoraire" style="margin-top:5px;">
                                     <div class="formatZone">
                                         <asp:Label ID="lblLocal" runat="server" Text="Local:"></asp:Label>
                                     </div>
                                     <br />
                                 </div>
-                                <div class="interieurDroitHoraire">
+                                <div class="interieurDroitHoraire" style="margin-top:5px;">
                                     <div class="formatZone">
                                         <asp:TextBox ID="txtLocal" SkinID="txtBoxYellowPerso" runat="server" CssClass="search-query"
                                             Text='<%# Bind("noLocal") %>' MaxLength="10" Width="50px" CausesValidation="false"></asp:TextBox>
                                     </div>
                                     <br />
                                 </div>
-                                <div class="validationLocal">
+                                <div class="validationLocal" style="margin-top:5px;">
                                     <asp:RequiredFieldValidator ID="requiredLocal" runat="server" ErrorMessage="No local requis"
                                         ControlToValidate="txtLocal" ForeColor="Red" Display="Dynamic" Font-Size="14px"></asp:RequiredFieldValidator>
                                     <br />
                                 </div>
                             </div>
-                            <div class="horaireDroit" style="margin-top: -30px;">
+                            <div class="horaireDroit" style="margin-top: 5px;">
                                 <div class="interieurGaucheHoraire">
                                     <div class="formatZone">
                                         <asp:Label ID="lblDebut" runat="server" Text="Heure de début:"></asp:Label>
@@ -288,23 +265,21 @@
                                 </div>
                             </div>
                             <div class="groupeBouton">
-                                <div class="boutonGroupeAjout" style="margin-left: 650px;">
+                                <div class="boutonGroupeAjout" style="margin-left: 150px;">
                                     <asp:Button ID="btnModifier" runat="server" CommandName="Update" Text="Modifier l'horaire"
                                         CssClass="btn btn-primary" Width="130px" />
                                 </div>
                             </div>
                         </ItemTemplate>
                     </asp:ListView>
-                </div>
             </asp:View>
             <asp:View ID="viewSupprime" runat="server">
-                <div class="contenuStandard">
                     <asp:Label ID="lblTitreSupprime" runat="server" Text="Supprimer un horaire" Font-Size="24px"
                         Font-Bold="true" />
                     <br />
                     <br />
                     <br />
-                    <div class="ligneHoraire">
+                    <div class="horaireGauche">
                         <div class="interieurGauche">
                             <div class="formatZone">
                                 <asp:Label ID="lblNomCoursSupprime" runat="server" Text="Nom du cours:"></asp:Label>
@@ -334,7 +309,7 @@
                     </div>
                     <asp:ListView ID="lvSupprime" runat="server" DataSourceID="dsHoraireSupprime" DataKeyNames="idHoraire">
                         <LayoutTemplate>
-                            <div class="ligneHoraire" style="font-size: 20px; font-weight: bolder; margin-top: 20px;">
+                            <div class="ligneHoraire" style="font-size: 18px; font-weight: bolder; margin-top: 20px;">
                                 <div class="sectionJourSemaine">
                                     <asp:Label ID="lblTitreJourSemaine" runat="server" Text="Jour de la semaine"></asp:Label>
                                 </div>
@@ -349,15 +324,15 @@
                                 </div>
                             </div>
                             <div class="separateur">
-                                <asp:Image ID="imgSeparateur1" runat="server" ImageUrl="~/App_Themes/Original/img/Separateur.png" />
+                                <asp:Image ID="imgSeparateur1" runat="server" width="680px" ImageUrl="~/App_Themes/Original/img/Separateur.png" />
                             </div>
                             <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                             <div class="separateur" style="padding-top: 10px;">
-                                <asp:Image ID="imgSeparateur2" runat="server" ImageUrl="~/App_Themes/Original/img/Separateur.png" />
+                                <asp:Image ID="imgSeparateur2" runat="server" width="680px" ImageUrl="~/App_Themes/Original/img/Separateur.png" />
                             </div>
                         </LayoutTemplate>
                         <ItemTemplate>
-                            <div class="ligneHoraire" style="margin-top: 20px;">
+                            <div class="ligneHoraire" style="margin-top: 20px; font-size: 18px; width:680px;">
                                 <div class="sectionJourSemaine">
                                     <asp:Label ID="lblJourSemaine" runat="server" Text='<%# Bind("jourSemaine") %>'></asp:Label>
                                 </div>
@@ -377,16 +352,9 @@
                             </div>
                         </ItemTemplate>
                     </asp:ListView>
-                </div>
             </asp:View>
         </asp:MultiView>
-        <div class="groupeBouton">
-            <div class="boutonGroupeRetour" style="margin-bottom: 20px;">
-                <asp:Button ID="btnRetour" runat="server" Text="Retour page admin" CssClass="btn btn-primary"
-                    Width="150px" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false" />
-            </div>
-        </div>
-    </div>
+
     <asp:EntityDataSource ID="dsGroupeAjout" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="GroupeJeu" EnableFlattening="False"
         EnableDelete="True" EnableInsert="True" EnableUpdate="True" OrderBy="it.idGroupe"

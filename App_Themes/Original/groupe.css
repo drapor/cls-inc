@@ -36,7 +36,7 @@
 
 .partiGaucheGroupe
 {
-    width:420px;
+    width:350px;
     height:auto;
     float:left;
 }
@@ -57,7 +57,7 @@
 
 .interieurDroit
 {
-    width:260px;
+    width:150px;
     float:left;
 }
 
@@ -73,7 +73,7 @@
 
 .droit
 {
-    width:210px;
+    width:130px;
     height:auto;
     text-align:center;
     font-size:large;

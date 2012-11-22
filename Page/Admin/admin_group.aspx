@@ -1,11 +1,9 @@
 ﻿<%@ Page Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master" AutoEventWireup="false" CodeFile="admin_group.aspx.vb" Inherits="Page_Admin_admin_group_add" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" Runat="Server">
-<div class="contenuPage">
 
     <asp:MultiView ID="MVPrincipal" runat="server" ActiveViewIndex="0">
         <asp:View ID="viewAjout" runat="server">
-            <div class="contenuStandard">
                 <asp:Label ID="lblTitreAjout" runat="server" text="Ajouter un groupe" Font-Size="24px" Font-Bold="true"/>
                 <br />
                 <br />
@@ -37,15 +35,23 @@
                         </div>
 
                         <div class="interieurDroit">           
-                            <div class="formatZone">
-                                <asp:TextBox ID="txtNbsMax" SkinID="txtBoxYellowPerso"  runat="server" CssClass="search-query" Text='<%# Bind("nbMax") %>'  MaxLength="3" Width="25px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="requiredNb" runat="server" ErrorMessage="*Nombres de membres" ForeColor="Red" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic"></asp:RequiredFieldValidator>
-                                <asp:RangeValidator ID="rangeNb" runat="server" ErrorMessage="*Nombre entre 1 et 999" ForeColor="Red" Type="Integer" MinimumValue="1" MaximumValue="999" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic"></asp:RangeValidator>
+                            <div style="width:60px; float:left;">
+                                <asp:TextBox ID="txtNbsMax" SkinID="txtBoxYellowPerso"  runat="server" CssClass="search-query" Text='<%# Bind("nbMax") %>'  MaxLength="3" Width="25px"></asp:TextBox>  
+                            </div>
+                            <div class="validation" style="padding-top:5px;">
+                                <asp:RequiredFieldValidator ID="requiredNb" runat="server" ErrorMessage="*Nombres de membres" ForeColor="Red" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic" ValidationGroup="groupe">!</asp:RequiredFieldValidator>
+                                <asp:RangeValidator ID="rangeNb" runat="server" ErrorMessage="*Nombre entre 1 et 999" ForeColor="Red" Type="Integer" MinimumValue="1" 
+                                    MaximumValue="999" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic" ValidationGroup="groupe">!</asp:RangeValidator>
                             </div>
                         </div>
+
+                        <div class="validationListe">
+                            <asp:ValidationSummary ID="ValidationInfo" ValidationGroup="groupe" DisplayMode="List" ForeColor="Red" runat="server" />
+                        </div>
+
                         <div class="groupeBouton">
                             <div class="boutonGroupeAjout" style="margin-left:180px;">
-                                <asp:Button ID="btnConfirme" runat="server" commandName="Insert" Text="Ajouter" CssClass="btn btn-primary" Width="120px"/>
+                                <asp:Button ID="btnConfirme" runat="server" commandName="Insert" Text="Ajouter" CssClass="btn btn-primary" Width="120px" ValidationGroup="groupe"/>
                             </div>      
                         </div>
                         </InsertItemTemplate>
@@ -53,15 +59,15 @@
                         </ItemTemplate>
                     </asp:ListView>
                 </div>
-                <div class="partiDroiteGroupe" style="margin-left:10px; width:400px;">
+                <div class="partiDroiteGroupe" style="margin-left:10px; width:320px;">
                     <asp:ListView ID="lvListGroupe" runat="server" DataSourceID="dsGroupeAjout" DataKeyNames="idGroupe">
                         <LayoutTemplate>
-                            <div style="border:2px solid black; height:auto; width:400px; padding-left:25px; padding-top:20px; height:300px;">
+                            <div style="border:2px solid black; height:auto; padding-left:5px; padding-top:10px; height:300px;">
                             <div class="gauche">
                                 <asp:Label ID="lblGroupe" runat="server" Text="Nom groupe" Font-Bold="true"></asp:Label>
                             </div>
                             <div class="droit">
-                                <asp:Label ID="lblNb" runat="server" Text="Nombres membres" Font-Bold="true"></asp:Label>
+                                <asp:Label ID="lblNb" runat="server" Text="Nbs membres" Font-Bold="true"></asp:Label>
                             </div>
                             <br />
                             
@@ -72,18 +78,16 @@
                             <div class="gauche" style="margin-left:10px;">
                                 <asp:Label ID="lblGroupe" runat="server" Text='<%# Eval("nomGroupe") %>' ></asp:Label>
                             </div>
-                            <div class="droit" >
+                            <div class="droit" style="margin-left:-10px;" >
                                 <asp:Label ID="TextBox" runat="server" Text='<%# Eval("nbMax") %>' ></asp:Label>
                             </div>
                             <br />
                         </ItemTemplate>
                     </asp:ListView>
                 </div>
-            </div>
         </asp:View>
 
         <asp:View ID="viewModifie" runat="server">
-            <div class="contenuStandard">
                 <asp:Label ID="lblTitreModifie" runat="server" text="Modifier un groupe" Font-Size="24px" Font-Bold="true"/>
                 <br />
                 <br />
@@ -124,25 +128,30 @@
                             </div>
 
                             <div class="interieurDroit">
-                                <div class="formatZone">
+                                <div style="width:60px; float:left;">
                                     <asp:TextBox ID="txtNbsMax" SkinID="txtBoxYellowPerso"  runat="server" CssClass="search-query" Text='<%# Bind("nbMax") %>'  MaxLength="3" Width="25px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="requiredNb" runat="server" ErrorMessage="*Entrez le nombre de membre" ForeColor="Red" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:RangeValidator ID="rangeNb" runat="server" ErrorMessage="*Nombre entre 1 et 999" ForeColor="Red" Type="Integer" MinimumValue="1" MaximumValue="999" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic"></asp:RangeValidator>
+                                    
                                 </div>
+                                <div class="validation" style="padding-top:5px;">
+                                    <asp:RequiredFieldValidator ID="requiredNb" runat="server" ErrorMessage="Entrez le nombre de membre" ForeColor="Red" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic" ValidationGroup="groupe">!</asp:RequiredFieldValidator>
+                                    <asp:RangeValidator ID="rangeNb" runat="server" ErrorMessage="*Nombre entre 1 et 999" ForeColor="Red" Type="Integer" MinimumValue="1" MaximumValue="999" CausesValidation="false" ControlToValidate="txtNbsMax" Display="Dynamic" ValidationGroup="groupe">!</asp:RangeValidator>
+                                </div>
+                            </div>
+
+                            <div class="validationListe">
+                                <asp:ValidationSummary ID="ValidationInfo" ValidationGroup="groupe" DisplayMode="List" ForeColor="Red" runat="server" />
                             </div>
                             <div class="groupeBouton">
                                 <div class="boutonGroupeAjout" style="margin-left:180px;">
-                                    <asp:Button ID="btnUpdate" runat="server" commandName="Update" Text="Modifier" CssClass="btn btn-primary" Width="120px" />
+                                    <asp:Button ID="btnUpdate" runat="server" commandName="Update" Text="Modifier" CssClass="btn btn-primary" Width="120px" ValidationGroup="groupe"/>
                                 </div> 
                             </div>  
                         </ItemTemplate>
                     </asp:ListView>
                 </div>
-            </div>
         </asp:View>
 
         <asp:View ID="viewSupprime" runat="server">
-            <div class="contenuStandard">
                 <asp:Label ID="lblTitreSupprime" runat="server" text="Supprimer un groupe" Font-Size="24px" Font-Bold="true"/>
                 <br />
                 <br />
@@ -183,15 +192,8 @@
                         </ItemTemplate>
                     </asp:ListView>
                 </div>
-            </div>
         </asp:View>
     </asp:MultiView>
-    <div class="groupeBouton" style="clear:both;">
-        <div class="boutonGroupeRetour" style="margin-bottom:20px;">
-            <asp:Button ID="btnRetour" runat="server" Text="Retour page admin" CssClass="btn btn-primary" Width="150px" PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false"/>
-        </div>
-    </div>
-</div>
 
 <asp:EntityDataSource ID="dsGroupeAjout" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="GroupeJeu" EnableFlattening="False"
