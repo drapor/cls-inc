@@ -1,11 +1,20 @@
 <%@ Page Title="" Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master"
-    AutoEventWireup="false" CodeFile="admin_employe.aspx.vb" Inherits="Page_Admin_admin_employe_add"
+    AutoEventWireup="false" CodeFile="admin_employe.aspx.vb" Inherits="Page_Admin_admin_employe"
     Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
+<div style="float: right; height: auto; width: auto;">
+        <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Image ID="failImage" runat="server" ImageUrl="~/App_Themes/Original/img/delete.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Le cours a été mis à jour avec succès !"
+            Visible="false"></asp:Label>
+        <asp:Label ID="lblFailure" runat="server" ForeColor="Red" Text="" Visible="True"></asp:Label>
+    </div>
     <asp:MultiView ID="MVPrincipal" runat="server" ActiveViewIndex="0">
         <asp:View ID="viewAjout" runat="server">
-            <asp:Label ID="lblTitreAjout" runat="server" Text="Ajouter un employé" Font-Size="24px"
+            <asp:Label ID="lblTitreAjout" runat="server" Text="Ajouter l'employé" Font-Size="24px"
                 Font-Bold="true" />
             <br />
             <br />
@@ -13,7 +22,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblCourriel" runat="server" Text="E-mail"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:TextBox ID="txtCourriel" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                         MaxLength="50"></asp:TextBox></div>
                 <div class="validation">
@@ -23,7 +32,7 @@
                         ControlToValidate="txtCourriel" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
                         Display="Dynamic" ValidationGroup="employe">!</asp:RegularExpressionValidator>
                     <asp:Label ID="lblErreurEmail" runat="server" Text="L'adresse courriel existe déjà"
-                        ForeColor="Red" Visible="false" ValidationGroup="employe">!</asp:Label>
+                        ForeColor="Red" Visible="false" ValidationGroup="employe"></asp:Label>
                 </div>
             </div>
             <div class="ligneFormulaireAdmin">
@@ -56,6 +65,10 @@
                         <asp:ListItem Text="Homme" Value="H" Selected="true"></asp:ListItem>
                         <asp:ListItem Text="Femme" Value="F"></asp:ListItem>
                     </asp:RadioButtonList>
+                </div>
+                <div class="validation">
+                    <asp:RequiredFieldValidator ID="requiredSexe" runat="server" ErrorMessage="*Le sexe est obligatoire"
+                        ControlToValidate="rdbtnSexe" ForeColor="Red" Display="Dynamic" ValidationGroup="employe">!</asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="ligneFormulaireAdmin">
@@ -170,16 +183,6 @@
                     <asp:Button ID="btnAjouter" runat="server" Text="Ajouter un employé" CssClass="btn btn-primary btn-large btn"
                         OnClick="ajouterEmployeClick" ValidationGroup="employe"/>
             </div>
-            <div class="ligneFormulaireAdmin">
-                <div class="elementFormulaireTexte">
-                </div>
-                <div class="elementFormulaireAdmin">
-                    <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
-                        Visible="false" Height="20px" Width="20px" />
-                    <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="L'employé a été ajouter avec succès !"
-                        Visible="false"></asp:Label>
-                </div>
-            </div>
         </asp:View>
         <asp:View ID="viewModifie" runat="server">
             <asp:Label ID="lblTitreModifie" runat="server" Text="Modifier un Employé" Font-Size="24px"
@@ -194,7 +197,7 @@
                 <div class="elementFormulaireAdmin">
                     <asp:DropDownList ID="dropDownEmploye" runat="server" Width="250px" SkinID="ddlBlue"
                         DataSourceID="dsDropDownEmploye" DataValueField="idMembre" AppendDataBoundItems="False"
-                        AutoPostBack="True" DataTextField="FullName" />
+                        AutoPostBack="True" DataTextField="FullName" OnSelectedIndexChanged="changeEmploye" />
                 </div>
             </div>
 
@@ -252,7 +255,7 @@
                         </div>
                     </div>
                     <div class="bouton">
-                        <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier les informations"
+                        <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier les informations" OnClick="changeEmploye"
                             CssClass="btn btn-primary" />
                     </div>
                 </ItemTemplate>
@@ -380,8 +383,6 @@
                         <div class="bouton">
                             <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter"
                                 ValidationGroup="infoPerso" CssClass="btn btn-primary btn-small" />
-                            <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Annuler" CausesValidation="false"
-                                CssClass="btn btn-primary btn-small" />
                         </div>
                     </div>
                 </EditItemTemplate>
@@ -408,7 +409,7 @@
                     </div>
                     <div class="modifierBouton" style="margin-left: 20px;">
                         <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier le courriel"
-                            CommandName="Edit"></asp:LinkButton>
+                            CommandName="Edit" OnClick="changeEmploye"></asp:LinkButton>
                         </br>
                     </div>
                 </ItemTemplate>
@@ -491,7 +492,7 @@
                 </LayoutTemplate>
                 <ItemTemplate>
                     <div class="modifierBouton">
-                        <asp:LinkButton ID="btnModifierMP" runat="server" CommandName="Edit" Text="Changer votre mot de passe"></asp:LinkButton>
+                        <asp:LinkButton ID="btnModifierMP" runat="server" CommandName="Edit" Text="Changer votre mot de passe" OnClick="changeEmploye"></asp:LinkButton>
                     </div>
                 </ItemTemplate>
                 <EditItemTemplate>
@@ -598,7 +599,8 @@
                 yearRange: "c-100:c",
                 changeMonth: true,
                 changeYear: true,
-                dateFormat: "yy/mm/dd"
+                dateFormat: "yy/mm/dd",
+                maxDate: "-8y"
             });
         });
     </script>

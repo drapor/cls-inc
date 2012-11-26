@@ -155,7 +155,7 @@
                 </div>
 
             <div class="bouton" style="margin-left:270px;">
-                    <asp:Button ID="btnAjouter" runat="server" Text="Ajouter un Animateur" CssClass="btn btn-primary btn-large btn"
+                    <asp:Button ID="btnAjouter" runat="server" Text="Ajouter l'animateur" CssClass="btn btn-primary btn-large btn"
                         OnClick="ajouterEmployeClick" ValidationGroup="animateur"/>
             </div>
             <div class="ligneFormulaire">

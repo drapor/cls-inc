@@ -26,6 +26,7 @@ Partial Class Page_Admin_admin_course
         idCoursDeleting = CType(sender, ImageButton).CommandArgument.ToString
     End Sub
 
+    'Cette fonction modifie l'age maximum si l'utilisateur sélectionne "et +" dans le dropdownlist
     Sub changementAgeMod(sender As Object, e As EventArgs)
         Dim txtBoxAgeMax As TextBox = FindChildControl(Of TextBox)(lvCourseAdd, "txtGroupeAgeMax")
         If CType(sender, DropDownList).SelectedIndex = 1 Then
@@ -37,17 +38,6 @@ Partial Class Page_Admin_admin_course
         End If
     End Sub
 
-    Sub viewSupprimer(sender As Object, e As EventArgs)
-        mvCours.ActiveViewIndex = 1
-    End Sub
-
-    Sub viewAjouter(sender As Object, e As EventArgs)
-        mvCours.ActiveViewIndex = 0
-    End Sub
-
-    Sub viewModifier(sender As Object, e As EventArgs)
-        mvCours.ActiveViewIndex = 2
-    End Sub
 
     'Message affichant l'ajout du cours
     'Protected Sub dsCourseAdd_Inserted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsCourseAdd.Inserted
@@ -78,6 +68,66 @@ Partial Class Page_Admin_admin_course
             Response.Redirect("~/Page/Admin/admin_course_delete.aspx")
         End Try
     End Sub
+
+    Sub changeCours(sender As Object, e As EventArgs)
+        lblFelicitation.Visible = False
+        checkImage.Visible = False
+    End Sub
+
+#Region "TRAITEMENT DES ERREURS"
+
+    'Ajout Cours
+    Protected Sub dsCourseAdd_Inserted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsCourseAdd.Inserted
+        If e.Exception IsNot Nothing Then
+            traiteErreur(Page, "ERREUR LORS DE L'AJOUT D'UN COURS", e.Exception)
+            e.ExceptionHandled = True
+            failImage.Visible = True
+            lblFailure.Visible = True
+            lblFailure.Text = "Une erreur s'est produite lors de l'ajout du cours..."
+        Else
+            checkImage.Visible = True
+            lblFelicitation.Visible = True
+            lblFelicitation.Text = "Le cours a &eacute;t&eacute; ajout&eacute; avec succ&egrave;s !"
+        End If
+    End Sub
+
+    'MAJ Cours
+    Protected Sub dsModifyCourse_Updated(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsModifyCourse.Updated
+        If e.Exception IsNot Nothing Then
+            traiteErreur(Page, "ERREUR LORS DE LA MISE À JOUR D'UN COURS", e.Exception)
+            e.ExceptionHandled = True
+            failImage.Visible = True
+            lblFailure.Visible = True
+            lblFailure.Text = "Une erreur s'est produite lors de la mise &agrave; jour du cours."
+        Else
+            checkImage.Visible = True
+            lblFelicitation.Visible = True
+            lblFelicitation.Text = "Le cours a &eacute;t&eacute; mis &agrave; jour avec succ&egrave;s !"
+        End If
+    End Sub
+
+    'Suppression Cours
+    Protected Sub dsCours_Deleted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsCours.Deleted
+        If e.Exception IsNot Nothing Then
+            masterPage.traiteErreur(Page, "ERREUR LORS DE LA SUPPRESSION D'UN COURS", e.Exception)
+            e.ExceptionHandled = True
+            checkImage.Visible = False
+            lblFelicitation.Visible = False
+            failImage.Visible = True
+            lblFailure.Visible = True
+            lblFailure.Text = "Une erreur s'est produite lors de la suppression du cours."
+        Else
+            failImage.Visible = False
+            lblFailure.Visible = False
+            checkImage.Visible = True
+            lblFelicitation.Visible = True
+            lblFelicitation.Text = "Le cours a &eacute;t&eacute; supprimer avec succ&egrave;s !"
+        End If
+    End Sub
+
+#End Region
+
+
 
 
 End Class
