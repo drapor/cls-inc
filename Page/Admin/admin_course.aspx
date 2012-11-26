@@ -3,9 +3,19 @@
     Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
+    <div style="float: right; height: auto; width: auto;">
+        <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Image ID="failImage" runat="server" ImageUrl="~/App_Themes/Original/img/delete.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Le cours a été mis à jour avec succès !"
+            Visible="false"></asp:Label>
+        <asp:Label ID="lblFailure" runat="server" ForeColor="Red" Text="" Visible="True"></asp:Label>
+    </div>
     <asp:MultiView ID="mvCours" runat="server" ActiveViewIndex="0">
         <asp:View ID="viewAjout" runat="server">
-            <asp:ListView ID="lvCourseAdd" runat="server" DataSourceID="dsCourseAdd" DataKeyNames="idCours" InsertItemPosition="LastItem" ItemPlaceholderID="itemPlaceHolder">
+            <asp:ListView ID="lvCourseAdd" runat="server" DataSourceID="dsCourseAdd" DataKeyNames="idCours"
+                InsertItemPosition="LastItem" ItemPlaceholderID="itemPlaceHolder">
                 <LayoutTemplate>
                     <div class="titleClient">
                         <h3>
@@ -14,7 +24,6 @@
                     </div>
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                 </LayoutTemplate>
-
                 <InsertItemTemplate>
                     <div class="containerFormulaire">
                         <div class="ligneFormulaire">
@@ -23,7 +32,7 @@
                             <div class="elementFormulaire">
                                 <asp:TextBox ID="txtCours" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                                     MaxLength="50" Text='<%#Bind("nomCours") %>'></asp:TextBox></div>
-                            <div class="validation" style="padding-top:2px;">
+                            <div class="validation" style="padding-top: 2px;">
                                 <asp:RequiredFieldValidator ID="requiredCours" runat="server" ErrorMessage="Le nom du cours est obligatoire"
                                     ControlToValidate="txtCours" ForeColor="Red" Display="Dynamic" ValidationGroup="formulaire">!</asp:RequiredFieldValidator>
                                 <asp:Label ID="lblErreurCorus" runat="server" Text="Le cours existe déjà" ForeColor="Red"
@@ -55,7 +64,8 @@
                                 <asp:RequiredFieldValidator ID="requiredDescription" runat="server" ErrorMessage="La description est obligatoire"
                                     ControlToValidate="txtDescription" ForeColor="Red" Display="Dynamic" ValidationGroup="formulaire">!</asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="regExDescription" runat="server" ErrorMessage="La description ne doit pas contenir plus de 400 caractère."
-                                    ValidationExpression="[\s\S]{0,500}" ForeColor="Red" ControlToValidate="txtDescription" ValidationGroup="formulaire">!</asp:RegularExpressionValidator>
+                                    ValidationExpression="[\s\S]{0,500}" ForeColor="Red" ControlToValidate="txtDescription"
+                                    ValidationGroup="formulaire">!</asp:RegularExpressionValidator>
                             </div>
                         </div>
                         <%--Description--%>
@@ -94,7 +104,8 @@
                                     MaxLength="2" Text='<%#Bind("groupeAgeMin") %>' Width="30px"></asp:TextBox>
                                 <asp:DropDownList ID="ddlGroupeAgeMod" runat="server" SkinID="ddlBlue" Width="75px"
                                     CssClass="ddlGroupeAgeMod" AppendDataBoundItems="false" DataValueField="groupeAgeMod"
-                                    SelectedValue='<%#Bind("groupeAgeMod") %>' OnSelectedIndexChanged="changementAgeMod" AutoPostBack="true">
+                                    SelectedValue='<%#Bind("groupeAgeMod") %>' OnSelectedIndexChanged="changementAgeMod"
+                                    AutoPostBack="true">
                                     <asp:ListItem>à</asp:ListItem>
                                     <asp:ListItem>et +</asp:ListItem>
                                 </asp:DropDownList>
@@ -113,7 +124,8 @@
                                     ValidationExpression="^[0-9]+$" Display="Dynamic" ControlToValidate="txtGroupeAgeMax"
                                     ForeColor="Red" ValidationGroup="formulaire">!</asp:RegularExpressionValidator>
                                 <asp:CompareValidator ID="compareGroupeAge" runat="server" ForeColor="Red" ErrorMessage="L'âge maximum doit être plus élevé
-                                    que celle minimum" ControlToCompare="txtGroupeAgeMin" ControlToValidate="txtGroupeAgeMax" Operator="GreaterThan" ValidationGroup="formulaire">!</asp:CompareValidator>
+                                    que celle minimum" ControlToCompare="txtGroupeAgeMin" ControlToValidate="txtGroupeAgeMax"
+                                    Operator="GreaterThan" ValidationGroup="formulaire">!</asp:CompareValidator>
                             </div>
                         </div>
                         <%--Groupe d'âge--%>
@@ -125,10 +137,12 @@
                                     SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateDebutInscription") %>'></asp:TextBox></div>
                             <div class="validation">
                                 <asp:RequiredFieldValidator ID="requiredDateDebutInscription" runat="server" ErrorMessage="La date de début des inscriptions est obligatoire"
-                                ControlToValidate="txtDateDebutInscription" ForeColor="Red" Display="Dynamic" ValidationGroup="formulaire">!</asp:RequiredFieldValidator>
+                                    ControlToValidate="txtDateDebutInscription" ForeColor="Red" Display="Dynamic"
+                                    ValidationGroup="formulaire">!</asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="regExDateDebutInscription" runat="server" ErrorMessage="La date n'est pas dans le format aaaa/mm/jj"
-                                ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$"
-                                Display="Dynamic" ControlToValidate="txtDateDebutInscription" ForeColor="Red" ValidationGroup="formulaire">!</asp:RegularExpressionValidator>
+                                    ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$"
+                                    Display="Dynamic" ControlToValidate="txtDateDebutInscription" ForeColor="Red"
+                                    ValidationGroup="formulaire">!</asp:RegularExpressionValidator>
                             </div>
                         </div>
                         <%--Date début des inscriptions--%>
@@ -162,8 +176,10 @@
                                 <asp:RegularExpressionValidator ID="regExDateDebutCours" runat="server" ErrorMessage="La date n'est pas dans le format aaaa/mm/jj"
                                     ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$"
                                     Display="Dynamic" ControlToValidate="txtDateDebutCours" ForeColor="Red" ValidationGroup="formulaire">!</asp:RegularExpressionValidator>
-                                <asp:CompareValidator ID="compareDateDebutCoursADateFinInscription" runat="server" ErrorMessage="La date de début de cours doit être après celle de fin d'inscription" 
-                                    Display="Dynamic" ControlToValidate="txtDateDebutCours" ControlToCompare="txtDateFinInscription" ForeColor="red" Operator="GreaterThan" ValidationGroup="formulaire">!</asp:CompareValidator>
+                                <asp:CompareValidator ID="compareDateDebutCoursADateFinInscription" runat="server"
+                                    ErrorMessage="La date de début de cours doit être après celle de fin d'inscription"
+                                    Display="Dynamic" ControlToValidate="txtDateDebutCours" ControlToCompare="txtDateFinInscription"
+                                    ForeColor="red" Operator="GreaterThan" ValidationGroup="formulaire">!</asp:CompareValidator>
                             </div>
                         </div>
                         <%--Date début des cours--%>
@@ -195,18 +211,14 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-
                         <div class="validationListe">
                             <asp:ValidationSummary ID="ValidationInfo" ValidationGroup="formulaire" DisplayMode="List"
-                            ForeColor="Red" runat="server" />
+                                ForeColor="Red" runat="server" />
                         </div>
-
                         <%--Animateur--%>
-                        <div class="bouton" style="margin-left:260px;">
-                                <asp:Button ID="btnAjouter" runat="server" Text="Ajouter" CssClass="btn btn-primary btn-large btn"
-                                    CommandName="Insert" ValidationGroup="formulaire"/>
-                                <asp:Button ID="btnCancel" runat="server" Text="Annuler" CssClass="btn btn-primary btn-large btn"
-                                    PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false" />
+                        <div class="bouton" style="margin-left: 260px;">
+                            <asp:Button ID="btnAjouter" runat="server" Text="Ajouter le cours" CssClass="btn btn-primary btn-large btn"
+                                CommandName="Insert" ValidationGroup="formulaire" />
                         </div>
                         <%--Boutons--%>
                         <%--Label félicitation--%>
@@ -225,7 +237,7 @@
                     Choisissez un cours</div>
                 <div class="elementFormulaire">
                     <asp:DropDownList ID="ddlCours" runat="server" Width="200px" SkinID="ddlBlue" DataSourceID="dsCours"
-                        DataValueField="idCours" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="nomCours" />
+                        DataValueField="idCours" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="nomCours" OnSelectedIndexChanged="changeCours" />
                 </div>
             </div>
             <asp:ListView ID="lvCourseModify" runat="server" DataSourceID="dsModifyCourse" DataKeyNames="idCours"
@@ -304,10 +316,8 @@
                         </div>
                     </div>
                     <div class="bouton">
-                        <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier les informations"
+                        <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Enregistrer les modifications du cours"
                             CssClass="btn btn-primary" />
-                        <asp:Button ID="btnRetour" runat="server" PostBackUrl="~/Page/Admin/home_admin.aspx"
-                            Text="Retour" CssClass="btn btn-primary" />
                     </div>
                 </ItemTemplate>
                 <EditItemTemplate>
@@ -486,8 +496,11 @@
                         <div class="elementFormulaire">
                             <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
                                 Visible="false" Height="20px" Width="20px" />
+                            <asp:Image ID="failImage" runat="server" ImageUrl="~/App_Themes/Original/img/delete.png"
+                                Visible="false" Height="20px" Width="20px" />
                             <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Le cours a été mis à jour avec succès !"
                                 Visible="false"></asp:Label>
+                            <asp:Label ID="lblFailure" runat="server" ForeColor="Red" Text="" Visible="false"></asp:Label>
                         </div>
                     </div>
                     <%--Label félicitation--%>
@@ -499,12 +512,13 @@
             <asp:ListView ID="lvCours" runat="server" DataSourceID="dsCours" DataKeyNames="idCours">
                 <LayoutTemplate>
                     <div class="titleAdminNormal">
-                        <asp:Label ID="lblSupprimerCours" runat="server" Text="Supprimer un cours" Font-Size="24px" Font-Bold="true"></asp:Label>
+                        <asp:Label ID="lblSupprimerCours" runat="server" Text="Supprimer un cours" Font-Size="24px"
+                            Font-Bold="true"></asp:Label>
                         <br />
                         <br />
                     </div>
                     <div class="infoAdmin">
-                            <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+                        <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                     </div>
                 </LayoutTemplate>
                 <ItemTemplate>
@@ -518,16 +532,6 @@
             </asp:ListView>
         </asp:View>
     </asp:MultiView>
-    <%--<div class="ligneFormulaire">
-        <div class="elementFormulaireTexte">
-        </div>
-        <div class="elementFormulaire">
-            <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
-                Visible="false" Height="20px" Width="20px" />
-            <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Le cours a été ajouter avec succès !"
-                Visible="false"></asp:Label>
-        </div>
-    </div>--%>
     <asp:EntityDataSource ID="dsCourseAdd" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="CoursJeu" EnableFlattening="false"
         EnableDelete="true" EnableInsert="true" EnableUpdate="true">

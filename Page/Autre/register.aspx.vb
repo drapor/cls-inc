@@ -42,6 +42,7 @@ Partial Class Page_Autre_register
             aCookie.Values("ville") = txtVille.Text
             aCookie.Values("sexe") = rdbtnSexe.SelectedItem.Value
             aCookie.Values("dateInscription") = System.DateTime.Now.ToShortDateString
+            aCookie.Values("idFamille") = idFamille
             aCookie.Expires.AddDays(1)
             Response.Cookies.Add(aCookie)
             Response.Redirect("~/Page/Autre/inscription_paiement.aspx")

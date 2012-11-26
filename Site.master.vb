@@ -46,9 +46,13 @@ Partial Class Site
                 imgCart.Visible = True
                 lnkNumberItemCart.Visible = True
                 Dim cookie As HttpCookie = Request.Cookies("noPanier")
-                Dim noPanier As Integer = cookie.Values("noPanier")
-                Dim utilisateur As Integer = (From A In entPanier.ItemPanierJeu Where (A.Panier_idCommande = noPanier) Select A).Count
-                lnkNumberItemCart.Text = "(" & utilisateur & ")"
+                If cookie Is Nothing Then
+                Else
+                    Dim noPanier As Integer = cookie.Values("noPanier")
+                    Dim utilisateur As Integer = (From A In entPanier.ItemPanierJeu Where (A.Panier_idCommande = noPanier) Select A).Count
+                    lnkNumberItemCart.Text = "(" & utilisateur & ")"
+                End If
+                
             End If
 
             If (Session("membreIDList") IsNot Nothing) Then

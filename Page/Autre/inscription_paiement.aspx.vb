@@ -138,7 +138,7 @@ Partial Class Page_Autre_inscription_paiement
                 Dim entClient As New modelCLSContainer
                 Dim unClient As MembresJeu = Nothing
                 Dim aCookie As HttpCookie = Request.Cookies("inscription")
-                unClient = MembresJeu.CreateMembresJeu(0, aCookie.Values("nom"), aCookie.Values("prenom"), aCookie.Values("telephone"), aCookie.Values("motDePasse"), aCookie.Values("adresse"), aCookie.Values("ville"), aCookie.Values("dateInscription"), aCookie.Values("dateNaissance"), aCookie.Values("courriel"), aCookie.Values("codePostal"), 0, aCookie.Values("sexe"), 3)
+                unClient = MembresJeu.CreateMembresJeu(0, aCookie.Values("nom"), aCookie.Values("prenom"), aCookie.Values("telephone"), aCookie.Values("motDePasse"), aCookie.Values("adresse"), aCookie.Values("ville"), aCookie.Values("dateInscription"), aCookie.Values("dateNaissance"), aCookie.Values("courriel"), aCookie.Values("codePostal"), aCookie.Values("idFamille"), aCookie.Values("sexe"), 3)
                 entClient.MembresJeu.AddObject(unClient)
                 entClient.SaveChanges()
 
