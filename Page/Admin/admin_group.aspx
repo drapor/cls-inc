@@ -21,8 +21,44 @@
                         </div>
                         <br /> 
                     </div>
+                        <div>   
+                            <br />
+                            <br />
+                            <asp:GridView ID="listGroupe" runat="server" DataSourceID="dsGroupeAjout"
+                                DataKeyNames="idGroupe" AutoGenerateColumns="False" AlternatingRowStyle-BackColor="#8c8cde"
+                                AlternatingRowStyle-ForeColor="#FFFFFF" CssClass="gridView">
+                                <Columns>
+                                    <asp:CommandField ShowEditButton="True" CausesValidation="true" ValidationGroup="groupe"/>
+                                    <asp:BoundField DataField="nomGroupe" HeaderText="Nom groupe" ReadOnly="true"/>
+                                    <asp:TemplateField HeaderText="Nombres Max" ItemStyle-VerticalAlign="Middle" > 
+                                        <ItemTemplate> 
+                                            <asp:Label ID="lblNombre" runat="server" Text='<%# Bind("nbMax") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="txtNombre" runat="server" Text='<%# Bind("nbMax") %>' Width="20px" MaxLength="2"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="requiredNb" runat="server" ErrorMessage="*Nombres de membres" ForeColor="Red" Font-Bold="true" CausesValidation="false" ControlToValidate="txtNombre" Display="Dynamic" ValidationGroup="groupe">*</asp:RequiredFieldValidator>
+                                            <asp:RangeValidator ID="rangeNb" runat="server" ErrorMessage="*Nombre entre 1 et 999" ForeColor="Red" Font-Bold="true" Type="Integer" MinimumValue="1" 
+                                            MaximumValue="999" CausesValidation="false" ControlToValidate="txtNombre" Display="Dynamic" ValidationGroup="groupe">*</asp:RangeValidator>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:CommandField ShowEditButton="False" Visible="false"/>
+                                    <asp:TemplateField> 
+                                        <ItemTemplate> 
+                                            <asp:LinkButton id="btngvdelete" runat="server" 
+                                            OnClientClick="return confirm('Voulez-vous vraiment supprimer ce groupe?');" 
+                                            CommandName="Delete" ForeColor="Red" Font-Bold="true" Text="Supprimer">
+                                            </asp:LinkButton> 
+                                        </ItemTemplate> 
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                            <br />
+                            <div class="validationListe">
+                            <asp:ValidationSummary ID="ValidationInfo" ValidationGroup="groupe" DisplayMode="List" ForeColor="Red" runat="server" />
+                        </div>
+                        </div>
 
-                <asp:ListView ID="lvAjout" runat="server" DataSourceID="dsGroupeAjout" DataKeyNames="idGroupe" InsertItemPosition="LastItem">
+                <%--<asp:ListView ID="lvAjout" runat="server" DataSourceID="dsGroupeAjout" DataKeyNames="idGroupe" InsertItemPosition="LastItem">
                     <LayoutTemplate>
                             <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                     </LayoutTemplate>
@@ -51,7 +87,7 @@
 
                         <div class="groupeBouton">
                             <div class="boutonGroupeAjout" style="margin-left:180px;">
-                                <asp:Button ID="btnConfirme" runat="server" commandName="Insert" Text="Ajouter" CssClass="btn btn-primary" Width="120px" ValidationGroup="groupe"/>
+                                <asp:Button ID="btnConfirme" runat="server" commandName="Insert" Text="Ajouter" CssClass="btn btn-primary" Width="120px" ValidationGroup="groupe" />
                             </div>      
                         </div>
                         </InsertItemTemplate>
@@ -60,7 +96,17 @@
                     </asp:ListView>
                 </div>
                 <div class="partiDroiteGroupe" style="margin-left:10px; width:320px;">
-                    <asp:ListView ID="lvListGroupe" runat="server" DataSourceID="dsGroupeAjout" DataKeyNames="idGroupe">
+                    <asp:GridView ID="listGroupe" runat="server" DataSourceID="dsGroupeAjout"
+                        DataKeyNames="idGroupe" AutoGenerateColumns="False" AlternatingRowStyle-BackColor="#8c8cde" 
+                        AlternatingRowStyle-ForeColor="#FFFFFF" CssClass="gridView">
+                        <Columns>
+                            <asp:CommandField ShowEditButton="False" Visible="False" />
+                            <asp:BoundField DataField="nomGroupe" HeaderText="Nom groupe" FooterText=""/>
+                            <asp:BoundField DataField="nbMax" HeaderText="Nombres membres" />
+                        </Columns>
+                    </asp:GridView>--%>
+
+                    <%--<asp:ListView ID="lvListGroupe" runat="server" DataSourceID="dsGroupeAjout" DataKeyNames="idGroupe">
                         <LayoutTemplate>
                             <div style="border:2px solid black; height:auto; padding-left:5px; padding-top:10px; height:300px;">
                             <div class="gauche">
@@ -83,7 +129,7 @@
                             </div>
                             <br />
                         </ItemTemplate>
-                    </asp:ListView>
+                    </asp:ListView>--%>
                 </div>
         </asp:View>
 

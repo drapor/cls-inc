@@ -87,3 +87,27 @@
     width:860px;
     clear:both;
 }
+
+.gridView
+{
+    margin:5px;
+    width:680px;
+}
+
+.gridView th
+{
+    padding: 4px 2px;   
+    color: #fff;    
+    border-left: solid 1px #525252;   
+    font-size: 18px; 
+    background-color:#1800B8;
+    font-weight: bold; 
+    text-align:center;
+}
+
+.gridView td
+{
+    text-align:center;
+    font-weight: bold;
+    height: 35px;
+}

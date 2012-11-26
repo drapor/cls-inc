@@ -621,7 +621,7 @@
           <Property Type="Int16" Name="Animateur_idMembre" Nullable="false" />
           <Property Type="Int16" Name="groupeAgeMin" Nullable="false" />
           <Property Type="Int16" Name="groupeAgeMax" Nullable="false" />
-          <Property Type="String" Name="groupeAgeMod" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="groupeAgeMod" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CoursCompleteJeu" Relationship="modelCLS.FK_CoursCoursComplete" FromRole="CoursJeu" ToRole="CoursCompleteJeu" />
           <NavigationProperty Name="MembresJeu_Animateur" Relationship="modelCLS.FK_AnimateurCours" FromRole="CoursJeu" ToRole="MembresJeu_Animateur" />
           <NavigationProperty Name="GroupeJeu" Relationship="modelCLS.FK_CoursGroupe" FromRole="CoursJeu" ToRole="GroupeJeu" />

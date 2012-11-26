@@ -16,7 +16,7 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("b1c1dee3-3d79-4046-bb7a-08a1e07efb45")>
+<Assembly: EdmSchemaAttribute("b830e51e-c344-491c-88b4-dd773b577d14")>
 #Region "Métadonnées de relation EDM"
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
