@@ -3,10 +3,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
     <asp:Label ID="lblTitreTarif" runat="server" Text="Modifier les tarifs" Font-Size="24px" Font-Bold="true" />
+    <div style="float: right; height: auto; width: auto; margin-right:20px;">
     <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
                 Visible="false" Height="20px" Width="20px" />
             <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Les modifications ont bien été enregistrées!"
                 Visible="false"></asp:Label>
+                </div> 
     <br />
     <br />
     <br />

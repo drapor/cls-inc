@@ -12,6 +12,6 @@
             <LoginButtonStyle CssClass="btn btn-primary btn-large btn" />
             <TextBoxStyle CssClass="search-query" BorderColor="#1b1bb3" ForeColor="#1b1bb3" BackColor="#ffbf00" BorderWidth="2px" />
         </asp:Login>
-        <asp:Label ID="Msg" runat="server" Text="" ForeColor="Red"></asp:Label>
+        <asp:Label ID="Msg" runat="server" Text="" ForeColor="Red"></asp:Label> 
     </div>
 </asp:Content>

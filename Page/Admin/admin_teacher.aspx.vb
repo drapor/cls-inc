@@ -1,6 +1,6 @@
 'Créé par Samuel Bellerose
 'Le 16 septembre 2012
-'Dernière mise à jour le 25 septembre 2012
+'Dernière mise à jour le 26 novembre 2012
 'Classe partielle qui ajoute un animateur dans la BD associé à un cours 
 
 Imports modelCLS
@@ -24,6 +24,8 @@ Partial Class Page_Admin_admin_teacher_add
 
     'Fonction qui ajoute un animateur et lui donne le bon rôle, soit 6 pour l'animateur
     Sub ajouterEmployeClick(sender As Object, e As EventArgs)
+        lblFelicitation.Visible = False
+        lblErreurEmail.Visible = False
         If Page.IsValid = True Then
             Dim entMembre As New modelCLSContainer
             Dim unAnim As MembresJeu_Animateur = Nothing
@@ -36,17 +38,27 @@ Partial Class Page_Admin_admin_teacher_add
                 unAnim = MembresJeu_Animateur.CreateMembresJeu_Animateur(0, unMembre.idMembre)
                 entMembre.MembresJeu.AddObject(unMembre)
                 entMembre.MembresJeu_Animateur.AddObject(unAnim)
-                entMembre.SaveChanges()
+
+                Try
+                    entMembre.SaveChanges()
+                Catch ex As Exception
+                    traiteErreur(Page, "ERREUR LORS DE L'AJOUT D'UN ANIMATEUR", ex)
+                    checkImage.Visible = False
+                    lblFelicitation.Visible = False
+                    failImage.Visible = True
+                    lblFailure.Text = "Une erreur s'est produite lors de l'ajout de l'animateur..."
+                End Try
+
                 lblFelicitation.Text = "L'animateur a &eacute;t&eacute; ajout&eacute; avec succ&egrave;s !"
 
                 lblFelicitation.Visible = True
                 checkImage.Visible = True
                 ResetFormControlValues(Me)
             Else
-                lblErreurEmail.Visible = True
                 lblFelicitation.Visible = False
                 checkImage.Visible = False
-
+                SetFocus(txtCourriel)
+                lblErreurEmail.Visible = True
             End If
         End If
 
@@ -70,20 +82,7 @@ Partial Class Page_Admin_admin_teacher_add
             dbContext.SaveChanges()
         Catch ex As Exception
             MsgBox("La suppression est impossible puisqu'il est déjà associé à un cours. Assurez-vous qu'il ne soit pas assigné à aucun cours avant de le supprimer.", MsgBoxStyle.OkOnly, "Impossible de supprimer l'animateur.")
-            Response.Redirect("~/Page/Admin/admin_teacher_delete.aspx")
         End Try
-    End Sub
-
-    Sub actionAjout(sender As Object, e As EventArgs)
-        MVPrincipal.SetActiveView(viewAjout)
-    End Sub
-
-    Sub actionModifie(sender As Object, e As EventArgs)
-        MVPrincipal.SetActiveView(viewModifie)
-    End Sub
-
-    Sub actionSupprime(sender As Object, e As EventArgs)
-        MVPrincipal.SetActiveView(viewSupprime)
     End Sub
 
     Protected Sub lvCourriel_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvCourriel.ItemUpdating
@@ -131,6 +130,47 @@ Partial Class Page_Admin_admin_teacher_add
         Else
             args.IsValid = False
             SetFocus(txtVieuxMP)
+        End If
+    End Sub
+
+    Protected Sub dsAnimateurInfo_Updated(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsAnimateurInfo.Updated
+        If e.Exception IsNot Nothing Then
+            traiteErreur(Page, "ERREUR LORS DE LA MISE À JOUR D'UN ANIMATEUR", e.Exception)
+            e.ExceptionHandled = True
+            checkImage.Visible = False
+            lblFelicitation.Visible = False
+            failImage.Visible = True
+            lblFailure.Visible = True
+            lblFailure.Text = "Une erreur s'est produite lors de la mise &agrave; jour de l'animateur."
+        Else
+            failImage.Visible = False
+            lblFailure.Visible = False
+            checkImage.Visible = True
+            lblFelicitation.Visible = True
+            lblFelicitation.Text = "L'animateur a &eacute;t&eacute; mis &agrave; jour avec succ&egrave;s !"
+        End If
+    End Sub
+
+    Sub changeAnimateur(sender As Object, e As EventArgs)
+        lblFelicitation.Visible = False
+        checkImage.Visible = False
+    End Sub
+
+    Protected Sub dsAnimateurSupprime_Deleted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsAnimateurSupprime.Deleted
+        If e.Exception IsNot Nothing Then
+            traiteErreur(Page, "ERREUR LORS DE LA SUPPRESSION D'UN ANIMATEUR", e.Exception)
+            e.ExceptionHandled = True
+            checkImage.Visible = False
+            lblFelicitation.Visible = False
+            failImage.Visible = True
+            lblFailure.Visible = True
+            lblFailure.Text = "Une erreur s'est produite lors de la suppression de l'animateur."
+        Else
+            failImage.Visible = False
+            lblFailure.Visible = False
+            checkImage.Visible = True
+            lblFelicitation.Visible = True
+            lblFelicitation.Text = "L'animateur a &eacute;t&eacute; supprim&eacute; jour avec succ&egrave;s !"
         End If
     End Sub
 End Class

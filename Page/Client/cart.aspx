@@ -56,8 +56,6 @@
                             $
                         </div>
                         <div class="boutonPanierRetour">
-                            <asp:Button ID="btnRetour" runat="server" Text="Retour" CssClass="btn btn-primary"
-                                Width="120px" />
                         </div>
                         <div class="boutonPanierConfirme">
                             <asp:Button ID="btnConfirme" runat="server" Text="Confirmer" CssClass="btn btn-primary"

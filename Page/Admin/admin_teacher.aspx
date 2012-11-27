@@ -3,6 +3,15 @@
     Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
+<div style="float: right; height: auto; width: auto;">
+        <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Image ID="failImage" runat="server" ImageUrl="~/App_Themes/Original/img/delete.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Le cours a été mis à jour avec succès !"
+            Visible="false"></asp:Label>
+        <asp:Label ID="lblFailure" runat="server" ForeColor="Red" Text="" Visible="True"></asp:Label>
+    </div>
     <asp:MultiView ID="MVPrincipal" runat="server" ActiveViewIndex="0">
         <asp:View ID="viewAjout" runat="server">
             <asp:Label ID="lblTitreAjout" runat="server" Text="Ajouter un Animateur" Font-Size="24px"
@@ -13,7 +22,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblCourriel" runat="server" Text="E-mail"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:TextBox ID="txtCourriel" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                         MaxLength="50"></asp:TextBox></div>
                 <div class="validation">
@@ -23,7 +32,7 @@
                         ControlToValidate="txtCourriel" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
                         Display="Dynamic" ValidationGroup="animateur">!</asp:RegularExpressionValidator>
                     <asp:Label ID="lblErreurEmail" runat="server" Text="L'adresse courriel existe déjà"
-                        ForeColor="Red" Visible="false" Display="Dynamic" ValidationGroup="animateur">!</asp:Label>
+                        ForeColor="Red" Visible="false" Display="Dynamic" ValidationGroup="animateur"></asp:Label>
                 </div>
             </div>
             <div class="ligneFormulaireAdmin">
@@ -158,16 +167,6 @@
                     <asp:Button ID="btnAjouter" runat="server" Text="Ajouter l'animateur" CssClass="btn btn-primary btn-large btn"
                         OnClick="ajouterEmployeClick" ValidationGroup="animateur"/>
             </div>
-            <div class="ligneFormulaire">
-                <div class="elementFormulaireTexte">
-                </div>
-                <div class="elementFormulaire">
-                    <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
-                        Visible="false" Height="20px" Width="20px" />
-                    <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="L'employé a été ajouter avec succès !"
-                        Visible="false"></asp:Label>
-                </div>
-            </div>
         </asp:View>
         <asp:View ID="viewModifie" runat="server">
             <asp:Label ID="lblTitreModifie" runat="server" Text="Modifier un Animateur" Font-Size="24px"
@@ -182,7 +181,7 @@
                 <div class="elementFormulaireAdmin">
                     <asp:DropDownList ID="dropDownAnimateur" runat="server" Width="250px" SkinID="ddlBlue"
                         DataSourceID="dsDropDownAnimateur" DataValueField="idMembre" AppendDataBoundItems="False"
-                        AutoPostBack="True" DataTextField="FullName" />
+                        AutoPostBack="True" DataTextField="FullName" OnSelectedIndexChanged="changeAnimateur" />
                 </div>
             </div>
 
@@ -241,7 +240,7 @@
                     </div>
                     <div class="bouton">
                         <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier les informations"
-                            CssClass="btn btn-primary" />
+                            CssClass="btn btn-primary" OnClick="changeAnimateur" />
                     </div>
                 </ItemTemplate>
                 <EditItemTemplate>
@@ -395,7 +394,7 @@
                         </br>
                     </div>
                     <div class="modifierBouton" style="margin-left: 20px;">
-                        <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier le courriel"
+                        <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier le courriel" OnClick="changeAnimateur"
                             CommandName="Edit"></asp:LinkButton>
                         </br>
                     </div>
@@ -479,7 +478,7 @@
                 </LayoutTemplate>
                 <ItemTemplate>
                     <div class="modifierBouton">
-                        <asp:LinkButton ID="btnModifierMP" runat="server" CommandName="Edit" Text="Changer votre mot de passe"></asp:LinkButton>
+                        <asp:LinkButton ID="btnModifierMP" runat="server" CommandName="Edit" Text="Changer votre mot de passe" OnClick="changeAnimateur"></asp:LinkButton>
                     </div>
                 </ItemTemplate>
                 <EditItemTemplate>

@@ -1,6 +1,6 @@
 'Créé par Samuel Bellerose
 'Le 16 septembre 2012
-'Dernière mise à jour le 25 septembre 2012
+'Dernière mise à jour le 26 novembre 2012
 'Classe partielle qui ajoute un employé dans la BD
 
 Imports modelCLS
@@ -44,7 +44,7 @@ Partial Class Page_Admin_admin_employe
                     checkImage.Visible = False
                     lblFelicitation.Visible = False
                     failImage.Visible = True
-                    lblFailure.Text = "Une erreur s'est produite lors de l'ajout de l'employé..."
+                    lblFailure.Text = "Une erreur s'est produite lors de l'ajout de l'employ&eacute; ..."
                 End Try
 
                 If dropDownType.SelectedValue = 1 Then

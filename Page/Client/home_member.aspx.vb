@@ -16,6 +16,11 @@ Partial Class Page_Client_home_member
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
         Dim idClient As Integer = Session("idUser")
+        If idClient = Nothing Then
+            Dim logOut As String = "true"
+            FormsAuthentication.SignOut()
+            Response.Redirect("~/Page/login.aspx?sessionExpired=" & logOut)
+        End If
         Dim idFamille As String = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).First
 
         Session("userCourriel") = entClient.MembresJeu.Where(Function(n) n.idMembre = idClient).OrderBy(Function(n) n.idMembre).[Select](Function(n) n.courriel).First
@@ -107,8 +112,6 @@ Partial Class Page_Client_home_member
         End If
     End Sub
 
-
-
     Protected Sub lvFamille_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvFamille.ItemCommand
         Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
         Dim idMembre As Integer = lvFamille.DataKeys(dataItem.DisplayIndex).Value.ToString()
@@ -123,13 +126,17 @@ Partial Class Page_Client_home_member
 
     End Sub
 
+    Protected Sub lvCourriel_ItemUpdated(sender As Object, e As System.Web.UI.WebControls.ListViewUpdatedEventArgs) Handles lvCourriel.ItemUpdated
+        FormsAuthentication.SignOut()
+        Response.Redirect("~/Page/login.aspx")
+    End Sub
+
     'Met à jour le courriel à partir du textBox
     Protected Sub lvCourriel_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvCourriel.ItemUpdating
         Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
 
         e.NewValues("courriel") = txtCourriel.Text
     End Sub
-
 
     Protected Sub lvMotPasse_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvMotPasse.ItemUpdating
 
@@ -167,4 +174,26 @@ Partial Class Page_Client_home_member
         End If
     End Sub
 
+    Sub changeClient(sender As Object, e As EventArgs)
+        lblFelicitation.Visible = False
+        checkImage.Visible = False
+    End Sub
+
+#Region "TRAITEMENT DES ERREURS"
+
+#End Region
+
+    Protected Sub dsListView_Updated(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsListView.Updated
+        If e.Exception IsNot Nothing Then
+            traiteErreur(Page, "ERREUR LORS DE LA MISE À JOUR DE VOTRE COMPTE", e.Exception)
+            e.ExceptionHandled = True
+            failImage.Visible = True
+            lblFailure.Visible = True
+            lblFailure.Text = "Une erreur s'est produite lors de la mise &agrave; jour du compte."
+        Else
+            checkImage.Visible = True
+            lblFelicitation.Visible = True
+            lblFelicitation.Text = "Vos informations ont &eacute;t&eacute; mis &agrave; jour avec succ&egrave;s !"
+        End If
+    End Sub
 End Class

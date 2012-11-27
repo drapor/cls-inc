@@ -167,11 +167,19 @@ Public Class CustomMembershipProvider
     Shared Function GetRoleForUser(username As String) As String
         Dim entUser As New modelCLSContainer
         Dim roleUser As String = Nothing
+        Dim user As New MembresJeu
+        Dim role As New RoleJeu
 
-        Dim user As MembresJeu = (From A In entUser.MembresJeu Where (A.courriel = username) Select A).First()
-        Dim role As RoleJeu = (From A In entUser.RoleJeu Where (A.idRole = user.RoleJeu_idRole) Select A).First()
+        Try
+            user = (From A In entUser.MembresJeu Where (A.courriel = username) Select A).First()
+            role = (From A In entUser.RoleJeu Where (A.idRole = user.RoleJeu_idRole) Select A).First()
+            If user Is Nothing Then
+            Else
+                roleUser = role.nomRole
+            End If
+        Catch ex As Exception
 
-        roleUser = role.nomRole
+        End Try
 
         Return roleUser
     End Function

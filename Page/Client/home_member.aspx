@@ -8,7 +8,16 @@
 <div class="contenuPage">
 
 <div class="titleClient">
-    <h3>Compte client</h3>
+<div style="width:auto;float:left;"><h3>Compte client</h3></div>
+    <div style="float:right; width: auto; height:auto; margin-top: 20px;">
+        <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Image ID="failImage" runat="server" ImageUrl="~/App_Themes/Original/img/delete.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Le cours a été mis à jour avec succès !"
+            Visible="false"></asp:Label>
+        <asp:Label ID="lblFailure" runat="server" ForeColor="Red" Text="" Visible="True"></asp:Label>
+    </div>
 </div>
 
 <div class="contenuClient">
@@ -18,7 +27,6 @@
     <asp:Label ID="infoPersonnel" runat="server" Text="Informations personnels"></asp:Label>
 </div>
 </div>  
-
     <asp:ListView ID="lvInfoMembre" runat="server" DataSourceID="dsListView" DataKeyNames="idMembre">
         <LayoutTemplate>
             <div class="infoClient">
@@ -63,16 +71,16 @@
                 <div class="partiDroite">
                     <asp:Label ID="lblPrenomClient" runat="server" Text='<%# Eval("prenomMembre") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblVilleClient" runat="server" Text='<%# Eval("ville") %>'></asp:Label>
-                    </br>
                     <asp:Label ID="lblPostalClient" runat="server" Text='<%# Eval("codePostal") %>'></asp:Label>
+                    </br>
+                    <asp:Label ID="lblVilleClient" runat="server" Text='<%# Eval("ville") %>'></asp:Label>
                     </br>
                     <asp:Label ID="lblDateInscriptionClient" runat="server" Text='<%# (CType(Eval("dateInscription"),DateTime)).ToShortDateString %>'></asp:Label>
                 </div>
                 
             </div>
                 <div class="bouton">
-                    <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier les informations" CssClass="btn btn-primary"/>
+                    <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier les informations" CssClass="btn btn-primary" OnClick="changeClient"/>
                 </div>
         </ItemTemplate>
 
@@ -138,7 +146,7 @@
                     </div>
                     <div class="bouton">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CausesValidation="false" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Annuler" CausesValidation="false" CssClass="btn btn-primary btn-small" />
                 </div>
             </div>
 
@@ -202,7 +210,7 @@
                     </br>      
                 </div>
                 <div class="modifierBouton" style="margin-left:20px;">
-                    <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier le courriel" commandName="Edit"></asp:LinkButton>
+                    <asp:LinkButton ID="btnModifierCourriel" runat="server" Text="Modifier le courriel" commandName="Edit" OnClick="changeClient"></asp:LinkButton>
                     </br>    
                 </div>
           </ItemTemplate>
@@ -234,13 +242,13 @@
                     </div>
                     <div class="boutonCourriel">
                         <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                        <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                        <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Annuler" CssClass="btn btn-primary btn-small" />
                     </div>
                 </div>
 
                 <div class="validationCourriel">
-                    <div class="formatZone">
-                        </br>
+                    <div class="formatZone" style="font-size:small; margin-top:-20px; color:#08C;">
+                        <asp:Label ID="lblNoteChangeEmail" runat="server" Text="*Vous serez redirigez vers la page de connection."></asp:Label>
                     </div>
                     <div class="formatZone">
                         <asp:RequiredFieldValidator ID="courrielRequis" runat="server" ErrorMessage="*Une addresse courriel est requise!" ControlToValidate='txtNouveauCourriel' ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>  
@@ -271,7 +279,7 @@
         </LayoutTemplate>
         <ItemTemplate>
                 <div class="modifierBouton">
-                    <asp:LinkButton ID="btnModifierMP" runat="server" commandName="Edit" Text="Changer votre mot de passe"></asp:LinkButton>
+                    <asp:LinkButton ID="btnModifierMP" runat="server" commandName="Edit" Text="Changer votre mot de passe" OnClick="changeClient"></asp:LinkButton>
                 </div>
         </ItemTemplate>
         <EditItemTemplate>
@@ -302,7 +310,7 @@
                     </div>
                     <div class="boutonMotPasse">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Annuler" CssClass="btn btn-primary btn-small" />
                 </div>
                 </div>
 
@@ -347,6 +355,11 @@
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </div>
         </LayoutTemplate>
+        <EmptyDataTemplate>
+        <div style="margin-top:5px; margin-bottom:5px;margin-left:15px; font-weight:bold;">
+            <asp:Label ID="lblNoFamilyMember" runat="server" Text="Vous avez aucun membre dans votre famille pour le moment."></asp:Label>
+            </div>
+        </EmptyDataTemplate>
         <ItemTemplate>
             <div class="contenuGauche">
                 <asp:Label ID="lblNomFamille" runat="server" Text='<%# Eval("prenomMembre") + " " + Eval("nomMembre") %>'></asp:Label>

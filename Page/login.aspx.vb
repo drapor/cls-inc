@@ -22,4 +22,12 @@ Partial Class Page_login
             Msg.Text = "Le nom d'utilisateur ou le mot de passe ne correspond pas."
         End If
     End Sub
+
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        Dim logOut As String = Request.QueryString("logOut")
+        If logOut Is Nothing Then
+        Else
+            Msg.Text = "Désolé, votre session a expiré ! Veuillez vous reconnecter."
+        End If
+    End Sub
 End Class

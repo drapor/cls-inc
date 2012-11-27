@@ -56,9 +56,9 @@
                 <div class="partiDroite">
                     <asp:Label ID="lblPrenomClient" runat="server" Text='<%# Eval("prenomMembre") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblVilleClient" runat="server" Text='<%# Eval("ville") %>'></asp:Label>
+                    <asp:Label ID="lblVilleClient" runat="server" Text='<%# Eval("codePostal") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblPostalClient" runat="server" Text='<%# Eval("codePostal") %>'></asp:Label>
+                    <asp:Label ID="lblPostalClient" runat="server" Text='<%# Eval("ville") %>'></asp:Label>
                     </br>
                     <asp:Label ID="lblDateInscriptionClient" runat="server" Text='<%# (CType(Eval("dateInscription"),DateTime)).ToShortDateString %>'></asp:Label>
                 </div>

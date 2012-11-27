@@ -12,7 +12,7 @@ Partial Class Page_Autre_register
         imgFailEmail.Visible = False
         lblEmailErro.Visible = False
         If famille = Nothing Then
-            idFamille = 0
+            idFamille = 1
         Else
             idFamille = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).Max
         End If
