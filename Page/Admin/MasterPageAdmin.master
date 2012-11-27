@@ -49,16 +49,8 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnGroupeAjout" runat="server" OnClick="actionAjoutGroupe" Text="Ajouter un groupe"
+                                    <asp:LinkButton ID="btnGroupeAjout" runat="server"  PostBackUrl="~/Page/Admin/admin_group.aspx" Text="Opérations sur un groupe"
                                         CausesValidation="false"></asp:LinkButton>
-                                </li>
-                                <li>
-                                    <asp:LinkButton ID="btnGroupeModifie" runat="server" OnClick="actionModifieGroupe"
-                                        Text="Modifier un groupe" CausesValidation="false"></asp:LinkButton>
-                                </li>
-                                <li>
-                                    <asp:LinkButton ID="btnGroupeSupprime" runat="server" OnClick="actionSupprimeGroupe"
-                                        Text="Supprimer un groupe" CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>
                         </Content>
@@ -69,16 +61,8 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnHoraireAjout" runat="server" OnClick="actionAjoutHoraire" Text="Ajouter un horaire"
+                                    <asp:LinkButton ID="btnHoraireAjout" runat="server" PostBackUrl="~/Page/Admin/admin_schedule.aspx" Text="Opérations sur un horaire"
                                         CausesValidation="false"></asp:LinkButton>
-                                </li>
-                                <li>
-                                    <asp:LinkButton ID="btnHoraireModifie" runat="server" OnClick="actionModifieHoraire"
-                                        Text="Modifier un horaire" CausesValidation="false"></asp:LinkButton>
-                                </li>
-                                <li>
-                                    <asp:LinkButton ID="btnHoraireSupprime" runat="server" OnClick="actionSupprimeHoraire"
-                                        Text="Supprimer un horaire" CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>
                         </Content>

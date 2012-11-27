@@ -12,6 +12,7 @@
           <EntitySet Name="GroupeJeu" EntityType="modelCLS.Store.GroupeJeu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="HoraireJeu" EntityType="modelCLS.Store.HoraireJeu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ItemPanierJeu" EntityType="modelCLS.Store.ItemPanierJeu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="JourSemaineJeu" EntityType="modelCLS.Store.JourSemaineJeu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ListeAttenteJeu" EntityType="modelCLS.Store.ListeAttenteJeu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MembresJeu" EntityType="modelCLS.Store.MembresJeu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MembresJeu_Animateur" EntityType="modelCLS.Store.MembresJeu_Animateur" store:Type="Tables" Schema="dbo" />
@@ -66,6 +67,10 @@
           <AssociationSet Name="FK_ItemPanierMembresJeu" Association="modelCLS.Store.FK_ItemPanierMembresJeu">
             <End Role="MembresJeu" EntitySet="MembresJeu" />
             <End Role="ItemPanierJeu" EntitySet="ItemPanierJeu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JourSemaineHoraireJeu" Association="modelCLS.Store.FK_JourSemaineHoraireJeu">
+            <End Role="JourSemaineJeu" EntitySet="JourSemaineJeu" />
+            <End Role="HoraireJeu" EntitySet="HoraireJeu" />
           </AssociationSet>
           <AssociationSet Name="FK_ListeAttenteMembres" Association="modelCLS.Store.FK_ListeAttenteMembres">
             <End Role="MembresJeu" EntitySet="MembresJeu" />
@@ -134,7 +139,7 @@
           <Property Name="Animateur_idMembre" Type="smallint" Nullable="false" />
           <Property Name="groupeAgeMin" Type="smallint" Nullable="false" />
           <Property Name="groupeAgeMax" Type="smallint" Nullable="false" />
-          <Property Name="groupeAgeMod" Type="nvarchar" Nullable="false" MaxLength="2" />
+          <Property Name="groupeAgeMod" Type="nvarchar" Nullable="false" MaxLength="4" />
         </EntityType>
         <EntityType Name="GroupeJeu">
           <Key>
@@ -151,11 +156,11 @@
             <PropertyRef Name="idHoraire" />
           </Key>
           <Property Name="idHoraire" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="jourSemaine" Type="nvarchar" Nullable="false" MaxLength="9" />
           <Property Name="heureDebut" Type="nvarchar" Nullable="false" MaxLength="5" />
           <Property Name="heureFin" Type="nvarchar" Nullable="false" MaxLength="5" />
           <Property Name="noLocal" Type="nvarchar" Nullable="false" MaxLength="10" />
           <Property Name="GroupeJeu_idGroupe" Type="smallint" Nullable="false" />
+          <Property Name="JourSemaine_idSemaine" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="ItemPanierJeu">
           <Key>
@@ -165,6 +170,13 @@
           <Property Name="GroupeJeu_idGroupe" Type="smallint" Nullable="false" />
           <Property Name="MembresJeu_idMembre" Type="smallint" Nullable="false" />
           <Property Name="Panier_idCommande" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JourSemaineJeu">
+          <Key>
+            <PropertyRef Name="idSemaine" />
+          </Key>
+          <Property Name="idSemaine" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="jourSemaine" Type="nvarchar" Nullable="false" MaxLength="9" />
         </EntityType>
         <EntityType Name="ListeAttenteJeu">
           <Key>
@@ -398,6 +410,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_JourSemaineHoraireJeu">
+          <End Role="JourSemaineJeu" Type="modelCLS.Store.JourSemaineJeu" Multiplicity="1" />
+          <End Role="HoraireJeu" Type="modelCLS.Store.HoraireJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JourSemaineJeu">
+              <PropertyRef Name="idSemaine" />
+            </Principal>
+            <Dependent Role="HoraireJeu">
+              <PropertyRef Name="JourSemaine_idSemaine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ListeAttenteMembres">
           <End Role="MembresJeu" Type="modelCLS.Store.MembresJeu" Multiplicity="1" />
           <End Role="ListeAttenteJeu" Type="modelCLS.Store.ListeAttenteJeu" Multiplicity="*" />
@@ -505,6 +529,7 @@
           <EntitySet Name="GroupeJeu" EntityType="modelCLS.GroupeJeu" />
           <EntitySet Name="HoraireJeu" EntityType="modelCLS.HoraireJeu" />
           <EntitySet Name="ItemPanierJeu" EntityType="modelCLS.ItemPanierJeu" />
+          <EntitySet Name="JourSemaineJeu" EntityType="modelCLS.JourSemaineJeu" />
           <EntitySet Name="ListeAttenteJeu" EntityType="modelCLS.ListeAttenteJeu" />
           <EntitySet Name="MembresJeu" EntityType="modelCLS.MembresJeu" />
           <EntitySet Name="MembresJeu_Animateur" EntityType="modelCLS.MembresJeu_Animateur" />
@@ -549,6 +574,10 @@
           <AssociationSet Name="FK_ItemPanierGroupeJeu" Association="modelCLS.FK_ItemPanierGroupeJeu">
             <End Role="GroupeJeu" EntitySet="GroupeJeu" />
             <End Role="ItemPanierJeu" EntitySet="ItemPanierJeu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JourSemaineHoraireJeu" Association="modelCLS.FK_JourSemaineHoraireJeu">
+            <End Role="JourSemaineJeu" EntitySet="JourSemaineJeu" />
+            <End Role="HoraireJeu" EntitySet="HoraireJeu" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemPanierMembresJeu" Association="modelCLS.FK_ItemPanierMembresJeu">
             <End Role="MembresJeu" EntitySet="MembresJeu" />
@@ -647,12 +676,13 @@
             <PropertyRef Name="idHoraire" />
           </Key>
           <Property Type="Int16" Name="idHoraire" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="jourSemaine" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="heureDebut" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="heureFin" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="noLocal" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Type="Int16" Name="GroupeJeu_idGroupe" Nullable="false" />
+          <Property Type="Int16" Name="JourSemaine_idSemaine" Nullable="false" />
           <NavigationProperty Name="GroupeJeu" Relationship="modelCLS.FK_GroupeJeuHoraire" FromRole="HoraireJeu" ToRole="GroupeJeu" />
+          <NavigationProperty Name="JourSemaineJeu" Relationship="modelCLS.FK_JourSemaineHoraireJeu" FromRole="HoraireJeu" ToRole="JourSemaineJeu" />
         </EntityType>
         <EntityType Name="ItemPanierJeu">
           <Key>
@@ -665,6 +695,14 @@
           <NavigationProperty Name="GroupeJeu" Relationship="modelCLS.FK_ItemPanierGroupeJeu" FromRole="ItemPanierJeu" ToRole="GroupeJeu" />
           <NavigationProperty Name="MembresJeu" Relationship="modelCLS.FK_ItemPanierMembresJeu" FromRole="ItemPanierJeu" ToRole="MembresJeu" />
           <NavigationProperty Name="PanierJeu" Relationship="modelCLS.FK_PanierItemPanier" FromRole="ItemPanierJeu" ToRole="PanierJeu" />
+        </EntityType>
+        <EntityType Name="JourSemaineJeu">
+          <Key>
+            <PropertyRef Name="idSemaine" />
+          </Key>
+          <Property Type="Int16" Name="idSemaine" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="jourSemaine" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HoraireJeu" Relationship="modelCLS.FK_JourSemaineHoraireJeu" FromRole="JourSemaineJeu" ToRole="HoraireJeu" />
         </EntityType>
         <EntityType Name="ListeAttenteJeu">
           <Key>
@@ -875,6 +913,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_JourSemaineHoraireJeu">
+          <End Type="modelCLS.JourSemaineJeu" Role="JourSemaineJeu" Multiplicity="1" />
+          <End Type="modelCLS.HoraireJeu" Role="HoraireJeu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JourSemaineJeu">
+              <PropertyRef Name="idSemaine" />
+            </Principal>
+            <Dependent Role="HoraireJeu">
+              <PropertyRef Name="JourSemaine_idSemaine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemPanierMembresJeu">
           <End Type="modelCLS.MembresJeu" Role="MembresJeu" Multiplicity="1" />
           <End Type="modelCLS.ItemPanierJeu" Role="ItemPanierJeu" Multiplicity="*" />
@@ -1014,11 +1064,11 @@
           <EntitySetMapping Name="HoraireJeu">
             <EntityTypeMapping TypeName="modelCLS.HoraireJeu">
               <MappingFragment StoreEntitySet="HoraireJeu">
+                <ScalarProperty Name="JourSemaine_idSemaine" ColumnName="JourSemaine_idSemaine" />
                 <ScalarProperty Name="GroupeJeu_idGroupe" ColumnName="GroupeJeu_idGroupe" />
                 <ScalarProperty Name="noLocal" ColumnName="noLocal" />
                 <ScalarProperty Name="heureFin" ColumnName="heureFin" />
                 <ScalarProperty Name="heureDebut" ColumnName="heureDebut" />
-                <ScalarProperty Name="jourSemaine" ColumnName="jourSemaine" />
                 <ScalarProperty Name="idHoraire" ColumnName="idHoraire" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1030,6 +1080,14 @@
                 <ScalarProperty Name="MembresJeu_idMembre" ColumnName="MembresJeu_idMembre" />
                 <ScalarProperty Name="GroupeJeu_idGroupe" ColumnName="GroupeJeu_idGroupe" />
                 <ScalarProperty Name="idItemPanier" ColumnName="idItemPanier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JourSemaineJeu">
+            <EntityTypeMapping TypeName="modelCLS.JourSemaineJeu">
+              <MappingFragment StoreEntitySet="JourSemaineJeu">
+                <ScalarProperty Name="jourSemaine" ColumnName="jourSemaine" />
+                <ScalarProperty Name="idSemaine" ColumnName="idSemaine" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1162,120 +1220,130 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="modelCLS" ZoomLevel="82" >
-        <EntityTypeShape EntityType="modelCLS.AbonnementJeu" Width="1.5" PointX="12" PointY="15.5" Height="2.172587890624996" />
-        <EntityTypeShape EntityType="modelCLS.CoursCompleteJeu" Width="1.5" PointX="9.75" PointY="16" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="modelCLS.AbonnementJeu" Width="1.5" PointX="12" PointY="15.625" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="modelCLS.CoursCompleteJeu" Width="1.5" PointX="9.75" PointY="16.125" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="modelCLS.CoursJeu" Width="1.5" PointX="7.5" PointY="19.5" Height="4.4802050781250031" />
-        <EntityTypeShape EntityType="modelCLS.GroupeJeu" Width="1.5" PointX="9.75" PointY="20.25" Height="2.9417936197916674" />
-        <EntityTypeShape EntityType="modelCLS.HoraireJeu" Width="1.5" PointX="12" PointY="19.125" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="modelCLS.ItemPanierJeu" Width="1.5" PointX="15" PointY="18.375" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="modelCLS.ListeAttenteJeu" Width="1.5" PointX="9.75" PointY="13" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="modelCLS.MembresJeu" Width="1.5" PointX="3" PointY="10.125" Height="5.057109374999996" />
-        <EntityTypeShape EntityType="modelCLS.MembresJeu_Animateur" Width="1.5" PointX="5.25" PointY="21.875" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="modelCLS.PanierJeu" Width="1.5" PointX="5.25" PointY="27.375" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="modelCLS.RoleJeu" Width="1.5" PointX="0.75" PointY="11.875" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="modelCLS.SessionJeu" Width="1.5" PointX="12" PointY="22.25" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="modelCLS.SpecialiteJeu" Width="1.5" PointX="7.5" PointY="25" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="modelCLS.GroupeJeu" Width="1.5" PointX="9.75" PointY="20.375" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="modelCLS.HoraireJeu" Width="1.5" PointX="15" PointY="20.5" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="modelCLS.ItemPanierJeu" Width="1.5" PointX="12" PointY="19.375" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="modelCLS.JourSemaineJeu" Width="1.5" PointX="12.75" PointY="27" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="modelCLS.ListeAttenteJeu" Width="1.5" PointX="9.75" PointY="13.125" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="modelCLS.MembresJeu" Width="1.5" PointX="3" PointY="10.25" Height="5.057109374999996" />
+        <EntityTypeShape EntityType="modelCLS.MembresJeu_Animateur" Width="1.5" PointX="5.25" PointY="22" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="modelCLS.PanierJeu" Width="1.5" PointX="5.25" PointY="27.125" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="modelCLS.RoleJeu" Width="1.5" PointX="0.75" PointY="12" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="modelCLS.SessionJeu" Width="1.5" PointX="12" PointY="24.125" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="modelCLS.SpecialiteJeu" Width="1.5" PointX="7.5" PointY="24.75" Height="1.595683593749996" />
         <EntityTypeShape EntityType="modelCLS.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="modelCLS.TarifsJeu" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9802864583333246" />
         <AssociationConnector Association="modelCLS.FK_AbonnementGroupe" >
-          <ConnectorPoint PointX="11.25" PointY="20.25" />
-          <ConnectorPoint PointX="11.625" PointY="19.875" />
-          <ConnectorPoint PointX="11.625" PointY="16.586293945312498" />
-          <ConnectorPoint PointX="12" PointY="16.586293945312498" />
+          <ConnectorPoint PointX="11.25" PointY="20.375" />
+          <ConnectorPoint PointX="11.625" PointY="20" />
+          <ConnectorPoint PointX="11.625" PointY="16.711293945312498" />
+          <ConnectorPoint PointX="12" PointY="16.711293945312498" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_AbonnementMembres" >
-          <ConnectorPoint PointX="4.5" PointY="11.53125" />
-          <ConnectorPoint PointX="12.75" PointY="11.53125" />
-          <ConnectorPoint PointX="12.75" PointY="15.5" />
+          <ConnectorPoint PointX="4.5" PointY="11.65625" />
+          <ConnectorPoint PointX="12.75" PointY="11.65625" />
+          <ConnectorPoint PointX="12.75" PointY="15.625" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_CoursCompleteMembres" >
-          <ConnectorPoint PointX="3.75" PointY="15.182109374999996" />
-          <ConnectorPoint PointX="3.75" PointY="16.990143229166669" />
-          <ConnectorPoint PointX="4.0729191666666669" PointY="16.990143229166669" />
-          <ConnectorPoint PointX="4.2395858333333329" PointY="16.990143229166669" />
-          <ConnectorPoint PointX="4.2760454166666664" PointY="16.990143229166669" />
-          <ConnectorPoint PointX="4.4427120833333325" PointY="16.990143229166669" />
-          <ConnectorPoint PointX="8.5729191666666669" PointY="16.990143229166669" />
-          <ConnectorPoint PointX="8.7395858333333347" PointY="16.990143229166669" />
-          <ConnectorPoint PointX="9.75" PointY="16.990143229166669" />
+          <ConnectorPoint PointX="3.75" PointY="15.307109374999996" />
+          <ConnectorPoint PointX="3.75" PointY="17.115143229166669" />
+          <ConnectorPoint PointX="4.0729191666666669" PointY="17.115143229166669" />
+          <ConnectorPoint PointX="4.2395858333333329" PointY="17.115143229166669" />
+          <ConnectorPoint PointX="4.2760454166666664" PointY="17.115143229166669" />
+          <ConnectorPoint PointX="4.4427120833333325" PointY="17.115143229166669" />
+          <ConnectorPoint PointX="8.5729191666666669" PointY="17.115143229166669" />
+          <ConnectorPoint PointX="8.7395858333333347" PointY="17.115143229166669" />
+          <ConnectorPoint PointX="9.75" PointY="17.115143229166669" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_CoursCoursComplete" >
           <ConnectorPoint PointX="8.25" PointY="19.5" />
-          <ConnectorPoint PointX="8.25" PointY="17.516467343750005" />
-          <ConnectorPoint PointX="8.5729191666666669" PointY="17.516467343750005" />
-          <ConnectorPoint PointX="8.7395858333333347" PointY="17.516467343750005" />
-          <ConnectorPoint PointX="9.75" PointY="17.516467343750005" />
+          <ConnectorPoint PointX="8.25" PointY="17.641467343750005" />
+          <ConnectorPoint PointX="8.5729191666666669" PointY="17.641467343750005" />
+          <ConnectorPoint PointX="8.7395858333333347" PointY="17.641467343750005" />
+          <ConnectorPoint PointX="9.75" PointY="17.641467343750005" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_AnimateurCours" >
-          <ConnectorPoint PointX="6.75" PointY="22.865143229166662" />
-          <ConnectorPoint PointX="7.5" PointY="22.865143229166662" />
+          <ConnectorPoint PointX="6.75" PointY="22.9901025390625" />
+          <ConnectorPoint PointX="7.5" PointY="22.9901025390625" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_CoursGroupe" >
-          <ConnectorPoint PointX="9" PointY="21.720896809895834" />
-          <ConnectorPoint PointX="9.75" PointY="21.720896809895834" />
+          <ConnectorPoint PointX="9" PointY="21.845896809895834" />
+          <ConnectorPoint PointX="9.75" PointY="21.845896809895834" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_CoursListeAttente" >
           <ConnectorPoint PointX="8.6562525" PointY="19.5" />
-          <ConnectorPoint PointX="8.6562525" PointY="13.990143229166669" />
-          <ConnectorPoint PointX="9.75" PointY="13.990143229166669" />
+          <ConnectorPoint PointX="8.6562525" PointY="14.115143229166669" />
+          <ConnectorPoint PointX="9.75" PointY="14.115143229166669" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_GroupeJeuHoraire" >
-          <ConnectorPoint PointX="11.25" PointY="20.901197161458327" />
-          <ConnectorPoint PointX="12" PointY="20.901197161458327" />
+          <ConnectorPoint PointX="11.25" PointY="22.429790039062503" />
+          <ConnectorPoint PointX="11.541666666666666" PointY="22.429790039062503" />
+          <ConnectorPoint PointX="11.708333333333334" PointY="22.429790039062503" />
+          <ConnectorPoint PointX="15" PointY="22.429790039062503" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_ItemPanierGroupeJeu" >
-          <ConnectorPoint PointX="11.25" PointY="21.869944661458334" />
-          <ConnectorPoint PointX="15.260414166666665" PointY="21.869944661458334" />
-          <ConnectorPoint PointX="15.427080833333333" PointY="21.869944661458334" />
-          <ConnectorPoint PointX="15.75" PointY="21.869944661458334" />
-          <ConnectorPoint PointX="15.75" PointY="20.739889322916667" />
+          <ConnectorPoint PointX="11.25" PointY="21.088697161458327" />
+          <ConnectorPoint PointX="12" PointY="21.088697161458327" />
+        </AssociationConnector>
+        <AssociationConnector Association="modelCLS.FK_JourSemaineHoraireJeu" >
+          <ConnectorPoint PointX="13.90625" PointY="27" />
+          <ConnectorPoint PointX="13.90625" PointY="22.774742897135415" />
+          <ConnectorPoint PointX="15" PointY="22.774742897135415" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_ItemPanierMembresJeu" >
-          <ConnectorPoint PointX="4.1562525" PointY="15.182109374999996" />
-          <ConnectorPoint PointX="4.1562525" PointY="18.71875" />
-          <ConnectorPoint PointX="4.2760454166666664" PointY="18.71875" />
-          <ConnectorPoint PointX="4.4427120833333325" PointY="18.71875" />
-          <ConnectorPoint PointX="8.1666666666666661" PointY="18.71875" />
-          <ConnectorPoint PointX="8.3333333333333339" PointY="18.71875" />
-          <ConnectorPoint PointX="8.5729191666666669" PointY="18.71875" />
-          <ConnectorPoint PointX="8.7395858333333347" PointY="18.71875" />
-          <ConnectorPoint PointX="11.541666666666666" PointY="18.71875" />
-          <ConnectorPoint PointX="11.708333333333334" PointY="18.71875" />
-          <ConnectorPoint PointX="15" PointY="18.71875" />
+          <ConnectorPoint PointX="4.1562525" PointY="15.307109374999996" />
+          <ConnectorPoint PointX="4.1562525" PointY="19.40625" />
+          <ConnectorPoint PointX="4.2760454166666664" PointY="19.40625" />
+          <ConnectorPoint PointX="4.4427120833333325" PointY="19.40625" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="19.40625" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="19.40625" />
+          <ConnectorPoint PointX="8.5729191666666669" PointY="19.40625" />
+          <ConnectorPoint PointX="8.7395858333333347" PointY="19.40625" />
+          <ConnectorPoint PointX="11.541666666666666" PointY="19.40625" />
+          <ConnectorPoint PointX="11.708333333333334" PointY="19.40625" />
+          <ConnectorPoint PointX="12" PointY="19.40625" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_PanierItemPanier" >
-          <ConnectorPoint PointX="6.75" PointY="28.268992513020834" />
-          <ConnectorPoint PointX="15.3437475" PointY="28.268992513020834" />
-          <ConnectorPoint PointX="15.3437475" PointY="20.739889322916667" />
+          <ConnectorPoint PointX="6.75" PointY="27.126152846153843" />
+          <ConnectorPoint PointX="7.1261528461538433" PointY="26.75" />
+          <ConnectorPoint PointX="11.625" PointY="26.75" />
+          <ConnectorPoint PointX="11.625" PointY="22.114889322916667" />
+          <ConnectorPoint PointX="12" PointY="21.739889322916667" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_ListeAttenteMembres" >
-          <ConnectorPoint PointX="4.5" PointY="13.432571614583335" />
-          <ConnectorPoint PointX="9.75" PointY="13.432571614583335" />
+          <ConnectorPoint PointX="4.5" PointY="13.557571614583335" />
+          <ConnectorPoint PointX="9.75" PointY="13.557571614583335" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_Animateur_inherits_Membres" >
-          <ConnectorPoint PointX="3.3437475" PointY="15.182109374999996" />
-          <ConnectorPoint PointX="3.3437475" PointY="22.865143229166662" />
-          <ConnectorPoint PointX="4.2760454166666664" PointY="22.865143229166662" />
-          <ConnectorPoint PointX="4.4427120833333325" PointY="22.865143229166662" />
-          <ConnectorPoint PointX="5.25" PointY="22.865143229166662" />
+          <ConnectorPoint PointX="3.3437475" PointY="15.307109374999996" />
+          <ConnectorPoint PointX="3.3437475" PointY="22.990143229166662" />
+          <ConnectorPoint PointX="4.2760454166666664" PointY="22.990143229166662" />
+          <ConnectorPoint PointX="4.4427120833333325" PointY="22.990143229166662" />
+          <ConnectorPoint PointX="5.25" PointY="22.990143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_MembresJeuPanier" >
-          <ConnectorPoint PointX="4.3593787499999994" PointY="15.182109374999996" />
-          <ConnectorPoint PointX="4.3593787499999994" PointY="28.268992513020834" />
-          <ConnectorPoint PointX="5.25" PointY="28.268992513020834" />
+          <ConnectorPoint PointX="4.3593787499999994" PointY="15.307109374999996" />
+          <ConnectorPoint PointX="4.3593787499999994" PointY="28.018992513020834" />
+          <ConnectorPoint PointX="5.25" PointY="28.018992513020834" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.FK_RoleJeuMembresJeu" >
-          <ConnectorPoint PointX="2.25" PointY="12.672841796874998" />
-          <ConnectorPoint PointX="3" PointY="12.672841796874998" />
+          <ConnectorPoint PointX="2.25" PointY="12.797841796874998" />
+          <ConnectorPoint PointX="3" PointY="12.797841796874998" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.SessionGroupe" >
-          <ConnectorPoint PointX="11.25" PointY="22.720896809895834" />
-          <ConnectorPoint PointX="12" PointY="22.720896809895834" />
+          <ConnectorPoint PointX="10.5" PointY="23.316793619791667" />
+          <ConnectorPoint PointX="10.5" PointY="25.115143229166662" />
+          <ConnectorPoint PointX="11.541666666666666" PointY="25.115143229166662" />
+          <ConnectorPoint PointX="11.708333333333334" PointY="25.115143229166662" />
+          <ConnectorPoint PointX="12" PointY="25.115143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="modelCLS.SpecialiteAnimateur" >
-          <ConnectorPoint PointX="6" PointY="23.855286458333325" />
-          <ConnectorPoint PointX="6" PointY="25.797841796874998" />
-          <ConnectorPoint PointX="7.5" PointY="25.797841796874998" />
+          <ConnectorPoint PointX="6" PointY="23.980286458333325" />
+          <ConnectorPoint PointX="6" PointY="25.547841796874998" />
+          <ConnectorPoint PointX="7.5" PointY="25.547841796874998" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

@@ -17,24 +17,6 @@ Partial Class Page_Admin_MasterPageAdmin
         Response.Redirect(url)
     End Sub
 
-
-
-    Sub actionAjoutGroupe(sender As Object, e As EventArgs)
-        Dim url As String = "~/Page/Admin/admin_group.aspx?view=" & 0
-        Response.Redirect(url)
-    End Sub
-
-    Sub actionModifieGroupe(sender As Object, e As EventArgs)
-        Dim url As String = "~/Page/Admin/admin_group.aspx?view=" & 1
-        Response.Redirect(url)
-    End Sub
-
-    Sub actionSupprimeGroupe(sender As Object, e As EventArgs)
-        Dim url As String = "~/Page/Admin/admin_group.aspx?view=" & 2
-        Response.Redirect(url)
-    End Sub
-
-
     Sub actionAjoutHoraire(sender As Object, e As EventArgs)
         Dim url As String = "~/Page/Admin/admin_schedule.aspx?view=" & 0
         Response.Redirect(url)

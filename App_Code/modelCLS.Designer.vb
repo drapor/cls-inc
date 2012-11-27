@@ -16,7 +16,7 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("b830e51e-c344-491c-88b4-dd773b577d14")>
+<Assembly: EdmSchemaAttribute("d2c14480-fe21-4905-b9f8-297534d40d6a")>
 #Region "Métadonnées de relation EDM"
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementGroupe", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_AbonnementMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "AbonnementJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.AbonnementJeu), True)>
@@ -27,6 +27,7 @@ Imports System.Runtime.Serialization
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_CoursListeAttente", "CoursJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.CoursJeu), "ListeAttenteJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.ListeAttenteJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_GroupeJeuHoraire", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "HoraireJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.HoraireJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_ItemPanierGroupeJeu", "GroupeJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.GroupeJeu), "ItemPanierJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.ItemPanierJeu), True)>
+<Assembly: EdmRelationshipAttribute("modelCLS", "FK_JourSemaineHoraireJeu", "JourSemaineJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.JourSemaineJeu), "HoraireJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.HoraireJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_ItemPanierMembresJeu", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "ItemPanierJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.ItemPanierJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_PanierItemPanier", "PanierJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.PanierJeu), "ItemPanierJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.ItemPanierJeu), True)>
 <Assembly: EdmRelationshipAttribute("modelCLS", "FK_ListeAttenteMembres", "MembresJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(modelCLS.MembresJeu), "ListeAttenteJeu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(modelCLS.ListeAttenteJeu), True)>
@@ -170,6 +171,20 @@ Namespace modelCLS
         End Property
     
         Private _ItemPanierJeu As ObjectSet(Of ItemPanierJeu)
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        Public ReadOnly Property JourSemaineJeu() As ObjectSet(Of JourSemaineJeu)
+            Get
+                If (_JourSemaineJeu Is Nothing) Then
+                    _JourSemaineJeu = MyBase.CreateObjectSet(Of JourSemaineJeu)("JourSemaineJeu")
+                End If
+                Return _JourSemaineJeu
+            End Get
+        End Property
+    
+        Private _JourSemaineJeu As ObjectSet(Of JourSemaineJeu)
     
         ''' <summary>
         ''' Aucune documentation sur les métadonnées n'est disponible.
@@ -340,6 +355,13 @@ Namespace modelCLS
         ''' </summary>
         Public Sub AddToItemPanierJeu(ByVal itemPanierJeu As ItemPanierJeu)
             MyBase.AddObject("ItemPanierJeu", itemPanierJeu)
+        End Sub
+    
+        ''' <summary>
+        ''' Méthode déconseillée pour ajouter un nouvel objet à l'EntitySet JourSemaineJeu. Utilisez la méthode .Add de la propriété ObjectSet(Of T) associée à la place.
+        ''' </summary>
+        Public Sub AddToJourSemaineJeu(ByVal jourSemaineJeu As JourSemaineJeu)
+            MyBase.AddObject("JourSemaineJeu", jourSemaineJeu)
         End Sub
     
         ''' <summary>
@@ -1551,19 +1573,19 @@ Namespace modelCLS
         ''' Créez un nouvel objet HoraireJeu.
         ''' </summary>
         ''' <param name="idHoraire">Valeur initiale de la propriété idHoraire.</param>
-        ''' <param name="jourSemaine">Valeur initiale de la propriété jourSemaine.</param>
         ''' <param name="heureDebut">Valeur initiale de la propriété heureDebut.</param>
         ''' <param name="heureFin">Valeur initiale de la propriété heureFin.</param>
         ''' <param name="noLocal">Valeur initiale de la propriété noLocal.</param>
         ''' <param name="groupeJeu_idGroupe">Valeur initiale de la propriété GroupeJeu_idGroupe.</param>
-        Public Shared Function CreateHoraireJeu(idHoraire As Global.System.Int16, jourSemaine As Global.System.String, heureDebut As Global.System.String, heureFin As Global.System.String, noLocal As Global.System.String, groupeJeu_idGroupe As Global.System.Int16) As HoraireJeu
+        ''' <param name="jourSemaine_idSemaine">Valeur initiale de la propriété JourSemaine_idSemaine.</param>
+        Public Shared Function CreateHoraireJeu(idHoraire As Global.System.Int16, heureDebut As Global.System.String, heureFin As Global.System.String, noLocal As Global.System.String, groupeJeu_idGroupe As Global.System.Int16, jourSemaine_idSemaine As Global.System.Int16) As HoraireJeu
             Dim horaireJeu as HoraireJeu = New HoraireJeu
             horaireJeu.idHoraire = idHoraire
-            horaireJeu.jourSemaine = jourSemaine
             horaireJeu.heureDebut = heureDebut
             horaireJeu.heureFin = heureFin
             horaireJeu.noLocal = noLocal
             horaireJeu.GroupeJeu_idGroupe = groupeJeu_idGroupe
+            horaireJeu.JourSemaine_idSemaine = jourSemaine_idSemaine
             Return horaireJeu
         End Function
 
@@ -1595,31 +1617,6 @@ Namespace modelCLS
         End Sub
     
         Private Partial Sub OnidHoraireChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' Aucune documentation sur les métadonnées n'est disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
-        Public Property jourSemaine() As Global.System.String
-            Get
-                Return _jourSemaine
-            End Get
-            Set
-                OnjourSemaineChanging(value)
-                ReportPropertyChanging("jourSemaine")
-                _jourSemaine = StructuralObject.SetValidValue(value, false)
-                ReportPropertyChanged("jourSemaine")
-                OnjourSemaineChanged()
-            End Set
-        End Property
-    
-        Private _jourSemaine As Global.System.String
-        Private Partial Sub OnjourSemaineChanging(value As Global.System.String)
-        End Sub
-    
-        Private Partial Sub OnjourSemaineChanged()
         End Sub
     
         ''' <summary>
@@ -1721,6 +1718,31 @@ Namespace modelCLS
     
         Private Partial Sub OnGroupeJeu_idGroupeChanged()
         End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property JourSemaine_idSemaine() As Global.System.Int16
+            Get
+                Return _JourSemaine_idSemaine
+            End Get
+            Set
+                OnJourSemaine_idSemaineChanging(value)
+                ReportPropertyChanging("JourSemaine_idSemaine")
+                _JourSemaine_idSemaine = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("JourSemaine_idSemaine")
+                OnJourSemaine_idSemaineChanged()
+            End Set
+        End Property
+    
+        Private _JourSemaine_idSemaine As Global.System.Int16
+        Private Partial Sub OnJourSemaine_idSemaineChanging(value As Global.System.Int16)
+        End Sub
+    
+        Private Partial Sub OnJourSemaine_idSemaineChanged()
+        End Sub
 
         #End Region
         #Region "Propriétés de navigation"
@@ -1752,6 +1774,37 @@ Namespace modelCLS
             Set
                 If (Not value Is Nothing)
                     CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of GroupeJeu)("modelCLS.FK_GroupeJeuHoraire", "GroupeJeu", value)
+                End If
+            End Set
+        End Property
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "FK_JourSemaineHoraireJeu", "JourSemaineJeu")>
+        Public Property JourSemaineJeu() As JourSemaineJeu
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of JourSemaineJeu)("modelCLS.FK_JourSemaineHoraireJeu", "JourSemaineJeu").Value
+            End Get
+            Set
+                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of JourSemaineJeu)("modelCLS.FK_JourSemaineHoraireJeu", "JourSemaineJeu").Value = value
+            End Set
+        End Property
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <BrowsableAttribute(False)>
+        <DataMemberAttribute()>
+        Public Property JourSemaineJeuReference() As EntityReference(Of JourSemaineJeu)
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of JourSemaineJeu)("modelCLS.FK_JourSemaineHoraireJeu", "JourSemaineJeu")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of JourSemaineJeu)("modelCLS.FK_JourSemaineHoraireJeu", "JourSemaineJeu", value)
                 End If
             End Set
         End Property
@@ -1982,6 +2035,107 @@ Namespace modelCLS
             Set
                 If (Not value Is Nothing)
                     CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of PanierJeu)("modelCLS.FK_PanierItemPanier", "PanierJeu", value)
+                End If
+            End Set
+        End Property
+
+        #End Region
+    End Class
+    
+    ''' <summary>
+    ''' Aucune documentation sur les métadonnées n'est disponible.
+    ''' </summary>
+    <EdmEntityTypeAttribute(NamespaceName:="modelCLS", Name:="JourSemaineJeu")>
+    <Serializable()>
+    <DataContractAttribute(IsReference:=True)>
+    Public Partial Class JourSemaineJeu
+        Inherits EntityObject
+        #Region "Méthode de fabrique"
+    
+        ''' <summary>
+        ''' Créez un nouvel objet JourSemaineJeu.
+        ''' </summary>
+        ''' <param name="idSemaine">Valeur initiale de la propriété idSemaine.</param>
+        ''' <param name="jourSemaine">Valeur initiale de la propriété jourSemaine.</param>
+        Public Shared Function CreateJourSemaineJeu(idSemaine As Global.System.Int16, jourSemaine As Global.System.String) As JourSemaineJeu
+            Dim jourSemaineJeu as JourSemaineJeu = New JourSemaineJeu
+            jourSemaineJeu.idSemaine = idSemaine
+            jourSemaineJeu.jourSemaine = jourSemaine
+            Return jourSemaineJeu
+        End Function
+
+        #End Region
+        #Region "Propriétés primitives"
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property idSemaine() As Global.System.Int16
+            Get
+                Return _idSemaine
+            End Get
+            Set
+                If (_idSemaine <> Value) Then
+                    OnidSemaineChanging(value)
+                    ReportPropertyChanging("idSemaine")
+                    _idSemaine = StructuralObject.SetValidValue(value)
+                    ReportPropertyChanged("idSemaine")
+                    OnidSemaineChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _idSemaine As Global.System.Int16
+        Private Partial Sub OnidSemaineChanging(value As Global.System.Int16)
+        End Sub
+    
+        Private Partial Sub OnidSemaineChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property jourSemaine() As Global.System.String
+            Get
+                Return _jourSemaine
+            End Get
+            Set
+                OnjourSemaineChanging(value)
+                ReportPropertyChanging("jourSemaine")
+                _jourSemaine = StructuralObject.SetValidValue(value, false)
+                ReportPropertyChanged("jourSemaine")
+                OnjourSemaineChanged()
+            End Set
+        End Property
+    
+        Private _jourSemaine As Global.System.String
+        Private Partial Sub OnjourSemaineChanging(value As Global.System.String)
+        End Sub
+    
+        Private Partial Sub OnjourSemaineChanged()
+        End Sub
+
+        #End Region
+        #Region "Propriétés de navigation"
+    
+        ''' <summary>
+        ''' Aucune documentation sur les métadonnées n'est disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("modelCLS", "FK_JourSemaineHoraireJeu", "HoraireJeu")>
+         Public Property HoraireJeu() As EntityCollection(Of HoraireJeu)
+            Get
+                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of HoraireJeu)("modelCLS.FK_JourSemaineHoraireJeu", "HoraireJeu")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of HoraireJeu)("modelCLS.FK_JourSemaineHoraireJeu", "HoraireJeu", value)
                 End If
             End Set
         End Property
