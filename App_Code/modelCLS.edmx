@@ -617,7 +617,7 @@
             <PropertyRef Name="idAbonnement" />
           </Key>
           <Property Type="DateTime" Name="dateAbonnement" Nullable="false" />
-          <Property Type="Int16" Name="idAbonnement" Nullable="false" />
+          <Property Type="Int16" Name="idAbonnement" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int16" Name="Membres_idMembre" Nullable="false" />
           <Property Type="Int16" Name="Groupe_idGroupe" Nullable="false" />
           <NavigationProperty Name="GroupeJeu" Relationship="modelCLS.FK_AbonnementGroupe" FromRole="AbonnementJeu" ToRole="GroupeJeu" />

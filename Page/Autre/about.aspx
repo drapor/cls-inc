@@ -14,6 +14,8 @@
         <p>50 activités disponibles pour tous.</p>
         <br />
         <p>Nous sommes là pour vous!</p>    
+        <img src="../../App_Themes/Original/img/cls_logo.png" style="margin-left:auto;margin-right:auto;" alt="CLS inc." /><br />
+
     </div>
 </div>
 </asp:Content>
