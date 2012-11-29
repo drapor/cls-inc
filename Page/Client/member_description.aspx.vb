@@ -1,5 +1,5 @@
 ﻿Imports modelCLS
-Partial Class Page_Client_description
+Partial Class Page_Client_member_description
     Inherits masterPage
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
@@ -72,15 +72,19 @@ Partial Class Page_Client_description
     Protected Sub lvGroupes_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvGroupes.ItemDataBound
         Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
         'Dim idGroupe As Integer =
-        
+        Dim idGroupe As Integer = lvGroupes.DataKeys(dataItem.DisplayIndex).Value.ToString()
         'Dim dataItem As GroupeJeu = DirectCast(e.Item.DataItem, GroupeJeu)
-
-        Dim idGroupe As Integer = lvCours.DataKeys(dataItem.DisplayIndex).Value
         'Dim idGroupe As Integer = dataItem.idGroupe.ToString
-        Dim dataSourceHoraire As EntityDataSource = lvGroupes.FindControl("dsHoraire")
-        Dim hiddenNoGroupe As HiddenField = lvGroupes.FindControl("hiddenNoGroupe")
-        dataSourceHoraire.WhereParameters("groupeID").DefaultValue = hiddenNoGroupe.Value
+        Dim dataSourceHoraire As EntityDataSource = FindChildControl(Of EntityDataSource)(lvGroupes, "dsHoraire")
+        'Dim hiddenNoGroupe As HiddenField = FindChildControl(Of HiddenField)(lvGroupes, "hiddenNoGroupe")
+        'dataSourceHoraire.WhereParameters("groupeID").DefaultValue = idGroupe
 
+        'Dim dataSourceHoraire As EntityDataSource = FindChildControl(Of EntityDataSource)(lvGroupes, "dsHoraire")
+        Dim hiddenNoGroupe As HiddenField = FindChildControl(Of HiddenField)(lvGroupes, "hiddenNoGroupe")
+        'dsHoraire.WhereParameters("groupeID").DefaultValue = idGroupe
+        dataSourceHoraire.WhereParameters("groupeID").DefaultValue = idGroupe
+        Dim lvHoraire As ListView = FindChildControl(Of ListView)(lvGroupes, "lvHoraire")
+        lvHoraire.DataBind()
     End Sub
 
 End Class

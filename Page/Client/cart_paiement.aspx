@@ -112,16 +112,7 @@
                     <asp:Label ID="lblTotal" runat="server" Text="Montant Total:"></asp:Label>
                 </div>
                 <div class="montantTotal">
-                    <asp:ListView ID="lvMontantPaiement" runat="server" DataSourceID="dsTarif" DataKeyNames="idTarif">
-                        <LayoutTemplate>
-                            <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
-                        </LayoutTemplate>
-                        <InsertItemTemplate>
-                        </InsertItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lblMontantInscription" runat="server" Text='<%#Eval("tarifNouveauMembre") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:ListView>
+                            <asp:Label ID="lblMontantFacture" runat="server" Text=""></asp:Label>
                     $
                 </div>
                 <div class="confirmeAchat">
@@ -131,8 +122,4 @@
             </div>
         </div>
     </div>
-    <asp:EntityDataSource ID="dsTarif" runat="server" ConnectionString="name=modelCLSContainer"
-        DefaultContainerName="modelCLSContainer" EntitySetName="TarifsJeu" EnableFlattening="False"
-        EnableDelete="False" EnableInsert="True" EnableUpdate="True">
-    </asp:EntityDataSource>
 </asp:Content>

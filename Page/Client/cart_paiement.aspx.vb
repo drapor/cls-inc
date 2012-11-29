@@ -1,9 +1,11 @@
-﻿
+﻿Imports modelCLS
 Partial Class Page_Client_cart_paiement
     Inherits masterPage
 
+    Private Shared leContext As modelCLSContainer = Nothing
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         'Affichage du panier
+        leContext = New modelCLSContainer
         Dim counter As Integer
         Dim annee As Integer = Date.Now.ToString("yyyy")
         For counter = 0 To 10 Step 1
@@ -17,6 +19,7 @@ Partial Class Page_Client_cart_paiement
         Else
             regExVisa.Enabled = False
         End If
+        lblMontantFacture.Text = Session("montantCart").ToString
     End Sub
 
 #Region "Gestion des RegEx lors d'un changement de type de carte"
@@ -36,20 +39,43 @@ Partial Class Page_Client_cart_paiement
 
 #Region "Événement sur le bouton Paiement Paypal"
     Sub paiementPaypal(sender As Object, e As EventArgs)
-        Dim aCookie As HttpCookie = Request.Cookies("inscription")
-        Dim montantTotalLabel As Label = FindChildControl(Of Label)(lvMontantPaiement, "lblMontantInscription")
+        Dim montantTotalLabel As Label = lblMontantFacture
         Dim montantTotal As String = montantTotalLabel.Text
-        doTransaction(txtNumero.Text,
-              ddlType.SelectedItem.Text,
-              ddlMois.SelectedValue.ToString & ddlAnnee.SelectedValue.ToString,
-              txtCvv.Text,
-              montantTotal,
-              aCookie.Values("prenom"),
-              aCookie.Values("nom"),
-              aCookie.Values("adresse"),
-              aCookie.Values("ville"),
-              "Quebec",
-              aCookie.Values("codePostal"))
+        Dim courrielMembre As String = HttpContext.Current.User.Identity.Name.ToString
+        Dim leMembre As MembresJeu = (From A In leContext.MembresJeu Where (A.courriel = courrielMembre) Select A).FirstOrDefault
+        'If doTransaction(txtNumero.Text,
+        '      ddlType.SelectedItem.Text,
+        '      ddlMois.SelectedValue.ToString & ddlAnnee.SelectedValue.ToString,
+        '      txtCvv.Text,
+        '      montantTotal,
+        '      leMembre.prenomMembre,
+        '      leMembre.nomMembre,
+        '      leMembre.adresse,
+        '      leMembre.ville,
+        '      "Quebec",
+        '      leMembre.codePostal) Then
+
+        Dim aCookie As HttpCookie = Request.Cookies("noPanier")
+        Dim noPanier As Integer = aCookie.Values("noPanier")
+
+        Dim unMembreCommande As ItemPanierJeu = (From A In leContext.ItemPanierJeu Where (A.Panier_idCommande = noPanier) Select A).FirstOrDefault
+
+        While unMembreCommande IsNot Nothing
+            Dim entAbonnement As New modelCLSContainer
+            Dim unAbonnement As AbonnementJeu = Nothing
+            unAbonnement = AbonnementJeu.CreateAbonnementJeu(System.DateTime.Now.ToShortDateString, 0, unMembreCommande.MembresJeu_idMembre, unMembreCommande.GroupeJeu_idGroupe)
+            entAbonnement.AbonnementJeu.AddObject(unAbonnement)
+            entAbonnement.SaveChanges()
+            leContext.DeleteObject(unMembreCommande)
+            leContext.SaveChanges()
+            unMembreCommande = (From A In leContext.ItemPanierJeu Where (A.Panier_idCommande = noPanier) Select A).FirstOrDefault
+        End While
+
+
+        Response.Redirect("~/Page/Client/member_paiement_success.aspx")
+        'Else
+        Response.Redirect("~/Page/Client/member_paiement_failure.aspx")
+        'End If
 
     End Sub
 #End Region

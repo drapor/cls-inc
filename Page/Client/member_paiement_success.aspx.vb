@@ -1,5 +1,5 @@
 ﻿
-Partial Class Page_Autre_inscription_paiement
+Partial Class Page_Client_member_paiement_success
     Inherits masterPage
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
