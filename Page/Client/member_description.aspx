@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false"
-    CodeFile="member_description.aspx.vb" Inherits="Page_Client_description" Theme="Original" %>
+    CodeFile="member_description.aspx.vb" Inherits="Page_Client_member_description"
+    Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="contenuPage">
@@ -76,25 +77,26 @@
                         <asp:Label ID="lblNomGroupe" SkinID="lblInfos" runat="server" Text='<%#Eval ("nomGroupe")+": " %>'></asp:Label>
                     </div>
                     <div class="blockGroupe">
-                        <asp:HiddenField ID="hiddenNoGroupe" runat="server" Value='<%#Eval("noGroupe") %>' />
                         <asp:ListView ID="lvHoraire" runat="server" DataKeyNames="idHoraire" DataSourceID="dsHoraire">
                             <LayoutTemplate>
+                                <asp:HiddenField ID="hiddenNoGroupe" runat="server" Value='<%#Eval("idGroupe") %>' />
                                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                             </LayoutTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblJourSemaine" runat="server" Text='<%#Eval ("jourSemaine")+" de " %>'></asp:Label>
+                                <asp:Label ID="lblJourSemaine" runat="server" Text='<%#Eval ("JourSemaineJeu.jourSemaine")+" de " %>'></asp:Label>
                                 <asp:Label ID="lblHeureDebut" runat="server" Text='<%#Eval ("heureDebut")+" à " %>'></asp:Label>
                                 <asp:Label ID="lblHeureFin" runat="server" Text='<%#Eval ("heureFin") %>'></asp:Label>
                                 <br />
                             </ItemTemplate>
                         </asp:ListView>
                         <asp:EntityDataSource ID="dsHoraire" runat="server" ConnectionString="name=modelCLSContainer"
-                            DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
-                            EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.GroupeJeu_idGroupe = @groupeID">
-                            <WhereParameters>
-                                <asp:Parameter Name="groupeID" DbType="Int16" DefaultValue="1" />
-                            </WhereParameters>
-                        </asp:EntityDataSource>
+                                    DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
+                                    EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.GroupeJeu_idGroupe = @groupeID "
+                                    Include="JourSemaineJeu">
+                                    <WhereParameters>
+                                        <asp:Parameter Name="groupeID" DbType="Int16" DefaultValue="1" />
+                                    </WhereParameters>
+                                </asp:EntityDataSource>
                     </div>
                     <div class="blockGroupe">
                         <asp:Label ID="lblNbPlaceRestant" runat="server" Text="Nombre place restante: "></asp:Label>
@@ -120,7 +122,8 @@
     </asp:EntityDataSource>
     <asp:EntityDataSource ID="dsGroupes" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="GroupeJeu" EnableFlattening="False"
-        EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.Cours_idCours = @coursID">
+        EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.Cours_idCours = @coursID"
+        Include="HoraireJeu">
         <WhereParameters>
             <asp:Parameter Name="coursID" DbType="Int16" DefaultValue="Nothing" />
         </WhereParameters>

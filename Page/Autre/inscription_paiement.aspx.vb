@@ -70,7 +70,7 @@ Partial Class Page_Autre_inscription_paiement
             Dim mm As MailMessage = New MailMessage()
             mm.From = New MailAddress("samuel.bellerose@me.com")
             mm.Subject = "Bienvenu chez CLS inc."
-            mm.Body = "<p>Toute l'équipe de CLS inc. vous souhaite la bienvenue " & aCookie.Values("prenom") & " " & aCookie.Values("nom") & " !</p>"
+            mm.Body = "<p>Toute l'équipe de CLS inc. vous souhaite la bienvenue " & aCookie.Values("prenom") & " " & aCookie.Values("nom") & " !</p><br />"
             mm.IsBodyHtml = True
             mm.To.Add(New MailAddress(aCookie.Values("courriel")))
 

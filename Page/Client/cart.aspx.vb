@@ -19,5 +19,6 @@ Partial Class Page_Autre_cart
 
         total += itemCourant.GroupeJeu.CoursJeu.tarif.ToString
         FindChildControl(Of Label)(lvPanier, "lblSousTotalPanier").Text = total & ",00"
+        Session("montantCart") = total
     End Sub
 End Class
