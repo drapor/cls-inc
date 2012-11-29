@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/27/2012 08:26:06
+-- Date Created: 11/29/2012 10:00:43
 -- Generated from EDMX file: C:\GitHub\cls-inc\App_Code\modelCLS.edmx
 -- --------------------------------------------------
 
@@ -49,6 +49,9 @@ IF OBJECT_ID(N'[dbo].[FK_ItemPanierGroupeJeu]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ItemPanierMembresJeu]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ItemPanierJeu] DROP CONSTRAINT [FK_ItemPanierMembresJeu];
+GO
+IF OBJECT_ID(N'[dbo].[FK_JourSemaineHoraireJeu]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HoraireJeu] DROP CONSTRAINT [FK_JourSemaineHoraireJeu];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ListeAttenteMembres]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ListeAttenteJeu] DROP CONSTRAINT [FK_ListeAttenteMembres];
@@ -97,6 +100,9 @@ GO
 IF OBJECT_ID(N'[dbo].[ItemPanierJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ItemPanierJeu];
 GO
+IF OBJECT_ID(N'[dbo].[JourSemaineJeu]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[JourSemaineJeu];
+GO
 IF OBJECT_ID(N'[dbo].[ListeAttenteJeu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ListeAttenteJeu];
 GO
@@ -138,7 +144,7 @@ GO
 -- Creating table 'AbonnementJeu'
 CREATE TABLE [dbo].[AbonnementJeu] (
     [dateAbonnement] datetime  NOT NULL,
-    [idAbonnement] smallint  NOT NULL,
+    [idAbonnement] smallint IDENTITY(1,1) NOT NULL,
     [Membres_idMembre] smallint  NOT NULL,
     [Groupe_idGroupe] smallint  NOT NULL
 );
@@ -146,7 +152,7 @@ GO
 
 -- Creating table 'CoursCompleteJeu'
 CREATE TABLE [dbo].[CoursCompleteJeu] (
-    [idCoursComplete] smallint  NOT NULL,
+    [idCoursComplete] smallint IDENTITY(1,1) NOT NULL,
     [Cours_idCours] smallint  NOT NULL,
     [Membres_idMembre] smallint  NOT NULL
 );
@@ -201,9 +207,16 @@ CREATE TABLE [dbo].[ItemPanierJeu] (
 );
 GO
 
+-- Creating table 'JourSemaineJeu'
+CREATE TABLE [dbo].[JourSemaineJeu] (
+    [idSemaine] smallint IDENTITY(1,1) NOT NULL,
+    [jourSemaine] nvarchar(9)  NOT NULL
+);
+GO
+
 -- Creating table 'ListeAttenteJeu'
 CREATE TABLE [dbo].[ListeAttenteJeu] (
-    [idListeAttente] smallint  NOT NULL,
+    [idListeAttente] smallint IDENTITY(1,1) NOT NULL,
     [Cours_idCours] smallint  NOT NULL,
     [Membres_idMembre] smallint  NOT NULL
 );
@@ -285,13 +298,6 @@ CREATE TABLE [dbo].[TarifsJeu] (
 );
 GO
 
--- Creating table 'JourSemaineJeu'
-CREATE TABLE [dbo].[JourSemaineJeu] (
-    [idSemaine] smallint IDENTITY(1,1) NOT NULL,
-    [jourSemaine] nvarchar(9)  NOT NULL
-);
-GO
-
 -- Creating table 'SessionGroupe'
 CREATE TABLE [dbo].[SessionGroupe] (
     [GroupeJeu_idGroupe] smallint  NOT NULL,
@@ -346,6 +352,12 @@ ADD CONSTRAINT [PK_ItemPanierJeu]
     PRIMARY KEY CLUSTERED ([idItemPanier] ASC);
 GO
 
+-- Creating primary key on [idSemaine] in table 'JourSemaineJeu'
+ALTER TABLE [dbo].[JourSemaineJeu]
+ADD CONSTRAINT [PK_JourSemaineJeu]
+    PRIMARY KEY CLUSTERED ([idSemaine] ASC);
+GO
+
 -- Creating primary key on [idListeAttente] in table 'ListeAttenteJeu'
 ALTER TABLE [dbo].[ListeAttenteJeu]
 ADD CONSTRAINT [PK_ListeAttenteJeu]
@@ -398,12 +410,6 @@ GO
 ALTER TABLE [dbo].[TarifsJeu]
 ADD CONSTRAINT [PK_TarifsJeu]
     PRIMARY KEY CLUSTERED ([idTarif] ASC);
-GO
-
--- Creating primary key on [idSemaine] in table 'JourSemaineJeu'
-ALTER TABLE [dbo].[JourSemaineJeu]
-ADD CONSTRAINT [PK_JourSemaineJeu]
-    PRIMARY KEY CLUSTERED ([idSemaine] ASC);
 GO
 
 -- Creating primary key on [GroupeJeu_idGroupe], [SessionJeu_idSession] in table 'SessionGroupe'
@@ -548,6 +554,20 @@ ON [dbo].[ItemPanierJeu]
     ([GroupeJeu_idGroupe]);
 GO
 
+-- Creating foreign key on [JourSemaine_idSemaine] in table 'HoraireJeu'
+ALTER TABLE [dbo].[HoraireJeu]
+ADD CONSTRAINT [FK_JourSemaineHoraireJeu]
+    FOREIGN KEY ([JourSemaine_idSemaine])
+    REFERENCES [dbo].[JourSemaineJeu]
+        ([idSemaine])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_JourSemaineHoraireJeu'
+CREATE INDEX [IX_FK_JourSemaineHoraireJeu]
+ON [dbo].[HoraireJeu]
+    ([JourSemaine_idSemaine]);
+GO
+
 -- Creating foreign key on [MembresJeu_idMembre] in table 'ItemPanierJeu'
 ALTER TABLE [dbo].[ItemPanierJeu]
 ADD CONSTRAINT [FK_ItemPanierMembresJeu]
@@ -671,20 +691,6 @@ ADD CONSTRAINT [FK_SpecialiteAnimateur_SpecialiteJeu]
 CREATE INDEX [IX_FK_SpecialiteAnimateur_SpecialiteJeu]
 ON [dbo].[SpecialiteAnimateur]
     ([SpecialiteJeu_idSpecialite]);
-GO
-
--- Creating foreign key on [JourSemaine_idSemaine] in table 'HoraireJeu'
-ALTER TABLE [dbo].[HoraireJeu]
-ADD CONSTRAINT [FK_JourSemaineHoraireJeu]
-    FOREIGN KEY ([JourSemaine_idSemaine])
-    REFERENCES [dbo].[JourSemaineJeu]
-        ([idSemaine])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_JourSemaineHoraireJeu'
-CREATE INDEX [IX_FK_JourSemaineHoraireJeu]
-ON [dbo].[HoraireJeu]
-    ([JourSemaine_idSemaine]);
 GO
 
 -- --------------------------------------------------

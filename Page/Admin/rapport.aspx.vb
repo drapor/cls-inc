@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-﻿
-Partial Class Page_Admin_rapport
+﻿Partial Class Page_Admin_rapport
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
@@ -13,18 +11,4 @@ Partial Class Page_Admin_rapport
         End If
     End Sub
 
-    Sub actionImprimer(sender As Object, e As EventArgs)
-        Response.Redirect("javascript:PrintThisPage()")
-    End Sub
-
-    'Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
-    '    Response.Redirect("javascript:PrintThisPage();")
-    'End Sub
 End Class
-=======
-﻿
-Partial Class Page_Admin_rapport
-    Inherits System.Web.UI.Page
-
-End Class
->>>>>>> 64ec71e1f69872a6ad41842e2afe5c4f1c3657f0

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master" AutoEventWireup="false" CodeFile="rapport.aspx.vb" Inherits="Page_Admin_rapport" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" Runat="Server">
@@ -66,30 +65,30 @@
 
     <script language="javascript">
 
-//        function PrintThisPage() {
-//            var sOption = "toolbar=yes,location=no,directories=yes,menubar=yes,";
-//            sOption += "scrollbars=yes,width=750,height=600,left=100,top=25";
+        function PrintThisPage() {
+            var sOption = "toolbar=yes,location=no,directories=yes,menubar=yes,";
+            sOption += "scrollbars=yes,width=750,height=600,left=100,top=25";
 
-//            var winprint = window.open("print.aspx", "Print", sOption);
+            var winprint = window.open("print.aspx", "Print", sOption);
 
-//            winprint.focus();
-//        }
+            winprint.focus();
+        }
 
-    function PrintThisPage() 
-{ 
-   var sOption="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
-       sOption+="scrollbars=yes,width=750,height=600,left=100,top=25"; 
+//    function PrintThisPage() 
+//{ 
+//   var sOption="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+//       sOption+="scrollbars=yes,width=750,height=600,left=100,top=25"; 
 
-   var sWinHTML = document.getElementById('contentStart').innerHTML; 
-   
-   var winprint=window.open("","",sOption); 
-       winprint.document.open(); 
-       winprint.document.write('<html><LINK href=/eggheadcafe.css rel=Stylesheet><body>'); 
-       winprint.document.write(sWinHTML);          
-       winprint.document.write('</body></html>'); 
-       winprint.document.close(); 
-       winprint.focus(); 
-}
+//   var sWinHTML = document.getElementById('contentStart').innerHTML; 
+//   
+//   var winprint=window.open("","",sOption); 
+//       winprint.document.open(); 
+//       winprint.document.write('<html><LINK href=/eggheadcafe.css rel=Stylesheet><body>'); 
+//       winprint.document.write(sWinHTML);          
+//       winprint.document.write('</body></html>'); 
+//       winprint.document.close(); 
+//       winprint.focus(); 
+//}
 </script>
 
     <asp:EntityDataSource ID="dsMembre" runat="server" ConnectionString="name=modelCLSContainer"
@@ -111,16 +110,3 @@
     </asp:EntityDataSource>
 
 </asp:Content>
-
-=======
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master" AutoEventWireup="false" CodeFile="rapport.aspx.vb" Inherits="Page_Admin_rapport" Theme="Original"%>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="menu" Runat="Server">
-    <asp:Label ID="lblTitrePage" runat="server" Text="Rapports" Font-Size="24px" Font-Bold="true" />
-    <br />
-    <br />
-    <br />
-
-</asp:Content>
-
->>>>>>> 64ec71e1f69872a6ad41842e2afe5c4f1c3657f0
