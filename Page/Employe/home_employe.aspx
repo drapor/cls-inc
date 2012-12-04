@@ -13,13 +13,13 @@
 <div class="contenuMenu" style="min-height:400px;">
     <ul>
         <li>
-            <asp:LinkButton ID="btnHomeEmploye" runat="server" Onclick="actionSelect"  CommandArgument="accueil" Text="Accueil employé" CausesValidation="false"></asp:LinkButton>
+            <asp:LinkButton ID="btnHomeEmploye" runat="server" Onclick="actionAccueil" Text="Accueil employé" CausesValidation="false"></asp:LinkButton>
         </li>
         <li>
-            <asp:LinkButton ID="btnAjouteMembre" runat="server" Onclick="actionSelect" CommandArgument="ajout" Text="Ajouté un membre" CausesValidation="false"></asp:LinkButton>
+            <asp:LinkButton ID="btnAjouteMembre" runat="server" Onclick="actionAjout" Text="Ajouté un membre" CausesValidation="false"></asp:LinkButton>
         </li>
         <li>
-            <asp:LinkButton ID="btnModifieMembre" runat="server" Onclick="actionSelect" CommandArgument="modifie" Text="Modifier/Supprimer un membre" CausesValidation="false"></asp:LinkButton>
+            <asp:LinkButton ID="btnModifieMembre" runat="server" Text="Modifier/Supprimer un membre" CausesValidation="false"></asp:LinkButton>
         </li>
     </ul>
 </div>
@@ -358,6 +358,7 @@
                     </div>
         </EditItemTemplate>
 </asp:ListView> 
+
         </asp:View>
         <asp:View ID="viewAjout" runat="server">
             <div class="contenuStandard">

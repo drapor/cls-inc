@@ -94,11 +94,15 @@ Partial Class Page_Employe_home_employe
         End If
     End Sub
 
-    Sub actionSelect(sender As Object, e As CommandEventArgs)
-        If e.CommandArgument = "accueil" Then
-            MVEmploye.ActiveViewIndex = 0
-        ElseIf e.CommandArgument = "ajout" Then
-            MVEmploye.ActiveViewIndex = 1
-        End If
+    Sub actionAccueil(sender As Object, e As EventArgs)
+        MVEmploye.ActiveViewIndex = 0
     End Sub
+
+    Sub actionAjout(sender As Object, e As EventArgs)
+        MVEmploye.ActiveViewIndex = 1
+    End Sub
+
+    'Sub actionModifie(sender As Object, e As EventArgs)
+    '    MVEmploye.ActiveViewIndex = 0
+    'End Sub
 End Class

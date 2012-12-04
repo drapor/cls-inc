@@ -386,7 +386,7 @@
 </div>
 </div>  
 
-<asp:ListView ID="lvAbonnement" runat="server" DataSourceID="dsListView" DataKeyNames="idMembre">
+<asp:ListView ID="lvAbonnement" runat="server" DataSourceID="dsAbonnement" DataKeyNames="idAbonnement">
         <LayoutTemplate>
             <div class="infoMembre" style="width:860px;">
                 <div class="titreGauche">
@@ -438,6 +438,15 @@
     EnableDelete="True" EnableInsert="false" EnableUpdate="True" orderBy="it.idMembre"
     EntityTypeFilter="MembresJeu" 
     where="(@membreID = it.idMembre)">
+    <WhereParameters>
+        <asp:Parameter Name="membreID" Type="Int32" DefaultValue="0"/>
+    </WhereParameters>
+    </asp:EntityDataSource>
+
+    <asp:EntityDataSource ID="dsAbonnement" runat="server" ConnectionString="name=modelCLSContainer"
+    DefaultContainerName="modelCLSContainer" EntitySetName="AbonnementJeu" EnableFlattening="False"
+    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idAbonnement DESC" 
+    where="(@membreID = it.Membres_idMembre)">
     <WhereParameters>
         <asp:Parameter Name="membreID" Type="Int32" DefaultValue="0"/>
     </WhereParameters>

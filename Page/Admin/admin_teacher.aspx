@@ -185,19 +185,19 @@
                 </div>
             </div>
 
-            <div class="sectionAdmin">
-                <div class="sectionTitreAdmin">
+            <div class="section" style="width:680px;">
+                <div class="sectionTitre" style="width:680px;">
                     <asp:Label ID="infoPersonnel" runat="server" Text="Informations personnels"></asp:Label>
                 </div>
             </div>
             <asp:ListView ID="lvInfoMembre" runat="server" DataSourceID="dsAnimateurInfo" DataKeyNames="idMembre">
                 <LayoutTemplate>
-                    <div class="infoAdmin">
+                    <div class="infoMembre" style="width:640px;">
                         <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                     </div>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <div class="sectionInfo">
+                    <div class="membreInfo" style="width:320px;">
                         <div class="partiGauche">
                             <asp:Label ID="lblNom" runat="server" Text="Nom:"></asp:Label>
                             </br>
@@ -218,7 +218,7 @@
                             </br>
                         </div>
                     </div>
-                    <div class="sectionInfo">
+                    <div class="membreInfo" style="width:320px;">
                         <div class="partiGauche">
                             <asp:Label ID="lblPrenom" runat="server" Text="Prénom:"></asp:Label>
                             </br>
@@ -373,23 +373,23 @@
                     </div>
                 </EditItemTemplate>
             </asp:ListView>
-            <div class="sectionAdmin">
-                <div class="sectionTitreAdmin">
+            <div class="section" style="width:680px;">
+                <div class="sectionTitre" style="width:680px;">
                     <asp:Label ID="lblTitreCourriel" runat="server" Text="Courriel"></asp:Label>
                 </div>
             </div>
             <asp:ListView ID="lvCourriel" runat="server" DataSourceID="dsAnimateurModifie" DataKeyNames="idMembre">
                 <LayoutTemplate>
-                    <div class="infoAdmin">
+                    <div class="infoMembre" style="width:640px;">
                         <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                     </div>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <div class="partiGaucheCourriel" style="width:150px;">
+                    <div class="partiGauche" style="width:100px; font-weight:bolder; line-height:25px;">
                         <asp:Label ID="lblCourriel" runat="server" Text="Votre courriel:" Font-Bold="True"></asp:Label>
                         </br>
                     </div>
-                    <div class="partiDroiteCourriel">
+                    <div class="partiDroite" style=" width:160px; font-size:16px; font-weight:bolder; line-height:25px; font-family:Times New Roman;">
                         <asp:Label ID="lblCourrielClient" runat="server" Text='<%# Eval("MembresJeu.courriel") %>'></asp:Label>
                         </br>
                     </div>
@@ -400,7 +400,7 @@
                     </div>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <div class="partiGaucheCourrielEdit" style="width:280px;">
+                    <div class="partiGauche" style="width:280px;">
                         <div class="formatZone">
                             <asp:Label ID="lblCourriel" runat="server" Text="Votre présent courriel:"></asp:Label>
                         </div>
@@ -413,7 +413,7 @@
                             <asp:Label ID="lblNouveauCourrielEncore" runat="server" Text="Retapez votre nouveau courriel:"></asp:Label>
                         </div>
                     </div>
-                    <div class="partiDroiteCourrielEdit">
+                    <div class="partiDroite" style="width:230px;">
                         <div class="formatZone">
                             <asp:Label ID="lblCourrielPresent" runat="server" Text='<%# Eval("MembresJeu.courriel") %>'></asp:Label>
                         </div>
@@ -457,7 +457,7 @@
                         <asp:ValidationSummary ID="ValidationInfo" ValidationGroup="courriel" DisplayMode="List"
                             ForeColor="Red" runat="server" />
                     </div>
-                    <div class="boutonAdmin" style="margin-left: 350px;">
+                    <div class="boutonChoix" style="margin-left:400px;">
                         <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter"
                             CssClass="btn btn-primary btn-small" ValidationGroup="courriel" />
                         <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false"
@@ -465,8 +465,8 @@
                     </div>
                 </EditItemTemplate>
             </asp:ListView>
-            <div class="sectionAdmin">
-                <div class="sectionTitreAdmin">
+            <div class="section" style="width:680px;">
+                <div class="sectionTitre" style="width:680px;">
                     <asp:Label ID="lblTitreMotPasse" runat="server" Text="Mot de passe"></asp:Label>
                 </div>
             </div>
@@ -482,7 +482,7 @@
                     </div>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <div class="partiGaucheMotPasse" style="width:300px;">
+                    <div class="partiGauche" style="width:300px; line-height:25px;">
                         <div class="formatZone">
                             <asp:Label ID="lblMP" runat="server" Text="Présent mot de passe:"></asp:Label>
                         </div>
@@ -495,7 +495,7 @@
                             <asp:Label ID="lblNouveauMPEncore" runat="server" Text="Retapez nouveau mot de passe:"></asp:Label>
                         </div>
                     </div>
-                    <div class="partiDroiteMotPasse">
+                    <div class="partiDroite" style="width:250px; line-height:25px;">
                         <div class="formatZone">
                             <asp:TextBox ID="txtPresentMP" runat="server" SkinID="txtBoxYellow" CssClass="search-query"
                                 Text="" TextMode="Password"></asp:TextBox>

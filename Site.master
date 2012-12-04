@@ -35,7 +35,6 @@
                     <asp:Button ID="btnSport" runat="server" Text="Sport" CssClass="btn btn-custom btn-large boutonMaster" CausesValidation="false" />
                     <div class="menuBoutonSearch">
                         <form class="navbar-search fieldSearch">
-
                         <asp:ToolkitScriptManager id="toolKitScriptManager1" runat="server"></asp:ToolkitScriptManager>
 
                         <asp:TextBox ID="txtSearch" runat="server" CssClass="search-query span3 fieldSearch"></asp:TextBox>

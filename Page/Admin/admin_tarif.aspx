@@ -15,15 +15,15 @@
 
         <asp:ListView ID="lvGroupe" runat="server" DataSourceID="dsTarif" DataKeyNames="idTarif">
             <LayoutTemplate>
-                <div class="infoAdmin" style="margin-left:5px;">
+                <div class="infoMembre" style="width:640px;">
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                 </div>
             </LayoutTemplate>
             <InsertItemTemplate>
             </InsertItemTemplate>
             <ItemTemplate>
-                <div class="sectionAdmin">
-                    <div class="sectionTitreAdmin">
+                <div class="section" style="width:680px;">
+                    <div class="sectionTitre" style="width:680px;">
                         <asp:Label ID="lblTarifNouveauMembre" runat="server" Text="Tarif nouveau membre"></asp:Label>
                     </div>
                 </div>
@@ -41,8 +41,8 @@
                     ForeColor="Red"></asp:RegularExpressionValidator>
                     </div>
                 </div>
-                <div class="sectionAdmin">
-                    <div class="sectionTitreAdmin">
+                <div class="section" style="width:680px;">
+                    <div class="sectionTitre" style="width:680px;">
                         <asp:Label ID="lblRabaisEnfant" runat="server" Text="Rabais enfants"></asp:Label>
                     </div>
                 </div>
