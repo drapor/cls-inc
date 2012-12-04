@@ -38,7 +38,6 @@ Partial Class Page_Admin_admin_group_add
         entClient.GroupeJeu.AddObject(groupe)
         entClient.SaveChanges()
         listeGroupe.DataBind()
-
     End Sub
 
 End Class

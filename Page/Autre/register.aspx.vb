@@ -14,7 +14,7 @@ Partial Class Page_Autre_register
         If famille = Nothing Then
             idFamille = 1
         Else
-            idFamille = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).Max
+            idFamille = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).Max + 1
         End If
     End Sub
 

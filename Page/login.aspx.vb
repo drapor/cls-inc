@@ -7,7 +7,7 @@ Partial Class Page_login
             Dim role As String = CustomMembershipProvider.GetRoleForUser(loginCLS.UserName.ToString)
             If (Roles.IsUserInRole(loginCLS.UserName.ToString, role)) Then
                 Session("idUser") = CustomMembershipProvider.GetUserId(loginCLS.UserName.ToString)
-                Session.Timeout = 10
+                Session.Timeout = 15
                 If role = "Administrateur" Then
                     Response.Redirect("~/Page/Admin/admin_home.aspx")
                 ElseIf role = "Employé" Then
@@ -24,7 +24,7 @@ Partial Class Page_login
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        Dim logOut As String = Request.QueryString("logOut")
+        Dim logOut As String = Request.QueryString("sessionExpired")
         If logOut Is Nothing Then
         Else
             Msg.Text = "Désolé, votre session a expiré ! Veuillez vous reconnecter."

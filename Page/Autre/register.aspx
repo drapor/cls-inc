@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="ligneFormulaire">
-            <div class="elementFormulaireTexte"><asp:Label ID="lblNom" runat="server" fText="Nom(*)"></asp:Label></div>
+            <div class="elementFormulaireTexte"><asp:Label ID="lblNom" runat="server" Text="Nom(*)"></asp:Label></div>
             <div class="elementFormulaire" style="width:250px;"><asp:TextBox ID="txtNom" runat="server" CssClass="search-query" SkinID="txtBoxBlue" MaxLength="25" Text=""></asp:TextBox></div>
             <div class="validation">
                 <asp:RequiredFieldValidator ID="requiredNom" runat="server" ErrorMessage="*Le nom est obligatoire" ControlToValidate="txtNom" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>

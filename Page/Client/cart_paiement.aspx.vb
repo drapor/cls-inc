@@ -55,8 +55,8 @@ Partial Class Page_Client_cart_paiement
         '      "Quebec",
         '      leMembre.codePostal) Then
 
-        Dim aCookie As HttpCookie = Request.Cookies("noPanier")
-        Dim noPanier As Integer = aCookie.Values("noPanier")
+        Dim aCookie As HttpCookie = Request.Cookies("panier")
+        Dim noPanier As Integer = aCookie.Values("idPanier")
 
         Dim unMembreCommande As ItemPanierJeu = (From A In leContext.ItemPanierJeu Where (A.Panier_idCommande = noPanier) Select A).FirstOrDefault
 
