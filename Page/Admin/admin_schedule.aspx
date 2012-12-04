@@ -1,5 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master" AutoEventWireup="false"
-    CodeFile="admin_schedule.aspx.vb" Inherits="Page_Admin_admin_schedule" Theme="Original" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master" AutoEventWireup="false" CodeFile="admin_schedule.aspx.vb" Inherits="Page_Admin_admin_schedule" Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
     <asp:Label ID="lblTitreAjout" runat="server" Text="Opérations sur les horaires" Font-Size="24px"
@@ -34,46 +33,111 @@
             </div>
         </div>
     </div>
-    <asp:GridView ID="listeHoraire" runat="server" DataSourceID="dsHoraire" DataKeyNames="idHoraire"
-        AutoGenerateColumns="False" AlternatingRowStyle-BackColor="#8c8cde" AlternatingRowStyle-ForeColor="#FFFFFF"
-        CssClass="gridView" ShowFooter="true">
-        <Columns>
-            <asp:TemplateField ShowHeader="True">
-                <ItemTemplate>
-                    <asp:LinkButton ID="lbEdit" runat="server" CommandName="edit" Text="Modifier" ForeColor="Black"></asp:LinkButton>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:LinkButton ID="lbUpdate" runat="server" CommandName="update" Text="Mise à jour"
-                        CausesValidation="true" ValidationGroup="horaire"></asp:LinkButton>
-                    <asp:LinkButton ID="lbcancel" runat="server" CommandName="Cancel" Text="Annuler"></asp:LinkButton>
-                </EditItemTemplate>
-                <FooterTemplate>
-                    <asp:LinkButton ID="lbInsert" runat="server" OnClick="actionAjout" ForeColor="#1800B8"
-                        Font-Bold="true" Font-Size="18px" Text="Nouveau" CausesValidation="true" ValidationGroup="horaireAjout"></asp:LinkButton>
-                </FooterTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Jour de la semaine">
-                <ItemTemplate>
-                    <asp:Label ID="lblJoursemaine" runat="server" Text='<%# eval("JourSemaineJeu.jourSemaine") %>'></asp:Label>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:DropDownList ID="DDLSemaine" DataSourceID="dsJourSemaine" runat="server" Width="120px" SelectedValue='<%# Bind("JourSemaine_idSemaine") %>'
+
+    <div style="width:100%;">
+    <asp:ListView ID="lvHoraire" runat="server" DataSourceID="dsHoraire" DataKeyNames="idHoraire" InsertItemPosition="LastItem" ItemPlaceholderID="itemPlaceHolder">
+        <LayoutTemplate>
+            <table align="center" style="width: 100%; border: 1px solid #000000; font-weight:bolder;">
+                    <tr style="background-color:#1800B8; color:White; font-size:16px;">
+                        <th style="border: 1px solid #000000; width:22%;" >
+                            
+                        </th>
+                        <th style="border: 1px solid #000000; width:20%; padding:5px;" >
+                            <asp:Label ID="lblTitreSemaine" runat="server" Text="Jour semaine"></asp:Label>
+                        </th>
+                        <th style="border: 1px solid #000000; width:19%;">
+                            <asp:Label ID="lblTitreDebut" runat="server" Text="Heure de début"></asp:Label>
+                        </th>
+                        <th style="border: 1px solid #000000; width:15%;">
+                            <asp:Label ID="lblTitreFin" runat="server" Text="Heure de fin"></asp:Label>
+                        </th>
+                        <th style="border: 1px solid #000000; width:14%;">
+                            <asp:Label ID="lblTitreLocal" runat="server" Text="No de local"></asp:Label>
+                        </th>
+                        <th style="border: 1px solid #000000; width:10%;">
+                            
+                        </th>
+                    </tr>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+            </table>
+        </LayoutTemplate>
+        <ItemTemplate >
+        <tr align="center" class="<%# GetCssName(Container) %>">
+            <td style="border: 1px solid #000000; width:22%; height:50px;">
+                <asp:LinkButton ID="btnModifier" runat="server" Text="Modifier" ForeColor="Black" CommandName="Edit"></asp:LinkButton>
+            </td>
+            <td style="border: 1px solid #000000; width:20%;">
+                <asp:Label ID="lblJourSemaine" runat="server" Text='<%# eval("JourSemaineJeu.jourSemaine") %>'></asp:Label>
+            </td>
+            <td style="border: 1px solid #000000; width:19%;">
+                <asp:Label ID="lblDebut" runat="server" Text='<%# eval("heureDebut") %>'></asp:Label>
+            </td>
+            <td style="border: 1px solid #000000; width:15%;">
+                <asp:Label ID="lblFin" runat="server" Text='<%# eval("heureFin") %>'></asp:Label>
+            </td>
+            <td style="border: 1px solid #000000; width:14%;">
+                <asp:Label ID="lblLocal" runat="server" Text='<%# eval("noLocal") %>'></asp:Label>
+            </td>
+            <td style="border: 1px solid #000000; width:10%;">
+                <asp:LinkButton ID="btnSupprime" runat="server" Text="Supprimer" CommandName="Delete" ForeColor="Red"></asp:LinkButton>
+            </td>
+            </tr>
+        </ItemTemplate>
+        <InsertItemTemplate>
+            <tr align="center">
+            <td style="border: 1px solid #000000; width:22%;">
+                <asp:LinkButton ID="btnAjout" runat="server" Text="Ajouter un horaire" CommandName="Insert" ValidationGroup="horaireAjout"></asp:LinkButton>
+            </td>
+            <td style="border: 1px solid #000000; width:20%; padding-top:10px;">
+                <asp:DropDownList ID="ddlSemaine" DataSourceID="dsJourSemaine" runat="server" Width="120px" SelectedValue='<%# Bind("JourSemaine_idSemaine") %>'
                         DataTextField="jourSemaine" DataValueField="idSemaine" AppendDataBoundItems="False">
                     </asp:DropDownList>
-                </EditItemTemplate>
-                <FooterTemplate>
-                    <asp:DropDownList ID="ddlSemaineAjout" DataSourceID="dsJourSemaine" runat="server" Width="120px" DataTextField="jourSemaine" DataValueField="idSemaine" AppendDataBoundItems="False">
+            </td>
+            <td style="border: 1px solid #000000; width:19%; padding-top:10px;">
+                <asp:TextBox ID="txtDebutAjout" runat="server" Text='<%# Bind("heureDebut") %>' Width="40px" MaxLength="5"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="regExDebut" runat="server" ErrorMessage="* De 00:00 à 23:59"
+                        ValidationExpression="(?:[01][0-9]|2[0-4]):[0-5][0-9]" Display="Dynamic" ControlToValidate="txtDebutAjout"
+                        ForeColor="Red" ValidationGroup="horaireAjout">*</asp:RegularExpressionValidator>
+                    <asp:CompareValidator ID="compareJourSemaine" runat="server" ErrorMessage="* L'heure de début doit être supérieur à l'heure de fin."
+                        ForeColor="Red" Operator="GreaterThan" ControlToValidate="txtFinAjout" ControlToCompare="txtDebutAjout"
+                        Display="Dynamic" ValidationGroup="horaireAjout">*</asp:CompareValidator>
+                    <asp:RequiredFieldValidator ID="RequiredHeureDebut" runat="server" ErrorMessage="* Heure de début requise."
+                        ControlToValidate="txtDebutAjout" ForeColor="Red" Display="Dynamic" ValidationGroup="horaireAjout">*</asp:RequiredFieldValidator>
+            </td>
+            <td style="border: 1px solid #000000; width:15%; padding-top:10px;">
+                <asp:TextBox ID="txtFinAjout" runat="server" Text='<%# Bind("heureFin") %>' Width="40px" MaxLength="5"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="regExFin" runat="server" ErrorMessage="* De 00:00 à 23:59"
+                        ValidationExpression="(?:[01][0-9]|2[0-4]):[0-5][0-9]" Display="Dynamic" ControlToValidate="txtFinAjout"
+                        ForeColor="Red" ValidationGroup="horaireAjout">*</asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="RequiredHeureFin" runat="server" ErrorMessage="* Heure de fin requise."
+                        ControlToValidate="txtFinAjout" ForeColor="Red" Display="Dynamic" ValidationGroup="horaireAjout">*</asp:RequiredFieldValidator>
+            </td>
+            <td style="border: 1px solid #000000; width:14%; padding-top:10px;">
+                <asp:TextBox ID="txtLocalAjout" runat="server" Text='<%# Bind("noLocal") %>' Width="60px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="requiredLocal" runat="server" ErrorMessage="* No local requis"
+                        ControlToValidate="txtLocalAjout" ForeColor="Red" Display="Dynamic" Font-Size="14px"
+                        ValidationGroup="horaireAjout">*</asp:RequiredFieldValidator>
+            </td>
+            <td style="border: 1px solid #000000; width:10%;">
+                <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CommandName="Cancel"></asp:LinkButton>
+            </td>
+            </tr>
+        </InsertItemTemplate>
+        <EditItemTemplate>
+            <tr align="center">
+            <td style="border: 1px solid #000000; width:22%;">
+                <asp:LinkButton ID="btnUpdate" runat="server" Text="Mise à jour" ForeColor="Black" CommandName="Update" ValidationGroup="horaire"></asp:LinkButton>
+                /
+                <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" ForeColor="Black" CommandName="Cancel"></asp:LinkButton>
+            </td>
+            <td style="border: 1px solid #000000; width:20%; padding-top:10px;">
+                <asp:DropDownList ID="ddlSemaine" DataSourceID="dsJourSemaine" runat="server" Width="120px" SelectedValue='<%# Bind("JourSemaine_idSemaine") %>'
+                        DataTextField="jourSemaine" DataValueField="idSemaine" AppendDataBoundItems="False">
                     </asp:DropDownList>
-                </FooterTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Heure de début">
-                <ItemTemplate>
-                    <asp:Label ID="lblDebut" runat="server" Text='<%# eval("heureDebut") %>'></asp:Label>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="txtDebut" runat="server" Text='<%# Bind("heureDebut") %>' Width="50px"
-                        MaxLength="5"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="regExDebut" runat="server" ErrorMessage="* De 00:00 à 23:59"
+            </td>
+            <td style="border: 1px solid #000000; width:19%; padding-top:10px;">
+                <asp:TextBox ID="txtDebut" runat="server" Text='<%# Bind("heureDebut") %>' Width="40px" MaxLength="5"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="regExDebut" runat="server" ErrorMessage="* De 00:00 à 23:59"
                         ValidationExpression="(?:[01][0-9]|2[0-4]):[0-5][0-9]" Display="Dynamic" ControlToValidate="txtDebut"
                         ForeColor="Red" ValidationGroup="horaire">*</asp:RegularExpressionValidator>
                     <asp:CompareValidator ID="compareJourSemaine" runat="server" ErrorMessage="* L'heure de début doit être supérieur à l'heure de fin."
@@ -81,135 +145,28 @@
                         Display="Dynamic" ValidationGroup="horaire">*</asp:CompareValidator>
                     <asp:RequiredFieldValidator ID="RequiredHeureDebut" runat="server" ErrorMessage="* Heure de début requise."
                         ControlToValidate="txtDebut" ForeColor="Red" Display="Dynamic" ValidationGroup="horaire">*</asp:RequiredFieldValidator>
-                </EditItemTemplate>
-                <FooterTemplate>
-                    <asp:TextBox ID="txtDebutAjout" runat="server" Text="" Width="50px" MaxLength="5"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="regExDebut" runat="server" ErrorMessage="* De 00:00 à 23:59"
-                        ValidationExpression="(?:[01][0-9]|2[0-4]):[0-5][0-9]" Display="Dynamic" ControlToValidate="txtDebutAjout"
-                        ForeColor="Red" ValidationGroup="horaireAjout">*</asp:RegularExpressionValidator>
-                    <asp:CompareValidator ID="compareJourSemaine" runat="server" ErrorMessage="* L'heure de début doit être supérieur à l'heure de fin."
-                        ForeColor="Red" Operator="GreaterThan" ControlToValidate="txtFinAjout" ControlToCompare="txtDebutAjout"
-                        Display="Dynamic" ValidationGroup="horaireAjout">*</asp:CompareValidator>
-                    <asp:RequiredFieldValidator ID="RequiredHeureDebut" runat="server" ErrorMessage="* Heure de début requise."
-                        ControlToValidate="txtDebutAjout" ForeColor="Red" Display="Dynamic" ValidationGroup="horaireAjout">*</asp:RequiredFieldValidator>
-                </FooterTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Heure de fin">
-                <ItemTemplate>
-                    <asp:Label ID="lblFin" runat="server" Text='<%# eval("heureFin") %>'></asp:Label>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="txtFin" runat="server" Text='<%# Bind("heureFin") %>' Width="50px"
-                        MaxLength="5"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="regExFin" runat="server" ErrorMessage="* De 00:00 à 23:59"
+            </td>
+            <td style="border: 1px solid #000000; width:15%; padding-top:10px;">
+                <asp:TextBox ID="txtFin" runat="server" Text='<%# Bind("heureFin") %>' Width="40px" MaxLength="5"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="regExFin" runat="server" ErrorMessage="* De 00:00 à 23:59"
                         ValidationExpression="(?:[01][0-9]|2[0-4]):[0-5][0-9]" Display="Dynamic" ControlToValidate="txtFin"
                         ForeColor="Red" ValidationGroup="horaire">*</asp:RegularExpressionValidator>
                     <asp:RequiredFieldValidator ID="RequiredHeureFin" runat="server" ErrorMessage="* Heure de fin requise."
                         ControlToValidate="txtFin" ForeColor="Red" Display="Dynamic" ValidationGroup="horaire">*</asp:RequiredFieldValidator>
-                </EditItemTemplate>
-                <FooterTemplate>
-                    <asp:TextBox ID="txtFinAjout" runat="server" Text="" Width="50px" MaxLength="5"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="regExFin" runat="server" ErrorMessage="* De 00:00 à 23:59"
-                        ValidationExpression="(?:[01][0-9]|2[0-4]):[0-5][0-9]" Display="Dynamic" ControlToValidate="txtFinAjout"
-                        ForeColor="Red" ValidationGroup="horaireAjout">*</asp:RegularExpressionValidator>
-                    <asp:RequiredFieldValidator ID="RequiredHeureFin" runat="server" ErrorMessage="* Heure de fin requise."
-                        ControlToValidate="txtFinAjout" ForeColor="Red" Display="Dynamic" ValidationGroup="horaireAjout">*</asp:RequiredFieldValidator>
-                </FooterTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="No local">
-                <ItemTemplate>
-                    <asp:Label ID="lblLocal" runat="server" Text='<%# eval("noLocal") %>'></asp:Label>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="txtLocal" runat="server" Text='<%# Bind("noLocal") %>' Width="50px"
-                        MaxLength="5"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="requiredLocal" runat="server" ErrorMessage="* No local requis"
+            </td>
+            <td style="border: 1px solid #000000; width:14%; padding-top:10px;">
+                <asp:TextBox ID="txtLocal" runat="server" Text='<%# Bind("noLocal") %>' Width="60px" ></asp:TextBox>
+                <asp:RequiredFieldValidator ID="requiredLocal" runat="server" ErrorMessage="* No local requis"
                         ControlToValidate="txtLocal" ForeColor="Red" Display="Dynamic" Font-Size="14px"
                         ValidationGroup="horaire">*</asp:RequiredFieldValidator>
-                </EditItemTemplate>
-                <FooterTemplate>
-                    <asp:TextBox ID="txtLocalAjout" runat="server" Text="" Width="50px" MaxLength="5"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="requiredLocal" runat="server" ErrorMessage="* No local requis"
-                        ControlToValidate="txtLocalAjout" ForeColor="Red" Display="Dynamic" Font-Size="14px"
-                        ValidationGroup="horaireAjout">*</asp:RequiredFieldValidator>
-                </FooterTemplate>
-            </asp:TemplateField>
-            <asp:CommandField ShowEditButton="False" Visible="false" />
-            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:LinkButton ID="btngvdelete" runat="server" OnClientClick="return confirm('Voulez-vous vraiment supprimer cet horaire?');"
-                        CommandName="Delete" ForeColor="Red" Font-Bold="true" Text="Supprimer">
-                    </asp:LinkButton>
-                </ItemTemplate>
-                <FooterTemplate>
-                    <asp:LinkButton ID="lbCancel" runat="server" CommandName="Cancel" Text="Annuler"></asp:LinkButton>
-                </FooterTemplate>
-            </asp:TemplateField>
-        </Columns>
-        <EmptyDataTemplate>
-            <table cellpadding="0" style="border-collapse: collapse;">
-                <tr>
-                    <th scope="col">
-                        
-                    </th>
-                    <th scope="col">
-                        Jour de la semaine
-                    </th>
-                    <th scope="col">
-                        Heure de début
-                    </th>
-                    <th scope="col">
-                        Heure de Fin
-                    </th>
-                    <th scope="col">
-                        No Local
-                    </th>
-                    <th scope="col">
-
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:LinkButton ID="lbInsert" runat="server" OnClick="actionAjout" ForeColor="#1800B8"
-                        Font-Bold="true" Font-Size="18px" Text="Nouveau" CausesValidation="true" ValidationGroup="horaireAjout"></asp:LinkButton>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlSemaineAjout" DataSourceID="dsJourSemaine" runat="server" Width="120px"
-                            DataTextField="jourSemaine" DataValueField="idSemaine" AppendDataBoundItems="False">
-                    </asp:DropDownList>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtDebutAjout" runat="server" Text="" Width="50px" MaxLength="5"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="regExDebut" runat="server" ErrorMessage="* De 00:00 à 23:59"
-                        ValidationExpression="(?:[01][0-9]|2[0-4]):[0-5][0-9]" Display="Dynamic" ControlToValidate="txtDebutAjout"
-                        ForeColor="Red" ValidationGroup="horaireAjout">*</asp:RegularExpressionValidator>
-                    <asp:CompareValidator ID="compareJourSemaine" runat="server" ErrorMessage="* L'heure de début doit être supérieur à l'heure de fin."
-                        ForeColor="Red" Operator="GreaterThan" ControlToValidate="txtFinAjout" ControlToCompare="txtDebutAjout"
-                        Display="Dynamic" ValidationGroup="horaireAjout">*</asp:CompareValidator>
-                    <asp:RequiredFieldValidator ID="RequiredHeureDebut" runat="server" ErrorMessage="* Heure de début requise."
-                        ControlToValidate="txtDebutAjout" ForeColor="Red" Display="Dynamic" ValidationGroup="horaireAjout">*</asp:RequiredFieldValidator>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtFinAjout" runat="server" Text="" Width="50px" MaxLength="5"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="regExFin" runat="server" ErrorMessage="* De 00:00 à 23:59"
-                        ValidationExpression="(?:[01][0-9]|2[0-4]):[0-5][0-9]" Display="Dynamic" ControlToValidate="txtFinAjout"
-                        ForeColor="Red" ValidationGroup="horaireAjout">*</asp:RegularExpressionValidator>
-                    <asp:RequiredFieldValidator ID="RequiredHeureFin" runat="server" ErrorMessage="* Heure de fin requise."
-                        ControlToValidate="txtFinAjout" ForeColor="Red" Display="Dynamic" ValidationGroup="horaireAjout">*</asp:RequiredFieldValidator>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtLocalAjout" runat="server" Text="" Width="50px" MaxLength="5"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="requiredLocal" runat="server" ErrorMessage="* No local requis"
-                        ControlToValidate="txtLocalAjout" ForeColor="Red" Display="Dynamic" Font-Size="14px"
-                        ValidationGroup="horaireAjout">*</asp:RequiredFieldValidator>
-                    </td>
-                    <td>
-                        <asp:LinkButton ID="lbCancel" runat="server" CommandName="Cancel" Text="Annuler"></asp:LinkButton>
-                    </td>
-                </tr>
-            </table>
-        </EmptyDataTemplate>
-    </asp:GridView>
+            </td>
+            <td style="border: 1px solid #000000; width:10%;">
+                <asp:LinkButton ID="btnSupprime" runat="server" Text="Supprimer" CommandName="Delete" ForeColor="Red"></asp:LinkButton>
+            </td>
+            </tr>
+        </EditItemTemplate>
+    </asp:ListView>
+    </div>
     <br />
     <div class="validationListe">
         <asp:ValidationSummary ID="ValidationInfo" ValidationGroup="horaire" DisplayMode="List"
@@ -241,6 +198,7 @@
                 Type="Int32" />
         </WhereParameters>
     </asp:EntityDataSource>
+
     <asp:EntityDataSource ID="dsJourSemaine" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="JourSemaineJeu" EnableFlattening="False"
         EnableDelete="True" EnableInsert="True" EnableUpdate="True" OrderBy="it.idSemaine">

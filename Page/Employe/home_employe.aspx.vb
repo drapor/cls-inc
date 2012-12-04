@@ -93,4 +93,12 @@ Partial Class Page_Employe_home_employe
             SetFocus(txtVieuxMP)
         End If
     End Sub
+
+    Sub actionSelect(sender As Object, e As CommandEventArgs)
+        If e.CommandArgument = "accueil" Then
+            MVEmploye.ActiveViewIndex = 0
+        ElseIf e.CommandArgument = "ajout" Then
+            MVEmploye.ActiveViewIndex = 1
+        End If
+    End Sub
 End Class

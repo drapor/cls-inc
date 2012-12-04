@@ -207,7 +207,7 @@
                             </br>
                             <asp:Label ID="lblNaissance" runat="server" Text="Date de naissance:"></asp:Label>
                         </div>
-                        <div class="partiDroite">
+                        <div class="partiDroite" style="width:160px;">
                             <asp:Label ID="lblNomClient" runat="server" Text='<%# Eval("nomMembre") %>'></asp:Label>
                             </br>
                             <asp:Label ID="lblAdresseClient" runat="server" Text='<%# Eval("adresse") %>'></asp:Label>
@@ -222,13 +222,13 @@
                         <div class="partiGauche">
                             <asp:Label ID="lblPrenom" runat="server" Text="Prénom:"></asp:Label>
                             </br>
-                            <asp:Label ID="lblPostal" runat="server" Text="Code postal:"></asp:Label>
-                            </br>
                             <asp:Label ID="lblVille" runat="server" Text="Ville:"></asp:Label>
+                            </br>
+                            <asp:Label ID="lblPostal" runat="server" Text="Code postal:"></asp:Label>
                             </br>
                             <asp:Label ID="lblDateInscription" runat="server" Text="Date d'inscription:"></asp:Label>
                         </div>
-                        <div class="partiDroite">
+                        <div class="partiDroite" style="width:160px;">
                             <asp:Label ID="lblPrenomClient" runat="server" Text='<%# Eval("prenomMembre") %>'></asp:Label>
                             </br>
                             <asp:Label ID="lblVilleClient" runat="server" Text='<%# Eval("ville") %>'></asp:Label>

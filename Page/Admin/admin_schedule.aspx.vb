@@ -4,21 +4,24 @@ Imports modelCLS
 Partial Class Page_Admin_admin_schedule
     Inherits System.Web.UI.Page
 
-    Public entClient As modelCLSContainer = New modelCLSContainer
+    Protected Function GetCssName(container As Object) As String
+        If container IsNot Nothing Then
+            If container.[GetType]() Is GetType(ListViewDataItem) Then
+                If (DirectCast(container, ListViewDataItem).DisplayIndex Mod 2) = 0 Then
+                    Return "even"
+                Else
+                    Return "odd"
+                End If
+            End If
+        End If
+        Return Nothing
+    End Function
 
-    Protected Sub actionAjout(sender As Object, e As EventArgs)
+    Protected Sub lvHoraire_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvHoraire.ItemInserting
+        Dim semaine As String = FindChildControl(Of DropDownList)(lvHoraire, "ddlSemaine").SelectedValue
         Dim idGroupe As Short = FindChildControl(Of DropDownList)(Me, "ddlNomGroupe").SelectedValue
-        Dim semaine As String = FindChildControl(Of DropDownList)(listeHoraire, "ddlSemaineAjout").SelectedValue
-        Dim debut As String = FindChildControl(Of TextBox)(listeHoraire, "txtDebutAjout").Text
-        Dim fin As String = FindChildControl(Of TextBox)(listeHoraire, "txtFinAjout").Text
-        Dim local As String = FindChildControl(Of TextBox)(listeHoraire, "txtLocalAjout").Text
 
-        Dim horaire As HoraireJeu = Nothing
-
-        horaire = HoraireJeu.CreateHoraireJeu(0, debut, fin, local, idGroupe, semaine)
-        entClient.HoraireJeu.AddObject(horaire)
-        entClient.SaveChanges()
-        listeHoraire.DataBind()
+        e.Values("GroupeJeu_idGroupe") = idGroupe
+        e.Values("JourSemaine_idSemaine") = semaine
     End Sub
-
 End Class

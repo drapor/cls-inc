@@ -133,7 +133,9 @@ btnPadding
 .blockGroupeLigne
 {
     width:auto;
-    max-width:900px;
-    height:35px;
+    max-width:620px;
+    height:auto;
     float:left;
+    margin-top:3px;
+    margin-bottom:3px;
 }

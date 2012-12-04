@@ -28,7 +28,6 @@
 .section
 {
     background-color:#1b1bb3;
-    width:900px;
     height:30px;
     box-shadow:0 3px 3px rgba(50,50,500.25);
     border-radius:5px;
@@ -60,6 +59,12 @@
     color:#ffbf00;
 }
 
+.sectionTitreRight a:hover
+{
+    color:#ffffff;
+    text-decoration:none;
+}
+
 .titleFamille
 {
     color:Black;
@@ -68,20 +73,9 @@
     margin-bottom:20px;
 }
 
-.sectionTitreRight a:hover
+.membreInfo
 {
-    color:#ffffff;
-    text-decoration:none;
-}
-
-.infoClient
-{
-    width:860px;
     height:auto;
-    margin-left:20px;
-    margin-right:20px;
-    margin-top:10px;
-    margin-bottom:10px;
     float:left;
 }
 
@@ -125,25 +119,6 @@
     float:left;
 }
 
-.partiGauche
-{
-    width:150px;
-    float:left;
-    font-size:small;
-    font-weight:bold
-}
-
-.partiDroite
-{
-    margin-left:10px;
-    float:left;
-    width:250px;
-}
-
-.carteCredit
-{
-    float:left;
-}
 
 .modifierBouton
 {
@@ -159,23 +134,6 @@
 {
     color:#ffbf00;
     text-decoration:none;
-}
-
-.partiGaucheMotPasse
-{
-    width:250px;
-    float:left;
-    font-size:small;
-    font-weight:bold;
-    line-height:25px;
-}
-
-.partiDroiteMotPasse
-{
-    float:left;
-    width:250px;
-    margin-left:10px;
-    line-height:25px;
 }
 
 .afficherFamille
@@ -264,38 +222,6 @@
     font-weight:bolder;
 }
 
-.partiGaucheCourriel
-{
-    width:120px;
-    float:left;
-    font-size:16px;
-    font-weight:bolder;
-    line-height:25px;
-}
-
-.partiDroiteCourriel
-{
-    float:left;
-    font-size:16px;
-    font-weight:bolder;
-    margin-left:10px;
-    line-height:25px;
-}
-
-.partiGaucheCourrielEdit
-{
-    width:250px;
-    float:left;
-    font-size:small;
-    font-weight:bold
-}
-
-.partiDroiteCourrielEdit
-{
-    width:230px;
-    float:left;
-}
-
 .validationCourriel
 {
     width:auto;
@@ -311,15 +237,7 @@
     float:left; 
 }
 
-.boutonCourriel
-{
-    width: 860px;
-    height: 25px;
-    margin-top:20px;
-    float: left;
-}
-
-.boutonMotPasse
+.boutonSelection
 {
     width: 860px;
     height: 25px;

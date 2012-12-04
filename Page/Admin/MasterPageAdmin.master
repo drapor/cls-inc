@@ -5,9 +5,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="contenuPageAdmin">
-        <div class="contenuMenuAdmin">
-            <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-            </asp:ToolkitScriptManager>
+        <div class="contenuMenu">
             <asp:Accordion ID="menuCategorie" runat="server" Width="200px" CssClass="accordion"
                 HeaderCssClass="accordionHeader" HeaderSelectedCssClass="accordionHeaderSelected"
                 ContentCssClass="accordionContent">
@@ -158,7 +156,15 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnListeRapport" runat="server" PostBackUrl="~/Page/Admin/rapport.aspx" Text="Liste de rapport"
+                                    <asp:LinkButton ID="btnListeRapportClient" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_client.aspx" Text="Rapport client"
+                                        CausesValidation="false"></asp:LinkButton>
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="btnListeRapportEmploye" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_employe.aspx" Text="Rapport employé"
+                                        CausesValidation="false"></asp:LinkButton>
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="btnListeRapportAnimateur" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_animateur.aspx" Text="Rapport animateur"
                                         CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>

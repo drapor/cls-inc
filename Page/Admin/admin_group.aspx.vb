@@ -3,7 +3,6 @@
 'Dernière mise à jour le 25 septembre 2012
 'Classe partielle qui ajoute un groupe dans la BD associé à un cours
 
-Imports masterPage
 Imports modelCLS
 Imports System.Data
 
@@ -12,33 +11,29 @@ Partial Class Page_Admin_admin_group_add
 
     Dim entClient As modelCLSContainer = New modelCLSContainer
 
-    Protected Sub actionAjout(sender As Object, e As EventArgs)
+    Protected Sub lvGroupe_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvGroupe.ItemInserting
         Dim groupeNo As Short = Nothing
-        Dim ddlCoursNo As Short = Nothing
-        Dim ddlCoursNom As String = Nothing
-        Dim ddlCours = Nothing
+        Dim coursNo As Short = Nothing
+        Dim coursNom As String = Nothing
+        Dim coursGroupe = Nothing
 
-        Dim txtNbMax As TextBox = FindChildControl(Of TextBox)(listeGroupe, "txtNombreAjout")
+        coursNo = ddlNomCoursAjout.SelectedValue
+        coursNom = ddlNomCoursAjout.SelectedItem.Text
 
-        Dim groupe As GroupeJeu = Nothing
+        coursGroupe = entClient.GroupeJeu.Where(Function(n) n.Cours_idCours = coursNo).[Select](Function(n) n.idGroupe).Any
 
-        ddlCoursNo = ddlNomCoursAjout.SelectedValue
-        ddlCoursNom = ddlNomCoursAjout.SelectedItem.Text
-
-        ddlCours = entClient.GroupeJeu.Where(Function(n) n.Cours_idCours = ddlCoursNo).[Select](Function(n) n.idGroupe).Any
-
-        If ddlCours = Nothing Then
+        If coursGroupe = Nothing Then
             groupeNo = 1
         Else
-            groupeNo = entClient.GroupeJeu.Where(Function(n) n.Cours_idCours = ddlCoursNo).OrderBy(Function(n) n.noGroupe).[Select](Function(n) n.noGroupe).Max
+            groupeNo = entClient.GroupeJeu.Where(Function(n) n.Cours_idCours = coursNo).OrderBy(Function(n) n.noGroupe).[Select](Function(n) n.noGroupe).Max
             groupeNo += 1
         End If
 
-        groupe = GroupeJeu.CreateGroupeJeu(0, ddlCoursNom + CType(groupeNo, String), txtNbMax.Text, ddlCoursNo, groupeNo)
-        entClient.GroupeJeu.AddObject(groupe)
-        entClient.SaveChanges()
-        listeGroupe.DataBind()
+        e.Values("nomGroupe") = coursNom + CType(groupeNo, String)
+        e.Values("noGroupe") = groupeNo
+        e.Values("Cours_idCours") = coursNo
 
     End Sub
 
 End Class
+

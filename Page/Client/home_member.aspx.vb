@@ -126,11 +126,6 @@ Partial Class Page_Client_home_member
 
     End Sub
 
-    Protected Sub lvCourriel_ItemUpdated(sender As Object, e As System.Web.UI.WebControls.ListViewUpdatedEventArgs) Handles lvCourriel.ItemUpdated
-        FormsAuthentication.SignOut()
-        Response.Redirect("~/Page/login.aspx")
-    End Sub
-
     'Met à jour le courriel à partir du textBox
     Protected Sub lvCourriel_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvCourriel.ItemUpdating
         Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
@@ -180,9 +175,6 @@ Partial Class Page_Client_home_member
     End Sub
 
 #Region "TRAITEMENT DES ERREURS"
-
-#End Region
-
     Protected Sub dsListView_Updated(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsListView.Updated
         If e.Exception IsNot Nothing Then
             traiteErreur(Page, "ERREUR LORS DE LA MISE À JOUR DE VOTRE COMPTE", e.Exception)
@@ -196,4 +188,19 @@ Partial Class Page_Client_home_member
             lblFelicitation.Text = "Vos informations ont &eacute;t&eacute; mis &agrave; jour avec succ&egrave;s !"
         End If
     End Sub
+
+    Protected Sub lvCourriel_ItemUpdated(sender As Object, e As System.Web.UI.WebControls.ListViewUpdatedEventArgs) Handles lvCourriel.ItemUpdated
+        If e.Exception IsNot Nothing Then
+            traiteErreur(Page, "ERREUR LORS DE LA MISE À JOUR DE VOTRE COURRIEL", e.Exception)
+            e.ExceptionHandled = True
+            failImage.Visible = True
+            lblFailure.Visible = True
+            lblFailure.Text = "Une erreur s'est produite lors de la mise &agrave; jour du courriel."
+        Else
+            FormsAuthentication.SignOut()
+            Response.Redirect("~/Page/login.aspx")
+        End If
+    End Sub
+#End Region
+    
 End Class

@@ -11,6 +11,12 @@ Imports System.Web.UI.WebControls.WebParts
 Imports System.Web.UI.HtmlControls
 Imports System.Web.HttpRequest
 Imports System.Web.Services
+Imports System
+Imports System.Collections
+Imports System.Linq
+Imports System.Web.Services.Protocols
+Imports System.Xml.Linq
+Imports System.Collections.Generic
 Imports modelCLS
 Imports System.IO
 
@@ -43,6 +49,28 @@ Public Class masterPage
             End If
         Next c
     End Sub
+
+    Protected Function GetCssName(container As Object) As String
+        If container IsNot Nothing Then
+            If container.[GetType]() Is GetType(ListViewDataItem) Then
+                If (DirectCast(container, ListViewDataItem).DisplayIndex Mod 2) = 0 Then
+                    Return "even"
+                Else
+                    Return "odd"
+                End If
+            End If
+        End If
+        Return Nothing
+    End Function
+
+    <System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>
+    Public Shared Function GetCompletionListSearch(ByVal prefixText As String, ByVal count As Integer) As String()
+
+        Dim entClient As modelCLSContainer = New modelCLSContainer
+
+        Return entClient.CoursJeu.Where(Function(n) n.nomCours.StartsWith(prefixText)).OrderBy(Function(n) n.nomCours).[Select](Function(n) n.nomCours).Take(count).ToArray()
+
+    End Function
 
     Protected Sub Page_Error(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Error
         Dim erreur As Exception = Server.GetLastError

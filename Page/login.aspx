@@ -8,7 +8,7 @@
         </div>
         <br />
         <asp:Login ID="loginCLS" runat="server" DisplayRememberMe="false" Width="360px" UserNameLabelText="Adresse courriel: "
-            TitleText="" RememberMeSet="true" RememberMeText="" FailureText="Le nom d'utilisateur ou le mot de passe ne correspond pas.">
+            TitleText="" RememberMeSet="true" RememberMeText="" FailureText="Le nom d'utilisateur ou le mot de passe ne correspond pas." onKeyDown>
             <LoginButtonStyle CssClass="btn btn-primary btn-large btn" />
             <TextBoxStyle CssClass="search-query" BorderColor="#1b1bb3" ForeColor="#1b1bb3" BackColor="#ffbf00" BorderWidth="2px" />
         </asp:Login>

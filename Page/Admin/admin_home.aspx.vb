@@ -1,8 +1,7 @@
-﻿Imports masterPage
-Imports modelCLS
+﻿Imports modelCLS
 
 Partial Class Page_Admin_admin_home
-    Inherits System.Web.UI.Page
+    Inherits masterPage
 
     Public entClient As modelCLSContainer = New modelCLSContainer
 

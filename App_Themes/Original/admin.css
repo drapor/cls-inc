@@ -238,36 +238,36 @@
     margin:4px;
 } 
           
-        .accordionHeader {  
-            border: 1px solid #2F4F4F;  
-            color: white;  
-            text-align:center;
-            background-color: #2E4d7B;  
-            font-family: Arial, Sans-Serif;  
-            font-size: 12px;  
-            font-weight: bold;  
-            padding: 5px;  
-            margin-top: 5px;  
-            cursor: pointer;  
-        }  
+.accordionHeader {  
+    border: 1px solid #2F4F4F;  
+    color: white;  
+    text-align:center;
+    background-color: #2E4d7B;  
+    font-family: Arial, Sans-Serif;  
+    font-size: 12px;  
+    font-weight: bold;  
+    padding: 5px;  
+    margin-top: 5px;  
+    cursor: pointer;  
+} 
           
-        .accordionHeaderSelected {  
-            border: 1px solid #2F4F4F;  
-            color: white; 
-            text-align:center; 
-            background-color: #5078B3;  
-            font-family: Arial, Sans-Serif;  
-            font-size: 12px;  
-            font-weight: bold;  
-            padding: 5px;  
-            margin-top: 5px;  
-            cursor: pointer;  
-        }  
+.accordionHeaderSelected {  
+    border: 1px solid #2F4F4F;  
+    color: white; 
+    text-align:center; 
+    background-color: #5078B3;  
+    font-family: Arial, Sans-Serif;  
+    font-size: 12px;  
+    font-weight: bold;  
+    padding: 5px;  
+    margin-top: 5px;  
+    cursor: pointer;  
+}  
           
-        .accordionContent {  
-            background-color: #D3DEEF;  
-            border: 1px solid #2F4F4F;  
-            border-top: none;  
-            padding: 5px;  
-            padding-top: 10px;  
-        } 
+.accordionContent {  
+    background-color: #D3DEEF;  
+    border: 1px solid #2F4F4F;  
+    border-top: none;  
+    padding: 5px;  
+    padding-top: 10px;  
+} 

@@ -45,14 +45,40 @@ Partial Class Site
             Else
                 imgCart.Visible = True
                 lnkNumberItemCart.Visible = True
-                Dim cookie As HttpCookie = Request.Cookies("noPanier")
-                If cookie Is Nothing Then
+
+                Dim membreConnecter As MembresJeu = (From A In entPanier.MembresJeu Where (A.courriel = HttpContext.Current.User.Identity.Name) Select A).FirstOrDefault
+                Dim idMembreConnecter As Integer = membreConnecter.idMembre
+                Dim panierExistant As PanierJeu = (From A In entPanier.PanierJeu Where (A.MembresJeu_idMembre = idMembreConnecter) Select A).FirstOrDefault
+                If panierExistant IsNot Nothing Then
+                    Dim nbItemCart As Integer = (From A In entPanier.ItemPanierJeu Where (A.Panier_idCommande = panierExistant.idCommande) Select A).Count
+                    Dim panierCookie As HttpCookie = Request.Cookies("panier")
+                    If panierCookie IsNot Nothing Then
+                        Dim nouveauCookie As New HttpCookie("panier")
+                        lnkNumberItemCart.Text = "(" & nbItemCart & ")"
+                        nouveauCookie.Values("idPanier") = panierExistant.idCommande
+                        nouveauCookie.Values("idMembre") = panierExistant.MembresJeu_idMembre
+                        nouveauCookie.Expires = System.DateTime.Now.AddDays(365)
+                        Response.Cookies.Add(nouveauCookie)
+                    Else
+                        Dim nouveauCookie As New HttpCookie("panier")
+                        nouveauCookie.Values("idPanier") = panierExistant.idCommande
+                        nouveauCookie.Values("idUser") = panierExistant.MembresJeu_idMembre
+                        nouveauCookie.Expires = System.DateTime.Now.AddDays(365)
+                        Response.Cookies.Add(nouveauCookie)
+                        lnkNumberItemCart.Text = "(" & nbItemCart & ")"
+                    End If
                 Else
-                    Dim noPanier As Integer = cookie.Values("noPanier")
-                    Dim utilisateur As Integer = (From A In entPanier.ItemPanierJeu Where (A.Panier_idCommande = noPanier) Select A).Count
-                    lnkNumberItemCart.Text = "(" & utilisateur & ")"
+                    lnkNumberItemCart.Text = "(0)"
+                    Dim nouveauCookie As New HttpCookie("panier")
+                    nouveauCookie.Values("idMembre") = Session("idUser")
+                    Dim unPanier As PanierJeu = Nothing
+                    unPanier = PanierJeu.CreatePanierJeu(0, Session("idUser"))
+                    entPanier.PanierJeu.AddObject(unPanier)
+                    entPanier.SaveChanges()
+                    nouveauCookie.Values("idPanier") = unPanier.idCommande
+                    nouveauCookie.Expires = System.DateTime.Now.AddDays(365)
+                    Response.Cookies.Add(nouveauCookie)
                 End If
-                
             End If
 
             If (Session("membreIDList") IsNot Nothing) Then

@@ -7,9 +7,8 @@ Imports System.Web.Services.Protocols
 Imports System.Xml.Linq
 Imports System.Collections.Generic
 Imports modelCLS
-Imports masterPage
 Partial Class Page_Admin_admin_membre
-    Inherits System.Web.UI.Page
+    Inherits masterPage
 
     Dim entClient As modelCLSContainer = New modelCLSContainer
 

@@ -28,8 +28,8 @@
             </LayoutTemplate>
             <ItemTemplate>
                 <div class="blockInfos">
-                    <asp:Label ID="lblSessionText" SkinID="lblInfos" runat="server" Text="Session: "></asp:Label>
-                    <asp:Label ID="lblSession" runat="server" Text="Automne 2012"></asp:Label><br />
+                    <asp:Label ID="lblTarifTexte" SkinID="lblInfos" runat="server" Text="Tarif: "></asp:Label>
+                        <asp:Label ID="lblTarif" runat="server" Text='<%#Eval ("tarif")&"$" %>'></asp:Label><br />
                     <asp:Label ID="lblPeriodeDeCoursText" SkinID="lblInfos" runat="server" Text="Période de cours: "></asp:Label>
                     <asp:Label ID="lblPeriodeDeCours" runat="server" Text='<%# "Du " +((CType(Eval("dateDebutCours"),DateTime)).ToString("D"))+ " au "+((CType(Eval("dateFinCours"),DateTime)).ToString("D"))%>'></asp:Label><br />
                     <asp:Label ID="lblPeriodeInscriptionText" SkinID="lblInfos" runat="server" Text="Période d'inscription: "></asp:Label>
@@ -47,39 +47,32 @@
                     <asp:Label ID="lblDescription" Text='<%# Eval("description") %>' runat="server"></asp:Label>
                 </div>
                 <asp:HiddenField ID="hiddenNomCours" Value='<%# Eval("nomCours") %>' runat="server" />
-                <div class="section">
-                    <div class="sectionTitre">
-                        <asp:Label ID="lblDescriptionCouts" runat="server" Text="Description des coûts"></asp:Label>
-                    </div>
-                </div>
-                <div class="blockCout">
-                    <div class="blockTarif">
-                        <asp:Label ID="lblTarifTexte" SkinID="lblInfos" runat="server" Text="Tarif: "></asp:Label>
-                        <asp:Label ID="lblTarif" runat="server" Text='<%#Eval ("tarif")&"$" %>'></asp:Label><br />
-                    </div>
-                </div>
             </ItemTemplate>
         </asp:ListView>
-        <asp:ListView ID="lvGroupes" runat="server" DataSourceID="dsGroupes" DataKeyNames="idGroupe">
+        <asp:ListView ID="lvGroupes" runat="server" DataSourceID="dsGroupes" DataKeyNames="idGroupe"
+            OnItemDataBound="lvGroupes_ItemDataBound">
             <LayoutTemplate>
                 <div class="infoCours">
                     <div class="section">
                         <div class="sectionTitre">
                             <asp:Label ID="lblHoraire" runat="server" Text="Horaires et places disponibles"></asp:Label>
+                            <div style="margin-left: 676px; margin-top: 15px;">
+                                <asp:Button ID="btnInscriptionListeAttente" runat="server" Text="Inscrivez-moi à la liste d'attente"
+                                    CssClass="btn btn-success btnPadding" Visible="false" OnClick="inscriptionListeAttente"/></div>
                         </div>
                     </div>
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                 </div>
             </LayoutTemplate>
             <ItemTemplate>
-                <div class="blockGroupeLigne">
+                <div class="blockGroupeLigne" style="width: 900px;">
                     <div class="blockGroupe">
                         <asp:Label ID="lblNomGroupe" SkinID="lblInfos" runat="server" Text='<%#Eval ("nomGroupe")+": " %>'></asp:Label>
                     </div>
-                    <div class="blockGroupe">
+                    <div class="blockGroupe" style="width:200px;">
+                        <asp:HiddenField ID="hiddenNoGroupe" runat="server" Value='<%#Eval("idGroupe") %>' />
                         <asp:ListView ID="lvHoraire" runat="server" DataKeyNames="idHoraire" DataSourceID="dsHoraire">
                             <LayoutTemplate>
-                                <asp:HiddenField ID="hiddenNoGroupe" runat="server" Value='<%#Eval("idGroupe") %>' />
                                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                             </LayoutTemplate>
                             <ItemTemplate>
@@ -88,23 +81,29 @@
                                 <asp:Label ID="lblHeureFin" runat="server" Text='<%#Eval ("heureFin") %>'></asp:Label>
                                 <br />
                             </ItemTemplate>
+                            <EmptyDataTemplate>
+                                <asp:Label ID="lblNoSchedule" runat="server" Text="Aucune horaire pour le moment."></asp:Label></EmptyDataTemplate>
                         </asp:ListView>
                         <asp:EntityDataSource ID="dsHoraire" runat="server" ConnectionString="name=modelCLSContainer"
-                                    DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
-                                    EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.GroupeJeu_idGroupe = @groupeID "
-                                    Include="JourSemaineJeu">
-                                    <WhereParameters>
-                                        <asp:Parameter Name="groupeID" DbType="Int16" DefaultValue="1" />
-                                    </WhereParameters>
-                                </asp:EntityDataSource>
+                            DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
+                            EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.GroupeJeu_idGroupe = @groupeID"
+                            Include="JourSemaineJeu">
+                            <WhereParameters>
+                                <asp:Parameter Name="groupeID" DbType="Int16" DefaultValue="8" />
+                            </WhereParameters>
+                        </asp:EntityDataSource>
                     </div>
-                    <div class="blockGroupe">
+                    <div class="blockGroupe" style="width: 170px;">
                         <asp:Label ID="lblNbPlaceRestant" runat="server" Text="Nombre place restante: "></asp:Label>
-                        <asp:Label ID="lblNbPlace" runat="server" Text='<%#Eval("nbMax") %>'></asp:Label>
+                        <asp:Label ID="lblNbPlace" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="blockGroupe">
                         <asp:Button ID="btnJeMinscris" runat="server" Text="Inscription" CssClass="btn btn-small btn-primary"
                             OnClick="inscriptionCours" CommandArgument='<%# Eval("idGroupe") %>' CommandName="inscription" />
+                        <asp:Image ID="completeImage" runat="server" ImageUrl="~/App_Themes/Original/img/success.png"
+                            Visible="true" Height="22px" Width="22px" />
+                        <asp:Label ID="lblGroupeComplet" runat="server" ForeColor="Green" Text="Ce groupe est complet !"
+                            Visible="false"></asp:Label>
                     </div>
                 </div>
             </ItemTemplate>

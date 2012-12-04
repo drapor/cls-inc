@@ -22,20 +22,20 @@
 
 <div class="contenuClient">
 
-<div class="section">
-<div class="sectionTitre">
+<div class="section" style="width:900px;">
+<div class="sectionTitre" style="width:880px;">
     <asp:Label ID="infoPersonnel" runat="server" Text="Informations personnels"></asp:Label>
 </div>
 </div>  
     <asp:ListView ID="lvInfoMembre" runat="server" DataSourceID="dsListView" DataKeyNames="idMembre">
         <LayoutTemplate>
-            <div class="infoClient">
+            <div class="infoMembre" style="width:860px;">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </div>
         </LayoutTemplate>
         <ItemTemplate>
-            <div class="clientInfoGauche">
-                <div class="partiGauche">
+            <div class="membreInfo" style="width:430px;">
+                <div class="partiGauche" style="width:150px;">
                     <asp:Label ID="lblNom" runat="server" Text="Nom:"></asp:Label>
                     </br>
                     <asp:Label ID="lblAdresse" runat="server" Text="Adresse:"></asp:Label>
@@ -45,7 +45,7 @@
                     <asp:Label ID="lblNaissance" runat="server" Text="Date de naissance:"></asp:Label>
                 </div>
                 
-                <div class="partiDroite">
+                <div class="partiDroite" style="width:250px;">
                     <asp:Label ID="lblNomClient" runat="server" Text='<%# Eval("nomMembre") %>'></asp:Label>
                     </br>
                     <asp:Label ID="lblAdresseClient" runat="server" Text='<%# Eval("adresse") %>'></asp:Label>
@@ -57,8 +57,8 @@
                 </div>
             </div>
 
-            <div class="clientInfoDroite">
-                <div class="partiGauche">
+            <div class="membreInfo" style="width:430px;">
+                <div class="partiGauche" style="width:150px;">
                     <asp:Label ID="lblPrenom" runat="server" Text="Prénom:"></asp:Label>
                     </br>
                     <asp:Label ID="lblPostal" runat="server" Text="Code postal:"></asp:Label>
@@ -68,7 +68,7 @@
                     <asp:Label ID="lblDateInscription" runat="server" Text="Date d'inscription:"></asp:Label>
                 </div>
                 
-                <div class="partiDroite">
+                <div class="partiDroite" style="width:250px;">
                     <asp:Label ID="lblPrenomClient" runat="server" Text='<%# Eval("prenomMembre") %>'></asp:Label>
                     </br>
                     <asp:Label ID="lblPostalClient" runat="server" Text='<%# Eval("codePostal") %>'></asp:Label>
@@ -85,8 +85,8 @@
         </ItemTemplate>
 
         <EditItemTemplate>
-        <div class="clientEditInfo">
-                <div class="partiGauche">
+        <div class="membreInfo" style="width:860px;">
+                <div class="partiGauche" style="width:150px;">
                     <div class="formatZone">
                         <asp:Label ID="lblPrenom" runat="server" Text="Prénom:"></asp:Label>
                     </div>
@@ -116,7 +116,7 @@
                     </div>
                 </div>
                 
-                <div class="partiDroite" >
+                <div class="partiDroite" style="width:250px;">
                     <div class="formatZone">
                         <asp:TextBox ID="txtPrenomClient" SkinID="txtBoxYellow" runat="server" CssClass="search-query" Text='<%# Bind("prenomMembre") %>'></asp:TextBox>
                     </div>
@@ -188,24 +188,24 @@
     </asp:ListView><%--ListView informations personnelles--%>
     
 
-<div class="section">
-    <div class="sectionTitre">
+<div class="section" style="width:900px;">
+    <div class="sectionTitre" style="width:880px;">
         <asp:Label ID="lblTitreCourriel" runat="server" Text="Courriel"></asp:Label>
     </div>
 </div>
 <asp:ListView ID="lvCourriel" runat="server" DataSourceID="dsListView" DataKeyNames="idMembre">
         <LayoutTemplate>
-            <div class="infoClient">
+            <div class="infoMembre" style="width:860px;">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </div>
         </LayoutTemplate>
         <ItemTemplate>
-                <div class="partiGaucheCourriel">
+                <div class="partiGauche" style="width:120px; font-size:16px; font-weight:bolder; line-height:25px;">
                     <asp:Label ID="lblCourriel" runat="server" Text="Votre courriel:" Font-Bold="True"></asp:Label>
                     </br>            
                 </div>
                 
-                <div class="partiDroiteCourriel">
+                <div class="partiDroite" style="font-size:16px; font-weight:bolder; line-height:25px; font-family:Times New Roman;">
                     <asp:Label ID="lblCourrielClient" runat="server" Text='<%# Eval("courriel") %>' ></asp:Label>
                     </br>      
                 </div>
@@ -215,7 +215,7 @@
                 </div>
           </ItemTemplate>
           <EditItemTemplate>
-          <div class="partiGaucheCourrielEdit">
+          <div class="partiGauche" style="width:250px;">
                     <div class="formatZone">
                         <asp:Label ID="lblCourriel" runat="server" Text="Votre présent courriel:"></asp:Label>
                     </div>
@@ -228,7 +228,7 @@
                         <asp:Label ID="lblNouveauCourrielEncore" runat="server" Text="Retapez votre nouveau courriel:"></asp:Label>
                     </div>
                 </div>
-                <div class="partiDroiteCourrielEdit">
+                <div class="partiDroite" style="width:230px;">
                     <div class="formatZone">
                         <asp:Label ID="lblCourrielPresent" runat="server" CssClass="search-query" Text='<%# Eval("courriel") %>'></asp:Label>
                     </div>
@@ -240,7 +240,7 @@
                     <div class="formatZone">
                         <asp:TextBox ID="txtNouveauCourrielConfirme" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text=""></asp:TextBox>
                     </div>
-                    <div class="boutonCourriel">
+                    <div class="boutonSelection">
                         <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
                         <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Annuler" CssClass="btn btn-primary btn-small" />
                     </div>
@@ -250,6 +250,7 @@
                     <div class="formatZone" style="font-size:small; margin-top:-20px; color:#08C;">
                         <asp:Label ID="lblNoteChangeEmail" runat="server" Text="*Vous serez redirigez vers la page de connection."></asp:Label>
                     </div>
+                    <br />
                     <div class="formatZone">
                         <asp:RequiredFieldValidator ID="courrielRequis" runat="server" ErrorMessage="*Une addresse courriel est requise!" ControlToValidate='txtNouveauCourriel' ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>  
                         <asp:RegularExpressionValidator ID="regExCourriel" runat="server" ErrorMessage="*Veuillez entrer une adresse dans <br/> le format adresse@courriel.com!" ControlToValidate="txtNouveauCourriel" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"></asp:RegularExpressionValidator>
@@ -265,15 +266,15 @@
           </EditItemTemplate>
 </asp:ListView>
 
-<div class="section">
-    <div class="sectionTitre">
+<div class="section" style="width:900px;">
+    <div class="sectionTitre" style="width:880px;">
         <asp:Label ID="lblTitreMotPasse" runat="server" Text="Mot de passe"></asp:Label>
     </div>
 </div>
 
 <asp:ListView ID="lvMotPasse" runat="server" DataSourceID="dsListView" DataKeyNames="idMembre">
         <LayoutTemplate>
-            <div class="infoClient">
+            <div class="infoMembre" style="width:860px;">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </div>
         </LayoutTemplate>
@@ -283,7 +284,7 @@
                 </div>
         </ItemTemplate>
         <EditItemTemplate>
-        <div class="partiGaucheMotPasse">
+        <div class="partiGauche" style="width:250px; line-height:25px;">
                     <div class="formatZone">
                         <asp:Label ID="lblMP" runat="server" Text="Présent mot de passe:"></asp:Label>
                     </div>
@@ -296,7 +297,7 @@
                         <asp:Label ID="lblNouveauMPEncore" runat="server" Text="Retapez nouveau mot de passe:"></asp:Label>
                     </div>
                 </div>
-                <div class="partiDroiteMotPasse">
+                <div class="partiDroite" style="width:250px; line-height:25px;">
                     <div class="formatZone">
                         <asp:TextBox ID="txtPresentMP" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text="" TextMode="Password"></asp:TextBox>
                     </div>
@@ -308,7 +309,7 @@
                     <div class="formatZone">
                         <asp:TextBox ID="txtNouveauMPConfirme" runat="server" SkinID="txtBoxYellow" CssClass="search-query" Text="" TextMode="Password"></asp:TextBox>
                     </div>
-                    <div class="boutonMotPasse">
+                    <div class="boutonSelection">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
                     <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" CausesValidation="false" Text="Annuler" CssClass="btn btn-primary btn-small" />
                 </div>
@@ -334,8 +335,8 @@
         </EditItemTemplate>
 </asp:ListView> 
 
-<div class="section">
-<div class="sectionTitre">
+<div class="section" style="width:900px;">
+<div class="sectionTitre" style="width:880px;">
     <asp:Label ID="lblMembreFamille" runat="server" Text="Membre(s) de la famille"></asp:Label>
     <div class="sectionTitreRight">
         <asp:LinkButton ID="btnAjouterFamille" runat="server" Text="Ajouter membre" PostBackUrl="~/Page/Client/member_family_add.aspx"></asp:LinkButton>
@@ -345,7 +346,7 @@
 
 <asp:ListView ID="lvFamille" runat="server" DataSourceID="dsFamille" DataKeyNames="idMembre">
         <LayoutTemplate>
-            <div class="infoClient">
+            <div class="infoMembre" style="width:860px;">
                 <div class="titreGauche">
                     <asp:Label ID="lblTitreNomFamille" runat="server" Text="Nom du membre:"></asp:Label>
                 </div>
@@ -376,8 +377,8 @@
         </ItemTemplate>
 </asp:ListView>
 
-<div class="section">
-<div class="sectionTitre">
+<div class="section" style="width:900px;">
+<div class="sectionTitre" style="width:880px;">
     <asp:Label ID="lblHistoriqueAbonnement" runat="server" Text="Historique des abonnements (5 derniers)"></asp:Label>
     <div class="sectionTitreRight">
         <asp:LinkButton ID="btnHistorique" runat="server" Text="Afficher l'historique" PostBackUrl="~/Page/Client/member_historique.aspx"></asp:LinkButton>
@@ -387,7 +388,7 @@
 
 <asp:ListView ID="lvAbonnement" runat="server" DataSourceID="dsListView" DataKeyNames="idMembre">
         <LayoutTemplate>
-            <div class="infoClient">
+            <div class="infoMembre" style="width:860px;">
                 <div class="titreGauche">
                     <asp:Label ID="lblTitreActivite" runat="server" Text="Nom de l'activité:"></asp:Label>
                 </div>
