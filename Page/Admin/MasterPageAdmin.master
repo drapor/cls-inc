@@ -117,11 +117,7 @@
                                 </li>
                                 <li>
                                     <asp:LinkButton ID="btnClientModifie" runat="server" OnClick="actionModifieMembre"
-                                        Text="modifier un membre" CausesValidation="false"></asp:LinkButton>
-                                </li>
-                                <li>
-                                    <asp:LinkButton ID="btnClientSupprime" runat="server" OnClick="actionSupprimeMembre"
-                                        Text="Supprimer un membre" CausesValidation="false"></asp:LinkButton>
+                                        Text="modifier/Supprimer membre" CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>
                         </Content>
@@ -165,6 +161,10 @@
                                 </li>
                                 <li>
                                     <asp:LinkButton ID="btnListeRapportAnimateur" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_animateur.aspx" Text="Rapport animateur"
+                                        CausesValidation="false"></asp:LinkButton>
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="btnListeRapportCours" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_cours.aspx" Text="Rapport cours"
                                         CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>

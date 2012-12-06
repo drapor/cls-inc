@@ -74,9 +74,4 @@ Partial Class Page_Admin_MasterPageAdmin
         Response.Redirect(url)
     End Sub
 
-    Sub actionSupprimeMembre(sender As Object, e As EventArgs)
-        Dim url As String = "~/Page/Admin/admin_membre.aspx?view=" & 2
-        Response.Redirect(url)
-    End Sub
-
 End Class
