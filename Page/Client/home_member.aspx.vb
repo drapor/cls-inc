@@ -33,6 +33,8 @@ Partial Class Page_Client_home_member
 
         dsListView.WhereParameters("membreID").DefaultValue = idClient
 
+        dsAbonnement.WhereParameters("membreID").DefaultValue = idClient
+
         dsFamille.WhereParameters("idFamille").DefaultValue = idFamille
 
     End Sub
@@ -46,7 +48,6 @@ Partial Class Page_Client_home_member
 
         If e.CommandName = "Edit" Then
             btnAjouterFamille.Visible = False
-            btnHistorique.Visible = False
             btnHideCourriel.Visible = False
             btnHideMP.Visible = False
             'btnHideAfficherFamille.Visible = False
@@ -54,7 +55,6 @@ Partial Class Page_Client_home_member
 
         Else
             btnAjouterFamille.Visible = True
-            btnHistorique.Visible = True
             btnHideCourriel.Visible = True
             btnHideMP.Visible = True
             'btnHideAfficherFamille.Visible = True
@@ -71,7 +71,6 @@ Partial Class Page_Client_home_member
 
         If e.CommandName = "Edit" Then
             btnAjouterFamille.Visible = False
-            btnHistorique.Visible = False
             btnHideInfo.Visible = False
             btnHideMP.Visible = False
             'btnHideAfficherFamille.Visible = False
@@ -80,7 +79,6 @@ Partial Class Page_Client_home_member
 
         Else
             btnAjouterFamille.Visible = True
-            btnHistorique.Visible = True
             btnHideInfo.Visible = True
             btnHideMP.Visible = True
             'btnHideAfficherFamille.Visible = True
@@ -96,7 +94,6 @@ Partial Class Page_Client_home_member
 
         If e.CommandName = "Edit" Then
             btnAjouterFamille.Visible = False
-            btnHistorique.Visible = False
             btnHideInfo.Visible = False
             btnHideCourriel.Visible = False
             'btnHideAfficherFamille.Visible = False
@@ -104,7 +101,6 @@ Partial Class Page_Client_home_member
 
         Else
             btnAjouterFamille.Visible = True
-            btnHistorique.Visible = True
             btnHideInfo.Visible = True
             btnHideCourriel.Visible = True
             'btnHideAfficherFamille.Visible = True
@@ -203,4 +199,10 @@ Partial Class Page_Client_home_member
     End Sub
 #End Region
     
+    Protected Sub lvAbonnement_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvAbonnement.ItemDataBound
+        Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
+        Dim dataSourceHoraire As EntityDataSource = FindChildControl(Of EntityDataSource)(dataItem, "dsHoraire")
+        Dim idGroupe As Integer = FindChildControl(Of HiddenField)(lvAbonnement, "hiddenNoGroupe").Value
+        dataSourceHoraire.WhereParameters("groupeID").DefaultValue = idGroupe
+    End Sub
 End Class

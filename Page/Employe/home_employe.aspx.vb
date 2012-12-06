@@ -1,13 +1,30 @@
-﻿Imports masterPage
-Imports modelCLS
+﻿Imports modelCLS
 
 Partial Class Page_Employe_home_employe
-    Inherits System.Web.UI.Page
+    Inherits masterPage
 
     Public entClient As modelCLSContainer = New modelCLSContainer
 
+    Dim idFamille As Integer = Nothing
+
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         dsListView.WhereParameters("membreID").DefaultValue = Session("idUser")
+
+        Dim famille = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).Any
+
+        If famille = Nothing Then
+            idFamille = 1
+        Else
+            idFamille = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).Max
+        End If
+
+        If dropDownType.SelectedValue = 0 Then
+            MVPrincipal.ActiveViewIndex = 0
+            dsMembre.OrderBy = "it.nomMembre"
+        Else
+            MVPrincipal.ActiveViewIndex = 1
+            dsMembre.OrderBy = "it.courriel"
+        End If
     End Sub
 
     Protected Sub lvInfoMembre_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvInfoMembre.ItemCommand
@@ -52,6 +69,14 @@ Partial Class Page_Employe_home_employe
             btnHideInfo.Visible = True
             btnHideCourriel.Visible = True
         End If
+    End Sub
+
+    Protected Sub lvNouveauMembre_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvNouveauMembre.ItemInserting
+        Dim rolePrincipal As Short = 3
+
+        e.Values("dateInscription") = Date.Now.ToShortDateString
+        e.Values("familleID") = CType(idFamille + 1, Short)
+        e.Values("RoleJeu_idRole") = rolePrincipal
     End Sub
 
     Protected Sub lvCourriel_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvCourriel.ItemUpdating
@@ -102,7 +127,19 @@ Partial Class Page_Employe_home_employe
         MVEmploye.ActiveViewIndex = 1
     End Sub
 
-    'Sub actionModifie(sender As Object, e As EventArgs)
-    '    MVEmploye.ActiveViewIndex = 0
-    'End Sub
+    Sub actionModifie(sender As Object, e As EventArgs)
+        MVEmploye.ActiveViewIndex = 2
+    End Sub
+
+    Protected Sub lvMembreCourriel_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMembreCourriel.ItemCommand
+        Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
+        Dim idMembre As Integer = lvMembreCourriel.DataKeys(dataItem.DisplayIndex).Value.ToString()
+
+        Session("idMembre") = idMembre
+
+        If e.CommandName = "Afficher" Then
+            Response.Redirect("../Employe/employe_home_member.aspx")
+        End If
+
+    End Sub
 End Class

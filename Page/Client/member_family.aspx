@@ -7,23 +7,23 @@
 <h3><asp:Label ID="lblNomUtilisateur" runat="server" Text="Compte membre famille"></asp:Label></h3>
 </div>
 
-<div class="contenuClient">
+<div class="contenuClient" style="min-height: 300px;">
 
-<div class="section">
-<div class="sectionTitre">
+<div class="section" style="width:900px;">
+<div class="sectionTitre" style="width:900px;">
     <asp:Label ID="infoPersonnel" runat="server" Text="Informations personnels"></asp:Label>
 </div>
 </div>  
 
     <asp:ListView ID="lvInfoMembre" runat="server" DataSourceID="dsFamille" DataKeyNames="idMembre">
         <LayoutTemplate>
-            <div class="infoClient">
+            <div class="infoMembre" style="width:860px;">
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </div>
         </LayoutTemplate>
         <ItemTemplate>
-            <div class="clientInfoGauche">
-                <div class="partiGauche">
+            <div class="membreInfo" style="width:430px;">
+                <div class="partiGauche" style="width:150px;">
                     <asp:Label ID="lblNom" runat="server" Text="Nom:"></asp:Label>
                     </br>
                     <asp:Label ID="lblAdresse" runat="server" Text="Adresse:"></asp:Label>
@@ -33,7 +33,7 @@
                     <asp:Label ID="lblNaissance" runat="server" Text="Date de naissance:"></asp:Label>
                 </div>
                 
-                <div class="partiDroite">
+                <div class="partiDroite" style="width:250px;">
                     <asp:Label ID="lblNomClient" runat="server" Text='<%# Eval("nomMembre") %>'></asp:Label>
                     </br>
                     <asp:Label ID="lblAdresseClient" runat="server" Text='<%# Eval("adresse") %>'></asp:Label>
@@ -44,8 +44,8 @@
                 </div>
             </div>
 
-            <div class="clientInfoDroite">
-                <div class="partiGauche">
+            <div class="membreInfo" style="width:430px;">
+                <div class="partiGauche" style="width:150px;">
                     <asp:Label ID="lblPrenom" runat="server" Text="Prénom:"></asp:Label>
                     </br>
                     <asp:Label ID="lblPostal" runat="server" Text="Code postal:"></asp:Label>
@@ -55,12 +55,12 @@
                     <asp:Label ID="lblDateInscription" runat="server" Text="Date d'inscription:"></asp:Label>
                 </div>
                 
-                <div class="partiDroite">
+                <div class="partiDroite" style="width:250px;">
                     <asp:Label ID="lblPrenomClient" runat="server" Text='<%# Eval("prenomMembre") %>'></asp:Label>
                     </br>
-                    <asp:Label ID="lblVilleClient" runat="server" Text='<%# Eval("ville") %>'></asp:Label>
-                    </br>
                     <asp:Label ID="lblPostalClient" runat="server" Text='<%# Eval("codePostal") %>'></asp:Label>
+                    </br>
+                    <asp:Label ID="lblVilleClient" runat="server" Text='<%# Eval("ville") %>'></asp:Label>
                     </br>
                     <asp:Label ID="lblDateInscriptionClient" runat="server" Text='<%# (CType(Eval("dateInscription"),DateTime)).ToShortDateString %>'></asp:Label>
                 </div>
@@ -72,8 +72,8 @@
         </ItemTemplate>
 
         <EditItemTemplate>
-        <div class="clientEditInfo">
-                <div class="partiGauche">
+        <div class="membreInfo" style="width:860px;">
+                <div class="partiGauche" style="width:150px;">
                     <div class="formatZone">
                         <asp:Label ID="lblPrenom" runat="server" Text="Prénom:"></asp:Label>
                     </div>
@@ -103,7 +103,7 @@
                     </div>
                 </div>
                 
-                <div class="partiDroite" >
+                <div class="partiDroite" style="width:250px;">
                     <div class="formatZone">
                         <asp:TextBox ID="txtPrenomClient" SkinID="txtBoxYellow" runat="server" Text='<%# Bind("prenomMembre") %>'></asp:TextBox>
                     </div>
@@ -170,7 +170,7 @@
 
                 <div class="bouton">
                     <asp:Button ID="btnAccepter" runat="server" CommandName="Update" Text="Accepter" CssClass="btn btn-primary btn-small" />
-                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Canceler" CssClass="btn btn-primary btn-small" />
+                    <asp:Button ID="btnCancel" runat="server" CommandName="Cancel" Text="Annuler" CssClass="btn btn-primary btn-small" CausesValidation="false" />
                 </div>
            </div>
         </EditItemTemplate>
@@ -178,37 +178,75 @@
 
 <div class="section">
 <div class="sectionTitre">
-    <asp:Label ID="lblHistoriqueAbonnement" runat="server" Text="Historique des abonnements (5 derniers)"></asp:Label>
-    <div class="sectionTitreRight">
+    <asp:Label ID="lblHistoriqueAbonnement" runat="server" Text="Historique des abonnements"></asp:Label>
+    <%--<div class="sectionTitreRight">
         <asp:LinkButton ID="btnHistorique" runat="server" Text="Afficher l'historique" PostBackUrl="~/Page/Client/member_historique.aspx"></asp:LinkButton>
-    </div>
+    </div>--%>
 </div>
 </div>  
 
-<asp:ListView ID="lvAbonnement" runat="server" DataSourceID="dsFamille" DataKeyNames="idMembre">
+<asp:ListView ID="lvAbonnement" runat="server" DataSourceID="dsAbonnement" DataKeyNames="idAbonnement">
         <LayoutTemplate>
-            <div class="infoClient">
-                <div class="titreGauche">
+            <div class="infoMembre" style="width:860px;">
+                <div class="titre" style="width:300px;">
                     <asp:Label ID="lblTitreActivite" runat="server" Text="Nom de l'activité:"></asp:Label>
                 </div>
-                <div class="titreDroit">
+                <div class="titre" style="width:300px;">
                     <asp:Label ID="lblTitreAbonnement" runat="server" Text="Date d'abonnement:"></asp:Label>
+                </div>
+                <div class="titre" style="width:250px;">
+                    <asp:Label ID="lblTitreHoraire" runat="server" Text="Horaire de l'activité:"></asp:Label>
                 </div>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </div>
         </LayoutTemplate>
         <ItemTemplate>
-            <div class="contenuGauche">
-                <asp:Label ID="lblActivite" runat="server" Text="Tennis"></asp:Label>
+            <div class="contenu" style="width:300px; margin-left:10px;">
+                <asp:Label ID="lblActivite" runat="server" Text='<%# Eval("GroupeJeu.CoursJeu.nomCours") %>'></asp:Label>
             </div>
-            <div class="contenuDroit">
-                <asp:Label ID="lblAbonnement" runat="server" Text="08/07/2011"></asp:Label>
+            <div class="contenu" style="width:300px;">
+                <asp:Label ID="lblAbonnement" runat="server" Text='<%# Bind("dateAbonnement", "{0:yyyy/MM/dd}") %>'></asp:Label>
+            </div>
+            <div class="contenu" style="width:250px;">
+                <asp:HiddenField ID="hiddenNoGroupe" runat="server" Value='<%#Eval("Groupe_idGroupe") %>' />
+                        <asp:ListView ID="lvHoraire" runat="server" DataKeyNames="idHoraire" DataSourceID="dsHoraire">
+                            <LayoutTemplate>
+                                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblJourSemaine" runat="server" Text='<%#Eval ("JourSemaineJeu.jourSemaine")+" de " %>'></asp:Label>
+                                <asp:Label ID="lblHeureDebut" runat="server" Text='<%#Eval ("heureDebut")+" à " %>'></asp:Label>
+                                <asp:Label ID="lblHeureFin" runat="server" Text='<%#Eval ("heureFin") %>'></asp:Label>
+                                <br />
+                            </ItemTemplate>                        
+                        </asp:ListView>
+                        <br />
+                <div>
+                        <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="lvHoraire"
+                            PageSize="5">
+                            <Fields>
+                                <asp:NextPreviousPagerField ShowPreviousPageButton="true" ShowNextPageButton="True" />
+                                <asp:NumericPagerField  />
+                            </Fields>
+                        </asp:DataPager>
+                </div>
+                        <asp:EntityDataSource ID="dsHoraire" runat="server" ConnectionString="name=modelCLSContainer"
+                            DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
+                            EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.GroupeJeu_idGroupe = @groupeID"
+                            Include="JourSemaineJeu">
+                            <WhereParameters>
+                                <asp:Parameter Name="groupeID" DbType="Int16" DefaultValue="8" />
+                            </WhereParameters>
+                        </asp:EntityDataSource>
             </div>
         </ItemTemplate>
+        <EmptyDataTemplate>
+             <div class="titre" style="margin-left:20px;">
+                <asp:Label ID="lblNoAbonnement" runat="server" Text="Vous n'avez pas d'abonnement."></asp:Label>
+            </div>
+        </EmptyDataTemplate>
 </asp:ListView>
-<div class="bouton">
-    <asp:Button ID="btnRetour" runat="server"  Text="Retour" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx" />
-</div>
+
 <script>
     $(function () {
         $(".datepicker").datepicker({
@@ -223,6 +261,9 @@
 </script>
 
 </div>
+<div class="bouton" style="margin-top:0px;">
+    <asp:Button ID="btnRetour" runat="server"  Text="Retour membre principal" CssClass="btn btn-primary btn-small" PostBackUrl="~/Page/Client/home_member.aspx" />
+</div>
 </div>
 
     <asp:EntityDataSource ID="dsFamille" runat="server" ConnectionString="name=modelCLSContainer"
@@ -232,6 +273,15 @@
     where="(@MembreID = it.idMembre)">
     <WhereParameters>
         <asp:Parameter Name="MembreID" Type="Int32" DefaultValue="0"/>
+    </WhereParameters>
+    </asp:EntityDataSource>
+
+    <asp:EntityDataSource ID="dsAbonnement" runat="server" ConnectionString="name=modelCLSContainer"
+    DefaultContainerName="modelCLSContainer" EntitySetName="AbonnementJeu" EnableFlattening="False"
+    EnableDelete="false" EnableInsert="false" EnableUpdate="false" orderBy="it.idAbonnement DESC"
+    Include="GroupeJeu, GroupeJeu.CoursJeu" where="(@membreID = it.Membres_idMembre)">
+    <WhereParameters>
+        <asp:Parameter Name="membreID" Type="Int32" DefaultValue="0"/>
     </WhereParameters>
     </asp:EntityDataSource>
 

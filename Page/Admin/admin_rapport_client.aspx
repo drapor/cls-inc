@@ -17,11 +17,11 @@
     <div id="contentStart">
         <asp:MultiView ID="MVPrincipal" runat="server" ActiveViewIndex="0">
             <asp:View ID="viewNom" runat="server">
-            <asp:Label ID="lblEmployeNom" runat="server" Text="Liste des Clients triés par nom de famille" Font-Size="20px"
+            <asp:Label ID="lblMembreNom" runat="server" Text="Liste des Clients triés par nom de famille" Font-Size="20px"
         Font-Bold="true" />
     <br />
     <br />
-                <asp:ListView ID="lvEmployeNom" runat="server" DataSourceID="dsMembre" DataKeyNames="idMembre">
+                <asp:ListView ID="lvMembreNom" runat="server" DataSourceID="dsMembre" DataKeyNames="idMembre">
                     <LayoutTemplate>
                         <table align="center" style="width: 100%; border: 1px solid #000000; font-weight: bolder;">
                             <tr style="background-color: #1800B8; color: White; font-size: 14px;">
@@ -78,11 +78,11 @@
                 </asp:ListView>
             </asp:View>
             <asp:View ID="viewCourriel" runat="server">
-            <asp:Label ID="lblEmployeCourriel" runat="server" Text="Liste des Clients triés par courriel" Font-Size="20px"
+            <asp:Label ID="lblMembreCourriel" runat="server" Text="Liste des Clients triés par courriel" Font-Size="20px"
         Font-Bold="true" />
     <br />
     <br />
-                <asp:ListView ID="lvEmployeCourriel" runat="server" DataSourceID="dsMembre" DataKeyNames="idMembre">
+                <asp:ListView ID="lvMembreCourriel" runat="server" DataSourceID="dsMembre" DataKeyNames="idMembre">
                     <LayoutTemplate>
                         <table align="center" style="width: 100%; border: 1px solid #000000; font-weight: bolder;">
                             <tr style="background-color: #1800B8; color: White; font-size: 14px;">

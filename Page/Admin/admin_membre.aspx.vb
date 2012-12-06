@@ -27,8 +27,14 @@ Partial Class Page_Admin_admin_membre
             MVPrincipal.ActiveViewIndex = 0
         ElseIf Request.QueryString("view") = 1 Then
             MVPrincipal.ActiveViewIndex = 1
+        End If
+
+        If dropDownType.SelectedValue = 0 Then
+            MVListe.ActiveViewIndex = 0
+            dsMembre.OrderBy = "it.nomMembre"
         Else
-            MVPrincipal.ActiveViewIndex = 2
+            MVListe.ActiveViewIndex = 1
+            dsMembre.OrderBy = "it.courriel"
         End If
     End Sub
 
@@ -60,35 +66,35 @@ Partial Class Page_Admin_admin_membre
         End If
     End Sub
 
-    Sub actionRecherche(sender As Object, e As EventArgs)
+    'Sub actionRecherche(sender As Object, e As EventArgs)
 
-        dsListView.WhereParameters("courriel").DefaultValue = txtCourriel.Text
+    '    dsListView.WhereParameters("courriel").DefaultValue = txtCourriel.Text
 
-    End Sub
+    'End Sub
 
-    Protected Sub lvMembre_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMembre.ItemCommand
-        Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
-        Dim idMembre As Integer = lvMembre.DataKeys(dataItem.DisplayIndex).Value.ToString()
+    'Protected Sub lvMembre_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMembre.ItemCommand
+    '    Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
+    '    Dim idMembre As Integer = lvMembre.DataKeys(dataItem.DisplayIndex).Value.ToString()
 
-        If e.CommandName = "modifier" Then
-            Session("idClient") = idMembre
-            Response.Redirect("../Employe/employe_home_member.aspx")
-        End If
-    End Sub
+    '    If e.CommandName = "modifier" Then
+    '        Session("idClient") = idMembre
+    '        Response.Redirect("../Employe/employe_home_member.aspx")
+    '    End If
+    'End Sub
 
-    Protected Sub lvMembreSupprime_ItemDeleted(sender As Object, e As System.Web.UI.WebControls.ListViewDeletedEventArgs) Handles lvMembreSupprime.ItemDeleted
-        txtCourrielSupprime.Text = ""
-        lblSupprime.Visible = True
-    End Sub
+    'Protected Sub lvMembreSupprime_ItemDeleted(sender As Object, e As System.Web.UI.WebControls.ListViewDeletedEventArgs) Handles lvMembreSupprime.ItemDeleted
+    '    txtCourrielSupprime.Text = ""
+    '    lblSupprime.Visible = True
+    'End Sub
 
-    <System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>
-    Public Shared Function GetCompletionList(ByVal prefixText As String, ByVal count As Integer) As String()
+    '<System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>
+    'Public Shared Function GetCompletionList(ByVal prefixText As String, ByVal count As Integer) As String()
 
-        Dim entClient As modelCLSContainer = New modelCLSContainer
+    '    Dim entClient As modelCLSContainer = New modelCLSContainer
 
-        Return entClient.MembresJeu.Where(Function(n) n.courriel.StartsWith(prefixText) And n.RoleJeu_idRole = 3).OrderBy(Function(n) n.courriel).[Select](Function(n) n.courriel).Take(count).ToArray()
+    '    Return entClient.MembresJeu.Where(Function(n) n.courriel.StartsWith(prefixText) And n.RoleJeu_idRole = 3).OrderBy(Function(n) n.courriel).[Select](Function(n) n.courriel).Take(count).ToArray()
 
-    End Function
+    'End Function
 
     Sub actionAjout(sender As Object, e As EventArgs)
         MVPrincipal.SetActiveView(viewAjout)
@@ -98,7 +104,7 @@ Partial Class Page_Admin_admin_membre
         MVPrincipal.SetActiveView(viewModifie)
     End Sub
 
-    Sub actionSupprime(sender As Object, e As EventArgs)
-        MVPrincipal.SetActiveView(viewSupprime)
-    End Sub
+    'Sub actionSupprime(sender As Object, e As EventArgs)
+    '    MVPrincipal.SetActiveView(viewSupprime)
+    'End Sub
 End Class

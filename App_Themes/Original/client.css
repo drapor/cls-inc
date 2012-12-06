@@ -138,7 +138,6 @@
 
 .afficherFamille
 {
-    margin-left:120px;
     padding-top:4px;
     font-weight:bolder;
     font-size:16px;
@@ -168,31 +167,14 @@
     text-decoration:none;
 }
 
-.titreGauche
-{
-    width:430px;
-    font-size:20;
-    font-weight:bold;
-    float:left;
-}
-
-.titreDroit
+.titre
 {
     font-size:20;
     font-weight:bold;
     float:left;
 }
 
-.contenuGauche
-{
-    width:425px;
-    font-size:16;
-    margin-left:10px;
-    margin-top:5px;
-    float:left;
-}
-
-.contenuDroit
+.contenu
 {
     font-size:16;
     margin-top:5px;
