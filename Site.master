@@ -44,7 +44,7 @@
                                         </asp:AutoCompleteExtender>
 
                         <asp:ImageButton ID="searchButton" runat="server" CssClass="searchButton" Height="28px"
-                            Width="28px" CausesValidation="false" />
+                            Width="28px" CausesValidation="false" OnClick="search" />
                         </form>
                     </div>
                     <div class="myProfile">

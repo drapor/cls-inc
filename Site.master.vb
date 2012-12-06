@@ -29,6 +29,12 @@ Partial Class Site
     End Sub
 #End Region
 
+    Sub search(sender As Object, e As EventArgs)
+        Dim searchRequest As String = txtSearch.Text
+        url = "~/Page/Autre/search.aspx?searchResult=" & searchRequest
+        Response.Redirect(url)
+    End Sub
+
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         If HttpContext.Current.User.Identity.IsAuthenticated = True Then
 

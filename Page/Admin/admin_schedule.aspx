@@ -1,6 +1,15 @@
 ﻿<%@ Page Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master" AutoEventWireup="false" CodeFile="admin_schedule.aspx.vb" Inherits="Page_Admin_admin_schedule" Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
+    <div style="float: right; height: auto; width: auto;">
+        <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Image ID="failImage" runat="server" ImageUrl="~/App_Themes/Original/img/delete.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Le cours a été mis à jour avec succès !"
+            Visible="false"></asp:Label>
+        <asp:Label ID="lblFailure" runat="server" ForeColor="Red" Text="" Visible="True"></asp:Label>
+    </div>
     <asp:Label ID="lblTitreAjout" runat="server" Text="Opérations sur les horaires" Font-Size="24px"
         Font-Bold="true" />
     <br />
@@ -21,14 +30,14 @@
             <div class="formatZone">
                 <asp:DropDownList ID="ddlNomCours" SkinID="ddlBlue" runat="server" CssClass="search-query"
                     DataSourceID="dsCours" DataTextField="NomCours" DataValueField="idCours" AppendDataBoundItems="False"
-                    MaxLength="16" Width="150px" AutoPostBack="True">
+                    MaxLength="16" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="resetLabel">
                 </asp:DropDownList>
             </div>
             <br />
             <div class="formatZone">
                 <asp:DropDownList ID="ddlNomGroupe" SkinID="ddlBlue" runat="server" CssClass="search-query"
                     DataSourceID="dsGroupe" DataTextField="NomGroupe" DataValueField="idGroupe"
-                    AppendDataBoundItems="False" MaxLength="16" Width="150px" AutoPostBack="True">
+                    AppendDataBoundItems="False" MaxLength="16" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="resetLabel">
                 </asp:DropDownList>
             </div>
         </div>
@@ -64,7 +73,7 @@
         <ItemTemplate >
         <tr align="center" class="<%# GetCssName(Container) %>">
             <td style="border: 1px solid #000000; width:22%; height:50px;">
-                <asp:LinkButton ID="btnModifier" runat="server" Text="Modifier" ForeColor="Black" CommandName="Edit"></asp:LinkButton>
+                <asp:LinkButton ID="btnModifier" runat="server" Text="Modifier" ForeColor="Black" CommandName="Edit" OnClick="resetLabel"></asp:LinkButton>
             </td>
             <td style="border: 1px solid #000000; width:20%;">
                 <asp:Label ID="lblJourSemaine" runat="server" Text='<%# eval("JourSemaineJeu.jourSemaine") %>'></asp:Label>
@@ -113,13 +122,13 @@
                         ControlToValidate="txtFinAjout" ForeColor="Red" Display="Dynamic" ValidationGroup="horaireAjout">*</asp:RequiredFieldValidator>
             </td>
             <td style="border: 1px solid #000000; width:14%; padding-top:10px;">
-                <asp:TextBox ID="txtLocalAjout" runat="server" Text='<%# Bind("noLocal") %>' Width="60px"></asp:TextBox>
+                <asp:TextBox ID="txtLocalAjout" runat="server" Text='<%# Bind("noLocal") %>' Width="60px" MaxLength="7"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="requiredLocal" runat="server" ErrorMessage="* No local requis"
                         ControlToValidate="txtLocalAjout" ForeColor="Red" Display="Dynamic" Font-Size="14px"
                         ValidationGroup="horaireAjout">*</asp:RequiredFieldValidator>
             </td>
             <td style="border: 1px solid #000000; width:10%;">
-                <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CommandName="Cancel"></asp:LinkButton>
+                <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CommandName="Cancel" OnClick="resetLabel"></asp:LinkButton>
             </td>
             </tr>
         </InsertItemTemplate>
@@ -128,7 +137,7 @@
             <td style="border: 1px solid #000000; width:22%;">
                 <asp:LinkButton ID="btnUpdate" runat="server" Text="Mise à jour" ForeColor="Black" CommandName="Update" ValidationGroup="horaire"></asp:LinkButton>
                 /
-                <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" ForeColor="Black" CommandName="Cancel"></asp:LinkButton>
+                <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" ForeColor="Black" CommandName="Cancel" OnClick="resetLabel"></asp:LinkButton>
             </td>
             <td style="border: 1px solid #000000; width:20%; padding-top:10px;">
                 <asp:DropDownList ID="ddlSemaine" DataSourceID="dsJourSemaine" runat="server" Width="120px" SelectedValue='<%# Bind("JourSemaine_idSemaine") %>'

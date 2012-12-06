@@ -50,4 +50,5 @@ Partial Class Page_Client_member_inscription_waitinglist
         End If
     End Sub
 #End Region
+
 End Class

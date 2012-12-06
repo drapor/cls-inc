@@ -29,7 +29,7 @@
             <ItemTemplate>
                 <div class="blockInfos">
                     <asp:Label ID="lblTarifTexte" SkinID="lblInfos" runat="server" Text="Tarif: "></asp:Label>
-                        <asp:Label ID="lblTarif" runat="server" Text='<%#Eval ("tarif")&"$" %>'></asp:Label><br />
+                    <asp:Label ID="lblTarif" runat="server" Text='<%#Eval ("tarif")&"$" %>'></asp:Label><br />
                     <asp:Label ID="lblPeriodeDeCoursText" SkinID="lblInfos" runat="server" Text="Période de cours: "></asp:Label>
                     <asp:Label ID="lblPeriodeDeCours" runat="server" Text='<%# "Du " +((CType(Eval("dateDebutCours"),DateTime)).ToString("D"))+ " au "+((CType(Eval("dateFinCours"),DateTime)).ToString("D"))%>'></asp:Label><br />
                     <asp:Label ID="lblPeriodeInscriptionText" SkinID="lblInfos" runat="server" Text="Période d'inscription: "></asp:Label>
@@ -54,11 +54,11 @@
             <LayoutTemplate>
                 <div class="infoCours">
                     <div class="section">
-                        <div class="sectionTitre">
+                        <div class="se  ctionTitre">
                             <asp:Label ID="lblHoraire" runat="server" Text="Horaires et places disponibles"></asp:Label>
                             <div style="margin-left: 676px; margin-top: 15px;">
                                 <asp:Button ID="btnInscriptionListeAttente" runat="server" Text="Inscrivez-moi à la liste d'attente"
-                                    CssClass="btn btn-success btnPadding" Visible="false" OnClick="inscriptionListeAttente"/></div>
+                                    CssClass="btn btn-success btnPadding" Visible="false" OnClick="inscriptionListeAttente" /></div>
                         </div>
                     </div>
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -69,7 +69,7 @@
                     <div class="blockGroupe">
                         <asp:Label ID="lblNomGroupe" SkinID="lblInfos" runat="server" Text='<%#Eval ("nomGroupe")+": " %>'></asp:Label>
                     </div>
-                    <div class="blockGroupe" style="width:200px;">
+                    <div class="blockGroupe" style="width: 200px;">
                         <asp:HiddenField ID="hiddenNoGroupe" runat="server" Value='<%#Eval("idGroupe") %>' />
                         <asp:ListView ID="lvHoraire" runat="server" DataKeyNames="idHoraire" DataSourceID="dsHoraire">
                             <LayoutTemplate>

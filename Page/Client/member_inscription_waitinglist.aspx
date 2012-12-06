@@ -13,7 +13,7 @@
                 Visible="false"></asp:Label>
             <asp:Label ID="lblFailure" runat="server" ForeColor="Red" Text="" Visible="True"></asp:Label>
         </div>
-        <asp:HiddenField ID="hiddenCoursID" runat="server" Value='<%#Bind ("Cours_idCours") %>' />
+        
         <asp:ListView ID="lvMembreInscrire" runat="server" DataSourceID="dsCours" DataKeyNames="idCours">
             <LayoutTemplate>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -43,6 +43,7 @@
                     </asp:DropDownList>
                     <asp:Button ID="btnRegisterMember" runat="server" Text="Inscrire le membre" CssClass="btn btn-primary"
                         CommandName="Insert" />
+                        <asp:HiddenField ID="hiddenCoursID" runat="server" Value='<%#Bind ("Cours_idCours") %>' />
                 </div>
             </InsertItemTemplate>
             <ItemTemplate>

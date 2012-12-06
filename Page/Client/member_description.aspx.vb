@@ -41,6 +41,14 @@ Partial Class Page_Client_member_description
         Response.Redirect(url)
     End Sub
 
+    'Petite condition qui efface le champ de l'age max s'il est égale a 99
+    Protected Sub lvCours_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvCours.ItemDataBound
+        Dim ageEtPlus As Label = FindChildControl(Of Label)(lvCours, "lblGroupeAgeMax")
+        If ageEtPlus.Text = "99" Then
+            ageEtPlus.Visible = False
+        End If
+    End Sub
+
     Protected Sub lvGroupes_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvGroupes.ItemDataBound
         Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
         Dim idGroupe As Integer = lvGroupes.DataKeys(dataItem.DisplayIndex).Value.ToString()
@@ -88,5 +96,4 @@ Partial Class Page_Client_member_description
         Return placeRestante
     End Function
 #End Region
-
 End Class

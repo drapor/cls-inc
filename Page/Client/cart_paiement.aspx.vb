@@ -80,8 +80,4 @@ Partial Class Page_Client_cart_paiement
     End Sub
 #End Region
 
-#Region "Fonction doTransaction"
-    
-#End Region
-
 End Class

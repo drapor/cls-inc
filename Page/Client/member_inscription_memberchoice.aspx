@@ -20,9 +20,6 @@
                 </div>
             </ItemTemplate>
         </asp:ListView>
-
-
-
         <asp:ListView ID="lvGroupe" runat="server" DataSourceID="dsGroupes" DataKeyNames="idGroupe">
             <LayoutTemplate>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />

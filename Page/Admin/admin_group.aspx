@@ -1,10 +1,21 @@
 ﻿<%@ Page Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master" AutoEventWireup="false" CodeFile="admin_group.aspx.vb" Inherits="Page_Admin_admin_group_add" Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
-    
-
+    <div style="float: right; height: auto; width: auto;">
+        <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Image ID="failImage" runat="server" ImageUrl="~/App_Themes/Original/img/delete.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Le cours a été mis à jour avec succès !"
+            Visible="false"></asp:Label>
+        <asp:Label ID="lblFailure" runat="server" ForeColor="Red" Text="" Visible="True"></asp:Label>
+    </div>
+    <div style="width:313px;height:28px;float:left;">
     <asp:Label ID="lblTitreAjout" runat="server" Text="Opérations sur les groupes" Font-Size="24px"
-        Font-Bold="true" />
+        Font-Bold="true" /></div>
+        <div style="float:right;">
+    <asp:Label ID="lblListeAttente" runat="server" Text="" Visible="false" Font-Size="15px" ForeColor="Green" ></asp:Label>
+    </div>
     <br />
     <br />
     <br />
@@ -45,10 +56,10 @@
                         <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
             </table>
         </LayoutTemplate>
-        <ItemTemplate >
+        <ItemTemplate>
         <tr align="center" class="<%# GetCssName(Container) %>">
             <td style="border: 1px solid #000000; width:25%; height:50px;">
-                <asp:LinkButton ID="btnModifier" runat="server" Text="Modifier" ForeColor="Black" CommandName="Edit"></asp:LinkButton>
+                <asp:LinkButton ID="btnModifier" runat="server" Text="Modifier" ForeColor="Black" CommandName="Edit" OnClick="resetLabel"></asp:LinkButton>
             </td>
             <td style="border: 1px solid #000000; width:40%;">
                 <asp:Label ID="lblNomGroupe" runat="server" Text='<%# eval("nomGroupe") %>'></asp:Label>
@@ -80,7 +91,7 @@
                             ValidationGroup="groupeAjout">*</asp:RangeValidator>
             </td>
             <td style="border: 1px solid #000000; width:15%;">
-                <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CommandName="Cancel"></asp:LinkButton>
+                <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CommandName="Cancel" OnClick="resetLabel"></asp:LinkButton>
             </td>
             </tr>
         </InsertItemTemplate>

@@ -38,21 +38,6 @@ Partial Class Page_Admin_admin_course
         End If
     End Sub
 
-
-    'Message affichant l'ajout du cours
-    'Protected Sub dsCourseAdd_Inserted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsCourseAdd.Inserted
-
-    '    If e.Exception IsNot Nothing Then
-    '        masterPage.traiteErreur(Page, "ERREUR LORS DE L'INSERTION D'UN COURS", e.Exception)
-    '        lblFelicitation.Text = "ERREUR LORS DE L'INSERTION D'UN COURS: " & CType(e.Entity, CoursJeu).nomCours
-    '        e.ExceptionHandled = True
-    '    Else
-    '        lblFelicitation.Visible = True
-    '        checkImage.Visible = True
-    '    End If
-
-    'End Sub
-
     Protected Sub lvCourseAdd_ItemDeleted(sender As Object, e As System.Web.UI.WebControls.ListViewDeletedEventArgs) Handles lvCourseAdd.ItemDeleted
         Dim dbContext As New modelCLSContainer()
         Dim query = From p In dbContext.CoursJeu _
