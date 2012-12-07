@@ -55,23 +55,19 @@ Partial Class Page_Admin_admin_course
     End Sub
 
     Sub changeCours(sender As Object, e As EventArgs)
-        lblFelicitation.Visible = False
-        checkImage.Visible = False
+        desactiveControles(checkImage, lblFelicitation)
     End Sub
 
 #Region "TRAITEMENT DES ERREURS"
-
     'Ajout Cours
     Protected Sub dsCourseAdd_Inserted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsCourseAdd.Inserted
         If e.Exception IsNot Nothing Then
             traiteErreur(Page, "ERREUR LORS DE L'AJOUT D'UN COURS", e.Exception)
             e.ExceptionHandled = True
-            failImage.Visible = True
-            lblFailure.Visible = True
+            activeControles(failImage, lblFailure)
             lblFailure.Text = "Une erreur s'est produite lors de l'ajout du cours..."
         Else
-            checkImage.Visible = True
-            lblFelicitation.Visible = True
+            activeControles(checkImage, lblFelicitation)
             lblFelicitation.Text = "Le cours a &eacute;t&eacute; ajout&eacute; avec succ&egrave;s !"
         End If
     End Sub
@@ -81,12 +77,10 @@ Partial Class Page_Admin_admin_course
         If e.Exception IsNot Nothing Then
             traiteErreur(Page, "ERREUR LORS DE LA MISE À JOUR D'UN COURS", e.Exception)
             e.ExceptionHandled = True
-            failImage.Visible = True
-            lblFailure.Visible = True
+            activeControles(failImage, lblFailure)
             lblFailure.Text = "Une erreur s'est produite lors de la mise &agrave; jour du cours."
         Else
-            checkImage.Visible = True
-            lblFelicitation.Visible = True
+            activeControles(checkImage, lblFelicitation)
             lblFelicitation.Text = "Le cours a &eacute;t&eacute; mis &agrave; jour avec succ&egrave;s !"
         End If
     End Sub
@@ -96,23 +90,14 @@ Partial Class Page_Admin_admin_course
         If e.Exception IsNot Nothing Then
             masterPage.traiteErreur(Page, "ERREUR LORS DE LA SUPPRESSION D'UN COURS", e.Exception)
             e.ExceptionHandled = True
-            checkImage.Visible = False
-            lblFelicitation.Visible = False
-            failImage.Visible = True
-            lblFailure.Visible = True
+            desactiveControles(checkImage, lblFelicitation)
+            activeControles(failImage, lblFailure)
             lblFailure.Text = "Une erreur s'est produite lors de la suppression du cours."
         Else
-            failImage.Visible = False
-            lblFailure.Visible = False
-            checkImage.Visible = True
-            lblFelicitation.Visible = True
+            desactiveControles(failImage, lblFailure)
+            activeControles(checkImage, lblFelicitation)
             lblFelicitation.Text = "Le cours a &eacute;t&eacute; supprimer avec succ&egrave;s !"
         End If
     End Sub
-
 #End Region
-
-
-
-
 End Class

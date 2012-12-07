@@ -90,8 +90,8 @@
                             <div class="validation">
                                 <asp:RequiredFieldValidator ID="requiredTarif" runat="server" ErrorMessage="Le tarif est obligatoire"
                                     ControlToValidate="txtTarif" ForeColor="Red" Display="Dynamic" ValidationGroup="formulaire">!</asp:RequiredFieldValidator>
-                                <asp:RegularExpressionValidator ID="regExTarif" runat="server" ErrorMessage="Veuillez entrer seulement des chiffres"
-                                    ValidationExpression="^[0-9]+$" Display="Dynamic" ControlToValidate="txtTarif"
+                                <asp:RegularExpressionValidator ID="regExTarif" runat="server" ErrorMessage="Veuillez entrer seulement des chiffres (ex: 99.99"
+                                    ValidationExpression="^[1-9]\d{0,2}(\.\d{2})$" Display="Dynamic" ControlToValidate="txtTarif"
                                     ForeColor="Red" ValidationGroup="formulaire">!</asp:RegularExpressionValidator>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                                     <asp:ListItem>et +</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:TextBox ID="txtGroupeAgeMax" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
-                                    Width="30px" MaxLength="3" Text='<%#Bind("groupeAgeMax") %>'></asp:TextBox>
+                                    Width="30px" MaxLength="2" Text='<%#Bind("groupeAgeMax") %>'></asp:TextBox>
                             </div>
                             <div class="validation">
                                 <asp:RequiredFieldValidator ID="requiredGroupeAgeMin" runat="server" ErrorMessage="Le groupe d'âge minimum est obligatoire"
@@ -122,6 +122,9 @@
                                     ForeColor="Red" ValidationGroup="formulaire">!</asp:RegularExpressionValidator>
                                 <asp:RegularExpressionValidator ID="regExGroupeAgeMax" runat="server" ErrorMessage="Veuillez entrer seulement des chiffres"
                                     ValidationExpression="^[0-9]+$" Display="Dynamic" ControlToValidate="txtGroupeAgeMax"
+                                    ForeColor="Red" ValidationGroup="formulaire">!</asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="regExGroupeAgeMinZero" runat="server" ErrorMessage="L'âge minimum ne doit pas être zéro."
+                                    ValidationExpression="^[^0]+$" Display="Dynamic" ControlToValidate="txtGroupeAgeMin"
                                     ForeColor="Red" ValidationGroup="formulaire">!</asp:RegularExpressionValidator>
                                 <asp:CompareValidator ID="compareGroupeAge" runat="server" ForeColor="Red" ErrorMessage="L'âge maximum doit être plus élevé
                                     que celle minimum" ControlToCompare="txtGroupeAgeMin" ControlToValidate="txtGroupeAgeMax"

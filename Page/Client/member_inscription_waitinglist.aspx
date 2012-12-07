@@ -39,7 +39,7 @@
                 <div class="infoCours">
                     <asp:Label ID="lblMembre" runat="server" Text="Membre: "></asp:Label>
                     <asp:DropDownList ID="ddlMembreFamille" runat="server" DataSourceID="dsMembreFamille"
-                        AppendDataBoundItems="true" DataValueField="idMembre" DataTextField="prenomMembre" SelectedValue='<%#Bind ("Membres_idMembre") %>'>
+                        AppendDataBoundItems="true" DataValueField="idMembre" DataTextField="prenomMembre" SelectedValue='<%#Bind ("Membres_idMembre") %>' OnDataBinding="ddlMembreFamille_databound" OnDataBound="ddlMembreFamille_databound" AutoPostBack="true">
                     </asp:DropDownList>
                     <asp:Button ID="btnRegisterMember" runat="server" Text="Inscrire le membre" CssClass="btn btn-primary"
                         CommandName="Insert" />

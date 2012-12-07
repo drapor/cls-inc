@@ -5,10 +5,9 @@
 'Affiche ou rend invible certains contrôles selon l'Item Command et finalement vérifie si certaines données sont présentes dans la BD.
 
 Imports modelCLS
-Imports masterPage
 
 Partial Class Page_Client_home_member
-    Inherits System.Web.UI.Page
+    Inherits masterPage
 
     Public entClient As modelCLSContainer = New modelCLSContainer
 
@@ -197,6 +196,21 @@ Partial Class Page_Client_home_member
             Response.Redirect("~/Page/login.aspx")
         End If
     End Sub
+
+    Protected Sub dsFamille_Deleted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsFamille.Deleted
+        If e.Exception IsNot Nothing Then
+            masterPage.traiteErreur(Page, "ERREUR LORS DE LA SUPPRESSION D'UN GROUPE", e.Exception)
+            e.ExceptionHandled = True
+            desactiveControles(checkImage, lblFelicitation)
+            activeControles(failImage, lblFailure)
+            lblFailure.Text = "Impossible de supprimer le groupe, des membres y sont déjà inscrit."
+        Else
+            desactiveControles(failImage, lblFailure)
+            activeControles(checkImage, lblFelicitation)
+            lblFelicitation.Text = "Le groupe a &eacute;t&eacute; supprimer avec succ&egrave;s !"
+        End If
+    End Sub
+
 #End Region
     
     Protected Sub lvAbonnement_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvAbonnement.ItemDataBound
@@ -205,4 +219,6 @@ Partial Class Page_Client_home_member
         Dim idGroupe As Integer = FindChildControl(Of HiddenField)(lvAbonnement, "hiddenNoGroupe").Value
         dataSourceHoraire.WhereParameters("groupeID").DefaultValue = idGroupe
     End Sub
+
+    
 End Class

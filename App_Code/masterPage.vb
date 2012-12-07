@@ -93,6 +93,15 @@ Public Class masterPage
         Return "UNE ERREUR S'EST PRODUITE: " & ex.ToString
     End Function
 
+    Public Sub desactiveControles(ByVal controle1 As Image, ByVal controle2 As Label)
+        controle1.Visible = False
+        controle2.Visible = False
+    End Sub
+
+    Public Sub activeControles(ByVal controle1 As Image, ByVal controle2 As Label)
+        controle1.Visible = True
+        controle2.Visible = True
+    End Sub
 #Region "Fonction doTransation"
     Protected Function doTransaction(ByVal ccNumber As String,
                                ByVal ccType As String,

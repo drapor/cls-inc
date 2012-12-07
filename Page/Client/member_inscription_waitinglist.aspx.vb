@@ -35,6 +35,8 @@ Partial Class Page_Client_member_inscription_waitinglist
         Response.Redirect(Request.Url.AbsoluteUri, False)
     End Sub
 
+
+
 #Region "Traitements des erreurs"
     Protected Sub dsListeAttente_Inserted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsListeAttente.Inserted
         If e.Exception IsNot Nothing Then
@@ -51,4 +53,12 @@ Partial Class Page_Client_member_inscription_waitinglist
     End Sub
 #End Region
 
+    Sub ddlMembreFamille_databound(sender As Object, e As EventArgs)
+        Dim ddlMembreFamille As DropDownList = CType(sender, DropDownList)
+
+        If ddlMembreFamille.SelectedItem Is Nothing Then
+        Else
+
+        End If
+    End Sub
 End Class

@@ -23,8 +23,8 @@ Partial Class Page_Admin_admin_group_add
         Dim coursNom As String = Nothing
         Dim coursGroupe = Nothing
 
-        desactiveSuccess()
-        desactiveFailure()
+        desactiveControles(failImage, lblFailure)
+        desactiveControles(checkImage, lblFelicitation)
 
         coursNo = ddlNomCoursAjout.SelectedValue
         coursNom = ddlNomCoursAjout.SelectedItem.Text
@@ -56,7 +56,6 @@ Partial Class Page_Admin_admin_group_add
 
                 'Message initiale
                 Dim message As String = "<p>Bonjour " & membrePrincipal.prenomMembre & " " & membrePrincipal.nomMembre & "! </p><br /><p>Ce message est pour vous informer que suite à l'inscription de vous ou un des membres de votre famille à la liste d'attente du cours de " & membreListeAttente.CoursJeu.nomCours & ", les membres suivants pourront s'inscrire dès maintenant puisqu'un groupe à été ouvert !</p><br /><br />"
-
 
                 'Boucle qui s'exécute tant qu'il y a plusieurs membre dans la même famille qui attente pour ce cours
                 While membreListeAttente.MembresJeu.familleID = membrePrincipal.familleID
@@ -92,6 +91,7 @@ Partial Class Page_Admin_admin_group_add
         End If
     End Sub
 
+    'Fonction qui vérifie si le cours est complet. Retourne vrai s'il est complet ou faux s'il y a encore des groupes avec de la place disponible
     Public Function coursComplet(ByVal noCours As Integer) As Boolean
         coursComplet = True
         Dim nbGroupe As Integer = (From A In leContext.GroupeJeu Where (A.Cours_idCours = noCours) Select A).Count
@@ -123,6 +123,7 @@ Partial Class Page_Admin_admin_group_add
         Return coursComplet
     End Function
 
+    'Fonction qui calcule le nombre de place qui reste dans un groupe
     Public Function calculeNbPlaceRestante(ByVal idGroupe As Integer) As Integer
         Dim leGroupe As GroupeJeu = (From A In leContext.GroupeJeu Where (A.idGroupe = idGroupe) Select A).FirstOrDefault
         Dim nbAbonne As Integer = (From A In leContext.AbonnementJeu Where (A.Groupe_idGroupe = idGroupe) Select A).Count
@@ -130,6 +131,7 @@ Partial Class Page_Admin_admin_group_add
         Return placeRestante
     End Function
 
+    'Affiche le nombre de personne dans la liste d'attente pour une activité
     Protected Sub ddlNomCoursAjout_DataBound(sender As Object, e As System.EventArgs) Handles ddlNomCoursAjout.DataBound
         Dim noCours As Integer = ddlNomCoursAjout.SelectedValue
         noCours = (From A In leContext.ListeAttenteJeu Where (A.Cours_idCours = noCours) Select A).Count
@@ -141,6 +143,7 @@ Partial Class Page_Admin_admin_group_add
         End If
     End Sub
 
+    'Affiche le nombre de personne dans la liste d'attente pour une activité lorsque l'on change de cours
     Protected Sub ddlNomCoursAjout_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ddlNomCoursAjout.SelectedIndexChanged
         Dim noCours As Integer = ddlNomCoursAjout.SelectedValue
         noCours = (From A In leContext.ListeAttenteJeu Where (A.Cours_idCours = noCours) Select A).Count
@@ -150,26 +153,27 @@ Partial Class Page_Admin_admin_group_add
             lblListeAttente.Text = "*Il y a " & noCours & " personnes dans la liste d'attente."
             lblListeAttente.Visible = True
         End If
-        desactiveSuccess()
-        desactiveFailure()
+        desactiveControles(checkImage, lblFelicitation)
+        desactiveControles(failImage, lblFailure)
     End Sub
 
+    'Petite fonction qui reset les labels de message d'erreur/succès de mise-à-jour/suppression/ajout
     Sub resetLabel(sender As Object, e As EventArgs)
-        desactiveFailure()
-        desactiveSuccess()
+        desactiveControles(checkImage, lblFelicitation)
+        desactiveControles(failImage, lblFailure)
     End Sub
 
 #Region "Traitements des erreurs"
     Protected Sub dsGroupeAjout_Deleted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsGroupeAjout.Deleted
         If e.Exception IsNot Nothing Then
-            masterPage.traiteErreur(Page, "ERREUR LORS DE LA SUPPRESSION D'UN GROUPE", e.Exception)
+            traiteErreur(Page, "ERREUR LORS DE LA SUPPRESSION D'UN GROUPE", e.Exception)
             e.ExceptionHandled = True
-            desactiveSuccess()
-            activeFailure()
+            desactiveControles(checkImage, lblFelicitation)
+            activeControles(failImage, lblFailure)
             lblFailure.Text = "Impossible de supprimer le groupe, des membres y sont déjà inscrit."
         Else
-            desactiveFailure()
-            activeSuccess()
+            desactiveControles(failImage, lblFailure)
+            activeControles(checkImage, lblFelicitation)
             lblFelicitation.Text = "Le groupe a &eacute;t&eacute; supprimer avec succ&egrave;s !"
         End If
     End Sub
@@ -178,10 +182,10 @@ Partial Class Page_Admin_admin_group_add
         If e.Exception IsNot Nothing Then
             traiteErreur(Page, "ERREUR LORS DE L'AJOUT D'UN GROUPE", e.Exception)
             e.ExceptionHandled = True
-            activeFailure()
+            activeControles(failImage, lblFailure)
             lblFailure.Text = "Une erreur s'est produite lors de l'ajout du groupe..."
         Else
-            activeSuccess()
+            activeControles(checkImage, lblFelicitation)
             lblFelicitation.Text = "Le groupe a &eacute;t&eacute; ajout&eacute; avec succ&egrave;s !"
         End If
     End Sub
@@ -190,35 +194,13 @@ Partial Class Page_Admin_admin_group_add
         If e.Exception IsNot Nothing Then
             traiteErreur(Page, "ERREUR LORS DE LA MISE À JOUR D'UN GROUPE", e.Exception)
             e.ExceptionHandled = True
-            activeFailure()
+            activeControles(failImage, lblFailure)
             lblFailure.Text = "Une erreur s'est produite lors de la mise &agrave; jour du groupe."
         Else
-            activeSuccess()
+            activeControles(checkImage, lblFelicitation)
             lblFelicitation.Text = "Le groupe a &eacute;t&eacute; mis &agrave; jour avec succ&egrave;s !"
         End If
     End Sub
-
-    'Activation/Désactivation des messages d'erreur/succès de mise-à-jour/suppression/ajout de donné dans un groupe
-    Sub activeSuccess()
-        checkImage.Visible = True
-        lblFelicitation.Visible = True
-    End Sub
-
-    Sub desactiveSuccess()
-        checkImage.Visible = False
-        lblFelicitation.Visible = False
-    End Sub
-
-    Sub activeFailure()
-        failImage.Visible = True
-        lblFailure.Visible = True
-    End Sub
-
-    Sub desactiveFailure()
-        failImage.Visible = False
-        lblFailure.Visible = False
-    End Sub
-
 #End Region
 End Class
 
