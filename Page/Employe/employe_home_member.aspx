@@ -394,16 +394,19 @@
 <asp:ListView ID="lvAbonnement" runat="server" DataSourceID="dsAbonnement" DataKeyNames="idAbonnement">
         <LayoutTemplate>
             <div class="infoMembre" style="width:640px;">
-                <div class="titre" style="width:225px;">
+                <div class="titre" style="width:220px;">
                     <asp:Label ID="lblTitreActivite" runat="server" Text="Nom de l'activité:"></asp:Label>
                 </div>
-                <div class="titre" style="width:225px;">
+                <div class="titre" style="width:200px;">
                     <asp:Label ID="lblTitreAbonnement" runat="server" Text="Date d'abonnement:"></asp:Label>
                 </div>
-                <div class="titre" style="width:190px;">
+                <div class="titre" style="width:205px;">
                     <asp:Label ID="lblTitreHoraire" runat="server" Text="Horaire de l'activité:"></asp:Label>
                 </div>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+                <div>
+                        
+                </div>
             </div>
         </LayoutTemplate>
         <EmptyDataTemplate>
@@ -412,13 +415,13 @@
             </div>
         </EmptyDataTemplate>
         <ItemTemplate>
-            <div class="contenu" style="width:225px; margin-left:10px;">
+            <div class="contenu" style="width:220px; margin-left:10px;">
                 <asp:Label ID="lblActivite" runat="server" Text="Tennis"></asp:Label>
             </div>
-            <div class="contenu" style="width:225px;">
+            <div class="contenu" style="width:200px;">
                 <asp:Label ID="lblAbonnement" runat="server" Text="08/07/2011"></asp:Label>
             </div>
-            <div class="contenu" style="width:190px;">
+            <div class="contenu" style="width:205px;">
                 <asp:HiddenField ID="hiddenNoGroupe" runat="server" Value='<%#Eval("Groupe_idGroupe") %>' />
                         <asp:ListView ID="lvHoraire" runat="server" DataKeyNames="idHoraire" DataSourceID="dsHoraire">
                             <LayoutTemplate>
@@ -431,16 +434,7 @@
                                 <br />
                             </ItemTemplate>
                         </asp:ListView>
-                        <br />
-                <div>
-                        <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="lvHoraire"
-                            PageSize="5">
-                            <Fields>
-                                <asp:NextPreviousPagerField ShowPreviousPageButton="true" ShowNextPageButton="True" />
-                                <asp:NumericPagerField  />
-                            </Fields>
-                        </asp:DataPager>
-                </div>
+                
                         <asp:EntityDataSource ID="dsHoraire" runat="server" ConnectionString="name=modelCLSContainer"
                             DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
                             EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.GroupeJeu_idGroupe = @groupeID"
@@ -450,8 +444,16 @@
                             </WhereParameters>
                         </asp:EntityDataSource>
             </div>
+            
         </ItemTemplate>
 </asp:ListView>
+<asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="lvAbonnement"
+                            PageSize="5">
+                            <Fields>
+                                <asp:NextPreviousPagerField ShowPreviousPageButton="true" ShowNextPageButton="True" />
+                                <asp:NumericPagerField  />
+                            </Fields>
+                        </asp:DataPager>
 
 <script>
     $(function () {

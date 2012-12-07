@@ -227,15 +227,7 @@
                             </ItemTemplate>
                         </asp:ListView>
                         <br />
-                <div>
-                        <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="lvHoraire"
-                            PageSize="5">
-                            <Fields>
-                                <asp:NextPreviousPagerField ShowPreviousPageButton="true" ShowNextPageButton="True" />
-                                <asp:NumericPagerField  />
-                            </Fields>
-                        </asp:DataPager>
-                </div>
+                
                         <asp:EntityDataSource ID="dsHoraire" runat="server" ConnectionString="name=modelCLSContainer"
                             DefaultContainerName="modelCLSContainer" EntitySetName="HoraireJeu" EnableFlattening="False"
                             EnableDelete="false" EnableInsert="false" EnableUpdate="false" Where="it.GroupeJeu_idGroupe = @groupeID"
@@ -245,6 +237,15 @@
                             </WhereParameters>
                         </asp:EntityDataSource>
             </div>
+            <div>
+                        <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="lvHoraire"
+                            PageSize="5">
+                            <Fields>
+                                <asp:NextPreviousPagerField ShowPreviousPageButton="true" ShowNextPageButton="True" />
+                                <asp:NumericPagerField  />
+                            </Fields>
+                        </asp:DataPager>
+                </div>
         </ItemTemplate>
 </asp:ListView>
 

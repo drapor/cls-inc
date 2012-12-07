@@ -8,6 +8,8 @@ Partial Class Page_Employe_employe_member_family
 
         dsFamille.WhereParameters("MembreID").DefaultValue = Session("idMembreFamille")
 
+        dsAbonnement.WhereParameters("MembreID").DefaultValue = Session("idMembreFamille")
+
     End Sub
 
     Protected Sub lvAbonnement_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvAbonnement.ItemDataBound

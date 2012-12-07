@@ -27,6 +27,8 @@ Partial Class Page_Employe_employe_home_member
 
         dsListView.WhereParameters("membreID").DefaultValue = idClient
 
+        dsAbonnement.WhereParameters("membreID").DefaultValue = idClient
+
         dsFamille.WhereParameters("idFamille").DefaultValue = idFamille
 
     End Sub
