@@ -104,7 +104,31 @@ Partial Class Page_Admin_admin_membre
         MVPrincipal.SetActiveView(viewModifie)
     End Sub
 
-    'Sub actionSupprime(sender As Object, e As EventArgs)
-    '    MVPrincipal.SetActiveView(viewSupprime)
-    'End Sub
+    Protected Sub lvMembreNom_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvEmployeNom.ItemCommand
+        Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
+        Dim idMembre As Integer = Nothing
+
+        idMembre = lvEmployeNom.DataKeys(dataItem.DisplayIndex).Value.ToString()
+
+        Session("idMembre") = idMembre
+
+        If e.CommandName = "Afficher" Then
+            Response.Redirect("../Admin/admin_home_member.aspx")
+        End If
+
+    End Sub
+
+    Protected Sub lvMembreCourriel_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvEmployeCourriel.ItemCommand
+        Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
+        Dim idMembre As Integer = Nothing
+
+        idMembre = lvEmployeCourriel.DataKeys(dataItem.DisplayIndex).Value.ToString()
+
+        Session("idMembre") = idMembre
+
+        If e.CommandName = "Afficher" Then
+            Response.Redirect("../Admin/admin_home_member.aspx")
+        End If
+
+    End Sub
 End Class

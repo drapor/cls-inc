@@ -1,8 +1,7 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Page/Employe/MasterPageEmploye.master" AutoEventWireup="false" CodeFile="employe_home_member.aspx.vb" Inherits="Page_Employe_employe_home_member" Theme="Original"%>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master" AutoEventWireup="false" CodeFile="admin_home_member.aspx.vb" Inherits="Page_Admin_admin_home_member" Theme="Original"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" Runat="Server">
-
-<div class="titleClient">
+    <div class="titleClient">
     <h3>Modifier compte client</h3>
 </div>
 
@@ -346,7 +345,7 @@
 <div class="sectionTitre" style="width:660px;">
     <asp:Label ID="lblMembreFamille" runat="server" Text="Membre(s) de la famille"></asp:Label>
     <div class="sectionTitreRight">
-        <asp:LinkButton ID="btnAjouterFamille" runat="server" Text="Ajouter membre" PostBackUrl="~/Page/Employe/employe_member_family_add.aspx"></asp:LinkButton>
+        <asp:LinkButton ID="btnAjouterFamille" runat="server" Text="Ajouter membre" PostBackUrl="~/Page/Admin/admin_member_family_add.aspx"></asp:LinkButton>
     </div>
 </div>
 </div> 
@@ -496,5 +495,5 @@
         <asp:Parameter Name="idFamille" Type="Int32" DefaultValue="0"/>
     </WhereParameters>
     </asp:EntityDataSource>
+</asp:Content>
 
-</asp:Content><%--Page entière--%>

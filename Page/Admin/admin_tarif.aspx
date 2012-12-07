@@ -31,7 +31,7 @@
                     <asp:Label ID="lblVeuillezEntreTarifNouveauMembre" runat="server" Text="Veuillez entrer le tarif d'un nouveau membre"></asp:Label>
                     <br />
                     <br />
-                    <div style="margin-left:70px;">
+                    <div style="margin-left:20px;">
                     <asp:TextBox ID="txtTarifNouveauMembre" SkinID="txtBoxYellowPerso" Width="40px" runat="server"
                     CssClass="search-query" Text='<%# Bind("tarifNouveauMembre") %>'></asp:TextBox>
                     <asp:RequiredFieldValidator ID="requiredTarifNouveauMembre" runat="server" ErrorMessage="*Le tarif des nouveaux membres est obligatoire"

@@ -1,0 +1,27 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="MasterPageEmploye.master.vb" Inherits="Page_Employe_MasterPageEmploye" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <div class="contenuPageAdmin">
+        <div class="contenuMenu">
+            <ul>
+                    <li>
+                        <asp:LinkButton ID="btnHomeEmploye" runat="server" OnClick="actionAccueil" Text="Accueil employé"
+                            CausesValidation="false"></asp:LinkButton>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="btnAjouteMembre" runat="server" OnClick="actionAjout" Text="Ajouté un membre"
+                            CausesValidation="false"></asp:LinkButton>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="btnModifieMembre" runat="server" OnClick="actionModifie" Text="Modifier/Supprimer un membre"
+                            CausesValidation="false"></asp:LinkButton>
+                    </li>
+                </ul>
+        </div>
+        <div class="contenuPrincipalAdmin">
+            <asp:ContentPlaceHolder ID="menu" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        </div>
+</asp:Content>
+

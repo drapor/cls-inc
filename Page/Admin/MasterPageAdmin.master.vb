@@ -38,13 +38,13 @@ Partial Class Page_Admin_MasterPageAdmin
         Response.Redirect(url)
     End Sub
 
-    Sub actionModifieEmploye(sender As Object, e As EventArgs)
-        Dim url As String = "~/Page/Admin/admin_employe.aspx?view=" & 1
-        Response.Redirect(url)
-    End Sub
+    'Sub actionModifieEmploye(sender As Object, e As EventArgs)
+    '    Dim url As String = "~/Page/Admin/admin_employe.aspx?view=" & 1
+    '    Response.Redirect(url)
+    'End Sub
 
     Sub actionSupprimeEmploye(sender As Object, e As EventArgs)
-        Dim url As String = "~/Page/Admin/admin_employe.aspx?view=" & 2
+        Dim url As String = "~/Page/Admin/admin_employe.aspx?view=" & 1
         Response.Redirect(url)
     End Sub
 

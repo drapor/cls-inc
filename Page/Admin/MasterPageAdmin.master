@@ -75,10 +75,10 @@
                                     <asp:LinkButton ID="btnEmployeAjout" runat="server" OnClick="actionAjoutEmploye" Text="Ajouter un employé"
                                         CausesValidation="false"></asp:LinkButton>
                                 </li>
-                                <li>
+                                <%--<li>
                                     <asp:LinkButton ID="btnEmployeModifie" runat="server" OnClick="actionModifieEmploye"
                                         Text="Modifier un employé" CausesValidation="false"></asp:LinkButton>
-                                </li>
+                                </li>--%>
                                 <li>
                                     <asp:LinkButton ID="btnEmployeSupprime" runat="server" OnClick="actionSupprimeEmploye"
                                         Text="Supprimer un employé" CausesValidation="false"></asp:LinkButton>

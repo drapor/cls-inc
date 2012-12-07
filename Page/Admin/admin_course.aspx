@@ -485,8 +485,8 @@
                         <div class="elementFormulaire">
                             <asp:Button ID="btnAjouter" runat="server" Text="Accepter les modifications" CssClass="btn btn-primary btn-large btn"
                                 CommandName="Update" />
-                            <asp:Button ID="btnCancel" runat="server" Text="Canceller" CssClass="btn btn-primary btn-large btn"
-                                PostBackUrl="~/Page/Admin/home_admin.aspx" CausesValidation="false" />
+                            <asp:Button ID="btnCancel" runat="server" Text="Annuler" CssClass="btn btn-primary btn-large btn"
+                                PostBackUrl="~/Page/Admin/admin_home.aspx" CausesValidation="false" />
                         </div>
                     </div>
                     <%--Boutons--%>

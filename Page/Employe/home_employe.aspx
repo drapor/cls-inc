@@ -1,30 +1,14 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="home_employe.aspx.vb"
+﻿<%@ Page Language="VB" MasterPageFile="~/Page/Employe/MasterPageEmploye.master" AutoEventWireup="false" CodeFile="home_employe.aspx.vb"
     Inherits="Page_Employe_home_employe" Theme="Original" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <div class="contenuPage">
-        <div class="titleClient">
-            <h3>
-                Compte employé</h3>
-        </div>
-        <div class="contenuClient">
-            <div class="contenuMenu" style="min-height: 400px;">
-                <ul>
-                    <li>
-                        <asp:LinkButton ID="btnHomeEmploye" runat="server" OnClick="actionAccueil" Text="Accueil employé"
-                            CausesValidation="false"></asp:LinkButton>
-                    </li>
-                    <li>
-                        <asp:LinkButton ID="btnAjouteMembre" runat="server" OnClick="actionAjout" Text="Ajouté un membre"
-                            CausesValidation="false"></asp:LinkButton>
-                    </li>
-                    <li>
-                        <asp:LinkButton ID="btnModifieMembre" runat="server" OnClick="actionModifie" Text="Modifier/Supprimer un membre"
-                            CausesValidation="false"></asp:LinkButton>
-                    </li>
-                </ul>
-            </div>
+<asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
+        
             <asp:MultiView ID="MVEmploye" runat="server" ActiveViewIndex="0">
+                <div class="titleClient">
+                <h3>
+                Votre compte employé
+                </h3>
+                </div>
                 <asp:View ID="ViewAccueil" runat="server">
                     <div class="section" style="width: 680px;">
                         <div class="sectionTitre" style="width: 680px;">
@@ -579,7 +563,7 @@
                                 <br />
                                 <asp:ListView ID="lvMembreNom" runat="server" DataSourceID="dsMembre" DataKeyNames="idMembre">
                                     <LayoutTemplate>
-                                        <table align="center" style="width: 70%; border: 1px solid #000000; font-weight: bolder;">
+                                        <table align="center" style="width: 100%; border: 1px solid #000000; font-weight: bolder;">
                                             <tr style="background-color: #1800B8; color: White; font-size: 14px;">
                                                 <th style="border: 1px solid #000000; width: 15%;">
                                                     <asp:Label ID="lblNom" runat="server" Text="Nom"></asp:Label>
@@ -633,7 +617,7 @@
                                 <br />
                                 <asp:ListView ID="lvMembreCourriel" runat="server" DataSourceID="dsMembre" DataKeyNames="idMembre">
                                     <LayoutTemplate>
-                                        <table align="center" style="width: 70%; border: 1px solid #000000; font-weight: bolder;">
+                                        <table align="center" style="width: 100%; border: 1px solid #000000; font-weight: bolder;">
                                             <tr style="background-color: #1800B8; color: White; font-size: 14px;">
                                                 <th style="border: 1px solid #000000; width: 25%;">
                                                     <asp:Label ID="lblCourriel" runat="server" Text="Courriel"></asp:Label>
@@ -696,8 +680,6 @@
                     });
                 });
             </script>
-        </div>
-    </div>
     <asp:EntityDataSource ID="dsMembre" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
         EnableDelete="True" EnableInsert="True" EnableUpdate="True" Include="RoleJeu"

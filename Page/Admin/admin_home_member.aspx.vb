@@ -6,7 +6,8 @@
 
 Imports modelCLS
 Imports masterPage
-Partial Class Page_Employe_employe_home_member
+
+Partial Class Page_Admin_admin_home_member
     Inherits System.Web.UI.Page
 
     Public entClient As modelCLSContainer = New modelCLSContainer
@@ -112,7 +113,7 @@ Partial Class Page_Employe_employe_home_member
         Session("idMembreFamille") = idMembre
 
         If e.CommandName = "afficher" Then
-            Response.Redirect("../Employe/employe_member_family.aspx")
+            Response.Redirect("../Admin/admin_member_family.aspx")
         End If
 
     End Sub
@@ -160,6 +161,4 @@ Partial Class Page_Employe_employe_home_member
             SetFocus(txtVieuxMP)
         End If
     End Sub
-
 End Class
-

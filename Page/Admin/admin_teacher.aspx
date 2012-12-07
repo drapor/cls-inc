@@ -38,7 +38,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblPrenom" runat="server" Text="Prénom"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:TextBox ID="txtPrenom" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                         MaxLength="25"></asp:TextBox></div>
                 <div class="validation">
@@ -49,7 +49,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblNom" runat="server" Text="Nom"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:TextBox ID="txtNom" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                         MaxLength="25"></asp:TextBox></div>
                 <div class="validation">
@@ -60,7 +60,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblSexe" runat="server" Text="Sexe"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:RadioButtonList ID="rdbtnSexe" runat="server" RepeatDirection="Horizontal" Width="200px">
                         <asp:ListItem Text="Homme" Value="H" Selected="true"></asp:ListItem>
                         <asp:ListItem Text="Femme" Value="F"></asp:ListItem>
@@ -70,7 +70,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblAdresse" runat="server" Text="Adresse"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:TextBox ID="txtAdresse" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                         MaxLength="40"></asp:TextBox></div>
                 <div class="validation">
@@ -81,7 +81,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblVille" runat="server" Text="Ville"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:TextBox ID="txtVille" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                         MaxLength="25"></asp:TextBox></div>
                 <div class="validation">
@@ -92,7 +92,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblDateNaissance" runat="server" Text="Date de naissance"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:TextBox ID="txtDate" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue"
                         MaxLength="10" ForeColor="Red" Width="72px"></asp:TextBox>
                 </div>
@@ -107,7 +107,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblTelephone" runat="server" Text="Téléphone"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:TextBox ID="txtTelephone" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                         Width="100px" MaxLength="13"></asp:TextBox></div>
                 <div class="validation">
@@ -121,7 +121,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblCodePostal" runat="server" Text="Code Postal"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:TextBox ID="txtCodePostal" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                         Width="80px"></asp:TextBox></div>
                 <div class="validation">
@@ -134,7 +134,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblMDP" runat="server" Text="Mot de passe"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:TextBox ID="txtMDP" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                         MaxLength="20" TextMode="Password"></asp:TextBox></div>
                 <div class="validation">
@@ -147,7 +147,7 @@
             <div class="ligneFormulaireAdmin">
                 <div class="elementFormulaireTexte">
                     <asp:Label ID="lblMDPConfirm" runat="server" Text="Confirmation du mot de passe"></asp:Label></div>
-                <div class="elementFormulaireAdmin">
+                <div class="elementFormulaireAdmin" style="width:250px;">
                     <asp:TextBox ID="txtMDPConfirm" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                         TextMode="Password"></asp:TextBox></div>
                 <div class="validation">
@@ -556,7 +556,51 @@
             <br />
             <br />
             <br />
-            <asp:ListView ID="lvAnimateur" runat="server" DataSourceID="dsAnimateurSupprime"
+            <asp:ListView ID="lvAnimateur" runat="server" DataSourceID="dsAnimateurSupprime" DataKeyNames="idMembre, idAnimateur">
+                    <LayoutTemplate>
+                        <table align="center" style="width: 100%; border: 1px solid #000000; font-weight: bolder;">
+                            <tr style="background-color: #1800B8; color: White; font-size: 16px;">
+                                <th style="border: 1px solid #000000; width: 20%;">
+                                    <asp:Label ID="lblNom" runat="server" Text="Nom"></asp:Label>
+                                </th>
+                                <th style="border: 1px solid #000000; width: 20%; padding: 5px;">
+                                    <asp:Label ID="lblPrenom" runat="server" Text="Prénom"></asp:Label>
+                                </th>
+                                <th style="border: 1px solid #000000; width: 25%;">
+                                    <asp:Label ID="lblCourriel" runat="server" Text="Courriel"></asp:Label>
+                                </th>
+                                
+                                <th style="border: 1px solid #000000; width: 20%;">
+                                    <asp:Label ID="lblTelephone" runat="server" Text="Téléphone"></asp:Label>
+                                </th>
+                                <th style="border: 1px solid #000000; width: 15%;">
+                                        
+                                    </th>
+                            </tr>
+                            <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+                        </table>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <tr align="center" class="<%# GetCssName(Container) %>" style="font-size: 10px;">
+                            <th style="border: 1px solid #000000; width: 20%;">
+                                <asp:Label ID="txtNom" runat="server" Text='<%# eval("MembresJeu.nomMembre") %>'></asp:Label>
+                            </th>
+                            <th style="border: 1px solid #000000; width: 20%; padding: 5px;">
+                                <asp:Label ID="txtPrenom" runat="server" Text='<%# eval("MembresJeu.prenomMembre") %>'></asp:Label>
+                            </th>
+                            <th style="border: 1px solid #000000; width: 25%;">
+                                <asp:Label ID="txtCourriel" runat="server" Text='<%# eval("MembresJeu.courriel") %>'></asp:Label>
+                            </th>
+                            <th style="border: 1px solid #000000; width: 20%;">
+                                <asp:Label ID="txtTelephone" runat="server" Text='<%# eval("MembresJeu.telephoneMembre") %>'></asp:Label>
+                            </th>
+                            <th style="border: 1px solid #000000; width: 15%;">
+                                        <asp:LinkButton ID="btnSupprimer" runat="server" CommandName="Delete" ForeColor="Red" Text="Supprimer" OnClientClick="return confirm('Etes-vous certain?');"></asp:LinkButton>
+                                    </th>
+                        </tr>
+                    </ItemTemplate>
+                </asp:ListView>
+            <%--<asp:ListView ID="lvAnimateur" runat="server" DataSourceID="dsAnimateurSupprime"
                 DataKeyNames="idMembre, idAnimateur">
                 <LayoutTemplate>
                     <div class="coursAnimateur">
@@ -575,7 +619,7 @@
                             CommandName="Delete" runat="server" Width="20px" Height="20px" OnClick="DeletingMemberID" />
                     </div>
                 </ItemTemplate>
-            </asp:ListView>
+            </asp:ListView>--%>
         </asp:View>
     </asp:MultiView>
     <script>

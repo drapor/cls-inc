@@ -229,7 +229,7 @@
                                         <asp:Label ID="txtTelephone" runat="server" Text='<%# eval("telephoneMembre") %>'></asp:Label>
                                     </th>
                                     <th style="border: 1px solid #000000; width: 15%;">
-                                        <asp:LinkButton ID="btnModifier" runat="server" Text="Modifier"></asp:LinkButton>
+                                        <asp:LinkButton ID="btnModifier" runat="server" Text="Modifier" CommandName="Afficher"></asp:LinkButton>
                                     </th>
                                     <th style="border: 1px solid #000000; width: 15%;">
                                         <asp:LinkButton ID="btnSupprimer" runat="server" CommandName="Delete" ForeColor="Red" Text="Supprimer"></asp:LinkButton>
@@ -283,10 +283,10 @@
                                         <asp:Label ID="txtTelephone" runat="server" Text='<%# eval("telephoneMembre") %>'></asp:Label>
                                     </th>
                                     <th style="border: 1px solid #000000; width: 15%;">
-                                        <asp:LinkButton ID="btnModifier" runat="server" Text="Modifier"></asp:LinkButton>
+                                        <asp:LinkButton ID="btnModifier" runat="server" Text="Modifier" CommandName="Afficher"></asp:LinkButton>
                                     </th>
                                     <th style="border: 1px solid #000000; width: 15%;">
-                                        <asp:LinkButton ID="btnSupprimer" runat="server" CommandName="Delete" ForeColor="Red" Text="Supprimer"></asp:LinkButton>
+                                        <asp:LinkButton ID="btnSupprimer" runat="server" CommandName="Delete" ForeColor="Red" Text="Supprimer" OnClientClick="return confirm('Etes-vous certain?');"></asp:LinkButton>
                                     </th>
                                 </tr>
                             </ItemTemplate>

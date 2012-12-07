@@ -4,6 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="containerAccueil">
         <div class="containerZoneTexte">
+        <br />
             <div id="slideshow">
                 <ul class="slides">
                     <li>
@@ -23,16 +24,20 @@
                 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
                 <script src="../App_Themes/Original/js/script.js"></script>
             </div>
+            <br />
             <div class="zoneTexteAccueil">
                 <strong>
                     <asp:Label ID="lblMotBienvenu" runat="server" Text="Mot de bienvenue"></asp:Label></strong>
-                </br>
+                <br />
+                <br />
                 <asp:Label ID="lblTextAccueil" runat="server" Text="Chez CLS inc, nous avons vos intérêts à coeur. Ici, vous trouverez plusieurs activités qui vous intéresse pour toutes la familles. 
 Profitez de nos nombreux tarifs familiales qui vous avantageront. Notre nouveau site vous donnera l’opportunité de vous inscrire vous et vos enfants de façon rapide et simple."></asp:Label>
             </div>
+            <br />
+            <br />
         </div>
         <div class="containerZoneMenu">
-            <div class="bgZoneMenu">
+            <div class="bgZoneMenu" style="margin-bottom:10px;">
                 <div class="menuZoneMenu">
                     <div class="textZoneMenu">
                         Dates importantes</div>

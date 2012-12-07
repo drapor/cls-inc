@@ -380,9 +380,7 @@
 <div class="section" style="width:900px;">
 <div class="sectionTitre" style="width:880px;">
     <asp:Label ID="lblHistoriqueAbonnement" runat="server" Text="Historique des abonnements"></asp:Label>
-    <%--<div class="sectionTitreRight">
-        <asp:LinkButton ID="btnHistorique" runat="server" Text="Afficher l'historique" PostBackUrl="~/Page/Client/member_historique.aspx"></asp:LinkButton>
-    </div>--%>
+
 </div>
 </div>  
 
@@ -495,7 +493,7 @@
     <asp:EntityDataSource ID="dsFamille" runat="server" ConnectionString="name=modelCLSContainer"
     DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" Include="RoleJeu"
     EnableFlattening="False" EnableDelete="True" EnableInsert="false" EnableUpdate="True" 
-    orderBy="it.idMembre"
+    orderBy="it.RoleJeu_idRole"
     where="(@idFamille = it.familleID and (it.RoleJeu_idRole = 4 or it.RoleJeu_idRole = 5))">
     <WhereParameters>
         <asp:Parameter Name="idFamille" Type="Int32" DefaultValue="0"/>

@@ -14,10 +14,8 @@ Partial Class Page_Admin_admin_employe
 
         If Request.QueryString("view") = 0 Then
             MVPrincipal.ActiveViewIndex = 0
-        ElseIf Request.QueryString("view") = 1 Then
-            MVPrincipal.ActiveViewIndex = 1
         Else
-            MVPrincipal.ActiveViewIndex = 2
+            MVPrincipal.ActiveViewIndex = 1
         End If
     End Sub
 
@@ -67,68 +65,68 @@ Partial Class Page_Admin_admin_employe
 
     End Sub
 
-    Protected Sub lvCourriel_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvCourriel.ItemUpdating
-        Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
+    'Protected Sub lvCourriel_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvCourriel.ItemUpdating
+    '    Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
 
-        e.NewValues("courriel") = txtCourriel.Text
-    End Sub
+    '    e.NewValues("courriel") = txtCourriel.Text
+    'End Sub
 
-    Protected Sub lvMotPasse_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvMotPasse.ItemUpdating
+    'Protected Sub lvMotPasse_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvMotPasse.ItemUpdating
 
-        Dim txtMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtNouveauMP")
+    '    Dim txtMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtNouveauMP")
 
-        e.NewValues("motPasse") = txtMP.Text
+    '    e.NewValues("motPasse") = txtMP.Text
 
-    End Sub
+    'End Sub
 
-    Sub validationCourriel(sender As Object, args As ServerValidateEventArgs)
+    'Sub validationCourriel(sender As Object, args As ServerValidateEventArgs)
 
-        Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
+    '    Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
 
-        Dim utilisateur = (From A In leContext.MembresJeu Where (A.courriel = txtCourriel.Text) Select A).Any
+    '    Dim utilisateur = (From A In leContext.MembresJeu Where (A.courriel = txtCourriel.Text) Select A).Any
 
-        If utilisateur = Nothing Then
-            args.IsValid = True
-        Else
-            args.IsValid = False
-            SetFocus(txtCourriel)
-        End If
-    End Sub
+    '    If utilisateur = Nothing Then
+    '        args.IsValid = True
+    '    Else
+    '        args.IsValid = False
+    '        SetFocus(txtCourriel)
+    '    End If
+    'End Sub
 
-    Sub validationMotPasse(sender As Object, args As ServerValidateEventArgs)
+    'Sub validationMotPasse(sender As Object, args As ServerValidateEventArgs)
 
-        Dim txtVieuxMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtPresentMP")
+    '    Dim txtVieuxMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtPresentMP")
 
-        If txtVieuxMP.Text = Session("membrePrincipalMotPasse") Then
-            args.IsValid = True
-        Else
-            args.IsValid = False
-            SetFocus(txtVieuxMP)
-        End If
-    End Sub
+    '    If txtVieuxMP.Text = Session("membrePrincipalMotPasse") Then
+    '        args.IsValid = True
+    '    Else
+    '        args.IsValid = False
+    '        SetFocus(txtVieuxMP)
+    '    End If
+    'End Sub
 
-    Sub changeEmploye(sender As Object, e As EventArgs)
-        lblFelicitation.Visible = False
-        checkImage.Visible = False
-    End Sub
+    'Sub changeEmploye(sender As Object, e As EventArgs)
+    '    lblFelicitation.Visible = False
+    '    checkImage.Visible = False
+    'End Sub
 
-    Protected Sub dsEmployeModifie_Updated(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsEmployeModifie.Updated
-        If e.Exception IsNot Nothing Then
-            traiteErreur(Page, "ERREUR LORS DE LA MISE À JOUR D'UN EMPLOYÉ", e.Exception)
-            e.ExceptionHandled = True
-            checkImage.Visible = False
-            lblFelicitation.Visible = False
-            failImage.Visible = True
-            lblFailure.Visible = True
-            lblFailure.Text = "Une erreur s'est produite lors de la mise &agrave; jour de l'employ&eacute;."
-        Else
-            failImage.Visible = False
-            lblFailure.Visible = False
-            checkImage.Visible = True
-            lblFelicitation.Visible = True
-            lblFelicitation.Text = "L'employ&eacute; a &eacute;t&eacute; mis &agrave; jour avec succ&egrave;s !"
-        End If
-    End Sub
+    'Protected Sub dsEmployeModifie_Updated(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsEmployeModifie.Updated
+    '    If e.Exception IsNot Nothing Then
+    '        traiteErreur(Page, "ERREUR LORS DE LA MISE À JOUR D'UN EMPLOYÉ", e.Exception)
+    '        e.ExceptionHandled = True
+    '        checkImage.Visible = False
+    '        lblFelicitation.Visible = False
+    '        failImage.Visible = True
+    '        lblFailure.Visible = True
+    '        lblFailure.Text = "Une erreur s'est produite lors de la mise &agrave; jour de l'employ&eacute;."
+    '    Else
+    '        failImage.Visible = False
+    '        lblFailure.Visible = False
+    '        checkImage.Visible = True
+    '        lblFelicitation.Visible = True
+    '        lblFelicitation.Text = "L'employ&eacute; a &eacute;t&eacute; mis &agrave; jour avec succ&egrave;s !"
+    '    End If
+    'End Sub
 
     Protected Sub dsEmployeSupprime_Deleted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsEmployeSupprime.Deleted
         If e.Exception IsNot Nothing Then

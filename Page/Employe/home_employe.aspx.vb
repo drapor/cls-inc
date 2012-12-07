@@ -18,6 +18,14 @@ Partial Class Page_Employe_home_employe
             idFamille = entClient.MembresJeu.OrderBy(Function(n) n.idMembre).[Select](Function(n) n.familleID).Max
         End If
 
+        If Request.QueryString("view") = 0 Then
+            MVEmploye.ActiveViewIndex = 0
+        ElseIf Request.QueryString("view") = 1 Then
+            MVEmploye.ActiveViewIndex = 1
+        Else
+            MVEmploye.ActiveViewIndex = 2
+        End If
+
         If dropDownType.SelectedValue = 0 Then
             MVPrincipal.ActiveViewIndex = 0
             dsMembre.OrderBy = "it.nomMembre"
@@ -119,21 +127,21 @@ Partial Class Page_Employe_home_employe
         End If
     End Sub
 
-    Sub actionAccueil(sender As Object, e As EventArgs)
-        MVEmploye.ActiveViewIndex = 0
-    End Sub
-
-    Sub actionAjout(sender As Object, e As EventArgs)
-        MVEmploye.ActiveViewIndex = 1
-    End Sub
-
-    Sub actionModifie(sender As Object, e As EventArgs)
-        MVEmploye.ActiveViewIndex = 2
-    End Sub
-
     Protected Sub lvMembreCourriel_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMembreCourriel.ItemCommand
         Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
         Dim idMembre As Integer = lvMembreCourriel.DataKeys(dataItem.DisplayIndex).Value.ToString()
+
+        Session("idMembre") = idMembre
+
+        If e.CommandName = "Afficher" Then
+            Response.Redirect("../Employe/employe_home_member.aspx")
+        End If
+
+    End Sub
+
+    Protected Sub lvMembreNom_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMembreNom.ItemCommand
+        Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
+        Dim idMembre As Integer = lvMembreNom.DataKeys(dataItem.DisplayIndex).Value.ToString()
 
         Session("idMembre") = idMembre
 

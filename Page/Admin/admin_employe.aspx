@@ -184,7 +184,7 @@
                         OnClick="ajouterEmployeClick" ValidationGroup="employe"/>
             </div>
         </asp:View>
-        <asp:View ID="viewModifie" runat="server">
+        <%--<asp:View ID="viewModifie" runat="server">
             <asp:Label ID="lblTitreModifie" runat="server" Text="Modifier un Employé" Font-Size="24px"
                 Font-Bold="true" />
             <br />
@@ -563,14 +563,58 @@
                     </div>
                 </EditItemTemplate>
             </asp:ListView>
-        </asp:View>
+        </asp:View>--%>
         <asp:View ID="viewSupprime" runat="server">
             <asp:Label ID="Label1" runat="server" Text="Supprimer un employé" Font-Size="24px"
                 Font-Bold="true" />
             <br />
             <br />
             <br />
-            <asp:ListView ID="lvEmploye" runat="server" DataSourceID="dsEmployeSupprime" DataKeyNames="idMembre">
+            <asp:ListView ID="lvEmployeNom" runat="server" DataSourceID="dsEmployeSupprime" DataKeyNames="idMembre">
+                    <LayoutTemplate>
+                        <table align="center" style="width: 100%; border: 1px solid #000000; font-weight: bolder;">
+                            <tr style="background-color: #1800B8; color: White; font-size: 16px;">
+                                <th style="border: 1px solid #000000; width: 20%;">
+                                    <asp:Label ID="lblNom" runat="server" Text="Nom"></asp:Label>
+                                </th>
+                                <th style="border: 1px solid #000000; width: 20%; padding: 5px;">
+                                    <asp:Label ID="lblPrenom" runat="server" Text="Prénom"></asp:Label>
+                                </th>
+                                <th style="border: 1px solid #000000; width: 25%;">
+                                    <asp:Label ID="lblCourriel" runat="server" Text="Courriel"></asp:Label>
+                                </th>
+                                
+                                <th style="border: 1px solid #000000; width: 20%;">
+                                    <asp:Label ID="lblTelephone" runat="server" Text="Téléphone"></asp:Label>
+                                </th>
+                                <th style="border: 1px solid #000000; width: 15%;">
+                                        
+                                    </th>
+                            </tr>
+                            <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+                        </table>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <tr align="center" class="<%# GetCssName(Container) %>" style="font-size: 10px;">
+                            <th style="border: 1px solid #000000; width: 20%;">
+                                <asp:Label ID="txtNom" runat="server" Text='<%# eval("nomMembre") %>'></asp:Label>
+                            </th>
+                            <th style="border: 1px solid #000000; width: 20%; padding: 5px;">
+                                <asp:Label ID="txtPrenom" runat="server" Text='<%# eval("prenomMembre") %>'></asp:Label>
+                            </th>
+                            <th style="border: 1px solid #000000; width: 25%;">
+                                <asp:Label ID="txtCourriel" runat="server" Text='<%# eval("courriel") %>'></asp:Label>
+                            </th>
+                            <th style="border: 1px solid #000000; width: 20%;">
+                                <asp:Label ID="txtTelephone" runat="server" Text='<%# eval("telephoneMembre") %>'></asp:Label>
+                            </th>
+                            <th style="border: 1px solid #000000; width: 15%;">
+                                        <asp:LinkButton ID="btnSupprimer" runat="server" CommandName="Delete" ForeColor="Red" Text="Supprimer" OnClientClick="return confirm('Etes-vous certain?');"></asp:LinkButton>
+                                    </th>
+                        </tr>
+                    </ItemTemplate>
+                </asp:ListView>
+            <%--<asp:ListView ID="lvEmploye" runat="server" DataSourceID="dsEmployeSupprime" DataKeyNames="idMembre">
                 <LayoutTemplate>
                     <div class="coursAnimateur">
                         <div class="blockNomAnimateur1">
@@ -588,7 +632,7 @@
                             CommandName="Delete" runat="server" Width="20px" Height="20px" />
                     </div>
                 </ItemTemplate>
-            </asp:ListView>
+            </asp:ListView>--%>
         </asp:View>
     </asp:MultiView>
     <script>
@@ -607,10 +651,10 @@
     <asp:EntityDataSource ID="dsEmployeSupprime" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="false"
         EnableDelete="true" EnableInsert="false" EnableUpdate="true" EntityTypeFilter="MembresJeu"
-        Where="(it.RoleJeu_idRole = 1 OR it.RoleJeu_idRole = 2)" OrderBy="it.prenomMembre">
+        Where="(it.RoleJeu_idRole = 2)" OrderBy="it.nomMembre">
     </asp:EntityDataSource>
 
-    <asp:EntityDataSource ID="dsEmployeModifie" runat="server" ConnectionString="name=modelCLSContainer"
+    <%--<asp:EntityDataSource ID="dsEmployeModifie" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="False"
         EnableDelete="true" EnableInsert="true" EnableUpdate="true" OrderBy="it.idMembre"
         Where="(@MembreID = it.idMembre)" EntityTypeFilter="MembresJeu">
@@ -618,7 +662,7 @@
             <asp:ControlParameter Name="MembreID" ControlID="dropDownEmploye" PropertyName="SelectedValue"
                 Type="Int32" DefaultValue="9" />
         </WhereParameters>
-    </asp:EntityDataSource>
+    </asp:EntityDataSource>--%>
     <asp:EntityDataSource ID="dsDropDownEmploye" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="MembresJeu" EnableFlattening="false"
         EnableDelete="false" EnableInsert="false" EnableUpdate="false" EntityTypeFilter="MembresJeu"

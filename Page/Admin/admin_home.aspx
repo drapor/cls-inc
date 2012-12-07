@@ -198,7 +198,7 @@
                     
                 </div>
                 
-                <div class="partiDroite" style=" width:160px; font-size:16px; font-weight:bolder; line-height:25px; font-family:Times New Roman;">
+                <div class="partiDroite" style=" font-size:16px; font-weight:bolder; line-height:25px; font-family:Times New Roman;">
                     <asp:Label ID="lblCourrielClient" runat="server" Text='<%# Eval("courriel") %>' ></asp:Label>
                     </br>
                     
