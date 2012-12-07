@@ -3,13 +3,18 @@
     Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
+<div style="float: right; height: auto; width: auto;">
+        <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Image ID="failImage" runat="server" ImageUrl="~/App_Themes/Original/img/delete.png"
+            Visible="false" Height="20px" Width="20px" />
+        <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Le cours a été mis à jour avec succès !"
+            Visible="false"></asp:Label>
+        <asp:Label ID="lblFailure" runat="server" ForeColor="Red" Text="" Visible="True"></asp:Label>
+    </div>
     <asp:Label ID="lblTitrePermission" runat="server" Text="Modifier les permissions"
         Font-Size="24px" Font-Bold="true" />
         <div style="float: right; height: auto; width: auto; margin-right:20px;">
-    <asp:Image ID="checkImage" runat="server" ImageUrl="~/App_Themes/Original/img/icon_check.png"
-        Visible="false" Height="20px" Width="20px" />
-    <asp:Label ID="lblFelicitation" runat="server" ForeColor="Green" Text="Les modifications ont bien été enregistrées!"
-        Visible="false"></asp:Label>
         </div> 
     <br />
     <br />
@@ -39,11 +44,11 @@
                 <div class="elementFormulaireTexte permissionHeight">
                     <asp:DropDownList ID="ddlPermission" Width="180" AppendDataBoundItems="true" SkinID="ddlBlue"
                         runat="server" DataSourceID="dsRole" DataValueField="idRole" DataTextField="nomRole"
-                        SelectedValue='<%#Bind ("RoleJeu_idRole") %>'>
+                        SelectedValue='<%#Bind ("RoleJeu_idRole") %>' OnSelectedIndexChanged="resetLabel" AutoPostBack="true">
                     </asp:DropDownList>
                 </div>
                 <div class="elementFormulaireRequired permissionHeight">
-                    <asp:Button ID="btnModifier" runat="server" Text="Modifier" OnClick="confirmation"
+                    <asp:Button ID="btnModifier" runat="server" Text="Modifier"
                         CssClass="btn btn-primary btn-primary btn" CommandName="Update" />
                 </div>
             </div>

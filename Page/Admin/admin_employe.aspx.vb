@@ -132,16 +132,12 @@ Partial Class Page_Admin_admin_employe
         If e.Exception IsNot Nothing Then
             traiteErreur(Page, "ERREUR LORS DE LA SUPPRESSION D'UN EMPLOYÉ", e.Exception)
             e.ExceptionHandled = True
-            checkImage.Visible = False
-            lblFelicitation.Visible = False
-            failImage.Visible = True
-            lblFailure.Visible = True
+            desactiveControles(checkImage, lblFelicitation)
+            activeControles(failImage, lblFailure)
             lblFailure.Text = "Une erreur s'est produite lors de la suppression de l'employ&eacute;."
         Else
-            failImage.Visible = False
-            lblFailure.Visible = False
-            checkImage.Visible = True
-            lblFelicitation.Visible = True
+            desactiveControles(failImage, lblFailure)
+            activeControles(checkImage, lblFelicitation)
             lblFelicitation.Text = "L'employ&eacute; a &eacute;t&eacute; supprim&eacute; jour avec succ&egrave;s !"
         End If
     End Sub

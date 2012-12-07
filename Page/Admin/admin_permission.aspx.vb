@@ -1,6 +1,6 @@
 'Créé par Samuel Bellerose
 'Le 16 septembre 2012
-'Dernière mise à jour le 25 septembre 2012
+'Dernière mise à jour le 7 novembre 2012
 'Classe partielle qui modifi les rôles des employé dans la BD
 
 Imports modelCLS
@@ -21,11 +21,22 @@ Partial Class Page_Admin_admin_permission
         Next
     End Sub
 
-    'Petite fonction qui confirme que la modification a été fait
-    Sub confirmation(sender As Object, e As EventArgs)
-        If Page.IsValid = True Then
-            lblFelicitation.Visible = True
-            checkImage.Visible = True
+#Region "Traitements des erreurs"
+    Protected Sub dsEmploye_Updated(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsEmploye.Updated
+        If e.Exception IsNot Nothing Then
+            traiteErreur(Page, "ERREUR LORS DE LA MISE À JOUR D'UN ROLE", e.Exception)
+            e.ExceptionHandled = True
+            activeControles(failImage, lblFailure)
+            lblFailure.Text = "Une erreur s'est produite lors de la mise &agrave; jour du role de l'employ&eacute;."
+        Else
+            activeControles(checkImage, lblFelicitation)
+            lblFelicitation.Text = "La permission de l'employ&eacute; a &eacute;t&eacute; mis &agrave; jour avec succ&egrave;s !"
         End If
     End Sub
+
+    Sub resetLabel(sender As Object, e As EventArgs)
+        desactiveControles(checkImage, lblFelicitation)
+        desactiveControles(failImage, lblFailure)
+    End Sub
+#End Region
 End Class
