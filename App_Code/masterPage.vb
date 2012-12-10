@@ -1,4 +1,8 @@
-﻿Imports Microsoft.VisualBasic
+﻿'Créé par Francis Griggs
+'Le 16 septembre 2012
+'Dernière mise à jour le 10 décembre 2012
+
+Imports Microsoft.VisualBasic
 Imports System.Globalization
 Imports System.Threading
 Imports System.Configuration
@@ -25,6 +29,7 @@ Public Class masterPage
 
     Dim leContext As New modelCLSContainer
 
+    'Fonction qui recherche le contrôle dans les contrôles parents
     Public Shared Function FindChildControl(Of T As Control)(ByVal startingControl As Control, ByVal id As String) As T
         Dim found As T = Nothing
         For Each activeControl As Control In startingControl.Controls
@@ -39,6 +44,7 @@ Public Class masterPage
         Return found
     End Function
 
+    'Met vide tout les champs dans le contôle
     Public Sub ResetFormControlValues(ByVal parent As Control)
         For Each c As Control In parent.Controls
             If c.Controls.Count > 0 Then
@@ -52,6 +58,7 @@ Public Class masterPage
         Next c
     End Sub
 
+    'Fonction qui retourne le nom de la classe CSS selon le numéro de ligne
     Protected Function GetCssName(container As Object) As String
         If container IsNot Nothing Then
             If container.[GetType]() Is GetType(ListViewDataItem) Then
@@ -65,6 +72,7 @@ Public Class masterPage
         Return Nothing
     End Function
 
+    'Service web pour le control Ajax autoComplete qui affiche toute les valeurs similaire au prefixText
     <System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()>
     Public Shared Function GetCompletionListSearch(ByVal prefixText As String, ByVal count As Integer) As String()
 
@@ -83,7 +91,6 @@ Public Class masterPage
         Response.Redirect(url)
 
         Server.ClearError()
-        'Response.Redirect(utile.utilall.pageerreur, True)
     End Sub
 
     Public Shared Function traiteErreur(ByRef page As Page, ByVal msg As String, ByVal ex As Exception) As String
@@ -95,11 +102,13 @@ Public Class masterPage
         Return "UNE ERREUR S'EST PRODUITE: " & ex.ToString
     End Function
 
+    'Active les controles fournient
     Public Sub desactiveControles(ByVal controle1 As Image, ByVal controle2 As Label)
         controle1.Visible = False
         controle2.Visible = False
     End Sub
 
+    'Désactive les contrôles fournient
     Public Sub activeControles(ByVal controle1 As Image, ByVal controle2 As Label)
         controle1.Visible = True
         controle2.Visible = True

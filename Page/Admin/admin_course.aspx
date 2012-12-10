@@ -1,3 +1,7 @@
+<%--Créé par Francis Griggs
+Le 24 novembre 2012
+Dernière mise à jour le 10 décembre 2012--%>
+
 <%@ Page Title="" Language="VB" MasterPageFile="~/Page/Admin/MasterPageAdmin.master"
     AutoEventWireup="false" CodeFile="admin_course.aspx.vb" Inherits="Page_Admin_admin_course"
     Theme="Original" %>
@@ -214,7 +218,9 @@
                                 </asp:DropDownList>
                             </div>
                             <div class="validation">
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlTeachers" ErrorMessage="*Vous devez possédez un animateur pour ajouter un cours." ValidationGroup="formulaire" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlTeachers"
+                                    ErrorMessage="*Vous devez possédez un animateur pour ajouter un cours." ValidationGroup="formulaire"
+                                    Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="validationListe">
@@ -243,7 +249,8 @@
                     Choisissez un cours</div>
                 <div class="elementFormulaire">
                     <asp:DropDownList ID="ddlCours" runat="server" Width="200px" SkinID="ddlBlue" DataSourceID="dsCours"
-                        DataValueField="idCours" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="nomCours" OnSelectedIndexChanged="changeCours" />
+                        DataValueField="idCours" AppendDataBoundItems="False" AutoPostBack="True" DataTextField="nomCours"
+                        OnSelectedIndexChanged="changeCours" />
                 </div>
             </div>
             <asp:ListView ID="lvCourseModify" runat="server" DataSourceID="dsModifyCourse" DataKeyNames="idCours"
@@ -252,7 +259,7 @@
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                 </LayoutTemplate>
                 <ItemTemplate>
-                <br />
+                    <br />
                     <div class="modifierCoursGauche">
                         <div class="partiGaucheCours">
                             <div class="ligneCoursNormalLabelGauche">
@@ -265,20 +272,20 @@
                                 <asp:Label ID="lblGroupeAge" runat="server" Text="Groupe d'âge:"></asp:Label>
                             </div>
                             <div class="ligneCoursNormalLabelGauche">
-                            <asp:Label ID="lblTarif" runat="server" Text="Tarif:"></asp:Label>
+                                <asp:Label ID="lblTarif" runat="server" Text="Tarif:"></asp:Label>
                             </div>
                             <br />
                             <div class="ligneCoursNormalLabelGauche">
-                            <asp:Label ID="lblDateDebutInscription" runat="server" Text="Date début inscription:"></asp:Label>
+                                <asp:Label ID="lblDateDebutInscription" runat="server" Text="Date début inscription:"></asp:Label>
                             </div>
                             <div class="ligneCoursNormalLabelGauche">
-                            <asp:Label ID="lblDateFinInscription" runat="server" Text="Date fin inscription:"></asp:Label>
+                                <asp:Label ID="lblDateFinInscription" runat="server" Text="Date fin inscription:"></asp:Label>
                             </div>
                             <div class="ligneCoursNormalLabelGauche">
-                            <asp:Label ID="lblDateDebutCours" runat="server" Text="Date début cours:"></asp:Label>
+                                <asp:Label ID="lblDateDebutCours" runat="server" Text="Date début cours:"></asp:Label>
                             </div>
                             <div class="ligneCoursNormalLabelGauche">
-                            <asp:Label ID="lblDateFinCours" runat="server" Text="Date fin cours:"></asp:Label>
+                                <asp:Label ID="lblDateFinCours" runat="server" Text="Date fin cours:"></asp:Label>
                             </div>
                             <br />
                             <div class="ligneCoursNormalLabelGauche">
@@ -286,7 +293,7 @@
                             </div>
                             <div class="ligneCoursDescriptionLabel">
                                 <asp:Label ID="lblDescription" runat="server" Text="Description:"></asp:Label>
-                            </div>   
+                            </div>
                         </div>
                         <div class="partiDroiteCours">
                             <div class="ligneCoursNormal">
@@ -301,20 +308,20 @@
                                 <asp:Label ID="lblGroupeAgeMax" runat="server" Text='<%# Eval("groupeAgeMax") %>'></asp:Label>
                             </div>
                             <div class="ligneCoursNormal">
-                            <asp:Label ID="lblTarifCours" runat="server" Text='<%# Eval("tarif") %>'></asp:Label>
+                                <asp:Label ID="lblTarifCours" runat="server" Text='<%# Eval("tarif") %>'></asp:Label>
                             </div>
                             <br />
                             <div class="ligneCoursNormal">
-                            <asp:Label ID="lblDateDebutInscriptionCours" runat="server" Text='<%# (CType(Eval("dateDebutInscription"),DateTime)).ToShortDateString %>'></asp:Label>
+                                <asp:Label ID="lblDateDebutInscriptionCours" runat="server" Text='<%# (CType(Eval("dateDebutInscription"),DateTime)).ToShortDateString %>'></asp:Label>
                             </div>
                             <div class="ligneCoursNormal">
-                            <asp:Label ID="lblDateFinInscriptionCours" runat="server" Text='<%# (CType(Eval("dateFinInscription"),DateTime)).ToShortDateString %>'></asp:Label>
+                                <asp:Label ID="lblDateFinInscriptionCours" runat="server" Text='<%# (CType(Eval("dateFinInscription"),DateTime)).ToShortDateString %>'></asp:Label>
                             </div>
                             <div class="ligneCoursNormal">
-                            <asp:Label ID="lblDateDebutCoursCours" runat="server" Text='<%# (CType(Eval("dateDebutCours"),DateTime)).ToShortDateString %>'></asp:Label>
+                                <asp:Label ID="lblDateDebutCoursCours" runat="server" Text='<%# (CType(Eval("dateDebutCours"),DateTime)).ToShortDateString %>'></asp:Label>
                             </div>
                             <div class="ligneCoursNormal">
-                            <asp:Label ID="lblDateFinCoursCours" runat="server" Text='<%# (CType(Eval("dateFinCours"),DateTime)).ToShortDateString %>'></asp:Label>
+                                <asp:Label ID="lblDateFinCoursCours" runat="server" Text='<%# (CType(Eval("dateFinCours"),DateTime)).ToShortDateString %>'></asp:Label>
                             </div>
                             <br />
                             <div class="ligneCoursNormal">
@@ -323,11 +330,11 @@
                             </div>
                             <div class="ligneCoursDescription">
                                 <asp:Label ID="lblDescriptionCours" runat="server" Text='<%# Eval("description") %>'></asp:Label>
-                            </div>      
+                            </div>
                         </div>
                     </div>
                     <div class="bouton">
-                        <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Enregistrer les modifications du cours"
+                        <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Modifier le cours"
                             CssClass="btn btn-primary" />
                     </div>
                 </ItemTemplate>
@@ -335,7 +342,7 @@
                     <div class="ligneFormulaire">
                         <div class="elementFormulaireTexte">
                             <asp:Label ID="lblNomCours" runat="server" Text="Nom du cours"></asp:Label></div>
-                        <div class="elementFormulaire" style="width:260px;">
+                        <div class="elementFormulaire" style="width: 260px;">
                             <asp:TextBox ID="txtCours" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                                 MaxLength="50" Text='<%#Bind("nomCours") %>'></asp:TextBox></div>
                         <div class="validation">
@@ -349,7 +356,7 @@
                     <div class="ligneFormulaire">
                         <div class="elementFormulaireTexte">
                             <asp:Label ID="lblCategorie" runat="server" Text="Catégorie"></asp:Label></div>
-                        <div class="elementFormulaire" style="width:260px;">
+                        <div class="elementFormulaire" style="width: 260px;">
                             <asp:DropDownList ID="ddlCategorie" runat="server" Width="100px" SkinID="ddlBlue"
                                 AppendDataBoundItems="False" CssClass="search-query" SelectedValue='<%#Bind("categorie") %>'>
                                 <asp:ListItem Selected="True" Value="Culture">Culture</asp:ListItem>
@@ -362,13 +369,14 @@
                     <div class="ligneFormulaire">
                         <div class="elementFormulaireTexte">
                             <asp:Label ID="lblGroupeAge" runat="server" Text="Groupe d'âge"></asp:Label></div>
-                        <div class="elementFormulaire" style="width:260px;">
+                        <div class="elementFormulaire" style="width: 260px;">
                             <asp:TextBox ID="txtGroupeAgeMin" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                                 MaxLength="2" Text='<%#Bind("groupeAgeMin") %>' Width="30px"></asp:TextBox>
                             <asp:DropDownList ID="ddlGroupeAgeMod" runat="server" SkinID="ddlBlue" Width="55px"
-                                CssClass="ddlGroupeAgeMod" AppendDataBoundItems="false" SelectedValue='<%#Bind("groupeAgeMod") %>' OnSelectedIndexChanged="changementAgeModModifier" AutoPostBack="true">
+                                CssClass="ddlGroupeAgeMod" AppendDataBoundItems="false" SelectedValue='<%#Bind("groupeAgeMod") %>'
+                                OnSelectedIndexChanged="changementAgeModModifier" AutoPostBack="true">
                                 <asp:ListItem Selected="true" Value="à">à</asp:ListItem>
-                                <asp:ListItem Value="et +" Text="et +" >et +</asp:ListItem>
+                                <asp:ListItem Value="et +" Text="et +">et +</asp:ListItem>
                             </asp:DropDownList>
                             <asp:TextBox ID="txtGroupeAgeMax" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                                 Width="30px" MaxLength="2" Text='<%#Bind("groupeAgeMax") %>'></asp:TextBox>*
@@ -393,15 +401,15 @@
                     <div class="ligneFormulaire">
                         <div class="elementFormulaireTexte">
                             <asp:Label ID="lblTarif" runat="server" Text="Tarif"></asp:Label></div>
-                        <div class="elementFormulaire" style="width:260px;">
+                        <div class="elementFormulaire" style="width: 260px;">
                             <asp:TextBox ID="txtTarif" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
                                 MaxLength="6" Width="50px" Text='<%#Bind("tarif") %>'></asp:TextBox></div>
                         <div class="validation">
                             <asp:RequiredFieldValidator ID="requiredTarif" runat="server" ErrorMessage="*Le tarif est obligatoire"
                                 ControlToValidate="txtTarif" ForeColor="Red" Display="Dynamic" ValidationGroup="cours">*</asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="regExTarif" runat="server" ErrorMessage="Veuillez entrer seulement un entier (ex: 10)"
-                                    ValidationExpression="^[0-9]+$" Display="Dynamic" ControlToValidate="txtTarif"
-                                    ForeColor="Red" ValidationGroup="cours">*</asp:RegularExpressionValidator>
+                                ValidationExpression="^[0-9]+$" Display="Dynamic" ControlToValidate="txtTarif"
+                                ForeColor="Red" ValidationGroup="cours">*</asp:RegularExpressionValidator>
                         </div>
                     </div>
                     <%--Tarif Adulte--%>
@@ -409,59 +417,62 @@
                     <div class="ligneFormulaire">
                         <div class="elementFormulaireTexte">
                             <asp:Label ID="lblDateDebutInscription" runat="server" Text="Date début des inscriptions"></asp:Label></div>
-                        <div class="elementFormulaire" style="width:260px;">
+                        <div class="elementFormulaire" style="width: 260px;">
                             <asp:TextBox ID="txtDateDebutInscription" runat="server" CssClass="datepicker search-query"
                                 SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateDebutInscription", "{0:yyyy/MM/dd}") %>'></asp:TextBox></div>
                         <div class="validation">
-                        <asp:RequiredFieldValidator ID="requiredDateDebutInscription" runat="server" ErrorMessage="*La date de début des inscriptions est obligatoire"
-                            ControlToValidate="txtDateDebutInscription" ForeColor="Red" Display="Dynamic" ValidationGroup="cours">*</asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="regExDateDebutInscription" runat="server" ErrorMessage="*La date n'est pas dans le format aaaa/mm/jj"
-                            ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$"
-                            Display="Dynamic" ControlToValidate="txtDateDebutInscription" ForeColor="Red" ValidationGroup="cours">*</asp:RegularExpressionValidator>
+                            <asp:RequiredFieldValidator ID="requiredDateDebutInscription" runat="server" ErrorMessage="*La date de début des inscriptions est obligatoire"
+                                ControlToValidate="txtDateDebutInscription" ForeColor="Red" Display="Dynamic"
+                                ValidationGroup="cours">*</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="regExDateDebutInscription" runat="server" ErrorMessage="*La date n'est pas dans le format aaaa/mm/jj"
+                                ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$"
+                                Display="Dynamic" ControlToValidate="txtDateDebutInscription" ForeColor="Red"
+                                ValidationGroup="cours">*</asp:RegularExpressionValidator>
                         </div>
                     </div>
                     <%--Date début des inscriptions--%>
                     <div class="ligneFormulaire">
                         <div class="elementFormulaireTexte">
                             <asp:Label ID="lblDateFinInscription" runat="server" Text="Date fin des inscriptions"></asp:Label></div>
-                        <div class="elementFormulaire" style="width:260px;">
+                        <div class="elementFormulaire" style="width: 260px;">
                             <asp:TextBox ID="txtDateFinInscription" runat="server" CssClass="datepicker search-query"
                                 SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateFinInscription", "{0:yyyy/MM/dd}") %>'></asp:TextBox></div>
                         <div class="validation">
-                        <asp:RequiredFieldValidator ID="requiredDateFinInscription" runat="server" ErrorMessage="*La date de fin des inscriptions est obligatoire"
-                            ControlToValidate="txtDateFinInscription" ForeColor="Red" Display="Dynamic" ValidationGroup="cours">*</asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="regExDateFinInscription" runat="server" ErrorMessage="*La date n'est pas dans le format aaaa/mm/jj"
-                            ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$"
-                            Display="Dynamic" ControlToValidate="txtDateFinInscription" ForeColor="Red" ValidationGroup="cours">*</asp:RegularExpressionValidator>
+                            <asp:RequiredFieldValidator ID="requiredDateFinInscription" runat="server" ErrorMessage="*La date de fin des inscriptions est obligatoire"
+                                ControlToValidate="txtDateFinInscription" ForeColor="Red" Display="Dynamic" ValidationGroup="cours">*</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="regExDateFinInscription" runat="server" ErrorMessage="*La date n'est pas dans le format aaaa/mm/jj"
+                                ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$"
+                                Display="Dynamic" ControlToValidate="txtDateFinInscription" ForeColor="Red" ValidationGroup="cours">*</asp:RegularExpressionValidator>
                         </div>
                     </div>
                     <%--Date fin des inscriptions--%>
                     <div class="ligneFormulaire">
                         <div class="elementFormulaireTexte">
                             <asp:Label ID="lblDateDebutCours" runat="server" Text="Date début des cours"></asp:Label></div>
-                        <div class="elementFormulaire" style="width:260px;">
+                        <div class="elementFormulaire" style="width: 260px;">
                             <asp:TextBox ID="txtDateDebutCours" runat="server" CssClass="datepicker search-query"
                                 SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateDebutCours", "{0:yyyy/MM/dd}") %>'></asp:TextBox></div>
                         <div class="validation">
-                        <asp:RequiredFieldValidator ID="requiredDateDebutCours" runat="server" ErrorMessage="*La date de début des cours est obligatoire"
-                            ControlToValidate="txtDateDebutCours" ForeColor="Red" Display="Dynamic" ValidationGroup="cours">*</asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="regExDateDebutCours" runat="server" ErrorMessage="*La date n'est pas dans le format aaaa/mm/jj"
-                            ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$"
-                            Display="Dynamic" ControlToValidate="txtDateDebutCours" ForeColor="Red" ValidationGroup="cours">*</asp:RegularExpressionValidator>
+                            <asp:RequiredFieldValidator ID="requiredDateDebutCours" runat="server" ErrorMessage="*La date de début des cours est obligatoire"
+                                ControlToValidate="txtDateDebutCours" ForeColor="Red" Display="Dynamic" ValidationGroup="cours">*</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="regExDateDebutCours" runat="server" ErrorMessage="*La date n'est pas dans le format aaaa/mm/jj"
+                                ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$"
+                                Display="Dynamic" ControlToValidate="txtDateDebutCours" ForeColor="Red" ValidationGroup="cours">*</asp:RegularExpressionValidator>
                         </div>
                     </div>
                     <%--Date début des cours--%>
                     <div class="ligneFormulaire">
                         <div class="elementFormulaireTexte">
                             <asp:Label ID="lblDateFinCours" runat="server" Text="Date fin des cours"></asp:Label></div>
-                        <div class="elementFormulaire" style="width:260px;">
-                            <asp:TextBox ID="txtDateFinCours" runat="server" CssClass="datepicker search-query" SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateFinCours", "{0:yyyy-MM-dd}") %>'></asp:TextBox></div>
+                        <div class="elementFormulaire" style="width: 260px;">
+                            <asp:TextBox ID="txtDateFinCours" runat="server" CssClass="datepicker search-query"
+                                SkinID="txtBoxBlue" MaxLength="10" ForeColor="Red" Width="80px" Text='<%#Bind("dateFinCours", "{0:yyyy-MM-dd}") %>'></asp:TextBox></div>
                         <div class="validation">
-                        <asp:RequiredFieldValidator ID="requiredDateFinCours" runat="server" ErrorMessage="*La date de fin des cours est obligatoire"
-                            ControlToValidate="txtDateFinCours" ForeColor="Red" Display="Dynamic" ValidationGroup="cours">*</asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="regExDateFinCours" runat="server" ErrorMessage="*La date n'est pas dans le format aaaa/mm/jj"
-                            ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$"
-                            Display="Dynamic" ControlToValidate="txtDateFinCours" ForeColor="Red" ValidationGroup="cours">*</asp:RegularExpressionValidator>
+                            <asp:RequiredFieldValidator ID="requiredDateFinCours" runat="server" ErrorMessage="*La date de fin des cours est obligatoire"
+                                ControlToValidate="txtDateFinCours" ForeColor="Red" Display="Dynamic" ValidationGroup="cours">*</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="regExDateFinCours" runat="server" ErrorMessage="*La date n'est pas dans le format aaaa/mm/jj"
+                                ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$"
+                                Display="Dynamic" ControlToValidate="txtDateFinCours" ForeColor="Red" ValidationGroup="cours">*</asp:RegularExpressionValidator>
                         </div>
                     </div>
                     <%--Date fin des cours--%>
@@ -469,7 +480,7 @@
                     <div class="ligneFormulaire">
                         <div class="elementFormulaireTexte">
                             <asp:Label ID="lblTeacher" runat="server" Text="Animateur du cours"></asp:Label></div>
-                        <div class="elementFormulaire" style="width:260px;">
+                        <div class="elementFormulaire" style="width: 260px;">
                             <asp:DropDownList ID="ddlTeachers" runat="server" DataSourceID="dsTeachers" DataTextField="FullName"
                                 DataValueField="idMembre" SkinID="ddlBlue" AppendDataBoundItems="False" CssClass="search-query"
                                 SelectedValue='<%#Bind("Animateur_idMembre") %>'>
@@ -479,7 +490,7 @@
                     <div class="ligneFormulaireDescription">
                         <div class="elementFormulaireTexte">
                             <asp:Label ID="lblDescription" runat="server" Text="Description du cours"></asp:Label></div>
-                        <div class="elementFormulaire" style="width:350px;">
+                        <div class="elementFormulaire" style="width: 350px;">
                             <asp:TextBox ID="txtDescription" runat="server" CssClass="search-query" Font-Bold="false"
                                 SkinID="txtBoxDescription" MaxLength="20" Height="120px" TextMode="MultiLine"
                                 Width="320px" Text='<%#Bind("description") %>'></asp:TextBox></div>
@@ -488,17 +499,17 @@
                                 ControlToValidate="txtDescription" ForeColor="Red" Display="Dynamic" ValidationGroup="cours">*</asp:RequiredFieldValidator>
                         </div>
                     </div>
-                    <%--Description--%>                   
+                    <%--Description--%>
                     <div class="validationListe">
-                        <asp:ValidationSummary ID="ValidationInfo" ValidationGroup="cours" DisplayMode="List" ForeColor="Red" runat="server" />
+                        <asp:ValidationSummary ID="ValidationInfo" ValidationGroup="cours" DisplayMode="List"
+                            ForeColor="Red" runat="server" />
                     </div>
-
                     <div class="ligneFormulaire">
                         <div class="elementFormulaireTexte">
                         </div>
                         <div class="elementFormulaire">
                             <asp:Button ID="btnAjouter" runat="server" Text="Accepter les modifications" CssClass="btn btn-primary btn-large btn"
-                                CommandName="Update" ValidationGroup="cours"/>
+                                CommandName="Update" ValidationGroup="cours" />
                             <asp:Button ID="btnCancel" runat="server" Text="Annuler" CssClass="btn btn-primary btn-large btn"
                                 CommandName="Cancel" CausesValidation="false" />
                         </div>
