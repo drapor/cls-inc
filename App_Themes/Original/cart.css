@@ -25,7 +25,7 @@
 .panierAbonneTitre
 {
     margin-bottom:20px;
-    width:220px;
+    width:190px;
     font-size:20px;
     font-weight:bold;
     float:left;
@@ -64,7 +64,7 @@
 
 .panierAbonne
 {
-    width:220px;
+    width:190px;
     float:left;
 }
 
@@ -81,7 +81,6 @@
 }
 .panierSupprime
 {
-    margin-left:40px;
     float:left; 
 }
 

@@ -31,16 +31,17 @@
                 </div>
             </ItemTemplate>
         </asp:ListView>
-
-                <div class="infoCours">
-                    <asp:Label ID="lblMembre" runat="server" Text="Membre: "></asp:Label>
-                    <asp:DropDownList ID="ddlMembreFamille" runat="server" DataSourceID="dsMembreFamille" AppendDataBoundItems="true"
-                    DataValueField="idMembre" DataTextField="prenomMembre" >
-                    </asp:DropDownList>
-                    <asp:Button ID="btnRegisterMember" runat="server" Text="Inscrire le membre" CssClass="btn btn-primary" OnClick="inscriptionMembre" />
-                </div>
-
-
+        <div class="infoCours">
+            <asp:Label ID="lblMembre" runat="server" Text="Membre: "></asp:Label>
+            <asp:DropDownList ID="ddlMembreFamille" runat="server" DataSourceID="dsMembreFamille"
+                AppendDataBoundItems="true" DataValueField="idMembre" DataTextField="prenomMembre"
+                OnDataBound="ddlMembreFamille_databound">
+            </asp:DropDownList>
+            <asp:Button ID="btnRegisterMember" runat="server" Text="Inscrire le membre" CssClass="btn btn-primary"
+                OnClick="inscriptionMembre" />
+            <asp:Label ID="lblErreur" ForeColor="Red" Visible="false" runat="server" Text="Désolé, vous n'avez aucun membre à inscrire à cette activité ! Voici les raison qui peuvent en être la cause: vous ne possédez pas l'âge requise pour ce cours, vous êtes déjà inscrit à ce cours où cette activité est déjà dans votre panier de commande. *Ceci s'applique pour les membres de votre famille."></asp:Label>
+            <asp:HiddenField ID="hiddenCoursID" runat="server" Value='<%#Bind ("Cours_idCours") %>' />
+        </div>
         <asp:Button ID="btnRetour" runat="server" Text="Retour" CssClass="btn btn-primary btnPadding"
             OnClick="retourCategorie" />
     </div>

@@ -27,6 +27,9 @@
                         <div class="panierPrixTitre">
                             <asp:Label ID="lblTitrePrix" runat="server" Text="Prix"></asp:Label>
                         </div>
+                        <div style="width: 90px;margin-bottom:20px;font-size:20px;font-weight:bold;float:left;">
+                            <asp:Label ID="lblRabaisApply" runat="server" Text="Rabais"></asp:Label>
+                        </div>
                         <div class="separateur">
                             <asp:Image ID="imgSeparateur" runat="server" ImageUrl="~/App_Themes/Original/img/Separateur.png" />
                         </div>
@@ -35,13 +38,22 @@
                             <asp:Image ID="Image1" runat="server" ImageUrl="~/App_Themes/Original/img/Separateur.png" />
                         </div>
                         <div class="labelTotal">
-                            <asp:Label ID="lblSousTotal" runat="server" Text="Sous-total:"></asp:Label>
+                            <asp:Label ID="lblSousTotal" runat="server" Text="Sous-total avant rabais:"></asp:Label>
                             <br />
                             <br />
                             <asp:Label ID="lblRabais" runat="server" Text="Rabais applicable:"></asp:Label>
                             <br />
                             <br />
-                            <asp:Label ID="lblGrandTotal" runat="server" Text="Grand total:"></asp:Label>
+                            <asp:Label ID="lblGrandTotal" runat="server" Text="Sous-total:"></asp:Label>
+                            <br />
+                            <br />
+                            <asp:Label ID="lblTPS" runat="server" Text="TPS (5%):"></asp:Label>
+                            <br />
+                            <br />
+                            <asp:Label ID="lblTVQ" runat="server" Text="TVQ (9,5%):"></asp:Label>
+                            <br />
+                            <br />
+                            <asp:Label ID="lblGrandMontantFinal" runat="server" Text="Sous-total:"></asp:Label>
                         </div>
                         <div class="total">
                             <asp:Label ID="lblSousTotalPanier" runat="server" Text="100,00"></asp:Label>
@@ -53,6 +65,18 @@
                             <br />
                             <br />
                             <asp:Label ID="lblGrandTotalPanier" runat="server" Text="100,00"></asp:Label>
+                            $
+                            <br />
+                            <br />
+                            <asp:Label ID="lblTPSMontant" runat="server" Text="100,00"></asp:Label>
+                            $
+                            <br />
+                            <br />
+                            <asp:Label ID="lblTVQMontant" runat="server" Text="100,00"></asp:Label>
+                            $
+                            <br />
+                            <br />
+                            <asp:Label ID="lblMontantFinal" runat="server" Text="100,00"></asp:Label>
                             $
                         </div>
                         <div class="boutonPanierRetour">
@@ -87,6 +111,9 @@
                             <asp:Label ID="lblPrix" runat="server" Text='<%#Eval("GroupeJeu.CoursJeu.tarif")%>'></asp:Label>
                             $
                         </div>
+                        <div style="width: 90px;float:left;">
+                            <asp:Label ID="lblRabaisApply" runat="server" Text=""></asp:Label>
+                        </div>
                         <div class="panierSupprime">
                             <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="~/App_Themes/Original/img/delete.png"
                                 Width="19px" ImageAlign="Middle" ToolTip="Supprimer" CommandName="Delete" OnClientClick="return confirm('Êtes-vous sûr de vouloir supprimer cette commande?');" />
@@ -100,7 +127,7 @@
     <asp:EntityDataSource ID="dsPanier" runat="server" ConnectionString="name=modelCLSContainer"
         DefaultContainerName="modelCLSContainer" EntitySetName="ItemPanierJeu" EnableFlattening="False"
         EnableDelete="True" EnableInsert="false" EnableUpdate="True" Where="(@idPanier = it.Panier_idCommande)"
-        Include="GroupeJeu,GroupeJeu.CoursJeu, MembresJeu, MembresJeu.RoleJeu">
+        Include="GroupeJeu,GroupeJeu.CoursJeu, MembresJeu, MembresJeu.RoleJeu" OrderBy="it.GroupeJeu.CoursJeu.tarif DESC">
         <WhereParameters>
             <asp:Parameter Name="idPanier" DefaultValue="0" Type="Int16" />
         </WhereParameters>

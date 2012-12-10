@@ -36,6 +36,9 @@
                 <asp:LinkButton ID="lnkActivite" runat="server" CommandName="selection" Text='<%# Eval("nomCours")%>'>
                 </asp:LinkButton>
             </ItemTemplate>
+            <EmptyDataTemplate>
+                <asp:Label ID="lblNoCourse" runat="server" Text="Il n'y a pas de cours dans cette catégorie pour le moment. "></asp:Label>
+            </EmptyDataTemplate>
         </asp:ListView>
         <asp:EntityDataSource ID="dsCategorie" runat="server" ConnectionString="name=modelCLSContainer"
             DefaultContainerName="modelCLSContainer" EntitySetName="CoursJeu" EnableFlattening="False"

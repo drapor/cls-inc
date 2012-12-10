@@ -23,6 +23,8 @@ Imports System.IO
 Public Class masterPage
     Inherits System.Web.UI.Page
 
+    Dim leContext As New modelCLSContainer
+
     Public Shared Function FindChildControl(Of T As Control)(ByVal startingControl As Control, ByVal id As String) As T
         Dim found As T = Nothing
         For Each activeControl As Control In startingControl.Controls
@@ -198,4 +200,39 @@ Public Class masterPage
     End Function
 #End Region
 
+#Region "Fonction vérification inscription liste attente & inscription activité"
+    'Fonction qui vérifi si le membre à l'âge requis pour le cours
+    Public Function ageRequis(ByVal idMembre As Integer, ByVal idCours As Integer) As Boolean
+        Dim leCours As CoursJeu = (From A In leContext.CoursJeu Where (A.idCours = idCours) Select A).FirstOrDefault
+        Dim leMembre As MembresJeu = (From A In leContext.MembresJeu Where (A.idMembre = idMembre) Select A).FirstOrDefault
+        Dim ageMembre As Integer = Date.Now.Year - leMembre.dateNaissance.Year
+
+        If ageMembre > leCours.groupeAgeMax Or ageMembre < leCours.groupeAgeMin Then
+            ageRequis = False
+        Else
+            ageRequis = True
+        End If
+
+        Return ageRequis
+    End Function
+
+    'Fonction qui vérifi si le membre est dans la liste d'attente
+    Public Function dansLaListeDattente(ByVal idMembre As Integer, ByVal idCours As Integer) As Boolean
+        Dim listeAttente As Boolean = (From A In leContext.ListeAttenteJeu Where (A.Cours_idCours = idCours And A.Membres_idMembre = idMembre) Select A).Any
+        Return listeAttente
+    End Function
+
+    'Fonction qui vérifi si le membre est dans la table d'abonnement
+    Public Function dansAbonnement(ByVal idMembre As Integer, ByVal idGroupe As Integer) As Boolean
+        Dim abonnement As Boolean = (From A In leContext.AbonnementJeu Where (A.Groupe_idGroupe = idGroupe And A.Membres_idMembre = idMembre) Select A).Any
+        Return abonnement
+    End Function
+
+    'Fonction qui vérifi si le membre est dans le panier
+    Public Function dansPanier(ByVal idMembre As Integer, ByVal idGroupe As Integer) As Boolean
+        Dim itemPanier As Boolean = (From A In leContext.ItemPanierJeu Where (A.GroupeJeu_idGroupe = idGroupe And A.MembresJeu_idMembre = idMembre) Select A).Any
+        Return itemPanier
+    End Function
+
+#End Region
 End Class

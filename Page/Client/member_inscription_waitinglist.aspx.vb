@@ -3,6 +3,9 @@
 Partial Class Page_Client_member_inscription_waitinglist
     Inherits masterPage
 
+    Dim leContext As New modelCLSContainer
+    Dim ajout As Boolean = False
+
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim cours As Integer = Session("idCoursSelected")
         dsCours.WhereParameters("cours").DefaultValue = cours
@@ -24,18 +27,6 @@ Partial Class Page_Client_member_inscription_waitinglist
         End If
     End Sub
 
-    Sub inscriptionMembre(sender As Object, e As EventArgs)
-        Dim entCommande As New modelCLSContainer
-        Dim cookie As HttpCookie = Request.Cookies("panier")
-        Dim unItemPanier As ItemPanierJeu = Nothing
-        Dim membreSelectionner As DropDownList = FindChildControl(Of DropDownList)(lvListeAttente, "ddlMembreFamille")
-        unItemPanier = ItemPanierJeu.CreateItemPanierJeu(0, Session("idGroupeSelected"), membreSelectionner.SelectedItem.Value, cookie.Values("idPanier"))
-        entCommande.ItemPanierJeu.AddObject(unItemPanier)
-        entCommande.SaveChanges()
-        Response.Redirect(Request.Url.AbsoluteUri, False)
-    End Sub
-
-
 
 #Region "Traitements des erreurs"
     Protected Sub dsListeAttente_Inserted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsListeAttente.Inserted
@@ -49,6 +40,7 @@ Partial Class Page_Client_member_inscription_waitinglist
             checkImage.Visible = True
             lblFelicitation.Visible = True
             lblFelicitation.Text = "Votre nom a &eacute;t&eacute; ajout&eacute; avec succ&egrave;s a la liste d'attente !"
+            ajout = True
         End If
     End Sub
 #End Region
@@ -58,7 +50,37 @@ Partial Class Page_Client_member_inscription_waitinglist
 
         If ddlMembreFamille.SelectedItem Is Nothing Then
         Else
+            Dim listeMembreDeleter As New List(Of Integer)
 
+            Dim index As Integer = 0
+            For Each membre As ListItem In ddlMembreFamille.Items
+                If ageRequis(membre.Value, Session("idCoursSelected")) And dansLaListeDattente(membre.Value, Session("idCoursSelected")) = False And dansAbonnement(membre.Value, Session("idGroupeSelected")) = False Then
+                Else
+                    listeMembreDeleter.Add(index)
+                End If
+                index += 1
+            Next
+
+            Dim indexInitialListe As Integer = listeMembreDeleter.Count - 1
+            For i As Integer = 0 To listeMembreDeleter.Count - 1
+                ddlMembreFamille.Items.RemoveAt(listeMembreDeleter(indexInitialListe))
+                indexInitialListe -= 1
+            Next
+        End If
+
+        If ddlMembreFamille.Items.Count = 0 Then
+            Dim lblMembre As Label = FindChildControl(Of Label)(lvListeAttente, "lblMembre")
+            Dim ddlListeMembre As DropDownList = FindChildControl(Of DropDownList)(lvListeAttente, "ddlMembreFamille")
+            Dim btnInscrire As Button = FindChildControl(Of Button)(lvListeAttente, "btnRegisterMember")
+            lblMembre.Visible = False
+            ddlListeMembre.Visible = False
+            btnInscrire.Visible = False
+            lblErreur.Visible = True
+        End If
+
+        If ajout Then
+            lblErreur.Visible = False
         End If
     End Sub
+
 End Class

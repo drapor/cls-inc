@@ -78,12 +78,12 @@ Partial Class Page_Client_member_description
 
         'Affichage du bouton Inscription à la liste d'attente
         Dim btnInscrire As Button = CType(e.Item.FindControl("btnJeMinscris"), Button)
-        If btnInscrire.Visible = False Then
-            Dim btnListeAttente As Button = FindChildControl(Of Button)(lvGroupes, "btnInscriptionListeAttente")
-            btnListeAttente.Visible = True
-        Else
+        If btnInscrire.Visible = True Then
             Dim btnListeAttente As Button = FindChildControl(Of Button)(lvGroupes, "btnInscriptionListeAttente")
             btnListeAttente.Visible = False
+        Else
+            'Dim btnListeAttente As Button = FindChildControl(Of Button)(lvGroupes, "btnInscriptionListeAttente")
+            'btnListeAttente.Visible = False
         End If
 
     End Sub

@@ -58,7 +58,7 @@
                             <asp:Label ID="lblHoraire" runat="server" Text="Horaires et places disponibles"></asp:Label>
                             <div style="margin-left: 676px; margin-top: 15px;">
                                 <asp:Button ID="btnInscriptionListeAttente" runat="server" Text="Inscrivez-moi à la liste d'attente"
-                                    CssClass="btn btn-success btnPadding" Visible="false" OnClick="inscriptionListeAttente" /></div>
+                                    CssClass="btn btn-success btnPadding" Visible="True" OnClick="inscriptionListeAttente" /></div>
                         </div>
                     </div>
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />

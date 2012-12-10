@@ -38,6 +38,17 @@ Partial Class Page_Admin_admin_course
         End If
     End Sub
 
+    Sub changementAgeModModifier(sender As Object, e As EventArgs)
+        Dim txtBoxAgeMax As TextBox = FindChildControl(Of TextBox)(lvCourseModify, "txtGroupeAgeMax")
+        If CType(sender, DropDownList).SelectedIndex = 1 Then
+            txtBoxAgeMax.Text = "99"
+            txtBoxAgeMax.Visible = False
+        Else
+            txtBoxAgeMax.Text = ""
+            txtBoxAgeMax.Visible = True
+        End If
+    End Sub
+
     Protected Sub lvCourseAdd_ItemDeleted(sender As Object, e As System.Web.UI.WebControls.ListViewDeletedEventArgs) Handles lvCourseAdd.ItemDeleted
         Dim dbContext As New modelCLSContainer()
         Dim query = From p In dbContext.CoursJeu _
@@ -100,4 +111,25 @@ Partial Class Page_Admin_admin_course
         End If
     End Sub
 #End Region
+
+    Protected Sub lvCourseModify_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvCourseModify.ItemDataBound
+        Dim groupeAgeMod As Label = FindChildControl(Of Label)(lvCourseModify, "lblGroupeAgeMod")
+        Dim ageMax As Label = FindChildControl(Of Label)(lvCourseModify, "lblGroupeAgeMax")
+        Dim ddl As DropDownList = FindChildControl(Of DropDownList)(lvCourseModify, "ddlGroupeAgeMod")
+        Dim txtBoxAgeMax As TextBox = FindChildControl(Of TextBox)(lvCourseModify, "txtGroupeAgeMax")
+
+        If ageMax Is Nothing Then
+        Else
+            If groupeAgeMod.Text = "et +" Then
+                ageMax.Visible = False
+            End If
+        End If
+
+        If ddl Is Nothing Then
+        Else
+            If ddl.SelectedItem.Text = "et +" Then
+                txtBoxAgeMax.Visible = False
+            End If
+        End If
+    End Sub
 End Class

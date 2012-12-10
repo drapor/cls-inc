@@ -92,7 +92,7 @@
     </asp:ListView>
         
 
-      <asp:Button ID="btnRetour" runat="server"  Text="Retour" CssClass="btn btn-primary btnPadding" OnClick="retourCategorie" /> 
+      <asp:Button ID="btnRetour" runat="server"  Text="Retour catégorie" CssClass="btn btn-primary btnPadding" OnClick="retourCategorie" /> 
 </div>
 
 <asp:EntityDataSource ID="dsCours" runat="server" ConnectionString="name=modelCLSContainer"

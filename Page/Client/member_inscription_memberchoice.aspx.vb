@@ -2,7 +2,6 @@
 
 Partial Class Page_Client_member_inscription_memberchoice
     Inherits masterPage
-
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim cours As Integer = Session("idCoursSelected")
         dsCours.WhereParameters("cours").DefaultValue = cours
@@ -30,42 +29,39 @@ Partial Class Page_Client_member_inscription_memberchoice
         unItemPanier = ItemPanierJeu.CreateItemPanierJeu(0, Session("idGroupeSelected"), ddlMembreFamille.SelectedItem.Value, cookie.Values("idPanier"))
         entCommande.ItemPanierJeu.AddObject(unItemPanier)
         entCommande.SaveChanges()
-        Response.Redirect(Request.Url.AbsoluteUri, False)
+        Response.Redirect(Request.RawUrl)
     End Sub
 
-    Protected Sub ddlMembreFamille_DataBound(sender As Object, e As System.EventArgs) Handles ddlMembreFamille.DataBound
-        Dim membreInscritID As List(Of String) = Session("membreIDList")
-        Dim groupeChoisis As List(Of String) = Session("groupeIDList")
-        Dim membresDropDown As DropDownList = ddlMembreFamille
-        Dim itemDeleter As New List(Of String)
-        Dim nbItemSupprimer As Integer = Nothing
+    Sub ddlMembreFamille_databound(sender As Object, e As EventArgs)
+        Dim ddlMembreFamille As DropDownList = CType(sender, DropDownList)
 
-        'If membreInscritID IsNot Nothing Then
-        '    For i As Integer = 0 To groupeChoisis.Count - 1 Step 1
-        '        If groupeChoisis(i).ToString = Session("idGroupeSelected") Then
-        '            For b As Integer = 0 To ddlMembreFamille.Items.Count - 1 Step 1
-        '                If membreInscritID(i).ToString = ddlMembreFamille.Items.Item(b).Value Then
-        '                    Dim itemToDelete As String = ddlMembreFamille.Items.Item(b).Value
-        '                    itemDeleter.Add(itemToDelete)
-        '                End If
-        '            Next
-        '        End If
-        '    Next
-        '    For i As Integer = 0 To itemDeleter.Count - 1 Step 1
-        '    For b As Integer = 0 To ddlMembreFamille.Items.Count - 1 - nbItemSupprimer Step 1
-        '        If ddlMembreFamille.Items.Item(b).Value = itemDeleter(i).ToString Then
-        '            ddlMembreFamille.Items.RemoveAt(b)
-        '            nbItemSupprimer += 1
-        '            If ddlMembreFamille.Items.Count - 1 - nbItemSupprimer = 0 Then
-        '                Exit For
-        '            End If
-        '        End If
-        '    Next
-        '    Next
+        If ddlMembreFamille.SelectedItem Is Nothing Then
+        Else
+            Dim listeMembreDeleter As New List(Of Integer)
 
-        'Else
-        'End If
+            Dim index As Integer = 0
+            For Each membre As ListItem In ddlMembreFamille.Items
+                If ageRequis(membre.Value, Session("idCoursSelected")) And dansPanier(membre.Value, Session("idGroupeSelected")) = False And dansAbonnement(membre.Value, Session("idGroupeSelected")) = False Then
+                Else
+                    listeMembreDeleter.Add(index)
+                End If
+                index += 1
+            Next
 
+            Dim indexInitialListe As Integer = listeMembreDeleter.Count - 1
+            For i As Integer = 0 To listeMembreDeleter.Count - 1
+                ddlMembreFamille.Items.RemoveAt(listeMembreDeleter(indexInitialListe))
+                indexInitialListe -= 1
+            Next
+        End If
+
+        If ddlMembreFamille.Items.Count = 0 Then
+            lblMembre.Visible = False
+            ddlMembreFamille.Visible = False
+            btnRegisterMember.Visible = False
+            lblErreur.Visible = True
+        End If
     End Sub
+
 
 End Class

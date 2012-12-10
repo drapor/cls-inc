@@ -13,7 +13,6 @@
                 Visible="false"></asp:Label>
             <asp:Label ID="lblFailure" runat="server" ForeColor="Red" Text="" Visible="True"></asp:Label>
         </div>
-        
         <asp:ListView ID="lvMembreInscrire" runat="server" DataSourceID="dsCours" DataKeyNames="idCours">
             <LayoutTemplate>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -39,16 +38,19 @@
                 <div class="infoCours">
                     <asp:Label ID="lblMembre" runat="server" Text="Membre: "></asp:Label>
                     <asp:DropDownList ID="ddlMembreFamille" runat="server" DataSourceID="dsMembreFamille"
-                        AppendDataBoundItems="true" DataValueField="idMembre" DataTextField="prenomMembre" SelectedValue='<%#Bind ("Membres_idMembre") %>' OnDataBinding="ddlMembreFamille_databound" OnDataBound="ddlMembreFamille_databound" AutoPostBack="true">
+                        AppendDataBoundItems="true" DataValueField="idMembre" DataTextField="prenomMembre"
+                        SelectedValue='<%#Bind ("Membres_idMembre") %>' OnDataBound="ddlMembreFamille_databound"
+                        AutoPostBack="true">
                     </asp:DropDownList>
                     <asp:Button ID="btnRegisterMember" runat="server" Text="Inscrire le membre" CssClass="btn btn-primary"
                         CommandName="Insert" />
-                        <asp:HiddenField ID="hiddenCoursID" runat="server" Value='<%#Bind ("Cours_idCours") %>' />
+                    <asp:HiddenField ID="hiddenCoursID" runat="server" Value='<%#Bind ("Cours_idCours") %>' />
                 </div>
             </InsertItemTemplate>
             <ItemTemplate>
             </ItemTemplate>
         </asp:ListView>
+        <asp:Label ID="lblErreur" ForeColor="Red" Visible="false" runat="server" Text="Désolé, vous n'avez aucun membre à inscrire à cette activité ! Voici les raison qui peuvent en être la cause: vous ne possédez pas l'âge requise pour ce cours, vous êtes déjà inscrit à ce cours où vous êtes déjà inscrit(e) dans la liste d'attente. *Ceci s'applique pour les membres de votre famille."></asp:Label>
         <div class="infoCours">
             <asp:Button ID="btnRetour" runat="server" Text="Retour" CssClass="btn btn-primary btnPadding"
                 OnClick="retourCategorie" />
