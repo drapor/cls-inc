@@ -1,7 +1,13 @@
-﻿Imports modelCLS
+﻿'Créé par Francis Griggs
+'Le 20 septembre 2012
+'Dernière mise à jour le 2 décembre 2012
+
+Imports modelCLS
 
 Partial Class Page_Client_member_inscription_memberchoice
     Inherits masterPage
+
+    'Événement Page_Load
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim cours As Integer = Session("idCoursSelected")
         dsCours.WhereParameters("cours").DefaultValue = cours
@@ -9,6 +15,7 @@ Partial Class Page_Client_member_inscription_memberchoice
         dsMembreFamille.WhereParameters("familleID").DefaultValue = Session("idFamille")
     End Sub
 
+    'Récupère la catégorie avec le queryString et redirige vers la page catégorie
     Sub retourCategorie(sender As Object, e As EventArgs)
         Dim categorie As String = Request.QueryString("categorie")
         Dim url As String
@@ -16,12 +23,7 @@ Partial Class Page_Client_member_inscription_memberchoice
         Response.Redirect(url)
     End Sub
 
-    Protected Sub lvGroupes_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMembreInscrire.ItemCommand
-        If e.CommandName = "inscription" Then
-            Dim idMembreInscrit As Integer = FindChildControl(Of DropDownList)(lvMembreInscrire, "ddlMembreFamille").SelectedValue
-        End If
-    End Sub
-
+    'Inscrit le membre dans la table ItemPanier
     Sub inscriptionMembre(sender As Object, e As EventArgs)
         Dim entCommande As New modelCLSContainer
         Dim cookie As HttpCookie = Request.Cookies("panier")
@@ -32,6 +34,7 @@ Partial Class Page_Client_member_inscription_memberchoice
         Response.Redirect(Request.RawUrl)
     End Sub
 
+    'Événement databound du dropdownlist ddlMembreFamille qui update le itemlist du dropdownlist selon les membres inscrits
     Sub ddlMembreFamille_databound(sender As Object, e As EventArgs)
         Dim ddlMembreFamille As DropDownList = CType(sender, DropDownList)
 

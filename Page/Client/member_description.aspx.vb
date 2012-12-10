@@ -1,4 +1,8 @@
-﻿Imports modelCLS
+﻿'Créé par Francis Griggs
+'Le 12 septembre 2012
+'Dernière mise à jour le 12 décembre 2012
+
+Imports modelCLS
 Partial Class Page_Client_member_description
     Inherits masterPage
 
@@ -6,6 +10,7 @@ Partial Class Page_Client_member_description
     Dim nbGroupeComplet As New Integer
     Dim noGroupeActuel As New Integer
 
+    'Événement Page_load qui set le whereparameter des datasource dsGroupes et dsCours et qui change l'entête de page selon la catégorie choisit
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         nbGroupeComplet = 0
         Dim cours As Integer = Session("idCours")
@@ -23,17 +28,20 @@ Partial Class Page_Client_member_description
         lblNomCours.Text = FindChildControl(Of HiddenField)(lvCours, "hiddenNomCours").Value.ToString
     End Sub
 
+    'Crée les objets session nécessaire pour l'inscription à un cours
     Sub inscriptionCours(sender As Object, e As EventArgs)
         Session("idCoursSelected") = Session("idCours")
         Session("idGroupeSelected") = CType(sender, Button).CommandArgument.ToString
         Response.Redirect("~/Page/Client/member_inscription_memberchoice.aspx")
     End Sub
 
+    'Crée les objets session nécessaire pour l'inscription à la liste d'attente d'un cours
     Sub inscriptionListeAttente(sender As Object, e As EventArgs)
         Session("idCoursSelected") = Session("idCours")
         Response.Redirect("~/Page/Client/member_inscription_waitinglist.aspx")
     End Sub
 
+    'Redirige vers la page catégorie lorqu'on appuie sur le bouton retour
     Sub retourCategorie(sender As Object, e As EventArgs)
         Dim categorie As String = Request.QueryString("categorie")
         Dim url As String
@@ -49,6 +57,7 @@ Partial Class Page_Client_member_description
         End If
     End Sub
 
+    'Gère l'événement ItemDataBound du listview lvGroupes qui affiche le nombre de place restant dans un groupe et affiche le bouton de la liste d'attente lorsque tout les groupes sont pleins
     Protected Sub lvGroupes_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvGroupes.ItemDataBound
         Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
         Dim idGroupe As Integer = lvGroupes.DataKeys(dataItem.DisplayIndex).Value.ToString()
@@ -81,9 +90,6 @@ Partial Class Page_Client_member_description
         If btnInscrire.Visible = True Then
             Dim btnListeAttente As Button = FindChildControl(Of Button)(lvGroupes, "btnInscriptionListeAttente")
             btnListeAttente.Visible = False
-        Else
-            'Dim btnListeAttente As Button = FindChildControl(Of Button)(lvGroupes, "btnInscriptionListeAttente")
-            'btnListeAttente.Visible = False
         End If
 
     End Sub

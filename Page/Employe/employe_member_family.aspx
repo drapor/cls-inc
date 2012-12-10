@@ -1,4 +1,8 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Page/Employe/MasterPageEmploye.master" AutoEventWireup="false" CodeFile="employe_member_family.aspx.vb" Inherits="Page_Employe_employe_member_family" Theme="Original" %>
+﻿<%--Créé par Francis Griggs
+Le 26 septembre 2012
+Dernière mise à jour le 4 décembre 2012--%>
+
+<%@ Page Title="" Language="VB" MasterPageFile="~/Page/Employe/MasterPageEmploye.master" AutoEventWireup="false" CodeFile="employe_member_family.aspx.vb" Inherits="Page_Employe_employe_member_family" Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" Runat="Server">
     

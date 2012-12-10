@@ -90,7 +90,7 @@
                             <div class="validation">
                                 <asp:RequiredFieldValidator ID="requiredTarif" runat="server" ErrorMessage="Le tarif est obligatoire"
                                     ControlToValidate="txtTarif" ForeColor="Red" Display="Dynamic" ValidationGroup="formulaire">!</asp:RequiredFieldValidator>
-                                <asp:RegularExpressionValidator ID="regExTarif" runat="server" ErrorMessage="Veuillez entrer seulement un entier (ex: 10")
+                                <asp:RegularExpressionValidator ID="regExTarif" runat="server" ErrorMessage="Veuillez entrer seulement un entier (ex: 10)"
                                     ValidationExpression="^[0-9]+$" Display="Dynamic" ControlToValidate="txtTarif"
                                     ForeColor="Red" ValidationGroup="formulaire">!</asp:RegularExpressionValidator>
                             </div>
@@ -286,11 +286,7 @@
                             </div>
                             <div class="ligneCoursDescriptionLabel">
                                 <asp:Label ID="lblDescription" runat="server" Text="Description:"></asp:Label>
-                            </div>
-                            <%--<div class="ligneCoursNormalLabelGauche">
-                                <asp:Label ID="lblPrerequis" runat="server" Text="Prérequis:"></asp:Label>
-                            </div>--%>   
-                            
+                            </div>   
                         </div>
                         <div class="partiDroiteCours">
                             <div class="ligneCoursNormal">
@@ -321,29 +317,15 @@
                             <asp:Label ID="lblDateFinCoursCours" runat="server" Text='<%# (CType(Eval("dateFinCours"),DateTime)).ToShortDateString %>'></asp:Label>
                             </div>
                             <br />
-                            <%--<div class="ligneCoursNormal">
-                                <asp:Label ID="lblPrerequisCours" runat="server" Text='<%# Eval("prerequis") %>'></asp:Label>
-                            </div>--%>
-                            
                             <div class="ligneCoursNormal">
                                 <asp:Label ID="lblAnimateurPrenomCours" runat="server" Text='<%# Eval("MembresJeu_Animateur.MembresJeu.prenomMembre ") %>'></asp:Label>
                                 <asp:Label ID="lblAnimateurNomCours" runat="server" Text='<%# Eval("MembresJeu_Animateur.MembresJeu.nomMembre") %>'></asp:Label>
                             </div>
                             <div class="ligneCoursDescription">
                                 <asp:Label ID="lblDescriptionCours" runat="server" Text='<%# Eval("description") %>'></asp:Label>
-                            </div>
-                            
-                            
+                            </div>      
                         </div>
                     </div>
-                    <%--<div class="modifierCoursDroite">
-                        <div class="partiGaucheCoursDate">
-                            
-                        </div>
-                        <div class="partiDroiteCoursDate">
-                            
-                        </div>
-                    </div>--%>
                     <div class="bouton">
                         <asp:Button ID="btnModifier" runat="server" CommandName="Edit" Text="Enregistrer les modifications du cours"
                             CssClass="btn btn-primary" />
@@ -417,7 +399,7 @@
                         <div class="validation">
                             <asp:RequiredFieldValidator ID="requiredTarif" runat="server" ErrorMessage="*Le tarif est obligatoire"
                                 ControlToValidate="txtTarif" ForeColor="Red" Display="Dynamic" ValidationGroup="cours">*</asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="regExTarif" runat="server" ErrorMessage="Veuillez entrer seulement un entier (ex: 10")
+                            <asp:RegularExpressionValidator ID="regExTarif" runat="server" ErrorMessage="Veuillez entrer seulement un entier (ex: 10)"
                                     ValidationExpression="^[0-9]+$" Display="Dynamic" ControlToValidate="txtTarif"
                                     ForeColor="Red" ValidationGroup="cours">*</asp:RegularExpressionValidator>
                         </div>
@@ -506,21 +488,7 @@
                                 ControlToValidate="txtDescription" ForeColor="Red" Display="Dynamic" ValidationGroup="cours">*</asp:RequiredFieldValidator>
                         </div>
                     </div>
-                    <%--Description--%>
-
-                    <%--<div class="ligneFormulaire">
-                        <div class="elementFormulaireTexte">
-                            <asp:Label ID="lblPrerequis" runat="server" Text="Prérequis"></asp:Label></div>
-                        <div class="elementFormulaire">
-                            <asp:TextBox ID="txtPrerequis" runat="server" CssClass="search-query" SkinID="txtBoxBlue"
-                                MaxLength="25" Text='<%#Bind("prerequis") %>'></asp:TextBox></div>
-                        <div class="elementFormulaireRequired">
-                            <asp:RequiredFieldValidator ID="requiredPrerequis" runat="server" ErrorMessage="*Le prérequis est obligatoire"
-                                ControlToValidate="txtPrerequis" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>--%>
-                    <%--Prérequis--%>
-                    
+                    <%--Description--%>                   
                     <div class="validationListe">
                         <asp:ValidationSummary ID="ValidationInfo" ValidationGroup="cours" DisplayMode="List" ForeColor="Red" runat="server" />
                     </div>
