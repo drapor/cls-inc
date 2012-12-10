@@ -1,8 +1,11 @@
+<%--Créé par Francis Griggs
+Le 24 novembre 2012
+Dernière mise à jour le 8 décembre 2012--%>
+
 <%@ Master Language="VB" MasterPageFile="~/Site.master" CodeFile="MasterPageAdmin.master.vb"
     Inherits="Page_Admin_MasterPageAdmin" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <div class="contenuPageAdmin">
         <div class="contenuMenu">
@@ -16,8 +19,8 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnHomeAdmin" runat="server" PostBackUrl="~/Page/Admin/admin_home.aspx" Text="Accueil"
-                                        CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnHomeAdmin" runat="server" PostBackUrl="~/Page/Admin/admin_home.aspx"
+                                        Text="Accueil" CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>
                         </Content>
@@ -48,8 +51,8 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnGroupeAjout" runat="server"  PostBackUrl="~/Page/Admin/admin_group.aspx" Text="Opérations sur un groupe"
-                                        CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnGroupeAjout" runat="server" PostBackUrl="~/Page/Admin/admin_group.aspx"
+                                        Text="Opérations sur un groupe" CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>
                         </Content>
@@ -60,8 +63,8 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnHoraireAjout" runat="server" PostBackUrl="~/Page/Admin/admin_schedule.aspx" Text="Opérations sur un horaire"
-                                        CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnHoraireAjout" runat="server" PostBackUrl="~/Page/Admin/admin_schedule.aspx"
+                                        Text="Opérations sur un horaire" CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>
                         </Content>
@@ -72,8 +75,8 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnEmployeAjout" runat="server" OnClick="actionAjoutEmploye" Text="Ajouter un employé"
-                                        CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnEmployeAjout" runat="server" OnClick="actionAjoutEmploye"
+                                        Text="Ajouter un employé" CausesValidation="false"></asp:LinkButton>
                                 </li>
                                 <%--<li>
                                     <asp:LinkButton ID="btnEmployeModifie" runat="server" OnClick="actionModifieEmploye"
@@ -92,8 +95,8 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnAnimateurAjout" runat="server" OnClick="actionAjoutAnimateur" Text="Ajouter un animateur"
-                                        CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnAnimateurAjout" runat="server" OnClick="actionAjoutAnimateur"
+                                        Text="Ajouter un animateur" CausesValidation="false"></asp:LinkButton>
                                 </li>
                                 <li>
                                     <asp:LinkButton ID="btnAnimateurModifie" runat="server" OnClick="actionModifieAnimateur"
@@ -112,8 +115,8 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnClientAjout" runat="server" OnClick="actionAjoutMembre"
-                                        Text="Ajouter un membre" CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnClientAjout" runat="server" OnClick="actionAjoutMembre" Text="Ajouter un membre"
+                                        CausesValidation="false"></asp:LinkButton>
                                 </li>
                                 <li>
                                     <asp:LinkButton ID="btnClientModifie" runat="server" OnClick="actionModifieMembre"
@@ -128,8 +131,8 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnPermission" runat="server" PostBackUrl="~/Page/Admin/admin_permission.aspx" Text="Modifier les permissions"
-                                        CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnPermission" runat="server" PostBackUrl="~/Page/Admin/admin_permission.aspx"
+                                        Text="Modifier les permissions" CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>
                         </Content>
@@ -140,8 +143,8 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnTarif" runat="server" PostBackUrl="~/Page/Admin/admin_tarif.aspx" Text="Modifier les tarifs"
-                                        CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnTarif" runat="server" PostBackUrl="~/Page/Admin/admin_tarif.aspx"
+                                        Text="Modifier les tarifs" CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>
                         </Content>
@@ -152,20 +155,20 @@
                         <Content>
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="btnListeRapportClient" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_client.aspx" Text="Rapport client"
-                                        CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnListeRapportClient" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_client.aspx"
+                                        Text="Rapport client" CausesValidation="false"></asp:LinkButton>
                                 </li>
                                 <li>
-                                    <asp:LinkButton ID="btnListeRapportEmploye" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_employe.aspx" Text="Rapport employé"
-                                        CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnListeRapportEmploye" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_employe.aspx"
+                                        Text="Rapport employé" CausesValidation="false"></asp:LinkButton>
                                 </li>
                                 <li>
-                                    <asp:LinkButton ID="btnListeRapportAnimateur" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_animateur.aspx" Text="Rapport animateur"
-                                        CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnListeRapportAnimateur" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_animateur.aspx"
+                                        Text="Rapport animateur" CausesValidation="false"></asp:LinkButton>
                                 </li>
                                 <li>
-                                    <asp:LinkButton ID="btnListeRapportCours" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_cours.aspx" Text="Rapport cours"
-                                        CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton ID="btnListeRapportCours" runat="server" PostBackUrl="~/Page/Admin/admin_rapport_cours.aspx"
+                                        Text="Rapport cours" CausesValidation="false"></asp:LinkButton>
                                 </li>
                             </ul>
                         </Content>
@@ -179,4 +182,3 @@
         </div>
     </div>
 </asp:Content>
-

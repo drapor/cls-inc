@@ -1,4 +1,8 @@
-﻿Imports System.IO
+﻿'Créé par Samuel Bellerose
+'Le 16 septembre 2012
+'Dernière mise à jour le 26 novembre 2012
+
+Imports System.IO
 Imports masterPage
 Imports modelCLS
 Partial Class Site
@@ -35,6 +39,7 @@ Partial Class Site
         Response.Redirect(url)
     End Sub
 
+    'Événement Page_Load affiche les boutons de l'utilisateur, récupère le panier de l'utilisateur s'il en a un et affiche le nombre d'item dans le cart
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         If HttpContext.Current.User.Identity.IsAuthenticated = True Then
 
@@ -96,7 +101,7 @@ Partial Class Site
         End If
     End Sub
 
-
+    'Redirige vers la bonne page d'accueil selon le role de l'utilisateur en cliquant sur le bouton courriel
     Sub redirectionCourriel(sender As Object, e As EventArgs)
         If HttpContext.Current.User.IsInRole("Administrateur") Then
             Response.Redirect("~/Page/Admin/admin_home.aspx")
@@ -107,9 +112,10 @@ Partial Class Site
         End If
     End Sub
 
+    'Redirige vers la bonne page d'accueil selon le role de l'utilisateur en cliquant sur le bouton profil
     Sub redirectionProfil(sender As Object, e As EventArgs)
         If HttpContext.Current.User.IsInRole("Administrateur") Then
-            Response.Redirect("~/Page/Employe/home_employe.aspx")
+            Response.Redirect("~/Page/Admin/admin_home.aspx")
         ElseIf HttpContext.Current.User.IsInRole("Employé") Then
             Response.Redirect("~/Page/Employe/home_employe.aspx")
         ElseIf HttpContext.Current.User.IsInRole("Adulte") Then
@@ -117,6 +123,7 @@ Partial Class Site
         End If
     End Sub
 
+    'Remet les objets session à nothing lorsque l'on se déconnecte
     Protected Sub lnkLogOut_Click(sender As Object, e As System.EventArgs) Handles lnkLogOut.Click
         Session("idUser") = Nothing
         Session("groupeIDList") = Nothing
