@@ -1,22 +1,14 @@
-﻿Imports masterPage
+﻿'Créé par Francis Griggs
+'Le 16 septembre 2012
+'Dernière mise à jour le 12 décembre 2012
+'Classe partielle qui ajoute/modifie/supprime un horaire dans la BD associé à un groupe
+
 Imports modelCLS
 
 Partial Class Page_Admin_admin_schedule
-    Inherits System.Web.UI.Page
+    Inherits masterPage
 
-    Protected Function GetCssName(container As Object) As String
-        If container IsNot Nothing Then
-            If container.[GetType]() Is GetType(ListViewDataItem) Then
-                If (DirectCast(container, ListViewDataItem).DisplayIndex Mod 2) = 0 Then
-                    Return "even"
-                Else
-                    Return "odd"
-                End If
-            End If
-        End If
-        Return Nothing
-    End Function
-
+    'Evénement Inserting du listview lvHoraire qui ajoute un horaire au groupe sélectionné dans le dropdownlist ddlNomGroupe
     Protected Sub lvHoraire_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvHoraire.ItemInserting
         Dim semaine As String = FindChildControl(Of DropDownList)(lvHoraire, "ddlSemaine").SelectedValue
         Dim idGroupe As Short = FindChildControl(Of DropDownList)(Me, "ddlNomGroupe").SelectedValue
@@ -26,6 +18,8 @@ Partial Class Page_Admin_admin_schedule
     End Sub
 
 #Region "Traitements des erreurs"
+
+    'Traite les erreurs de l'événement Deleted du datasource dsHoraire
     Protected Sub dsHoraire_Deleted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsHoraire.Deleted
         If e.Exception IsNot Nothing Then
             masterPage.traiteErreur(Page, "ERREUR LORS DE LA SUPPRESSION D'UNE HORAIRE", e.Exception)
@@ -40,6 +34,7 @@ Partial Class Page_Admin_admin_schedule
         End If
     End Sub
 
+    'Traite les erreurs de l'événement Inserted du datasource dsHoraire
     Protected Sub dsHoraire_Inserted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsHoraire.Inserted
         If e.Exception IsNot Nothing Then
             traiteErreur(Page, "ERREUR LORS DE L'AJOUT D'UNE HORAIRE", e.Exception)
@@ -52,6 +47,7 @@ Partial Class Page_Admin_admin_schedule
         End If
     End Sub
 
+    'Traite les erreurs de l'événement Updated du datasource dsHoraire
     Protected Sub dsHoraire_Updated(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsHoraire.Updated
         If e.Exception IsNot Nothing Then
             traiteErreur(Page, "ERREUR LORS DE LA MISE À JOUR D'UN HORAIRE", e.Exception)
