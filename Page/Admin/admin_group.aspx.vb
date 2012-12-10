@@ -1,7 +1,10 @@
 ﻿'Créé par Francis Griggs
 'Le 16 septembre 2012
 'Dernière mise à jour le 25 septembre 2012
-'Classe partielle qui ajoute un groupe dans la BD associé à un cours
+'Classe partielle qui ajoute/supprime/modifie un groupe dans la BD associé à un cours
+'Principaux intrants:  Nombre max;
+'Principaux extrants: Nombre max; Nom du groupe; Nom du cours;
+
 Imports modelCLS
 Imports System.Net.Mail
 Imports System.Net
@@ -17,6 +20,7 @@ Partial Class Page_Admin_admin_group_add
         leContext = New modelCLSContainer
     End Sub
 
+    'Événement lors de l'insertion d'un nouveau groupe
     Protected Sub lvGroupe_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvGroupe.ItemInserting
         Dim groupeNo As Short = Nothing
         Dim coursNo As Short = Nothing

@@ -2,6 +2,8 @@
 'Le 16 septembre 2012
 'Dernière mise à jour le 12 décembre 2012
 'Classe partielle qui ajoute/modifie/supprime un horaire dans la BD associé à un groupe
+'Principaux intrants:  Jour de la semaine; Heure de début; Heure de fin; No de local;
+'Principaux extrants: Jour de la semaine; Heure de début; Heure de fin; No de local; Groupe; Cours;
 
 Imports modelCLS
 
@@ -24,7 +26,7 @@ Partial Class Page_Admin_admin_schedule
         If e.Exception IsNot Nothing Then
             masterPage.traiteErreur(Page, "ERREUR LORS DE LA SUPPRESSION D'UNE HORAIRE", e.Exception)
             e.ExceptionHandled = True
-            desactiveSuccess()
+            desactiveControles(checkImage, lblFelicitation)
             activeFailure()
             lblFailure.Text = "Impossible de supprimer l'horaire."
         Else

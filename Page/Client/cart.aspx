@@ -83,7 +83,7 @@
                         </div>
                         <div class="boutonPanierConfirme">
                             <asp:Button ID="btnConfirme" runat="server" Text="Confirmer" CssClass="btn btn-primary"
-                                Width="120px" PostBackUrl="~/Page/Client/cart_paiement.aspx" />
+                                Width="120px" OnClick="confirmationPaiement" />
                         </div>
                     </div>
                 </LayoutTemplate>
@@ -111,7 +111,7 @@
                             <asp:Label ID="lblPrix" runat="server" Text='<%#Eval("GroupeJeu.CoursJeu.tarif")%>'></asp:Label>
                             $
                         </div>
-                        <div style="width: 90px;float:left;">
+                        <div style="width: 110px;float:left;">
                             <asp:Label ID="lblRabaisApply" runat="server" Text=""></asp:Label>
                         </div>
                         <div class="panierSupprime">
