@@ -1,6 +1,6 @@
 ﻿'Créé par Francis Griggs
 'Le 6 septembre 2012
-'Dernière mise à jour le 29 octobre 2012
+'Dernière mise à jour le 12 décembre 2012
 'Claase partielle qui crée un objet session pour stocké certaines informations utiles sur d'autres pages du site. Récupère le queryString pour l'affichage du bon membre.
 'Affiche ou rend invible certains contrôles selon l'Item Command et finalement vérifie si certaines données sont présentes dans la BD.
 
@@ -11,7 +11,7 @@ Partial Class Page_Client_home_member
 
     Public entClient As modelCLSContainer = New modelCLSContainer
 
-    'Récupère le queryString et crée plusieurs objets session
+    'Récupère le queryString et crée plusieurs objets session set le whereparameter pour les datasource dsListView, dsAbonnement et dsFamille
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
         Dim idClient As Integer = Session("idUser")
@@ -38,6 +38,7 @@ Partial Class Page_Client_home_member
 
     End Sub
 
+    'Gère l'événement itemCommand du listview lvInfoMembre pour contrôler la visibilité de certains contrôles
     Protected Sub lvInfoMembre_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvInfoMembre.ItemCommand
 
         Dim btnHideCourriel As LinkButton = FindChildControl(Of LinkButton)(lvCourriel, "btnModifierCourriel")
@@ -49,18 +50,14 @@ Partial Class Page_Client_home_member
             btnAjouterFamille.Visible = False
             btnHideCourriel.Visible = False
             btnHideMP.Visible = False
-            'btnHideAfficherFamille.Visible = False
-            'btnHideSupprimerFamille.Visible = False
-
         Else
             btnAjouterFamille.Visible = True
             btnHideCourriel.Visible = True
             btnHideMP.Visible = True
-            'btnHideAfficherFamille.Visible = True
-            'btnHideSupprimerFamille.Visible = True
         End If
     End Sub
 
+    'Gère l'événement itemCommand du listview lvCourriel pour contrôler la visibilité de certains contrôles
     Protected Sub lvCourriel_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvCourriel.ItemCommand
 
         Dim btnHideInfo As Button = FindChildControl(Of Button)(lvInfoMembre, "btnModifier")
@@ -72,19 +69,14 @@ Partial Class Page_Client_home_member
             btnAjouterFamille.Visible = False
             btnHideInfo.Visible = False
             btnHideMP.Visible = False
-            'btnHideAfficherFamille.Visible = False
-            'btnHideSupprimerFamille.Visible = False
-
-
         Else
             btnAjouterFamille.Visible = True
             btnHideInfo.Visible = True
             btnHideMP.Visible = True
-            'btnHideAfficherFamille.Visible = True
-            'btnHideSupprimerFamille.Visible = True
         End If
     End Sub
 
+    'Gère l'événement itemCommand du listview lvMotPasse pour contrôler la visibilité de certains contrôles
     Protected Sub lvMotPasse_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMotPasse.ItemCommand
         Dim btnHideInfo As Button = FindChildControl(Of Button)(lvInfoMembre, "btnModifier")
         Dim btnHideCourriel As LinkButton = FindChildControl(Of LinkButton)(lvCourriel, "btnModifierCourriel")
@@ -95,18 +87,14 @@ Partial Class Page_Client_home_member
             btnAjouterFamille.Visible = False
             btnHideInfo.Visible = False
             btnHideCourriel.Visible = False
-            'btnHideAfficherFamille.Visible = False
-            'btnHideSupprimerFamille.Visible = False
-
         Else
             btnAjouterFamille.Visible = True
             btnHideInfo.Visible = True
             btnHideCourriel.Visible = True
-            'btnHideAfficherFamille.Visible = True
-            'btnHideSupprimerFamille.Visible = True
         End If
     End Sub
 
+    'Gère l'événement itemCommand du listview lvFamille pour contrôler la visibilité de certains contrôles
     Protected Sub lvFamille_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvFamille.ItemCommand
         Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
         Dim idMembre As Integer = lvFamille.DataKeys(dataItem.DisplayIndex).Value.ToString()
@@ -128,6 +116,7 @@ Partial Class Page_Client_home_member
         e.NewValues("courriel") = txtCourriel.Text
     End Sub
 
+    'Met à jour le mot de passe à partir du textBox
     Protected Sub lvMotPasse_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvMotPasse.ItemUpdating
 
         Dim txtMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtNouveauMP")
@@ -136,7 +125,7 @@ Partial Class Page_Client_home_member
 
     End Sub
 
-    'Valide le courriel
+    'Valide le courriel pour savoir s'il est déjà utilisé
     Sub validationCourriel(sender As Object, args As ServerValidateEventArgs)
 
         Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
@@ -151,7 +140,7 @@ Partial Class Page_Client_home_member
         End If
     End Sub
 
-    'Valide le mot de passe
+    'Valide le mot de passe pour savoir si les deux mot de passe fourni sont identique
     Sub validationMotPasse(sender As Object, args As ServerValidateEventArgs)
 
         Dim txtVieuxMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtPresentMP")
@@ -164,9 +153,18 @@ Partial Class Page_Client_home_member
         End If
     End Sub
 
+    'Message qui indique que les modifications ont été apporté avec succès
     Sub changeClient(sender As Object, e As EventArgs)
         lblFelicitation.Visible = False
         checkImage.Visible = False
+    End Sub
+
+    'Lors de l'événement ItemDataBound du listview lvAbonnement on récupère le idgroupe à partir du datakey et l'envoie dans le whereparameter du datasource dsHoraire
+    Protected Sub lvAbonnement_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvAbonnement.ItemDataBound
+        Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
+        Dim dataSourceHoraire As EntityDataSource = FindChildControl(Of EntityDataSource)(dataItem, "dsHoraire")
+        Dim idGroupe As Integer = FindChildControl(Of HiddenField)(lvAbonnement, "hiddenNoGroupe").Value
+        dataSourceHoraire.WhereParameters("groupeID").DefaultValue = idGroupe
     End Sub
 
 #Region "TRAITEMENT DES ERREURS"
@@ -212,13 +210,5 @@ Partial Class Page_Client_home_member
     End Sub
 
 #End Region
-    
-    Protected Sub lvAbonnement_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvAbonnement.ItemDataBound
-        Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
-        Dim dataSourceHoraire As EntityDataSource = FindChildControl(Of EntityDataSource)(dataItem, "dsHoraire")
-        Dim idGroupe As Integer = FindChildControl(Of HiddenField)(lvAbonnement, "hiddenNoGroupe").Value
-        dataSourceHoraire.WhereParameters("groupeID").DefaultValue = idGroupe
-    End Sub
-
     
 End Class

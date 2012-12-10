@@ -1,4 +1,8 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false"
+﻿<%--Créé par Francis Griggs
+Le 12 septembre 2012
+Dernière mise à jour le 12 décembre 2012--%>
+
+<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false"
     CodeFile="member_family.aspx.vb" Inherits="Page_Client_client_membre_famille"
     Theme="Original" %>
 

@@ -1,4 +1,8 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false"
+﻿<%--Créé par Francis Griggs
+Le 12 septembre 2012
+Dernière mise à jour le 10 décembre 2012--%>
+
+<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false"
     CodeFile="member_description.aspx.vb" Inherits="Page_Client_member_description"
     Theme="Original" %>
 
@@ -54,7 +58,7 @@
             <LayoutTemplate>
                 <div class="infoCours">
                     <div class="section">
-                        <div class="se  ctionTitre">
+                        <div class="sectionTitre">
                             <asp:Label ID="lblHoraire" runat="server" Text="Horaires et places disponibles"></asp:Label>
                             <div style="margin-left: 676px; margin-top: 15px;">
                                 <asp:Button ID="btnInscriptionListeAttente" runat="server" Text="Inscrivez-moi à la liste d'attente"

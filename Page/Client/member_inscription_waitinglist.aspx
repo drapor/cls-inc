@@ -1,4 +1,8 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false"
+﻿<%--Créé par Francis Griggs
+Le 26 septembre 2012
+Dernière mise à jour le 7 décembre 2012--%>
+
+<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false"
     CodeFile="member_inscription_waitinglist.aspx.vb" Inherits="Page_Client_member_inscription_waitinglist"
     Theme="Original" %>
 

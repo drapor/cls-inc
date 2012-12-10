@@ -1,4 +1,8 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_paiement_failure.aspx.vb"
+﻿<%--Créé par Francis Griggs
+Le 26 septembre 2012
+Dernière mise à jour le 12 décembre 2012--%>
+
+<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_paiement_failure.aspx.vb"
     Inherits="Page_Client_member_paiement_failure" Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">

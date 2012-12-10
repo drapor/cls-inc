@@ -1,4 +1,8 @@
-﻿Imports modelCLS
+﻿'Créé par Francis Griggs
+'Le 26 septembre 2012
+'Dernière mise à jour le 2 décembre 2012
+
+Imports modelCLS
 
 Partial Class Page_Client_member_inscription_waitinglist
     Inherits masterPage
@@ -6,6 +10,7 @@ Partial Class Page_Client_member_inscription_waitinglist
     Dim leContext As New modelCLSContainer
     Dim ajout As Boolean = False
 
+    'Événement Page_Load qui set le whereparameter des datasources dsCours et dsMembreFamille
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim cours As Integer = Session("idCoursSelected")
         dsCours.WhereParameters("cours").DefaultValue = cours
@@ -14,6 +19,7 @@ Partial Class Page_Client_member_inscription_waitinglist
         hiddenCours.Value = Session("idCoursSelected")
     End Sub
 
+    'recupère la catégorie grace au queryString et redirige la page vers la page description de la bonne catégorie
     Sub retourCategorie(sender As Object, e As EventArgs)
         Dim categorie As String = Request.QueryString("categorie")
         Dim url As String
@@ -21,30 +27,7 @@ Partial Class Page_Client_member_inscription_waitinglist
         Response.Redirect(url)
     End Sub
 
-    Protected Sub lvGroupes_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMembreInscrire.ItemCommand
-        If e.CommandName = "inscription" Then
-            Dim idMembreInscrit As Integer = FindChildControl(Of DropDownList)(lvMembreInscrire, "ddlMembreFamille").SelectedValue
-        End If
-    End Sub
-
-
-#Region "Traitements des erreurs"
-    Protected Sub dsListeAttente_Inserted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsListeAttente.Inserted
-        If e.Exception IsNot Nothing Then
-            traiteErreur(Page, "ERREUR LORS DE L'AJOUT À LA LISTE D'ATTENTE", e.Exception)
-            e.ExceptionHandled = True
-            failImage.Visible = True
-            lblFailure.Visible = True
-            lblFailure.Text = "Une erreur s'est produite lors de l'ajout a la liste d'attente..."
-        Else
-            checkImage.Visible = True
-            lblFelicitation.Visible = True
-            lblFelicitation.Text = "Votre nom a &eacute;t&eacute; ajout&eacute; avec succ&egrave;s a la liste d'attente !"
-            ajout = True
-        End If
-    End Sub
-#End Region
-
+    'Événement dataBound du dropdownlist ddlMembreFamille qui met à jour le dropdownlist losqu'un membre s'inscrit dans la liste d'attente
     Sub ddlMembreFamille_databound(sender As Object, e As EventArgs)
         Dim ddlMembreFamille As DropDownList = CType(sender, DropDownList)
 
@@ -82,5 +65,24 @@ Partial Class Page_Client_member_inscription_waitinglist
             lblErreur.Visible = False
         End If
     End Sub
+
+
+#Region "Traitements des erreurs"
+    Protected Sub dsListeAttente_Inserted(sender As Object, e As System.Web.UI.WebControls.EntityDataSourceChangedEventArgs) Handles dsListeAttente.Inserted
+        If e.Exception IsNot Nothing Then
+            traiteErreur(Page, "ERREUR LORS DE L'AJOUT À LA LISTE D'ATTENTE", e.Exception)
+            e.ExceptionHandled = True
+            failImage.Visible = True
+            lblFailure.Visible = True
+            lblFailure.Text = "Une erreur s'est produite lors de l'ajout a la liste d'attente..."
+        Else
+            checkImage.Visible = True
+            lblFelicitation.Visible = True
+            lblFelicitation.Text = "Votre nom a &eacute;t&eacute; ajout&eacute; avec succ&egrave;s a la liste d'attente !"
+            ajout = True
+        End If
+    End Sub
+#End Region
+
 
 End Class

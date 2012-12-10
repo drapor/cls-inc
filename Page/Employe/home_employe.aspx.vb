@@ -1,4 +1,8 @@
-﻿Imports modelCLS
+﻿'Créé par Francis Griggs
+'Le 14 septembre 2012
+'Dernière mise à jour le 8 décembre 2012
+
+Imports modelCLS
 
 Partial Class Page_Employe_home_employe
     Inherits masterPage
@@ -7,6 +11,7 @@ Partial Class Page_Employe_home_employe
 
     Dim idFamille As Integer = Nothing
 
+    'Événement Page_Load qui sélectionne la view du multiview à afficher
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         dsListView.WhereParameters("membreID").DefaultValue = Session("idUser")
 
@@ -35,6 +40,7 @@ Partial Class Page_Employe_home_employe
         End If
     End Sub
 
+    'Gère l'événement itemCommand du listview lvInfoMembre pour contrôler la visibilité de certains contrôles
     Protected Sub lvInfoMembre_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvInfoMembre.ItemCommand
 
         Dim btnHideCourriel As LinkButton = FindChildControl(Of LinkButton)(lvCourriel, "btnModifierCourriel")
@@ -50,6 +56,7 @@ Partial Class Page_Employe_home_employe
         End If
     End Sub
 
+    'Gère l'événement itemCommand du listview lvCourriel pour contrôler la visibilité de certains contrôles
     Protected Sub lvCourriel_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvCourriel.ItemCommand
 
         Dim btnHideInfo As Button = FindChildControl(Of Button)(lvInfoMembre, "btnModifier")
@@ -65,6 +72,7 @@ Partial Class Page_Employe_home_employe
         End If
     End Sub
 
+    'Gère l'événement itemCommand du listview lvMotPasse pour contrôler la visibilité de certains contrôles
     Protected Sub lvMotPasse_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMotPasse.ItemCommand
         Dim btnHideInfo As Button = FindChildControl(Of Button)(lvInfoMembre, "btnModifier")
         Dim btnHideCourriel As LinkButton = FindChildControl(Of LinkButton)(lvCourriel, "btnModifierCourriel")
@@ -79,6 +87,7 @@ Partial Class Page_Employe_home_employe
         End If
     End Sub
 
+    'Événement ItemInserting du listview lvNouveauMembre inscrit le nouveau membre dans la BD
     Protected Sub lvNouveauMembre_ItemInserting(sender As Object, e As System.Web.UI.WebControls.ListViewInsertEventArgs) Handles lvNouveauMembre.ItemInserting
         Dim rolePrincipal As Short = 3
 
@@ -87,12 +96,14 @@ Partial Class Page_Employe_home_employe
         e.Values("RoleJeu_idRole") = rolePrincipal
     End Sub
 
+    'Événement ItemUpdating du listview lvCourriel qui met à jour le courriel
     Protected Sub lvCourriel_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvCourriel.ItemUpdating
         Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
 
         e.NewValues("courriel") = txtCourriel.Text
     End Sub
 
+    'Événement ItemUpdating du listview lvMotPasse qui met à jour le mot de passe
     Protected Sub lvMotPasse_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvMotPasse.ItemUpdating
 
         Dim txtMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtNouveauMP")
@@ -101,6 +112,7 @@ Partial Class Page_Employe_home_employe
 
     End Sub
 
+    'Valide le courriel pour qu'il ne soit pas déjà utilisé
     Sub validationCourriel(sender As Object, args As ServerValidateEventArgs)
 
         Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
@@ -115,6 +127,7 @@ Partial Class Page_Employe_home_employe
         End If
     End Sub
 
+    'Valide le mot de passe pour que les mot de passes fourni soient identique
     Sub validationMotPasse(sender As Object, args As ServerValidateEventArgs)
 
         Dim txtVieuxMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtPresentMP")
@@ -127,6 +140,7 @@ Partial Class Page_Employe_home_employe
         End If
     End Sub
 
+    'Événement ItemCommand du listview lvMembreCourriel qui affiche la page du membre à partir du datakeynames
     Protected Sub lvMembreCourriel_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMembreCourriel.ItemCommand
         Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
         Dim idMembre As Integer = lvMembreCourriel.DataKeys(dataItem.DisplayIndex).Value.ToString()
@@ -139,6 +153,7 @@ Partial Class Page_Employe_home_employe
 
     End Sub
 
+    'Événement ItemCommand du listview lvMembreNom qui affiche la page du membre à partir du datakeynames
     Protected Sub lvMembreNom_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMembreNom.ItemCommand
         Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
         Dim idMembre As Integer = lvMembreNom.DataKeys(dataItem.DisplayIndex).Value.ToString()

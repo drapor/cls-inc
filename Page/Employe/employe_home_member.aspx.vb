@@ -33,6 +33,7 @@ Partial Class Page_Employe_employe_home_member
 
     End Sub
 
+    'Gère l'événement itemCommand du listview lvInfoMembre pour contrôler la visibilité de certains contrôles
     Protected Sub lvInfoMembre_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvInfoMembre.ItemCommand
 
         Dim btnHideCourriel As LinkButton = FindChildControl(Of LinkButton)(lvCourriel, "btnModifierCourriel")
@@ -42,21 +43,15 @@ Partial Class Page_Employe_employe_home_member
         Dim btnHideAjouterFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnAjouterFamille")
 
         If e.CommandName = "Edit" Then
-            'btnHideAjouterFamille.Visible = False
             btnHideCourriel.Visible = False
             btnHideMP.Visible = False
-            'btnHideAfficherFamille.Visible = False
-            'btnHideSupprimerFamille.Visible = False
-
         Else
-            'btnHideAjouterFamille.Visible = True
             btnHideCourriel.Visible = True
             btnHideMP.Visible = True
-            'btnHideAfficherFamille.Visible = True
-            'btnHideSupprimerFamille.Visible = True
         End If
     End Sub
 
+    'Gère l'événement itemCommand du listview lvCourriel pour contrôler la visibilité de certains contrôles
     Protected Sub lvCourriel_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvCourriel.ItemCommand
 
         Dim btnHideInfo As Button = FindChildControl(Of Button)(lvInfoMembre, "btnModifier")
@@ -66,22 +61,15 @@ Partial Class Page_Employe_employe_home_member
         Dim btnHideAjouterFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnAjouterFamille")
 
         If e.CommandName = "Edit" Then
-            'btnHideAjouterFamille.Visible = False
             btnHideInfo.Visible = False
             btnHideMP.Visible = False
-            'btnHideAfficherFamille.Visible = False
-            'btnHideSupprimerFamille.Visible = False
-
-
         Else
-            'btnHideAjouterFamille.Visible = True
             btnHideInfo.Visible = True
             btnHideMP.Visible = True
-            'btnHideAfficherFamille.Visible = True
-            'btnHideSupprimerFamille.Visible = True
         End If
     End Sub
 
+    'Gère l'événement itemCommand du listview lvMotPasse pour contrôler la visibilité de certains contrôles
     Protected Sub lvMotPasse_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvMotPasse.ItemCommand
         Dim btnHideInfo As Button = FindChildControl(Of Button)(lvInfoMembre, "btnModifier")
         Dim btnHideCourriel As LinkButton = FindChildControl(Of LinkButton)(lvCourriel, "btnModifierCourriel")
@@ -90,23 +78,15 @@ Partial Class Page_Employe_employe_home_member
         Dim btnHideAjouterFamille As LinkButton = FindChildControl(Of LinkButton)(lvFamille, "btnAjouterFamille")
 
         If e.CommandName = "Edit" Then
-            'btnHideAjouterFamille.Visible = False
             btnHideInfo.Visible = False
             btnHideCourriel.Visible = False
-            'btnHideAfficherFamille.Visible = False
-            'btnHideSupprimerFamille.Visible = False
-
         Else
-            'btnHideAjouterFamille.Visible = True
             btnHideInfo.Visible = True
             btnHideCourriel.Visible = True
-            'btnHideAfficherFamille.Visible = True
-            'btnHideSupprimerFamille.Visible = True
         End If
     End Sub
 
-
-
+    'Gère l'événement itemCommand du listview lvFamille qui redirige vers la page member_family du idMembre du datakeyNames
     Protected Sub lvFamille_ItemCommand(sender As Object, e As System.Web.UI.WebControls.ListViewCommandEventArgs) Handles lvFamille.ItemCommand
         Dim dataItem As ListViewDataItem = DirectCast(e.Item, ListViewDataItem)
         Dim idMembre As Integer = lvFamille.DataKeys(dataItem.DisplayIndex).Value.ToString()
@@ -126,7 +106,7 @@ Partial Class Page_Employe_employe_home_member
         e.NewValues("courriel") = txtCourriel.Text
     End Sub
 
-
+    'Met à jour le nouveau mot de passe
     Protected Sub lvMotPasse_ItemUpdating(sender As Object, e As System.Web.UI.WebControls.ListViewUpdateEventArgs) Handles lvMotPasse.ItemUpdating
 
         Dim txtMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtNouveauMP")
@@ -135,7 +115,7 @@ Partial Class Page_Employe_employe_home_member
 
     End Sub
 
-    'Valide le courriel
+    'Valide le courriel pour s'assurer qu'il n'est pas déjà utilisé
     Sub validationCourriel(sender As Object, args As ServerValidateEventArgs)
 
         Dim txtCourriel As TextBox = FindChildControl(Of TextBox)(lvCourriel, "txtNouveauCourriel")
@@ -150,7 +130,7 @@ Partial Class Page_Employe_employe_home_member
         End If
     End Sub
 
-    'Valide le mot de passe
+    'Valide le mot de passe pour les mots de passes fourni soient identique
     Sub validationMotPasse(sender As Object, args As ServerValidateEventArgs)
 
         Dim txtVieuxMP As TextBox = FindChildControl(Of TextBox)(lvMotPasse, "txtPresentMP")

@@ -1,3 +1,7 @@
+<%--Créé par Francis Griggs
+Le 12 septembre 2012
+Dernière mise à jour le 12 décembre 2012--%>
+
 <%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="member_family_add.aspx.vb" Inherits="Page_Client_member_family_add" Theme="Original" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
