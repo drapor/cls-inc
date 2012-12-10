@@ -2,6 +2,8 @@
 'Le 25 septembre 2012
 'Dernière mise à jour le 5 octobre 2012
 'Classe partielle qui crée un cours pour ensuite l'insérer dans la BD
+'Principaux intrants:  Nom du cours; Catégorie; Description du cours; Prérequis; Tarif; Groupe d'âge minimum/maximum; Date début des inscriptions; Date fin des inscriptions; Date début des cours; Date fin des cours; Animateurs du cours;
+'Principaux extrants: Nom du cours; Catégorie; Description du cours; Prérequis; Tarif; Groupe d'âge minimum/maximum; Date début des inscriptions; Date fin des inscriptions; Date début des cours; Date fin des cours; Animateurs du cours;
 
 Imports modelCLS
 Partial Class Page_Admin_admin_course
@@ -10,6 +12,7 @@ Partial Class Page_Admin_admin_course
     Private Shared leContext As modelCLSContainer = Nothing
     Dim idCoursDeleting As Integer = Nothing
 
+    'Change la view du Multiview selon le QueryString
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         leContext = New modelCLSContainer
 
@@ -22,6 +25,7 @@ Partial Class Page_Admin_admin_course
         End If
     End Sub
 
+    'Petite fonction qui ira chercher l'id du cours à supprimer
     Sub DeletingCoursID(sender As Object, e As EventArgs)
         idCoursDeleting = CType(sender, ImageButton).CommandArgument.ToString
     End Sub
@@ -38,6 +42,7 @@ Partial Class Page_Admin_admin_course
         End If
     End Sub
 
+    'Fonction qui mettera le textbox de l'age maximum invisible si l'utilisateur sélectionne "et +"
     Sub changementAgeModModifier(sender As Object, e As EventArgs)
         Dim txtBoxAgeMax As TextBox = FindChildControl(Of TextBox)(lvCourseModify, "txtGroupeAgeMax")
         If CType(sender, DropDownList).SelectedIndex = 1 Then
@@ -49,24 +54,32 @@ Partial Class Page_Admin_admin_course
         End If
     End Sub
 
-    Protected Sub lvCourseAdd_ItemDeleted(sender As Object, e As System.Web.UI.WebControls.ListViewDeletedEventArgs) Handles lvCourseAdd.ItemDeleted
-        Dim dbContext As New modelCLSContainer()
-        Dim query = From p In dbContext.CoursJeu _
-                    Where p.idCours = idCoursDeleting _
-                    Select p
-        For Each p As CoursJeu In query
-            dbContext.DeleteObject(p)
-        Next
-        Try
-            dbContext.SaveChanges()
-        Catch ex As Exception
-            MsgBox("La suppression est impossible puisque ce cours contient déjà des groupes. Assurez-vous de supprimer tous les groupes en premier.", MsgBoxStyle.OkOnly, "Impossible de supprimer le cours.")
-            Response.Redirect("~/Page/Admin/admin_course_delete.aspx")
-        End Try
-    End Sub
-
+    'Fonction qui désactive les message d'erreurs/succès lors des mise-a-jour/suppression/ajout de cours
     Sub changeCours(sender As Object, e As EventArgs)
         desactiveControles(checkImage, lblFelicitation)
+    End Sub
+
+    'Fonction binder sur le listeView qui modifie les cours, qui fonctionne pareil à celle prédédente, mais que l'on doit
+    'aller chercher les controle grâce a la fonction FindChildControl, puisqu'il est impossible d'aller les chercher dans un listView
+    Protected Sub lvCourseModify_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvCourseModify.ItemDataBound
+        Dim groupeAgeMod As Label = FindChildControl(Of Label)(lvCourseModify, "lblGroupeAgeMod")
+        Dim ageMax As Label = FindChildControl(Of Label)(lvCourseModify, "lblGroupeAgeMax")
+        Dim ddl As DropDownList = FindChildControl(Of DropDownList)(lvCourseModify, "ddlGroupeAgeMod")
+        Dim txtBoxAgeMax As TextBox = FindChildControl(Of TextBox)(lvCourseModify, "txtGroupeAgeMax")
+
+        If ageMax Is Nothing Then
+        Else
+            If groupeAgeMod.Text = "et +" Then
+                ageMax.Visible = False
+            End If
+        End If
+
+        If ddl Is Nothing Then
+        Else
+            If ddl.SelectedItem.Text = "et +" Then
+                txtBoxAgeMax.Visible = False
+            End If
+        End If
     End Sub
 
 #Region "TRAITEMENT DES ERREURS"
@@ -111,25 +124,4 @@ Partial Class Page_Admin_admin_course
         End If
     End Sub
 #End Region
-
-    Protected Sub lvCourseModify_ItemDataBound(sender As Object, e As System.Web.UI.WebControls.ListViewItemEventArgs) Handles lvCourseModify.ItemDataBound
-        Dim groupeAgeMod As Label = FindChildControl(Of Label)(lvCourseModify, "lblGroupeAgeMod")
-        Dim ageMax As Label = FindChildControl(Of Label)(lvCourseModify, "lblGroupeAgeMax")
-        Dim ddl As DropDownList = FindChildControl(Of DropDownList)(lvCourseModify, "ddlGroupeAgeMod")
-        Dim txtBoxAgeMax As TextBox = FindChildControl(Of TextBox)(lvCourseModify, "txtGroupeAgeMax")
-
-        If ageMax Is Nothing Then
-        Else
-            If groupeAgeMod.Text = "et +" Then
-                ageMax.Visible = False
-            End If
-        End If
-
-        If ddl Is Nothing Then
-        Else
-            If ddl.SelectedItem.Text = "et +" Then
-                txtBoxAgeMax.Visible = False
-            End If
-        End If
-    End Sub
 End Class
